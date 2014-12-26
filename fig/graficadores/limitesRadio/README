@@ -1,0 +1,9 @@
+plotLimits.py Dibuja limites y modelos con python
+
+v0.0
+    - base
+    - reproduce el plot de root
+
+v1.0
+    - incluye limites teoricos de ARA y ARIANNA
+

@@ -1,0 +1,146 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage[spanish,activeacute]{babel}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{verbatim}
+\usepackage{moreverb}
+\usepackage[all]{xy}
+\usepackage{sectsty}
+\usepackage{shortlst}
+\usepackage{multirow}
+
+\let\verbatiminput=\verbatimtabinput
+
+\spanishdecimal{.}
+
+% \usepackage{numprint}
+% \npthousandsep{,}\npthousandthpartsep{}\npdecimalsign{.}
+
+\usepackage{xcolor}
+\input{htmlColors.tex}
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{16pt}
+ 
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+ 
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\textit{\nouppercase{\leftmark}}}
+\fancyhead[LO]{\textit{\nouppercase{\rightmark}}}
+ 
+\fancypagestyle{plain}{ %
+\fancyhf{} % remove everything
+\renewcommand{\headrulewidth}{0pt} % remove lines as well
+\renewcommand{\footrulewidth}{0pt}}
+%\pagestyle{fancy}
+
+
+
+% Definitions
+\def\journal#1#2#3#4{{\sl #1,\/} {\bf #2}, #3 (#4)}
+\def\ul#1{\mbox{\boldmath$#1$}}
+\def\tur{\vphantom{|^{|^|}}}
+\def\tdr{\vphantom{|_{|_|}}}
+\def\d{{\rm d}}     %derivative
+\def\eV{{\rm eV}} 
+\def\keV{{\rm keV}} 
+\def\MeV{{\rm MeV}} 
+\def\GeV{{\rm GeV}} 
+\def\km{{\rm km}} 
+\def\dm{{\rm dm}} 
+\def\cm{{\rm cm}} 
+\def\kg{{\rm kg}} 
+\def\g{{\rm g}} 
+
+\newcommand{\secnumsep}{\hspace{0.1em}}
+\DeclareMathOperator{\sen}{sen}
+\newcommand{\cant}[2]{$#1 \rm \ #2$}
+\newcommand{\titulo}[1]{\underline{\textbf{#1:}}}
+\newcommand{\nutau}{$\nu_\tau$}
+\newcommand{\tauon}{$\tau$}
+\newcommand{\Fi}{$\mathcal{F}$}
+\newcommand{\etau}{$\rm E_\tau$}
+\newcommand{\enu}{$\rm E_\nu$}
+\newcommand{\hc}{$\rm h_c$}
+\newcommand{\tita}{$\rm \theta$}
+\newcommand{\xd}{$\rm x_d$}
+\newcommand{\A}{$\rm A$} 
+\newcommand{\aop}[1]{$\langle AOP\rangle_{#1}$}
+\newcommand{\Offline}{{\sc Offline}}
+\newcommand{\tauola}{{\sc tauola}}
+\newcommand{\td}{$\theta_D$}
+\newcommand{\te}{$\theta_E$}
+\newcommand{\cher}{\v{C}herenkov}
+
+
+
+%opening
+\title{Búsquedas de neutrinos cósmicos ultra energéticos}
+\author{Pablo Pieroni}
+
+\begin{document}
+\renewcommand{\listtablename}{Índice de tablas}
+\renewcommand{\tablename}{Tabla} 
+
+
+
+\input{./caratula.tex}
+\newpage
+\thispagestyle{empty}
+% \mbox{}
+% \input{./abstractES.tex}
+% \newpage
+% \thispagestyle{empty}
+% \mbox{}
+% \input{./abstractEN.tex}
+% \newpage
+% \thispagestyle{empty}
+% \mbox{}
+
+\maketitle
+% 
+% 
+\tableofcontents
+% 
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Introduccion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{introduccion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Deteccion con Auger
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Detecci\'on de neutrinos ultra energ\'eticos con el observatorio Pierre Auger}
+\include{EASAuger}
+\include{detectorAuger}
+\include{simulacionAuger}
+\include{seleccionAuger}
+\include{resultadosAuger}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Deteccion con radio
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \part{Detecci\'on de neutrinos ultra energ\'eticos con un arreglo de antenas de radio}
+\part{Un detector de neutrinos de 10000 antenas de radio}
+\include{motivacionRadio}
+\include{EASRadio}
+\include{deteccionRadio}
+\include{simulacionRadio}
+\include{seleccionRadio}
+\include{resultadosRadio}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Conclusiones, apendices y bbl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{conclusiones}
+\appendix
+\include{appendixTierraCurva}
+\include{bbl}
+
+\end{document}
