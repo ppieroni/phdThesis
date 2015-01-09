@@ -12,6 +12,7 @@
 \usepackage{sectsty}
 \usepackage{shortlst}
 \usepackage{multirow}
+\usepackage{eurosym}
 
 \let\verbatiminput=\verbatimtabinput
 
@@ -75,9 +76,14 @@
 \newcommand{\aop}[1]{$\langle AOP\rangle_{#1}$}
 \newcommand{\Offline}{{\sc Offline}}
 \newcommand{\tauola}{{\sc tauola}}
+\newcommand{\herwig}{{\sc herwig}}
 \newcommand{\td}{$\theta_D$}
 \newcommand{\te}{$\theta_E$}
 \newcommand{\cher}{\v{C}herenkov}
+\newcommand{\uhenu}{UHE$\nu$s}
+\newcommand{\aires}{Aires}
+\newcommand{\zhs}{ZHAireS}
+\newcommand{\el}[1]{$e^{#1}$}
 
 
 
@@ -114,13 +120,13 @@
 %     Introduccion
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{introduccion}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Deteccion con Auger
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \part{Detecci\'on de neutrinos ultra energ\'eticos con el observatorio Pierre Auger}
 \include{EASAuger}
 \include{detectorAuger}
+\include{estrategiaAuger}
 \include{simulacionAuger}
 \include{seleccionAuger}
 \include{resultadosAuger}
@@ -141,6 +147,7 @@
 \include{conclusiones}
 \appendix
 \include{appendixTierraCurva}
+\include{appendixConeInt}
 \include{bbl}
 
 \end{document}

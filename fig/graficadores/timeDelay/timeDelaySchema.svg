@@ -125,7 +125,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.41231995"
      inkscape:cx="1001.4279"
-     inkscape:cy="426.32959"
+     inkscape:cy="329.31755"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -157,7 +157,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -639,7 +639,7 @@
        xml:space="preserve"
        id="flowRoot3116"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch Bold"
-       transform="matrix(2.1232292,0,0,2.1232292,-1214.2343,-1.5529)"><flowRegion
+       transform="matrix(2.1232292,0,0,2.1232292,-1212.2343,-1.5529)"><flowRegion
          id="flowRegion3118"><rect
            id="rect3120"
            width="46.080719"
@@ -817,7 +817,7 @@
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch Bold" /></flowRegion><flowPara
          id="flowPara3232"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch Bold">e</flowPara></flowRoot>    <flowRoot
-       transform="matrix(2.1232292,0,0,2.1232292,-406.17143,-51.749539)"
+       transform="matrix(2.1232292,0,0,2.1232292,-362.51601,-68.726646)"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch Bold"
        id="flowRoot4014"
        xml:space="preserve"><flowRegion
@@ -825,8 +825,8 @@
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch Bold"
            y="505.10928"
            x="749.41803"
-           height="50.93132"
-           width="46.080719"
+           height="47.504494"
+           width="63.214798"
            id="rect4018" /></flowRegion><flowPara
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch Bold"
          id="flowPara4020">n</flowPara></flowRoot>    <flowRoot
@@ -866,5 +866,31 @@
            height="257.08191"
            x="1153.2306"
            y="1201.2406" /></flowRegion><flowPara
-         id="flowPara4064"></flowPara></flowRoot>  </g>
+         id="flowPara4064" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3168"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch Bold"
+       transform="matrix(2.1232292,0,0,2.1232292,-1398.0322,216.24622)"><flowRegion
+         id="flowRegion3170"><rect
+           id="rect3172"
+           width="46.080719"
+           height="50.93132"
+           x="749.41803"
+           y="505.10928"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch Bold" /></flowRegion><flowPara
+         id="flowPara3174"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch Bold">d=0</flowPara></flowRoot>    <flowRoot
+       transform="matrix(2.1232292,0,0,2.1232292,-1392.2343,38.4471)"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch Bold"
+       id="flowRoot3176"
+       xml:space="preserve"><flowRegion
+         id="flowRegion3178"><rect
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch Bold"
+           y="505.10928"
+           x="749.41803"
+           height="50.93132"
+           width="46.080719"
+           id="rect3180" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch Bold"
+         id="flowPara3182">l=0</flowPara></flowRoot>  </g>
 </svg>
