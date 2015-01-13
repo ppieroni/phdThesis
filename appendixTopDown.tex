@@ -1,0 +1,67 @@
+\chapter{Reconstrucción de un frente plano}
+\label{ap:topDown}
+
+En este apéndice se repasa la reconstrucción de los parámetros geométricos de la lluvia a partir de ajustar los tiempos de trigger con un frente plano.
+
+\begin{enumerate}
+\item Se calcula el baricentro:Calculate the barycenter, according to:
+\begin{equation}
+\boldsymbol{r_{b}} =\frac{\sum \boldsymbol{r_{i}}S_{i}^{\frac{1}{3}}}{\sum S_{i}^{\frac{1}{3}}}
+\end{equation}
+donde $\boldsymbol{r_{i}}$ y $S_{i}$ son la ubicacion sobre el suelo y la señal de la estación $i$.
+De aquí en más , $\boldsymbol{r_{i}}$ son las coordenadas relativas a este baricentro.
+\item Se ajusta un frente plano que se desplaza a la velocidad de la luz a los tiempos de trigger $t_i$, despreciando las variaciones de altura $z_{i}$ que pudiese haber respecto del suelo:
+\begin{equation}
+c(t_{i} -t_{0} )=-\boldsymbol{a}\boldsymbol{r_{i}} \Longleftrightarrow \langle t_{i}\rangle = t_{0} - \frac{1}{c}(ux_{i} + vy_{i} )
+\end{equation}
+donde $\boldsymbol{a} = (u, v, w)^{T}$ es la dirección de arrivo de la lluvia.
+los parámetros libres del modelo son $u$, $v$, y $t_{0}$.
+La solución analítica para obtener los parámetros del modelo se consigue mediante cuadrados mínimos.
+
+\item Los parámetros se mejoran aplicando el mismo procedimiento, pero incluyendo la altitud de las estaciones. 
+\begin{equation}
+\langle t_{i}\rangle = t_{0} - \frac{1}{c}(ux_{i} + vy_{i} +w_{0}z_{i})
+\end{equation}
+donde $w_{0} = \max{(0, 1 - u_{0}^2 - v_{0}^{2} )}$  es la nueva componente de la dirección de la lluvia.
+Dado que $w_{0}$ no es un parámetro libre, nuevamente se puede utilizar la solución de cuadrados mínimos.
+Así los parámetros de la lluvia se obtienen como:
+\begin{equation}
+\theta = \arccos w_{0}
+\end{equation}
+y
+\begin{equation}
+\Phi = \arctan \frac{v}{u}
+\end{equation}
+
+
+
+% \item If the number of stations is 3, accept the event and reﬁne the ﬁt further by adding an approximate term for the spherical shape of the
+% shower front:
+% \begin{equation}
+% <t_{i}> = t0 − \frac{1}{c}(ux_{i} + vy_{i} +w_{1}z_{i} + w_{1}\frac{r_{i}^{2}}{2d_{max}})
+% \end{equation}
+% where $r_{i} = x_{i} + y_{i} − (ux_{i} + vy_{i})^{2}$ is the radial distance to the preliminary shower axis
+% going through the barycenter and $w_{1}$ is the ﬁxed value from the second ﬁt. The radius of the
+% shower front sphere is roughly approximated here by $d_{max} ≈ \frac{7.1 km}{\cos{\theta}}$, where $\cos{\theta}=1 -u^{2}-v^{2}$.
+% \end{enumerate}
+% \item If the number of stations higher than 3, accept the current conﬁguration under the following conditions:
+% \begin{itemize}
+% (a) Physical values for u and v: u2 + v 2 < 1.
+% (b) Small residuals ∆ti = |ti − ti |:
+% max(∆ti ) < (n − 2) min(w, 0.2) × 250 ns
+%% be too large:
+% √
+% max(ri ) < n − 2 × 1.3 km.
+% Again, the restriction is relaxed for larger showers.
+% (d) Conﬁguration may not be aligned. The principal axes of the conﬁguration are calculated in the
+% ground plane. The length of both axes has to be larger than 0.3 km. 2
+% i (∆ti )
+% n−3
+% < (n − 2) min(w, 0.2) × 200 ns
+% The factor (n − 2) relaxes the restriction in case of large events, taking into account that the
+% shower front model is only approximate. The factor min(w, 0.2) tightens the restrictions as
+% the shower inclination grows, because the natural variance of the arrival time is smaller in very
+% inclined showers as discussed in Chapter 3.
+% (c) Compact spatial conﬁguration. The radial distance ri to the preliminary shower axis may not
+
+\end{enumerate}

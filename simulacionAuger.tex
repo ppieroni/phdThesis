@@ -3,16 +3,16 @@
 
 Dada la complejidad del problema, la \'unica manera viable de obtener una muestra de señal en el detector es mediante simulaciones.
 Para ello, son necesarios una serie de programas que se encargan de simular las distintas etapas del proceso de detecci\'on:
-\begin{enumerate}
- \item Interacción primaria: esta incluye el procesamiento de la interacción neutrino nucleón y cuando corresponda el del decaimiento del \tauon{}. Para esto se utilizan respectivamente dos programas específicos llamados \herwig{} y \tauola{}.
- \item Desarrollo de la EAS: una vez obtenido los productos de la primera interacción se utiliza un programa llamado \aires{}, que simula la evolución de la cascada a través de la atmósfera.
- \item Señal en el detector: con la lista de partículas que llegan al suelo es posible simular la señal que estas generarían en el detector, utilizando el software oficial de la colaboración llamado \Offline{}.
-\end{enumerate}
+\begin{description}
+ \item[Interacción primaria:] esta incluye el procesamiento de la interacción neutrino nucleón y cuando corresponda el del decaimiento del \tauon{}. Para esto se utilizan respectivamente dos programas específicos llamados \herwig{} y \tauola{}.
+ \item[Desarrollo de la EAS:] una vez obtenido los productos de la primera interacción se utiliza un programa llamado \aires{}, que simula la evolución de la cascada a través de la atmósfera.
+ \item[Señal en el detector:] con la lista de partículas que llegan al suelo es posible simular la señal que estas generarían en el detector, utilizando el software oficial de la colaboración llamado \Offline{}.
+\end{description}
 
 	\section{Interacción primaria: \herwig{} - \tauola{}}
 	
-	Dado que \aires{} no incluye herramientas para para procesar la interacción neutrino-nucleón ni el decaimiento \tauon{}'s.
-	Para salvar este inconveniente, fue necesario utilizar programas complementarios que devuelvan una lista de partículas y sus cuadrimomentos que luego puedan ser inyectadas en \aires{}.
+	\aires{} no incluye herramientas para para procesar la interacción neutrino-nucleón ni el decaimiento \tauon{}'s.
+	Para salvar este inconveniente, fue necesario utilizar programas complementarios que devuelvan una lista de partículas y sus cuadrimomentos que luego puedan ser utilizadas para iniciar la EAS.
 	
 	\subsection{Interacción neutrino-nucleón: \herwig{}}
 	
@@ -28,8 +28,8 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 	A las energías involucradas, las lluvias iniciadas por $\nu_e$, $\nu_{\mu}$ y $\nu_{\tau}$ vía CN son indistinguibles desde el punto de vista del jet hadrónico producido.
 	Es por ello que simular uno solo de los tres sabores es suficiente para describir los tres canales de CN.
 
-	Como veremos a continuación, las lluvias iniciadas por $\nu_{\mu}$ vía CC son muy similares a las de NC pese a que la interacción fundamental involucrada es diferente.
-	Tal como se discute en la Sec.~\ref{sec:detNusLluvias}, es muy poco probable que el muón de alta energía producido decaiga o interactúe antes de alcanzar la tierra.
+	Las lluvias iniciadas por $\nu_{\mu}$ vía CC son muy similares a las de NC pese a que la interacción fundamental involucrada es diferente.
+	Tal como se discute en la sección \ref{sc:easNu}, es muy poco probable que el muón de alta energía producido decaiga o interactúe antes de alcanzar la tierra.
 	De esta manera, es indistinguible de un neutrino secundario que emerge de una interacción de CN. 
 	Además, debido a que la distribución de la fracción de enegía que se transmite al jet (inelasticidad) es muy similar en interacciones vía CN y CC  (ver Fig.~\ref{fig:inelast}), el conjunto de simulaciones producido para los canales de CN puede se utilizado para describir, con excelente aproximación, el canal $\nu_{\mu}$ vía CC.
 	%
@@ -42,17 +42,16 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 	\end{figure}
 	%
 
-	El canal $\nu_{\tau}$ vía CC es un caso que requiere un tratamiento más sofisticado. Al igual que el muón, el leptón $\tau$ es una partícula muy penetrante, por lo que puede viajar y alejarse del punto en que fue producido. Por otro lado, su vida media es mucho menor que la del muón por lo que la probabilidad de que decaiga antes de alcanzar la tierra puede no ser despreciable. En la Sec.~\ref{sub:simDB} se describe en detalle la metodología utilizada para simular este tipo de eventos.
-
 	
 	\subsection{Decaimiento del \tauon{}: \tauola{}}
 	
-	Luego de propagarse a trav\'es de la atm\'osfera, el \tauon{} decae generando una gran variedad de part\'iculas secundarias que luego inician la EAS.
+	El canal $\nu_{\tau}$ vía CC es un caso que requiere un tratamiento más sofisticado tanto para eventos DG o ES.
+	En ambos casos, luego de propagarse a trav\'es de la atm\'osfera, el \tauon{} decae generando una gran variedad de part\'iculas secundarias que luego inician la EAS.
 	Para generar eventos utilizando la probabilidad de decaimiento a cada canal pueden utilizarse un conjunto de librer\'ias llamadas \tauola{}.
 	Estas consisten en varios programas Monte Carlo que implementan decaimientos lept\'onicos y semilept\'onicos.
 	Como salida se entrega la topolog\'ia completa del evento, incluyendo neutrinos, resonancias intermedias y la estructura completa de spin durante el desarrollo del decaimiento.
 	
-	La tabla \ref{tab:tauDecay} muestra los primeros ocho canales de decaimiento del \tauon{} utilizados por \tauola{}.
+	La tabla \ref{tab:tauDecay} muestra los primeros ocho canales de decaimiento del \tauon{} utilizados por \tauola{}, que representa el $\sim96\%$ de los eventos esperados.
 	\begin{table}[h]
 		\begin{center}
 		\begin{tabular}{|c|l|l|}
@@ -76,8 +75,8 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 		Canales mediante el \tauon{} decae el $\sim96\%$ de los casos. El canal numero 3 no se observa debido a que el $\mu$ generado en el decaimiento escapa sin generar una lluvia atmosférica.
 		}
 	\end{table}
-	Dado que el canal número 3 no genera EAS, dado que el muón escapa sin interactuar, esos eventos no fueron simulados. 
-	Para subsanar esto, luego será necesario corregir las eficiencias de trigger e identificación por un factor $0.826$ que tiene en cuenta la falta de este canal.
+	Dado que el canal número 3 no genera EAS\footnote{ya que el muón escapa sin interactuar}, esos eventos no deben simularse, aunque si deben ser considerados como eventos que no disparan el detector.
+	Por este motivo las eficiencias de trigger e identificación de eventos ES tienen un valor máximo de $\sim0.826$.
 	
 	\section{Desarrollo de las EAS: Aires}
 
@@ -159,7 +158,7 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 		\end{figure}
 		%
 		
-		En particular, el algoritmo de unthinning no es directamente aplicable a lluvias rasantes a la tierra, por lo que una modificaci\'on del mismo se incluye en \Offline{} con el fin de resolver sus problemas.
+		En particular, el algoritmo de unthinning no es directamente aplicable a lluvias ES, por lo que una modificaci\'on del mismo se incluye en \Offline{} con el fin de resolver sus problemas.
 		
 % 		\textbf{RECTANGULOS ??}
 		
@@ -212,7 +211,7 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 	Para el canal CC se utilizaron energías fijas entre \cant{10^{17}}{eV} y \cant{10^{20.5}}{eV} con un paso logarítmico de $0.5$. Dado que el canal NC sólo lleva el $20\%$ de la energía del neutrino, el rango energético fue acortado a \cant{10^{18}\ -\ 10^{20.5}}{eV}, evitando así simular eventos que no dispararían el detector.
 	En canal double bang no fue tenido en cuenta, por lo que las lluvias iniciadas por \nutau{} se simularon como NC.
 	En ambos canales, se simularon ángulos cenitales desde $60^\circ$ a $75^\circ$ con un paso de $3^\circ$, utilizando ángulos azimutales aleatorios entre $0^\circ$ y $360^\circ$.
-	Con el fin de maximizar la eficiancia a la hoa de simular se forzó a los neutrinos a interactuar en puntos de inyección de profundidad $D$, uniformemente distribuidos entre un máximo y un mínimo (que dependen del ángulo cenital) con un paso fijo de \cant{100}{g cm^{-2}}.
+	Con el fin de maximizar la eficiancia a la hora de simular se forzó a los neutrinos a interactuar en puntos de inyección de profundidad $D$, uniformemente distribuidos entre un valor máximo y un mínimo (que dependen del ángulo cenital) con un paso fijo de \cant{100}{g cm^{-2}}.
 	Algunos puntos de inyección muy cercanos al suelo fueron omitidos debido a que la lluvia no llega a desarrollarse lo suficiente como para dar trigger.
 	Para cada punto ($E_{\nu}$, $\theta$, $D$) se generaron 50 cascadas atmosféricas independientes.
 	Cada una de estas se utilizó para producir cinco eventos con diferente punto de impacto en \Offline{}, dando un total de 250 eventos cuasi-independientes para cada punto de inyección.
@@ -241,10 +240,22 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 	\subsection{Eventos DGH}
 	
 	La librería de eventos DGH fue obtenida con criterios muy similares a los utilizados en DGL, con la salvedad de que en este canal si se tuvieron en cuenta los eventos double bang.
-	La Tab.~\ref{tab:sim_table_dgh} resume el conjunto de simulaciones producidas para este rango angular.
+	
+	Con el fin de modelar las lluvias DB de manera fidedigna, se realizó la siguiente cadena de simulación:
+%
+	\begin{enumerate}
+	\item A partir de la simulación HERWIG de la primer interacción se obtuvo la energía transferida al leptón $\tau$ y las demás partículas producidas (jet hadrónico).
+	\item Las partículas del jet hadrónico se inyectaron en AIRES de manera análoga al procedimiento utilizado en la simulación de las lluvias producidas por $\nu_{e}$ vía CC o por $\nu_{X}$ vía CN. El leptón $\tau$ no se incluye en este grupo.
+	\item Utilizando la energía transferida al leptón $\tau$ (dada por HERWIG) se calculó la longitud de decaimiento y, mediante un MC simple, la distancia recorrida antes de decaer. La pérdida de energía en la atmósfera es despreciable y no se consideró en este cálculo.
+	\item Si el resultado del punto anterior indicaba que el decaimiento se produjo antes de que el $\tau$ alcance la tierra, se utilizó el paquete TAUOLA~\cite{cite:TAUOLA} para calcular las partículas producidas en el decaimiento\footnote{TAUOLA es un MC desarrollado en el ambiente de altas energías que contiene toda la información experimental sobre los canales dominantes de dacaimiento del $\tau$. }.
+	\item Los productos del decaimiento fueron inyectados en AIRES a la profundidad y tiempo adecuados determinados por la distancia recorrida por el $\tau$.
+	\item Se calculó la evolución conjunta de todas las partículas utilizando AIRES.
+	\end{enumerate}
+	
+	La tabla ~\ref{tab:sim_table_dgh} resume el conjunto de simulaciones producidas para este rango angular.
 	\begin{table}[ht]
 	\begin{center}
-	\includegraphics[width=0.85\textwidth]{fig/simulacionAuger/sim_table.pdf}
+	\includegraphics[width=0.75\textwidth]{fig/simulacionAuger/sim_table.pdf}
 	\end{center}
 	\caption{
 	Resumen, discriminado por canal de interacción, de las simulaciones de neutrinos profundos realizadas.
@@ -266,7 +277,7 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 	%
 	\begin{table}
 		\begin{center}
-		\footnotesize
+		\scriptsize
 			\begin{tabular}{|c|c|cc|cc|}
 			\hline
 			\makebox[0.1\textwidth][c]{Group} & \makebox[0.13\textwidth][c]{\etau{} [eV]}&
