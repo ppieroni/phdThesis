@@ -212,6 +212,37 @@ Una vez hecho esto se utilizan variables topológicas y temporales para elegir e
 	\subsection{Reconstrucción preeliminar}
 	
 	Una vez aplicados los precedimientos descriptos hasta el momento, los eventos cuentan con una lista de escaciones cuyos tiempos de disparo T2 se encuentran bien definidos.
+	A partir de estos, la reconstrucción geométrica se realiza mediante un procedimiento iterativo.
+	Sobre el conjunto de estaciones seleccionadas se realiza un ajuste asumiendo un frente plano.
+	Este ajuste, más sofisticado que el que se realiza en la selección de estaciones, utiliza un modelo para la incerteza en el tiempo de disparo.
+	Este modelo~\cite{cite:ines} fue optimizado para describir lluvias horizontales hadrónicas iniciadas alto en la atmósfera en las que, por lo tanto, domina la componente muónica al nivel del detector (eventos inclinados típicos):
+	%
+	\begin{equation}
+	\sigma_t = 20 \left[ 1 + \left( \frac{15}{S} \right)^{2/4.5} \right]
+	\label{ec:varT} 
+	\end{equation}
+	%
+
+	Es importante resaltar que, al utilizar este modelo, se elige priorizar la correcta reconstrucción de las lluvia hadrónicas (inmensa mayoría, si no la totalidad, de los datos) por sobre las posibles lluvias profundas iniciadas por neutrinos\footnote{Las lluvias profundas cuentan con una componente EM apreciable al alcanzar la tierra, lo que produce que la incerteza en su tiempo de disparo no sea correctamente descripta por el modelo anterior que asume que la cantidad de electrones y fotones es despreciable.}. 
+	
+	\textbf{CHARLAR SOBRE ESTO}
+	Como se discutirá más adelante en la Sec.~\ref{sub:thetaRec}, esta elección produce una disminución en la eficiencia de detección de neutrinos pero se ve justificada ya que implica una disminución del fondo hadrónico debido a lluvias ``verticales'' ($\theta<75^\circ$) incorrectamente reconstruidas como ``horizontales'' ($\theta>75^\circ$).
+
+	Una vez realizada la reconstrucción se evalúan las diferencias de tiempo $\Delta t_i$ entre las estaciones y el frente plano obtenido. Si alguno de los $\Delta t_i$ no está contenido en el intervalo [-300,700]~$\mbox{ns}$\footnote{
+	Una vez producidos, los muones viajan sin desviarse y, en general, alcanzan la tierra antes que la componente EM. Las fluctuaciones en su tiempo de arribo son entonces menores a las esperadas para electrones y fotones que sufren multiples disperciones en su camino. Esta es la razón de que se tome un intervalo asimétrico.
+	},
+	la estación con mayor $\Delta t_i$ es removida y se repite la reconstrucción. Este procedimiento continua hasta que se encuentra una configuración aceptable. Si tras alguna de las iteraciones quedan menos de 4 estaciones el evento es rechazado.
+	Si el evento está constituido por estaciones alineadas, el ángulo azimutal es fijado en la dirección de avance de la señal y se aplica el mismo procedimiento de reconstrucción antes mencionado. En el caso de eventos en linea el ángulo cenital obtenido es, en realidad, una cota mínima (ver Fig.~\ref{fig:conoLineEvent}).
+	%
+	\begin{figure}[ht]
+	\begin{center}
+	\includegraphics[width=0.75\textwidth]{fig/seleccionAuger/conoLineEvent.pdf}
+	\caption{Esquema de reconstrucción geométrica de un evento en linea. Una cota mínima para el ángulo cenital se obtiene al considerar que el ángulo azimutal de la lluvia coincide con la linea que une las estaciones.}
+	\label{fig:conoLineEvent}
+	\end{center}
+	\end{figure} 
+	
+	
 	Sin embargo, los evetos todavia pueden contener estaciones disparadas por muones atmosféricos o incluso por una lluvias de baja energía.
 	Con el fin de identificar las estaciones que realmente pertenecen al evento que nos interesa, se pide que las estaciones pertenecientes a los eventos satisfagan una serie de requerimentos de compacticidad espacial y temporal.
 	
@@ -295,8 +326,9 @@ Una vez hecho esto se utilizan variables topológicas y temporales para elegir e
 	
 	\begin{enumerate}
 	 \item \texttt{6T5}: es el criterio estandar del observatorio, que pide que la estación con mayor señal se encuentre rodeada por 6 estaciones activas. Sólo se aplica en la búsqueda de DGL.
-	 \item \texttt{isConteined}: una vez reconstruido el core de la lluvia se identifica la estación con mayor señal y se requiere que se encuentre rodeada por 5 estaciones activas. Este criterio se utiliza en las búsquedas de DGH y ES. Esta condición es algo más laxa que el 6T5 en el sentido que permite que el core de la lluvia caiga algo más afuera del detector, pero la diferencia es mínima.
-	 \item \texttt{hottestHasNeighbour}: este pide que la estación de mayor señal tenga en su primer corona otra estación con T2. El objetivo de este corte es evitar eventos de baja multiplicidad con ``agujeros''. Esta condición solo se requiere en el análisis de ES.
+	 \item \texttt{isConteined}: una vez reconstruido el core de la lluvia se identifica la estación con mayor señal y se requiere que se encuentre rodeada por 5 estaciones activas. Este criterio se utiliza en las búsquedas de DGH y ES. Esta condición es algo más laxa que el 6T5 en el sentido que permite que el core de la lluvia caiga algo más afuera del detector. Esto es posible para las búsquedas de DGH y ES dado que la contaminación debido al fondo es menos probable que para el rango angular que observa DGL.
+	 \item \texttt{6T5 posterior}: igual que \texttt{isConteined} pero pidiendo que la estación se encuentre rodeada por 6 estaciones activas. Solo se aplica a DGL.
+	 \item \texttt{hottestHasNeighbour}: este pide que la estación de mayor señal tenga en su primer corona otra estación con T2. El objetivo de este corte es evitar eventos de baja multiplicidad con ``agujeros''. Esta condición solo se requiere en el análisis de ES, donde los eventos reales que presentan este problema son raros pero aparecen.
 	\end{enumerate}
 	
 \section{Selecci\'on de lluvias inclinadas}
@@ -312,6 +344,11 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	
 	\subsection{Reconstrucción angular}
 	\label{sbsc:thetaRec}
+	A continuación se desarrolla el método utilizado para llevar a cabo la reconstrucción angular de los eventos. 
+	El objetivo es obtener a partir de un ajuste de los tiempos de T2 un estimador del ángulo cenital de la lluvia, planteando un modelo para su frente.
+	
+	
+	
 	
 	
 	Este método se utiliza en las búsquedas de DGL y DGH.
@@ -367,41 +404,56 @@ Existen dos tipos de variables que permiten seleccionarlos:
 		\end{center}
 		\end{figure}
 		%
+		
+		\subsection{Desempeño de la selección de eventos inclinados}
 
 \section{Selecci\'on de lluvias j\'ovenes}
+	
+	
+	\section{Variables discriminantes}
+	
+	\section{Análisis multivariado}
+	
+	\section{Criterios de identificación}
+	
+		\subsection{Identificación de neutrinos DGL}
+		
+		\subsection{Identificación de neutrinos DGH}
+		
+		\subsection{Identificación de neutrinos ES}
+	
+	\begin{sidewaystable}[ht!]
+	\begin{center}
+		\renewcommand{\arraystretch}{1.4}
+		\footnotesize
+		\begin{tabular}{l|c|c|c}
+		\hline
+		Búsqueda & Earth-skimming (ES)           & Downward-going                        & Downward-going                       \\
+				&                               & {\it high} angle (DGH)                & {\it low} angle (DGL)                \\
+		\hline 
+		Sabores e interacciones & $\nu_\tau$ CC & $\nu_e,~\nu_\mu~,\nu_\tau$ CC $\&$ NC &  $\nu_e,~\nu_\mu~,\nu_\tau$ CC $\&$ NC \\
 
-\begin{sidewaystable}[ht!]
-\begin{center}
-	\renewcommand{\arraystretch}{1.4}
-	\footnotesize
-	\begin{tabular}{l|c|c|c}
-	\hline
-	Búsqueda & Earth-skimming (ES)           & Downward-going                        & Downward-going                       \\
-			&                               & {\it high} angle (DGH)                & {\it low} angle (DGL)                \\
-	\hline 
-	Sabores e interacciones & $\nu_\tau$ CC & $\nu_e,~\nu_\mu~,\nu_\tau$ CC $\&$ NC &  $\nu_e,~\nu_\mu~,\nu_\tau$ CC $\&$ NC \\
+		Rango angular & $\theta>90^\circ$             & $\theta \in (75^\circ, 90^\circ)$ & $\theta \in (60^\circ, 75^\circ)$ \\
 
-	Rango angular & $\theta>90^\circ$             & $\theta \in (75^\circ, 90^\circ)$ & $\theta \in (60^\circ, 75^\circ)$ \\
+		N$^\circ$ de estaciones(Nst) & Nst $\geq$ 3   & Nst $\geq$ 4 & Nst $\geq$ 4 \\
+		\hline 
+					& $-$                             & $\theta_{\rm rec}>$ 75$^{\circ}$   &   $\theta_{\rm rec}\in (58.5^\circ,~76.5^{\circ})$\\
+		Lluvias    & $L/W > 5$                                         & $L/W > 3$ & $-$ \\
+		Inclinadas & $\langle V\rangle\in (0.29,~0.31)~{\rm m~ns^{-1}}$ & $\langle V \rangle~<~0.313~{\rm m~ns^{-1}}$ & $-$ \\
+				& RMS($V$)$~<~0.08~{\rm m~ns^{-1}}$                 & RMS($V$)/$\langle V\rangle<0.08$ & $-$ \\
+		\hline 
+				& Datos: 1 January 04 - 31 May 10 &                                     & $\geq 75\%$ de estaciones cercanas al   \\
+				& $\geq 60\%$ of stations with  &                                      & core con ToT trigger       \\
+		Lluvias     & ToT trigger \& AoP $>$ 1.4    & Discriminante de Fisher basado &                          \&        \\
+		%\cline{2-2}
+		Jóvenes   & Datos: 1 Junio 10 - 20 Junio 13   & en AoP estaciones {\it early}   & Discriminante de Fisher basado  \\
+				& $\langle {\rm AoP} \rangle> 1.83$  &                                 & en AoP de las estaciones {\it early} \\
+				& AoP$_{\rm min}$ $>$ 1.4 if Nst=3   &                                 & cercanas al core \\
+		\hline
+		\end{tabular}
+		\vskip -3mm
+		\caption{Resumen de los observables y valores numéricos de los cortes aplicados para seleccionar lluvias inclinadas y jóvenes en las tres búsquedas de neutrinos.} 
+	\end{center}
 
-	N$^\circ$ de estaciones(Nst) & Nst $\geq$ 3   & Nst $\geq$ 4 & Nst $\geq$ 4 \\
-	\hline 
-				& $-$                             & $\theta_{\rm rec}>$ 75$^{\circ}$   &   $\theta_{\rm rec}\in (58.5^\circ,~76.5^{\circ})$\\
-	Lluvias    & $L/W > 5$                                         & $L/W > 3$ & $-$ \\
-	Inclinadas & $\langle V\rangle\in (0.29,~0.31)~{\rm m~ns^{-1}}$ & $\langle V \rangle~<~0.313~{\rm m~ns^{-1}}$ & $-$ \\
-			& RMS($V$)$~<~0.08~{\rm m~ns^{-1}}$                 & RMS($V$)/$\langle V\rangle<0.08$ & $-$ \\
-	\hline 
-			& Datos: 1 January 04 - 31 May 10 &                                     & $\geq 75\%$ de estaciones cercanas al   \\
-			& $\geq 60\%$ of stations with  &                                      & core con ToT trigger       \\
-	Lluvias     & ToT trigger \& AoP $>$ 1.4    & Discriminante de Fisher basado &                          \&        \\
-	%\cline{2-2}
-	Jóvenes   & Datos: 1 Junio 10 - 20 Junio 13   & en AoP estaciones {\it early}   & Discriminante de Fisher basado  \\
-			& $\langle {\rm AoP} \rangle> 1.83$  &                                 & en AoP de las estaciones {\it early} \\
-			& AoP$_{\rm min}$ $>$ 1.4 if Nst=3   &                                 & cercanas al core \\
-	\hline
-	\end{tabular}
-	\vskip -3mm
-	\caption{Resumen de los observables y valores numéricos de los cortes aplicados para seleccionar lluvias inclinadas y jóvenes en las tres búsquedas de neutrinos.} 
-\end{center}
-
-\label{tab:cuts}
-\end{sidewaystable}
+	\label{tab:cuts}
+	\end{sidewaystable}

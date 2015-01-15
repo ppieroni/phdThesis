@@ -2,32 +2,8 @@
 \label{ch:resAuger}
 
 \section{C\'alculo de la exposici\'on}
+\label{sc:expoNu}	
 	
-	\section{\label{sc:sim_prop_tierra}Propagaci\'on dentro de la tierra}
-	
-	Para simular la propagaci\'on del \tauon{} en la tierra se utiliz\'o un programa que realiza el c\'alculo mediante m\'etodos de Monte Carlo, desarrollado por J. A. Mu\~niz y E. Zas, del grupo de altas energ\'ias de la Universidad de Santiago de Compostela.
-	Una explicaci\'on detallada del programa puede encontrarse en \cite{gap_tau_tierra}.
-	
-	Este c\'odigo permite propagar los \nutau{}s y \tauon{}s en la tierra y, dado el \'angulo cenital \tita{} y la energ\'ia del neutrino incidente \enu{}, calcular la probabilidad de que un \tauon{} alcance la superficie de la tierra con energ\'ia \etau{}.
-	Estos c\'alculos se realizan teniendo en cuenta la interacci\'on del \nutau{} via CC y CN, la p\'erdida de energ\'ia del \tauon{} (con $\beta$\footnote{ver ecuaci\'on \ref{eq:tau_losses}} dependiente o independiente de la energ\'ia) y la regeneraci\'on del flujo de \nutau{} debido a interacciones via CN y a decaimientos de leptones \tauon{}.
-	
-	La simulaci\'on consta de dos etapas principales que se alternan hasta que se alcanza la superficie:
-	
-	\begin{description}
-	\item[\textbf{Interacci\'on del \nutau{}:}] Se hace interactuar al neutrino siguiendo una distribuci\'on exponencial en $x$, donde $x$ es la variable que mide la cantidad de materia atravesada por el \nutau{}. Para ello, se tienen en cuenta interacciones via CC y CN. Si se diera una interacci\'on via CC, se produce un \tauon{} cuya energ\'ia proviene de muestrear la seccion efic\'az diferencial de CC, $\frac{d\sigma^{cc}}{dy}$. En cambio, si la interacci\'on se produce via CN, es generado un nuevo \nutau{} de energ\'ia menor que se hace interactuar nuevamente.
-	\item[\textbf{Propagaci\'on del \tauon{}:}] En caso de que un \tauon{} sea producido, se lo propaga de a peque\~nos pasos, calculando en cada uno de ellos la energ\'ia perdida debido a la interacci\'on con el medio y la probabilidad de decaimiento (como funci\'on de su energ\'ia). Si decayese produciendo un nuevo \nutau{}, se comienza el procedimiento nuevamente desde el punto del \'ultimo decaimiento.
-	\end{description}
-	
-	Este Programa fue validado utilizando programas mucho m\'as complejos, como ANIS \cite{anis}.
-	Tambi\'en se realiz\'o una comparaci\'on del flujo de \tauon{} saliente obtenido mediante el calculo te\'orico que puede encontrarse en \cite{prop_tau} y el obtenido por este programa, para diferentes \'angulos cenitales.
-	Esta \'ultima comparaci\'on se muestra en la figura \ref{fig:comp_tau_mc_teo}, en la que se observa un muy buen acuerdo entre ambos resultados.
-	%
-	\begin{figure}[h!]
-		\begin{center}
-		\includegraphics[width=0.75\textwidth]{fig/simulacionAuger/comp_tau_mc_teo}
-		\caption{\label{fig:comp_tau_mc_teo} Comparaci\'on de los flujos salientes obtenido anal\'iticamente y mediante simulaci\'on. Los histogramas corresponden a los resultados del Monte Carlo, mientras que la l\'inea llena al c\'alculo te\'orico.}
-		\end{center}
-	\end{figure}
 	
 	
 	\subsection{Combinaci\'on de los an\'alisis}

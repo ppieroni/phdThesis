@@ -201,133 +201,269 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 		
 		Una vez que las trazas FADC fueron calculadas, \Offline{} posee algoritmos que calculan cada nivel de trigger del detector, desde disparos locales T2 hasta CDAS T4 y T5, especificados en la secci\'on \ref{sbsc:trig_levels}.
 		
-		
-	\section{Librería de eventos}
+	\section{Librería de eventos generada}
 	
 	Finalmente, para cada búsqueda se simuló una librería de eventos que cubra todo el espacio de parámetros en el cual se esperan neutrinos y que a su vez puedan generar lluvias que disparen el detector.
 	
-	\subsection{Eventos DGL}
-	
-	Para el canal CC se utilizaron energías fijas entre \cant{10^{17}}{eV} y \cant{10^{20.5}}{eV} con un paso logarítmico de $0.5$. Dado que el canal NC sólo lleva el $20\%$ de la energía del neutrino, el rango energético fue acortado a \cant{10^{18}\ -\ 10^{20.5}}{eV}, evitando así simular eventos que no dispararían el detector.
-	En canal double bang no fue tenido en cuenta, por lo que las lluvias iniciadas por \nutau{} se simularon como NC.
-	En ambos canales, se simularon ángulos cenitales desde $60^\circ$ a $75^\circ$ con un paso de $3^\circ$, utilizando ángulos azimutales aleatorios entre $0^\circ$ y $360^\circ$.
-	Con el fin de maximizar la eficiancia a la hora de simular se forzó a los neutrinos a interactuar en puntos de inyección de profundidad $D$, uniformemente distribuidos entre un valor máximo y un mínimo (que dependen del ángulo cenital) con un paso fijo de \cant{100}{g cm^{-2}}.
-	Algunos puntos de inyección muy cercanos al suelo fueron omitidos debido a que la lluvia no llega a desarrollarse lo suficiente como para dar trigger.
-	Para cada punto ($E_{\nu}$, $\theta$, $D$) se generaron 50 cascadas atmosféricas independientes.
-	Cada una de estas se utilizó para producir cinco eventos con diferente punto de impacto en \Offline{}, dando un total de 250 eventos cuasi-independientes para cada punto de inyección.
-	Todo lo anterior se resume en la tabla \ref{tab:sim_table_dgl}, mientras que la figura \ref{fig:sim_fig_dgl} muestra las profundidades simuladas como función del ángulo cenital.
-	
-	\begin{table}[ht]
-		\begin{center}
-		\includegraphics[width=0.85\textwidth]{fig/simulacionAuger/simShNavarro_1}
-		\end{center}
-		\caption{Resumen de las energías, ángulos cenitales y puntos de inyección. Para cada angulo, se simuló un número determinado de profundidades de interacción entre el máximo y un mínimo especificado en la tabla, con un paso de \cant{100}{g cm^{-2}}. Los dos primeros bines de energía no fueron simulados para el canal NC.
-		}
-		\label{tab:sim_table_dgl}
-	\end{table}
+		\subsection{Eventos DGL}
+		
+		Para el canal CC se utilizaron energías fijas entre \cant{10^{17}}{eV} y \cant{10^{20.5}}{eV} con un paso logarítmico de $0.5$. Dado que el canal NC sólo lleva el $20\%$ de la energía del neutrino, el rango energético fue acortado a \cant{10^{18}\ -\ 10^{20.5}}{eV}, evitando así simular eventos que no dispararían el detector.
+		En canal double bang no fue tenido en cuenta, por lo que las lluvias iniciadas por \nutau{} se simularon como NC.
+		En ambos canales, se simularon ángulos cenitales desde $60^\circ$ a $75^\circ$ con un paso de $3^\circ$, utilizando ángulos azimutales aleatorios entre $0^\circ$ y $360^\circ$.
+		Con el fin de maximizar la eficiancia a la hora de simular se forzó a los neutrinos a interactuar en puntos de inyección de profundidad $D$, uniformemente distribuidos entre un valor máximo y un mínimo (que dependen del ángulo cenital) con un paso fijo de \cant{100}{g cm^{-2}}.
+		Algunos puntos de inyección muy cercanos al suelo fueron omitidos debido a que la lluvia no llega a desarrollarse lo suficiente como para dar trigger.
+		Para cada punto ($E_{\nu}$, $\theta$, $D$) se generaron 50 cascadas atmosféricas independientes.
+		Cada una de estas se utilizó para producir cinco eventos con diferente punto de impacto en \Offline{}, dando un total de 250 eventos cuasi-independientes para cada punto de inyección.
+		Todo lo anterior se resume en la tabla \ref{tab:sim_table_dgl}, mientras que la figura \ref{fig:sim_fig_dgl} muestra las profundidades simuladas como función del ángulo cenital.
+		
+		\begin{table}[ht]
+			\begin{center}
+			\includegraphics[width=0.85\textwidth]{fig/simulacionAuger/simShNavarro_1}
+			\end{center}
+			\caption{Resumen de las energías, ángulos cenitales y puntos de inyección. Para cada angulo, se simuló un número determinado de profundidades de interacción entre el máximo y un mínimo especificado en la tabla, con un paso de \cant{100}{g cm^{-2}}. Los dos primeros bines de energía no fueron simulados para el canal NC.
+			}
+			\label{tab:sim_table_dgl}
+		\end{table}
+		%
+		\begin{figure}[h!]
+			\begin{center}
+			\includegraphics[width=0.85\textwidth]{fig/simulacionAuger/simShNavarro_2}\\
+			\caption{En linea llena se grafica la prufundidad atmoférica inclinada del Observatorio Pierre Auger, que se encuentra a \cant{1400}{m} sobre el nivel del mar.
+			Los circulos indican los puntos de inyección de los neutrinos (puntos de interacción) para diferentes ángulos cenitales.
+			}
+			\label{fig:sim_fig_dgl}
+			\end{center}
+		\end{figure}
+		
+		
+		\subsection{Eventos DGH}
+		
+		La librería de eventos DGH fue obtenida con criterios muy similares a los utilizados en DGL, con la salvedad de que en este canal si se tuvieron en cuenta los eventos double bang.
+		
+		Con el fin de modelar las lluvias DB de manera fidedigna, se realizó la siguiente cadena de simulación:
 	%
-	\begin{figure}[h!]
+		\begin{enumerate}
+		\item A partir de la simulación HERWIG de la primer interacción se obtuvo la energía transferida al leptón $\tau$ y las demás partículas producidas (jet hadrónico).
+		\item Las partículas del jet hadrónico se inyectaron en AIRES de manera análoga al procedimiento utilizado en la simulación de las lluvias producidas por $\nu_{e}$ vía CC o por $\nu_{X}$ vía CN. El leptón $\tau$ no se incluye en este grupo.
+		\item Utilizando la energía transferida al leptón $\tau$ (dada por HERWIG) se calculó la longitud de decaimiento y, mediante un MC simple, la distancia recorrida antes de decaer. La pérdida de energía en la atmósfera es despreciable y no se consideró en este cálculo.
+		\item Si el resultado del punto anterior indicaba que el decaimiento se produjo antes de que el $\tau$ alcance la tierra, se utilizó el paquete TAUOLA~\cite{cite:TAUOLA} para calcular las partículas producidas en el decaimiento\footnote{TAUOLA es un MC desarrollado en el ambiente de altas energías que contiene toda la información experimental sobre los canales dominantes de dacaimiento del $\tau$. }.
+		\item Los productos del decaimiento fueron inyectados en AIRES a la profundidad y tiempo adecuados determinados por la distancia recorrida por el $\tau$.
+		\item Se calculó la evolución conjunta de todas las partículas utilizando AIRES.
+		\end{enumerate}
+		
+		La tabla ~\ref{tab:sim_table_dgh} resume el conjunto de simulaciones producidas para este rango angular.
+		\begin{table}[ht]
 		\begin{center}
-		\includegraphics[width=0.85\textwidth]{fig/simulacionAuger/simShNavarro_2}\\
-		\caption{En linea llena se grafica la prufundidad atmoférica inclinada del Observatorio Pierre Auger, que se encuentra a \cant{1400}{m} sobre el nivel del mar.
-		Los circulos indican los puntos de inyección de los neutrinos (puntos de interacción) para diferentes ángulos cenitales.
-		}
-		\label{fig:sim_fig_dgl}
+		\includegraphics[width=0.75\textwidth]{fig/simulacionAuger/sim_table.pdf}
 		\end{center}
-	\end{figure}
-	
-	
-	\subsection{Eventos DGH}
-	
-	La librería de eventos DGH fue obtenida con criterios muy similares a los utilizados en DGL, con la salvedad de que en este canal si se tuvieron en cuenta los eventos double bang.
-	
-	Con el fin de modelar las lluvias DB de manera fidedigna, se realizó la siguiente cadena de simulación:
-%
-	\begin{enumerate}
-	\item A partir de la simulación HERWIG de la primer interacción se obtuvo la energía transferida al leptón $\tau$ y las demás partículas producidas (jet hadrónico).
-	\item Las partículas del jet hadrónico se inyectaron en AIRES de manera análoga al procedimiento utilizado en la simulación de las lluvias producidas por $\nu_{e}$ vía CC o por $\nu_{X}$ vía CN. El leptón $\tau$ no se incluye en este grupo.
-	\item Utilizando la energía transferida al leptón $\tau$ (dada por HERWIG) se calculó la longitud de decaimiento y, mediante un MC simple, la distancia recorrida antes de decaer. La pérdida de energía en la atmósfera es despreciable y no se consideró en este cálculo.
-	\item Si el resultado del punto anterior indicaba que el decaimiento se produjo antes de que el $\tau$ alcance la tierra, se utilizó el paquete TAUOLA~\cite{cite:TAUOLA} para calcular las partículas producidas en el decaimiento\footnote{TAUOLA es un MC desarrollado en el ambiente de altas energías que contiene toda la información experimental sobre los canales dominantes de dacaimiento del $\tau$. }.
-	\item Los productos del decaimiento fueron inyectados en AIRES a la profundidad y tiempo adecuados determinados por la distancia recorrida por el $\tau$.
-	\item Se calculó la evolución conjunta de todas las partículas utilizando AIRES.
-	\end{enumerate}
-	
-	La tabla ~\ref{tab:sim_table_dgh} resume el conjunto de simulaciones producidas para este rango angular.
-	\begin{table}[ht]
-	\begin{center}
-	\includegraphics[width=0.75\textwidth]{fig/simulacionAuger/sim_table.pdf}
-	\end{center}
-	\caption{
-	Resumen, discriminado por canal de interacción, de las simulaciones de neutrinos profundos realizadas.
-	Para cada ángulo cenital se indica la profundidad de inyección máxima considerada (medida inclinada desde el detector) y la cantidad de puntos de inyección simulados en este rango. Las energías indicadas corresponden a la del neutrino primario.
-	}
-	\label{tab:sim_table_dgh}
-	\end{table}
-	Para cada ángulo cenital se indica la profundidad de inyección máxima considerada (medida inclinada desde el detector) y la cantidad de puntos de inyección simulados en este rango. Las energías indicadas corresponden a la del neutrino primario.
-	
-	\subsection{Eventos ES}
-	
-	En el caso de los eventos ES los parámetros que identifican una lluvia atmosférica son el ángulo cenital $\theta$, el ángulo azimutal $\Phi$, la energía del \tauon{} que escapa de la tierra \etau{} y la altura sobre el detector a la que el \tauon{} decae \xd{}.
-	La energía del \tauon{} cubrió valores entre \cant{10^{16.5}}{eV} hasta \cant{10^{19.5}}{eV}, con paso de 0.5 logarítmico salvo en la zona de baja energía cuyo paso fue de 0.25.
-	El ángulo cenital barrió valores desde $90.111^\circ$ hasta $95.884^\circ$ con paso de $0.573^\circ=0.1 \rm rad$ y en la zona de baja energía el ángulo máximo fue en algunos casos $93.549^\circ$.
-	El ángulo azimutal $\Phi$ se eligió al azar entre $0^\circ$ y $360^\circ$.
-	Con respecto a la altura de decaimiento \xd{} se utilizó un valor máximo que dependió de la energía del \tauon, y pasos de \cant{100}{m} o \cant{50}{m} para la zona de baja energía.
-	Al igual que para los eventos DGH, para generar la libreria de eventos ES se simularon 50 eventos para cada punto ($\theta$,\etau{},\xd{}) y se utilizó cada lluvia 3 veces sobre el detector, logrando 150 eventos cuasi-independientes en cada caso. 
-	La tabla \ref{tab:sim_table_es} condensa toda la información sobre las simulaciones ES, mientras que la figura \ref{fig:sim_fig_es} muestra los conjuntos de ($\theta$,\etau{},\xd{}) simulados.
-	%
-	\begin{table}
-		\begin{center}
-		\scriptsize
-			\begin{tabular}{|c|c|cc|cc|}
-			\hline
-			\makebox[0.1\textwidth][c]{Group} & \makebox[0.13\textwidth][c]{\etau{} [eV]}&
-			\makebox[0.15\textwidth][c]{\tita{} Min - Max} & \makebox[0.07\textwidth][c]{step [º]} & \makebox[0.13\textwidth][c]{\xd{} Min - Max} & \makebox[0.07\textwidth][c]{step [m]}\\
-			\hline
-			\hline
-			\multirow{2}{*}{E003EeV} & \multirow{2}{*}{$3.16\times10^{16}$} & $95.884\text{ - }90.111$ & $0.573$ & $0\text{ - }600$ & $100$\\
-			& & $93.549\text{ - }90.111$ & $0.573$ & $0\text{ - }300$ & $50$\\
-			
-			\multirow{2}{*}{E006EeV} & \multirow{2}{*}{$5.62\times10^{16}$} & \multirow{2}{*}{$93.549\text{ - }90.111$}  & \multirow{2}{*}{$0.573$} & \multirow{2}{*}{$0\text{ - }300$} & \multirow{2}{*}{$50$}\\
-			& & & & &\\
-			
-			\multirow{2}{*}{E01EeV} & \multirow{2}{*}{$10^{17}$} & $95.884\text{ - }90.111$ & $0.573$ & $0\text{ - }700$ & $100$\\
-			& & $93.549\text{ - }90.111$ & $0.573$ & $0\text{ - }300$ & $50$\\
-			
-			\multirow{2}{*}{E02EeV} & \multirow{2}{*}{$1.78\times10^{17}$} & \multirow{2}{*}{$93.549\text{ - }90.111$}  & \multirow{2}{*}{$0.573$} & \multirow{2}{*}{$0\text{ - }300$} & \multirow{2}{*}{$50$} \\
-			& & & & &\\
-			
-			\multirow{2}{*}{E03EeV} & \multirow{2}{*}{$3.16\times10^{17}$} & $95.884\text{ - }90.111$ & $0.573$ & $0\text{ - }1000$ & $100$\\
-			& & $93.549\text{ - }90.111$ & $0.573$ & $0\text{ - }300$ & $50$\\
-			
-			\multirow{2}{*}{E06EeV} & \multirow{2}{*}{$5.62\times10^{17}$} & \multirow{2}{*}{$93.549\text{ - }90.111$}  & \multirow{2}{*}{$0.573$} & \multirow{2}{*}{$0\text{ - }300$} & \multirow{2}{*}{$50$}\\
-			& & & & & \\
-			
-			\multirow{2}{*}{E1EeV} & \multirow{2}{*}{$10^{18}$} & $95.884\text{ - }90.111$ & $0.573$ & $0\text{ - }1400$ & $100$ \\
-			& & $93.549\text{ - }90.111$ & $0.573$ & $0\text{ - }300$ & $50$ \\
-			
-			\multirow{2}{*}{E3EeV} & \multirow{2}{*}{$3.16\times10^{18}$} & \multirow{2}{*}{$95.884\text{ - }90.111$}  & \multirow{2}{*}{$0.573$} & \multirow{2}{*}{$0\text{ - }1300$} & \multirow{2}{*}{$100$}\\
-			& & & & & \\
-			
-			\multirow{2}{*}{E10EeV} & \multirow{2}{*}{$10^{19}$} & \multirow{2}{*}{$95.884\text{ - }90.111$}  & \multirow{2}{*}{$0.573$} & \multirow{2}{*}{$0\text{ - }1300$} & \multirow{2}{*}{$100$} \\
-			& & & & & \\
-			
-			\multirow{2}{*}{E30EeV} & \multirow{2}{*}{$10^{19.5}$} & \multirow{2}{*}{$95.884\text{ - }90.111$}  & \multirow{2}{*}{$0.573$} & \multirow{2}{*}{$0\text{ - }2500$} & \multirow{2}{*}{$100$} \\
-			& & & & &\\
-			\hline
-			\end{tabular}
-		\end{center}
-		\caption{\label{tab:sim_table_es}
-		Detalle de los parámetros utilizados para generar la librería de eventos ES.
-		}
-	\end{table}
-	%
-	\begin{figure}[h!]
-		\begin{center}
-		\includegraphics[width=0.85\textwidth]{fig/simulacionAuger/3D_completeParameterSpace5}
 		\caption{
-		Conjunto de ($\theta$,\etau{},\xd{}) utilizados para generar la librería de eventos ES.
+		Resumen, discriminado por canal de interacción, de las simulaciones de neutrinos profundos realizadas.
+		Para cada ángulo cenital se indica la profundidad de inyección máxima considerada (medida inclinada desde el detector) y la cantidad de puntos de inyección simulados en este rango. Las energías indicadas corresponden a la del neutrino primario.
 		}
-		\label{fig:sim_fig_es}
-		\end{center}
-	\end{figure}
+		\label{tab:sim_table_dgh}
+		\end{table}
+		Para cada ángulo cenital se indica la profundidad de inyección máxima considerada (medida inclinada desde el detector) y la cantidad de puntos de inyección simulados en este rango. Las energías indicadas corresponden a la del neutrino primario.
+		
+		\subsection{Eventos ES}
+		
+		En el caso de los eventos ES los parámetros que identifican una lluvia atmosférica son el ángulo cenital $\theta$, el ángulo azimutal $\Phi$, la energía del \tauon{} que escapa de la tierra \etau{} y la altura sobre el detector a la que el \tauon{} decae \xd{}.
+		La energía del \tauon{} cubrió valores entre \cant{10^{16.5}}{eV} hasta \cant{10^{19.5}}{eV}, con paso de 0.5 logarítmico salvo en la zona de baja energía cuyo paso fue de 0.25.
+		El ángulo cenital barrió valores desde $90.111^\circ$ hasta $95.884^\circ$ con paso de $0.573^\circ=0.1 \rm rad$ y en la zona de baja energía el ángulo máximo fue en algunos casos $93.549^\circ$.
+		El ángulo azimutal $\Phi$ se eligió al azar entre $0^\circ$ y $360^\circ$.
+		Con respecto a la altura de decaimiento \xd{} se utilizó un valor máximo que dependió de la energía del \tauon, y pasos de \cant{100}{m} o \cant{50}{m} para la zona de baja energía.
+		Al igual que para los eventos DGH, para generar la libreria de eventos ES se simularon 50 eventos para cada punto ($\theta$,\etau{},\xd{}) y se utilizó cada lluvia 3 veces sobre el detector, logrando 150 eventos cuasi-independientes en cada caso. 
+		La tabla \ref{tab:sim_table_es} condensa toda la información sobre las simulaciones ES, mientras que la figura \ref{fig:sim_fig_es} muestra los conjuntos de ($\theta$,\etau{},\xd{}) simulados.
+		%
+		\begin{table}
+			\begin{center}
+			\scriptsize
+				\begin{tabular}{|c|c|cc|cc|}
+				\hline
+				\makebox[0.1\textwidth][c]{Group} & \makebox[0.13\textwidth][c]{\etau{} [eV]}&
+				\makebox[0.15\textwidth][c]{\tita{} Min - Max} & \makebox[0.07\textwidth][c]{step [º]} & \makebox[0.13\textwidth][c]{\xd{} Min - Max} & \makebox[0.07\textwidth][c]{step [m]}\\
+				\hline
+				\hline
+				\multirow{2}{*}{E003EeV} & \multirow{2}{*}{$3.16\times10^{16}$} & $95.884\text{ - }90.111$ & $0.573$ & $0\text{ - }600$ & $100$\\
+				& & $93.549\text{ - }90.111$ & $0.573$ & $0\text{ - }300$ & $50$\\
+				
+				\multirow{2}{*}{E006EeV} & \multirow{2}{*}{$5.62\times10^{16}$} & \multirow{2}{*}{$93.549\text{ - }90.111$}  & \multirow{2}{*}{$0.573$} & \multirow{2}{*}{$0\text{ - }300$} & \multirow{2}{*}{$50$}\\
+				& & & & &\\
+				
+				\multirow{2}{*}{E01EeV} & \multirow{2}{*}{$10^{17}$} & $95.884\text{ - }90.111$ & $0.573$ & $0\text{ - }700$ & $100$\\
+				& & $93.549\text{ - }90.111$ & $0.573$ & $0\text{ - }300$ & $50$\\
+				
+				\multirow{2}{*}{E02EeV} & \multirow{2}{*}{$1.78\times10^{17}$} & \multirow{2}{*}{$93.549\text{ - }90.111$}  & \multirow{2}{*}{$0.573$} & \multirow{2}{*}{$0\text{ - }300$} & \multirow{2}{*}{$50$} \\
+				& & & & &\\
+				
+				\multirow{2}{*}{E03EeV} & \multirow{2}{*}{$3.16\times10^{17}$} & $95.884\text{ - }90.111$ & $0.573$ & $0\text{ - }1000$ & $100$\\
+				& & $93.549\text{ - }90.111$ & $0.573$ & $0\text{ - }300$ & $50$\\
+				
+				\multirow{2}{*}{E06EeV} & \multirow{2}{*}{$5.62\times10^{17}$} & \multirow{2}{*}{$93.549\text{ - }90.111$}  & \multirow{2}{*}{$0.573$} & \multirow{2}{*}{$0\text{ - }300$} & \multirow{2}{*}{$50$}\\
+				& & & & & \\
+				
+				\multirow{2}{*}{E1EeV} & \multirow{2}{*}{$10^{18}$} & $95.884\text{ - }90.111$ & $0.573$ & $0\text{ - }1400$ & $100$ \\
+				& & $93.549\text{ - }90.111$ & $0.573$ & $0\text{ - }300$ & $50$ \\
+				
+				\multirow{2}{*}{E3EeV} & \multirow{2}{*}{$3.16\times10^{18}$} & \multirow{2}{*}{$95.884\text{ - }90.111$}  & \multirow{2}{*}{$0.573$} & \multirow{2}{*}{$0\text{ - }1300$} & \multirow{2}{*}{$100$}\\
+				& & & & & \\
+				
+				\multirow{2}{*}{E10EeV} & \multirow{2}{*}{$10^{19}$} & \multirow{2}{*}{$95.884\text{ - }90.111$}  & \multirow{2}{*}{$0.573$} & \multirow{2}{*}{$0\text{ - }1300$} & \multirow{2}{*}{$100$} \\
+				& & & & & \\
+				
+				\multirow{2}{*}{E30EeV} & \multirow{2}{*}{$10^{19.5}$} & \multirow{2}{*}{$95.884\text{ - }90.111$}  & \multirow{2}{*}{$0.573$} & \multirow{2}{*}{$0\text{ - }2500$} & \multirow{2}{*}{$100$} \\
+				& & & & &\\
+				\hline
+				\end{tabular}
+			\end{center}
+			\caption{\label{tab:sim_table_es}
+			Detalle de los parámetros utilizados para generar la librería de eventos ES.
+			}
+		\end{table}
+		%
+		\begin{figure}[h!]
+			\begin{center}
+			\includegraphics[width=0.85\textwidth]{fig/simulacionAuger/3D_completeParameterSpace5}
+			\caption{
+			Conjunto de ($\theta$,\etau{},\xd{}) utilizados para generar la librería de eventos ES.
+			}
+			\label{fig:sim_fig_es}
+			\end{center}
+		\end{figure}
+		
+	\section{Pesos de los eventos simulados}
 	
+	Si bien hasta el momento cada punto del espacio de parámetros, $(E_\nu,\theta,\phi,D)$ en DG y $(E_\tau,\theta,\phi,x_d)$ en ES, se encuentra bien representado, las frecuencia relativa con las que uno espera observarlos no suele ser la elegida a la hora de simular.
+	Por este motivo, a la hora de poner a punto el método de selección será necesario corregir el peso de nuestra muestra simulada de tal manera que represente lo que realmente uno espera observar.
+		
+		\subsection{Correción en DG}
+		
+		Tal como se resume en la sección \ref{sub:neutrinoFlux}, se espera que el flujo difuso de neutrinos siga la forma $\Phi=k\cdot E^{-2}$. Por otro lado la, la sección eficaz $\nu$-nucleón crece, de manera aproximada, como $E^{1/3}$~\cite{cite:cooper_sarkar}.
+		La dependencia del peso con el ángulo cenital surge de la proyección del área del detector en la dirección del flujo incidente (ver sección \ref{sc:expoNu} más adelante para una explicación detallada) y de que el paso en los ángulos simulados no es constante.
+		Por último es necesario tener en cuenta que dado que la sección eficaz de los neutrinos es muy pequeña, su rango en la atmósfera es muy grande.
+		Por esto es una buena aproximación considerar que todos las profundidades $D$ son igual de probables.
+		Uniendo los ingredientes anteriores se obtiene:
+		%
+		\begin{equation}
+		w(E_\nu,\theta) \propto \cos\theta \sin\theta \, E^{-2/3} \Delta\theta
+		\end{equation}
+		%
+		que se utiliza para definir la importancia relativa entre los eventos simulados.
+		
+		\subsection{Corrección en ES}
+		
+		El caso de las lluvias ES es bastante más complicado dado que los parámetros que nos interesa corregir son $(E_\tau,\theta,\phi,x_d)$.
+		Por esto, además de la dependencia con el ángulo sólido, es necesario incluir la probabilidad de que el \tauon{} escape de la tierra con cierta energía y decaiga a cierta altura.
+		Entonces, para construir los pesos de los eventos ES puede escribirse:
+		%
+		\begin{equation}
+		 w(E_\tau,\theta,x_d) \propto \int_{E_\tau}^\infty \Phi(E_\nu)dE_\nu f(E_\tau|E_\nu,\theta) h(x_d,(E_\tau,\theta)) E_\tau \Delta\log E_\tau \Delta x_d
+		 \label{eq:wi}
+		\end{equation}
+		%
+		donde la integral aparece porque deben tenerse en cuenta todos los \nutau{}'s que pueden generar un \tauon{} de energía \etau{}.
+		La aparición de los términos $E_\tau \Delta\log E_\tau \Delta x_d$ se debe nuevamente a que lis bines simulados no se encuentran uniformemente distribuidos en las variables $(E_\tau,x_d)$.
+		Al igual que para las lluvias DG, el flujo difuso de neutrinos se supone $\Phi=k\cdot E^{-2}$.
+		La función $h(x_d,(E_\tau,\theta))$ corresponde a la probabilidad de que un \tauon{} de parámetros $(E_\tau,\theta)$ decaiga a una altura $x_d$ del detector, y tiene la forma:
+		%
+		\begin{equation}
+		 h(x_d,(E_\tau,\theta))=\frac{1}{\lambda(E_\tau)}
+		 \exp{\left(
+		 -\frac{l(x_d,\theta)}{\lambda(E_\tau)}
+		 \right)}
+		\end{equation}
+		%
+		donde $\lambda(E_\tau)=c\uptau\frac{E_\tau}{m_\tau}\sim49\left(\frac{E_\tau}{\rm EeV}\right){\rm km}$ y $l(x_d,\theta)=\frac{x_d}{|\cos\theta|}$.
+		
+		En la ecuación \ref{eq:wi} la parte complicada reside en $f(E_\tau|E_\nu,\theta)$, que corresponde a la probabilidad de que dado un neutrino de energía $E_\nu$ y ángulo $\theta$ emerja de la tierra un \tauon{} de energía \etau{}.
+		Para obtener estas probabilidades es necesario recurrir a simulaciones, lo que se detalla a continuación.
+		
+		\subsubsection{\label{sbsbsc:sim_prop_tierra}Propagaci\'on dentro de la tierra}
+	
+		Para simular la interacción del \nutau{} y propagaci\'on del \tauon{} en la tierra se utiliz\'o un programa que realiza el c\'alculo mediante m\'etodos de Monte Carlo. Este fue desarrollado por J. A. Mu\~niz y E. Zas, del grupo de altas energ\'ias de la Universidad de Santiago de Compostela.
+		Una explicaci\'on detallada del programa puede encontrarse en \cite{gap_tau_tierra}.
+		
+		Este c\'odigo permite propagar los \nutau{}s y \tauon{}s en la tierra y, dado el \'angulo cenital \tita{} y la energ\'ia del neutrino incidente \enu{}, calcular la probabilidad de que un \tauon{} alcance la superficie de la tierra con energ\'ia \etau{}.
+		Estos c\'alculos se realizan teniendo en cuenta la interacci\'on del \nutau{} via CC y CN, la p\'erdida de energ\'ia del \tauon{} (con $\beta$\footnote{ver ecuaci\'on \ref{eq:tau_losses}} dependiente o independiente de la energ\'ia) y la regeneraci\'on del flujo de \nutau{} debido a interacciones via CN y a decaimientos de leptones \tauon{}.
+		
+		La simulaci\'on consta de dos etapas principales que se alternan hasta que se alcanza la superficie:
+		%
+		\begin{description}
+		\item[\textbf{Interacci\'on del \nutau{}:}] Se hace interactuar al neutrino siguiendo una distribuci\'on exponencial en $x$, donde $x$ es la variable que mide la cantidad de materia atravesada por el \nutau{}. Para ello, se tienen en cuenta interacciones via CC y CN. Si se diera una interacci\'on via CC, se produce un \tauon{} cuya energ\'ia proviene de muestrear la sección efic\'az diferencial de CC, $\frac{d\sigma^{cc}}{dy}$. En cambio, si la interacci\'on se produce via CN, es generado un nuevo \nutau{} de energ\'ia menor que se hace interactuar nuevamente.
+		\item[\textbf{Propagaci\'on del \tauon{}:}] En caso de que un \tauon{} sea producido, se lo propaga de a peque\~nos pasos, calculando en cada uno de ellos la energ\'ia perdida debido a la interacci\'on con el medio y la probabilidad de decaimiento (como funci\'on de su energ\'ia). Si decayese produciendo un nuevo \nutau{}, se comienza el procedimiento nuevamente desde el punto del \'ultimo decaimiento.
+		\end{description}
+		%
+		Este proceso se esquematiza en la figura \ref{fig:tau_sim_sch}.
+		\begin{figure}[ht!]
+			\begin{center}
+			\includegraphics[width=0.75\textwidth]{fig/simulacionAuger/schemeEarthProp}
+			\caption{\label{fig:tau_sim_sch} Esquema del algoritmo de simulación de las interacción en la tierra. El \nutau{} (línea sólida) y el \tauon{} (línea punteada) son simulados hasta que abandonan la tierra. La salida del algoritmo es un histograma de energía de los \tauon{} salientes.}
+			\end{center}
+		\end{figure}
+		
+		El programa fue validado utilizando programas mucho m\'as complejos, como ANIS \cite{anis}.
+		Tambi\'en se realiz\'o una comparaci\'on del flujo de \tauon{} saliente obtenido mediante el calculo te\'orico que puede encontrarse en \cite{prop_tau} y el obtenido por este programa, para diferentes \'angulos cenitales.
+		Esta \'ultima comparaci\'on se muestra en la figura \ref{fig:comp_tau_mc_teo}, en la que se observa un muy buen acuerdo entre ambos resultados.
+		%
+		\begin{figure}[ht!]
+			\begin{center}
+			\includegraphics[width=0.55\textwidth]{fig/simulacionAuger/comp_tau_mc_teo}
+			\caption{\label{fig:comp_tau_mc_teo} Comparaci\'on de los flujos salientes obtenido anal\'iticamente y mediante simulaci\'on. Los histogramas corresponden a los resultados del Monte Carlo, mientras que la l\'inea llena al c\'alculo te\'orico.}
+			\end{center}
+		\end{figure}
+		
+		
+		Una vez obtenidos todos los términos de la ecuación \ref{eq:wi}, la integral se realiza numericamente.
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
