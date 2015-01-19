@@ -4,20 +4,22 @@
 \section{ZHAireS}
 
 \zhs{} es una implementaci\'on del las rutinas de ZHS \cite{1_halzen_zas_stanev_1991,2_zas_halzen_stanev_1992} sobre \aires{} desarrollada por Jaime Alvarez-Muñiz, Washington Rodriguez-Carvhalo Jr. y Matias Tueros en el Departamento de Física de Partículas Universidad de Santiago de Compostela, España.
-Una vez instalado \zhs{} se conservan todas las capacidades de \aires{} y s\'olo se agrega la posibilidad de simular el la emisi\'on de radio de la EAS, incluyendo nuevas directivas de entrada que permiten controlar con buen detalle la simulacion.
+Una vez instalado, \zhs{} conserva todas las capacidades de \aires{} y agrega la posibilidad de simular el la emisi\'on de radio de la EAS, incluyendo nuevas directivas de entrada que permiten controlar con buen detalle la simulación.
 
 	\subsection{C\'omputo de la se\~nal}
 	
-	La metodolog\'ia aplicada en \zhs{} para calcular la se\~nal es simple: cada vez que el algoritmo de \aires{} avanza una part\'icula se llama las rutinas de ZHS para calcular el pulso electromagn\'etico que esta generar\'ia en ciertos observadores (o antenas) que se ubican en posiciones predefinidas.
-	Esto se esquematiza en la figura \ref{fig:trackSch}.
-	
+	La metodolog\'ia aplicada en \zhs{} para calcular la se\~nal es simple: cada vez que el algoritmo de \aires{} avanza una part\'icula se llama a las rutinas de ZHS.
+	Estas calculan el pulso electromagn\'etico que la partícula generar\'ia en ciertos observadores (o antenas) que se ubican en posiciones predefinidas, lo que se esquematiza en la figura \ref{fig:trackSch}.
+	%
 	\begin{figure}[ht!]
 	\centering
 		\includegraphics[width=0.6\textwidth]{fig/simulacionRadio/trackSch}
 		\caption{\label{fig:trackSch} Esquema del track que avanza una par\'icula al ser simulada por \aires{}.}
 	\end{figure}
 	
-	Dado que el c\'alculo exacto de la emisi\'on electromagn\'etica de una part\'icula que se desplaza con velocidad constante en cierto camino involucra la resoluci\'on num\'erica de un par de integrales, las rutinas de ZHS utilizan una aproximaci\'on que salva este problema a costa de cumplir las siguientes hip\'otesis:
+	El c\'alculo exacto de la emisi\'on electromagn\'etica de una part\'icula que se desplaza con velocidad constante en cierto camino involucra la resoluci\'on num\'erica de integrales.
+	Esto se vuelve impracticable computacionalmente si se tiene en cuenta que una lluvia típica de \cant{1}{EeV} puede implicar la simulación de $10^{10}$ partículas.
+	Las rutinas de ZHS utilizan una aproximaci\'on que salva este problema a costa de cumplir las siguientes hip\'otesis:
 	\begin{enumerate}
 	 \item El observador se encuentra en la zona de campo lejano
 	 \begin{equation}
@@ -33,11 +35,12 @@ Una vez instalado \zhs{} se conservan todas las capacidades de \aires{} y s\'olo
 	  \frac{1}{r(t)}\sim\frac{1}{R}
 	 \end{equation}
 	\end{enumerate}
-	Si el tama\~no de los tracks obtenidos a partir del algoritmo de \aires{} no siatisface alguna de las condiciones 2 o 3, una rutina se encarga de partirlo en trozos lo suficientemente chicos como para que esto suceda.
-	Si no se llegara a cumplir la condici\'on n\'umero 1, ser\'ia necesario utilizar la resoluci\'on exacta del problema, lo que no se encuentra implementado en \zhs{} hasta el momento.
-	Esta es una limitaci\'on conocida del c\'odigo, que genera se\~nales artificiales en las antenas, aunque la probabilidad de que esto ocurra es muy baja incluso en EAS que se desarrollan muy cerca del detector como las iniciadas por neutrinos earth-skimming.
+	%
+	Si el tama\~no de los tracks obtenidos a partir del algoritmo de \aires{} no siatisface alguna de las condiciones 2 o 3, una rutina se encarga de partirlo en trozos lo suficientemente chicos como para que suceda.
+	Si no se llegara a cumplir la condici\'on n\'umero 1, ser\'ia necesario utilizar la soluci\'on exacta del problema, lo que no se encuentra implementado en \zhs{} hasta el momento.
+	Esta es una limitaci\'on conocida del c\'odigo, que genera se\~nales artificiales en las antenas. Afortunadamente, la probabilidad de que esto ocurra es muy baja incluso en EAS que se desarrollan muy cerca del detector como las iniciadas por neutrinos ES.
 	
-	Una vez que los tracks cumplen la scondiciones necesarias, se calcula el potencial vector $\vec{A}(t,\hat{u})$ y el campo el\'ectrico $\vec{E}(t,\hat{u})$ en la posici\'on del observador utilizando las ecuaciones \ref{eq:afield} y \ref{eq:efield}.
+	Una vez que los tracks cumplen las condiciones necesarias, se calcula el potencial vector $\vec{A}(t,\hat{u})$ y el campo el\'ectrico $\vec{E}(t,\hat{u})$ en la posici\'on del observador utilizando las ecuaciones \ref{eq:afield} y \ref{eq:efield}.
 	\begin{equation}
 	\vec{A}(t,\hat{u})
 	=
@@ -55,9 +58,11 @@ Una vez instalado \zhs{} se conservan todas las capacidades de \aires{} y s\'olo
 	\frac{\delta(t-t^{det}_1)-\delta(t-t^{det}_2)}{1-n\vec\beta\cdot\hat u}
 	\label{eq:efield}
 	\end{equation}
-	En estas, como en la figura \ref{fig:trackSch}, $\hat{u}$ es el versor que indica la direcci\'on entre la mitad del track y el observador, $\vec\beta=\vec v/c$, $\vec\beta_{\bot}=-[\hat{u}\times(\hat{u}\times\vec\beta)]$ es la proyecci\'on de $\vec\beta$ sobre el plano perpendicular a $\hat u$ y $t_{1,2}^{det}=t_{1,2}+nR/c-n\vec\beta \cdot \hat u (t_{1,2}-t_0)$ son los tiempos de detecci\'on del principio y final del track respectivamente, con $t_0=(t_1+t_2)/2$. Por otro lado, $\Theta(x)$ y $\delta(x)$ son las funciones de escalon de Heaviside y delta de Dirac respectivamente.
+	En estas, como en la figura \ref{fig:trackSch}, $\hat{u}$ es el versor que indica la direcci\'on entre la mitad del track y el observador, $\vec\beta=\vec v/c$, $\vec\beta_{\bot}=-[\hat{u}\times(\hat{u}\times\vec\beta)]$ es la proyecci\'on de $\vec\beta$ sobre el plano perpendicular a $\hat u$ y $t_{1,2}^{det}=t_{1,2}+nR/c-n\vec\beta \cdot \hat u (t_{1,2}-t_0)$ son los tiempos de detecci\'on del principio y final del track respectivamente, con $t_0=(t_1+t_2)/2$. Por otro lado, $\Theta(x)$ y $\delta(x)$ son las funciones escalón de Heaviside y delta de Dirac respectivamente.
 	
-	Para realizar un c\'alculo correcto del tiempo de arrivo de la se\~nal a la antena, es necesario tener en cuenta el \'indice de refracci\'on de la atm\'osfera como se especifica en la ecuaci\'on \ref{eq:refIndexEff}.
+	Para realizar un c\'alculo correcto del tiempo de arrivo de la se\~nal a la antena, es necesario tener un modelo que describa el \'indice de refracci\'on de la atm\'osfera.
+	La implementación del mismo en \zhs{} se realiza como en la ecuaci\'on \ref{eq:refIndexEff}.
+	%
 	\begin{equation}
 		\begin{matrix}
 		n_{eff}
@@ -72,66 +77,91 @@ Una vez instalado \zhs{} se conservan todas las capacidades de \aires{} y s\'olo
 		\end{matrix}
 	\label{eq:refIndexEff}
 	\end{equation}
-	donde ${\mathcal R}(h) = \left[ n(h)-1 \right] \times 10^6$.
-	Para ${\mathcal R}(h)$ \zhs{} ofrece la posibilidad de utilizar un valor constante, o un modelo exponencial como el de la ecuaci\'on \ref{eq:refIndexExp}
+	%
+	En esta, ${\mathcal R}(h) = \left[ n(h)-1 \right] \times 10^6$.
+	Para ${\mathcal R}(h)$, \zhs{} ofrece la posibilidad de utilizar un valor constante, o un modelo exponencial como el de la ecuaci\'on \ref{eq:refIndexExp} en el que es posible fijar su valor a nivel del suelo.
 	\begin{equation}
 	{\mathcal R}(h)
 	=
 	{\mathcal R}_o
-	exp(-K_rh)
+	\exp{-K_rh}
 	\label{eq:refIndexExp}
 	\end{equation}
-	en el que ${\mathcal R}_o={\mathcal R}(h=0)\equiv 325$ y $K_r=0.1218km^{-1}$.
-	Con estos valores es posible reproducir los valores calculados en \cite{gerson1948polar} con un $1\%$ precisi\'on hasta una altura de \cant{10}{km}.
-	A mayor altitud la aproximaci\'on exponencial para ${\mathcal R}$ sobreestima el \'indice de refracci\'on, pero m\'as all\'a de los 20km la lluvia recien ha comenzado a desarrollarse, por lo que la cantidad de part\'iculas es relativamente peque\~na por lo que esta zona contribuye muy poco a la se\~nal total.
+	Los valores por default son ${\mathcal R}_o={\mathcal R}(h=0)\equiv 325$ y $K_r=0.1218km^{-1}$.
+	Con estos valores es posible reproducir los valores calculados en \cite{gerson1948polar} con un $1\%$ precisi\'on hasta una altura de \cant{20}{km}.
+	A mayor altitud la aproximaci\'on exponencial para ${\mathcal R}$ sobreestima el \'indice de refracci\'on, pero m\'as all\'a de los \cant{20}{km} la lluvia recien ha comenzado a desarrollarse, por lo que la cantidad de part\'iculas es relativamente peque\~na por lo que esta zona contribuye muy poco a la se\~nal total.
 	
-	Otro factor a tener en cuenta es que cuando las lluvia a simular es muy inclinada, la altura que se utiliza en la ecuaci\'on \ref{eq:refIndexExp} debe ser medida desde la superficie de la tierra, sin utilizar la aproximai\'on de tierra polana, como se muestra en la figura \ref{fig:refIndex}.
+	Otro factor a tener en cuenta es que cuando las lluvia a simular es muy inclinada, la altura que se utiliza en la ecuaci\'on \ref{eq:refIndexExp} debe ser medida desde la superficie de la tierra, sin utilizar la aproximai\'on de tierra plana, como se muestra en la figura \ref{fig:refIndex}.
 	\begin{figure}[ht!]
 	\centering
 		\includegraphics[width=0.6\textwidth]{fig/simulacionRadio/refIndex}
 		\caption{\label{fig:refIndex} Esquema del m\'etodo mediante el que se tiene en cuenta la curvatura de la tierra al momento de calcular el \'indice de refracci\'on de la atm\'osfera para diferentes alturas.}
 	\end{figure}
-	dado que realizar la integral descripta en \ref{eq:refIndexEff} en estas condiciones es muy costoso, se discretiza $R$ en un n\'umero finito de tramos y supone el \'indice de refracci\'on constrante en cada uno de ellos.
+	Dado que realizar la integral descripta en \ref{eq:refIndexEff} en estas condiciones es muy costoso, se discretiza $R$ en un n\'umero finito de tramos y supone el \'indice de refracci\'on constrante en cada uno de ellos.
 	
 	Una vez calculadas las amplitudes de los campos y los tiempos de arrivo de las se\~nales debidas a cada track, el campo total en cada observador se guarda utilizando bines temporales prefijados, como la ecuaci\'on \ref{eq:eAntField}, donde el \'indice $j$ corre sobre las part\'iculas simuladas y $\omega_j$ es el peso estad\'istico que pose\'ia la part\'icula que emiti\'o el campo $\vec{E}_j$.
 	\begin{equation}
 	\vec{E}(t_i)=\sum_{j:t_j\varepsilon[t_i,t_{i+1}]}\vec{E}_j(t_j)\omega_j
 	\label{eq:eAntField}
 	\end{equation}
-	
+	%
 	La ecuaci\'on \ref{eq:eAntField} muestra claramente que la se\~nal simulada en una dada antena depende fuertemente del algoritmo de thinning utilizado. 
-	Dado que, como se ver\'a en la secci\'on de resultados, la mayor contribuci\'on al campo el\'ectrico proviene de las part\'iculas de media y baja energ\'ia, es poco deseable la aparici\'on de pesos extremadamente altos.
-	En consecuencia y como bajar el nivel de thinning es poco eficiente, lo que se recomienda es utilizar un \emph{weight factor} peque\~no.
+	
+	Dado que la mayor contribuci\'on al campo el\'ectrico proviene de las part\'iculas de media y baja energ\'ia, es poco deseable la aparici\'on de partículas con peso extremadamente alto.
+	En consecuencia y como bajar el nivel de thinning es poco eficiente, en la simulación se utiliza un \emph{weight factor} peque\~no.
 
 \section{Caracterizaci\'on de eventos ES}
-	
+
+Dado que este es el primer trabajo en el que se simula la señal de radio emitida por neutrinos ES, se dedicará esta sección a su caracterización.
+
 	\subsection{Caracter\'isticas generales}
 	
-	
-	\begin{figure}[ht!]
-		\centering
-		\includegraphics[width=0.8\textwidth]{./fig/simulacionRadio/antennaSignal.png}
-		\caption{\label{fig:antSig}
-		asd
-		}
-	\end{figure}
-	
-	En la figura \ref{fig:testFootprint_E0} se muestra la se\~nal de radio en el suelo para una lluvia simulada en Malarg\"ue, cuyos par\'ametros de simulaci\'on se resumen en la tabla \ref{tab:paramTestShower}
-	
+	Para caracterizar la emisión de radio de una lluvia iniciada por un neutrino ES es buena idea comenzar con un \emph{evento típico}, y luego observar su comportamiento al variar diferentes parámetros.
+	En particular, a la hora de definir una lluvia ES será necesario determinar el canal de decaimiento del \tauon{}, la energía transferida a la lluvia $E_v$ y sus parámetros geométricos $(\theta,{\rm x_d},\phi)$.
+	Entonces, para el evento típico en este trabajo se eligieron los que se resumen en la tabla \ref{tab:paramTestShower}.
+	%
 	\begin{table}[ht!]
 	 \begin{center}
-	  \begin{tabular}{ccccc}
+	  \begin{tabular}{|c|cccc|}
+	   \hline
 	   Canal de decaimiento & $E_v$ & $\theta$ & \xd{} & $\phi$ \\
 	   \hline
-	   $\tau\rightarrow e^- \nu_{e^-}\nu\tau$ & \cant{10^{18}}{eV} & \cant{90.5}{^\circ} & \cant{25}{m} & \cant{90}{^\circ}
+	   $\tau\rightarrow e^- \nu_{e^-}\nu\tau$ & \cant{10^{18}}{eV} & \cant{90.5}{^\circ} & \cant{25}{m} & \cant{90}{^\circ} \\
+	   \hline
 	  \end{tabular}
 	  \caption{\label{tab:paramTestShower}
-	  as
+	  Parámetros de simulación del \emph{evento típico} que se utilizará como referencia.
 	  }
 	 \end{center}
 	\end{table}
-
+	%
+	La energía visible de una lluvia se refiere a toda la energía que se llevan las partículas no penetrantes, que luego será transferida a la EAS.
+	Por ejemplo, en este caso en partícular la lluvia será iniciada por un electrón de \cant{10^{18}}{eV}.
+	A diferencia del calculo realizado para Auger, en esta parte del análisis las lluvias ES se caracterizarán por su energía visible $E_v$ y no por la energía del \tauon{} emergente.
+	Esto es solo una elección que deberá ser tneida en cuenta a la hora de calcular la exposición del detector.
 	
+	Dado que el efecto geomagnético contribuye con una parte importante de la señal a nivel del suelo, el resultado de la simulación depende de la ubicación geográfica en la que se realiza, en partícular de su intensidad e inclinación.
+	El efecto que eso puede causar en la simulación se trata en la sección \ref{sc:bfield}, pero es importante tener en mente que nuestra lluvia típica se simuló en Malargüe, donde la intensidad del campo es de \cant{0.2414}{Gauss} y tiene una inclinación de $-36.2951^\circ$, es decir, apunta hacia el suelo y el ángulo de su dirección con la normal es de $53.7049^\circ$.
+	
+	\subsubsection{Señal en la antena}
+	La figura \ref{fig:antSig} se grafican las componentes del campo eléctrico en una antena a nivel del suelo y su espectro. La misma se encuentra ubicada sobre el punto de impacto del cono \cher{}.
+	%
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{./fig/simulacionRadio/antennaSignal}\\
+		\includegraphics[width=0.8\textwidth]{./fig/simulacionRadio/antennaSpec}
+		\caption{\label{fig:antSig}
+		Arriba: se observa la señal en una antena colocada a nivel del suelo, ubicada sobre el cono \cher{}. Según lo expuesto en la seccción \ref{ch:easRadio}, el pico de señal correspondiente a la emisión coherente del máximo de la lluvia.
+		Abajo: transformada de Fourier de la señal de la antena. Se observa coherencia hasta frecuencias casi del $\rm GHz$.
+		}
+	\end{figure}
+	%
+	Como se expuso en la sección \ref{ch:easRadio}, el pico observado en la señal corresponde a la emisión coherente de las partículas generadas en el máximo de la lluvia por lo que su espectro muestra coherencia hasta frecuencias casi del $\rm GHz$.
+	
+	
+	
+	En las figuras \ref{fig:testFootprint_E0} a \ref{fig:testFootprint_E0z} se grafican las distintas componentes de la se\~nal de radio en el suelo.
+	%
 	\begin{figure}[ht!]
 		\centering
 		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0}.png}
