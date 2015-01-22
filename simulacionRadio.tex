@@ -171,7 +171,22 @@ Dado que este es el primer trabajo en el que se simula la señal de radio emitid
 	%
 	Como se expuso en la sección \ref{ch:easRadio}, el pico observado en la señal corresponde a la emisión coherente de las partículas generadas en el máximo de la lluvia por lo que su espectro muestra coherencia hasta frecuencias casi del $\rm GHz$.
 	Es importante destacar que esta señal se encuentra a un nivel que puede ser detectado por sobre le nivel del ruido. 
-	Los detalles de este aspecto se desarrollan en la sección \ref{sbsc:tratSig}.
+	
+	\subsubsection{Tratamiento de la se\~nal}
+	\label{sbsc:tratSig}
+	
+	Una vez obtenido el campo eléctrico en cada observador del detector, es necesario simular su respuesta.
+	
+	
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{./fig/simulacionRadio/antennaFilt}
+		\caption{\label{fig:antHEnv}
+		asd
+		}
+	\end{figure}
+	
+	
 	
 	\subsubsection{Huella sobre el detector - Cono \cher}
 	
@@ -253,48 +268,36 @@ Dado que este es el primer trabajo en el que se simula la señal de radio emitid
 	\end{figure}
 	
 % 	\clearpage
-	\subsection{Tratamiento de la se\~nal}
-	\label{sbsc:tratSig}
 	
-	Una vez obtenidas las señales en las antenas del detector, es necesario simular su respuesta.
-	Para ello, es común modelarlas comon filtro pasa banda. 
 	
-	\begin{figure}[ht!]
-		\centering
-		\includegraphics[width=0.8\textwidth]{./fig/simulacionRadio/antennaHEnv}
-		\caption{\label{fig:antHEnv}
-		asd
-		}
-	\end{figure}
-	
-	\begin{figure}[ht!]
-		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_E}.png}
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_E0}.png}
-		\caption{\label{fig:footprint_E_HEnv}
-		asd
-		}
-	\end{figure}
-	
-	\begin{figure}[ht!]
-		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_EHB}.png}
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_ELB}.png}
-		\caption{\label{fig:footprint_HB-LB_HEnv}
-		asd
-		}
-	\end{figure}
-	
-	\begin{figure}[ht!]
-		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_E}.png}
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_E0}.png}
-		\caption{\label{fig:footprint_E_HEnv}
-		asd
-		}
-	\end{figure}
-	
-	\clearpage
+% 	\begin{figure}[ht!]
+% 		\centering
+% 		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_E}.png}
+% 		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_E0}.png}
+% 		\caption{\label{fig:footprint_E_HEnv}
+% 		asd
+% 		}
+% 	\end{figure}
+% 	
+% 	\begin{figure}[ht!]
+% 		\centering
+% 		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_EHB}.png}
+% 		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_ELB}.png}
+% 		\caption{\label{fig:footprint_HB-LB_HEnv}
+% 		asd
+% 		}
+% 	\end{figure}
+% 	
+% 	\begin{figure}[ht!]
+% 		\centering
+% 		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_E}.png}
+% 		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_E0}.png}
+% 		\caption{\label{fig:footprint_E_HEnv}
+% 		asd
+% 		}
+% 	\end{figure}
+% 	
+% 	\clearpage
 	
 	\subsection{Influencia del campo magn\'etico terrestre}
 	
