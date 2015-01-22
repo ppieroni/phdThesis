@@ -207,42 +207,11 @@ Una vez hecho esto se utilizan variables topológicas y temporales para elegir e
 			\end{center}
 		\end{figure}
 		%
-		Esta estaciñon es removida del evento antes de aplicar la reconstrucción del evento.
+		Esta estación es removida del evento antes de aplicarle la reconstrucción.
 		
 	\subsection{Reconstrucción preeliminar}
 	
 	Una vez aplicados los precedimientos descriptos hasta el momento, los eventos cuentan con una lista de escaciones cuyos tiempos de disparo T2 se encuentran bien definidos.
-	A partir de estos, la reconstrucción geométrica se realiza mediante un procedimiento iterativo.
-	Sobre el conjunto de estaciones seleccionadas se realiza un ajuste asumiendo un frente plano.
-	Este ajuste, más sofisticado que el que se realiza en la selección de estaciones, utiliza un modelo para la incerteza en el tiempo de disparo.
-	Este modelo~\cite{cite:ines} fue optimizado para describir lluvias horizontales hadrónicas iniciadas alto en la atmósfera en las que, por lo tanto, domina la componente muónica al nivel del detector (eventos inclinados típicos):
-	%
-	\begin{equation}
-	\sigma_t = 20 \left[ 1 + \left( \frac{15}{S} \right)^{2/4.5} \right]
-	\label{ec:varT} 
-	\end{equation}
-	%
-
-	Es importante resaltar que, al utilizar este modelo, se elige priorizar la correcta reconstrucción de las lluvia hadrónicas (inmensa mayoría, si no la totalidad, de los datos) por sobre las posibles lluvias profundas iniciadas por neutrinos\footnote{Las lluvias profundas cuentan con una componente EM apreciable al alcanzar la tierra, lo que produce que la incerteza en su tiempo de disparo no sea correctamente descripta por el modelo anterior que asume que la cantidad de electrones y fotones es despreciable.}. 
-	
-	\textbf{CHARLAR SOBRE ESTO}
-	Como se discutirá más adelante en la Sec.~\ref{sub:thetaRec}, esta elección produce una disminución en la eficiencia de detección de neutrinos pero se ve justificada ya que implica una disminución del fondo hadrónico debido a lluvias ``verticales'' ($\theta<75^\circ$) incorrectamente reconstruidas como ``horizontales'' ($\theta>75^\circ$).
-
-	Una vez realizada la reconstrucción se evalúan las diferencias de tiempo $\Delta t_i$ entre las estaciones y el frente plano obtenido. Si alguno de los $\Delta t_i$ no está contenido en el intervalo [-300,700]~$\mbox{ns}$\footnote{
-	Una vez producidos, los muones viajan sin desviarse y, en general, alcanzan la tierra antes que la componente EM. Las fluctuaciones en su tiempo de arribo son entonces menores a las esperadas para electrones y fotones que sufren multiples disperciones en su camino. Esta es la razón de que se tome un intervalo asimétrico.
-	},
-	la estación con mayor $\Delta t_i$ es removida y se repite la reconstrucción. Este procedimiento continua hasta que se encuentra una configuración aceptable. Si tras alguna de las iteraciones quedan menos de 4 estaciones el evento es rechazado.
-	Si el evento está constituido por estaciones alineadas, el ángulo azimutal es fijado en la dirección de avance de la señal y se aplica el mismo procedimiento de reconstrucción antes mencionado. En el caso de eventos en linea el ángulo cenital obtenido es, en realidad, una cota mínima (ver Fig.~\ref{fig:conoLineEvent}).
-	%
-	\begin{figure}[ht]
-	\begin{center}
-	\includegraphics[width=0.75\textwidth]{fig/seleccionAuger/conoLineEvent.pdf}
-	\caption{Esquema de reconstrucción geométrica de un evento en linea. Una cota mínima para el ángulo cenital se obtiene al considerar que el ángulo azimutal de la lluvia coincide con la linea que une las estaciones.}
-	\label{fig:conoLineEvent}
-	\end{center}
-	\end{figure} 
-	
-	
 	Sin embargo, los evetos todavia pueden contener estaciones disparadas por muones atmosféricos o incluso por una lluvias de baja energía.
 	Con el fin de identificar las estaciones que realmente pertenecen al evento que nos interesa, se pide que las estaciones pertenecientes a los eventos satisfagan una serie de requerimentos de compacticidad espacial y temporal.
 	
@@ -316,9 +285,7 @@ Una vez hecho esto se utilizan variables topológicas y temporales para elegir e
 	\begin{equation}
 	 \frac{V_{ij}-\langle V\rangle}{\langle V\rangle}
 	\end{equation}
-
-
-
+	
 	
 	\subsection{Criterios adicionales}
 	
@@ -340,15 +307,40 @@ Existen dos tipos de variables que permiten seleccionarlos:
  \item Indirectas: se refieren a otras variables sensibles a la inclinación, como por ejemplo la velocidad aparente de la señal o la elongación de la ``huella'' dejada por la lluvia sobre el detector.
 \end{enumerate}
 	
-	
-	
-	\subsection{Reconstrucción angular}
+	\subsection{Reconstrucción angular ESTA SECCION NO LA MIRES}
 	\label{sbsc:thetaRec}
 	A continuación se desarrolla el método utilizado para llevar a cabo la reconstrucción angular de los eventos. 
 	El objetivo es obtener a partir de un ajuste de los tiempos de T2 un estimador del ángulo cenital de la lluvia, planteando un modelo para su frente.
 	
+	A partir de estos, la reconstrucción geométrica se realiza mediante un procedimiento iterativo.
+	Sobre el conjunto de estaciones seleccionadas se realiza un ajuste asumiendo un frente plano.
+	Este ajuste, más sofisticado que el que se realiza en la selección de estaciones, utiliza un modelo para la incerteza en el tiempo de disparo.
+	Este modelo~\cite{cite:ines} fue optimizado para describir lluvias horizontales hadrónicas iniciadas alto en la atmósfera en las que, por lo tanto, domina la componente muónica al nivel del detector (eventos inclinados típicos):
+	%
+	\begin{equation}
+	\sigma_t = 20 \left[ 1 + \left( \frac{15}{S} \right)^{2/4.5} \right]
+	\label{ec:varT} 
+	\end{equation}
+	%
+
+	Es importante resaltar que, al utilizar este modelo, se elige priorizar la correcta reconstrucción de las lluvia hadrónicas (inmensa mayoría, si no la totalidad, de los datos) por sobre las posibles lluvias profundas iniciadas por neutrinos\footnote{Las lluvias profundas cuentan con una componente EM apreciable al alcanzar la tierra, lo que produce que la incerteza en su tiempo de disparo no sea correctamente descripta por el modelo anterior que asume que la cantidad de electrones y fotones es despreciable.}. 
 	
-	
+% 	\textbf{CHARLAR SOBRE ESTO}
+% 	Como se discutirá más adelante en la Sec.~\ref{sub:thetaRec}, esta elección produce una disminución en la eficiencia de detección de neutrinos pero se ve justificada ya que implica una disminución del fondo hadrónico debido a lluvias ``verticales'' ($\theta<75^\circ$) incorrectamente reconstruidas como ``horizontales'' ($\theta>75^\circ$).
+
+	Una vez realizada la reconstrucción se evalúan las diferencias de tiempo $\Delta t_i$ entre las estaciones y el frente plano obtenido. Si alguno de los $\Delta t_i$ no está contenido en el intervalo [-300,700]~$\mbox{ns}$\footnote{
+	Una vez producidos, los muones viajan sin desviarse y, en general, alcanzan la tierra antes que la componente EM. Las fluctuaciones en su tiempo de arribo son entonces menores a las esperadas para electrones y fotones que sufren multiples disperciones en su camino. Esta es la razón de que se tome un intervalo asimétrico.
+	},
+	la estación con mayor $\Delta t_i$ es removida y se repite la reconstrucción. Este procedimiento continua hasta que se encuentra una configuración aceptable. Si tras alguna de las iteraciones quedan menos de 4 estaciones el evento es rechazado.
+	Si el evento está constituido por estaciones alineadas, el ángulo azimutal es fijado en la dirección de avance de la señal y se aplica el mismo procedimiento de reconstrucción antes mencionado. En el caso de eventos en linea el ángulo cenital obtenido es, en realidad, una cota mínima (ver Fig.~\ref{fig:conoLineEvent}).
+	%
+	\begin{figure}[ht]
+	\begin{center}
+	\includegraphics[width=0.75\textwidth]{fig/seleccionAuger/conoLineEvent.pdf}
+	\caption{Esquema de reconstrucción geométrica de un evento en linea. Una cota mínima para el ángulo cenital se obtiene al considerar que el ángulo azimutal de la lluvia coincide con la linea que une las estaciones.}
+	\label{fig:conoLineEvent}
+	\end{center}
+	\end{figure} 
 	
 	
 	Este método se utiliza en las búsquedas de DGL y DGH.
