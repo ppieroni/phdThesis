@@ -110,11 +110,24 @@ Una vez instalado, \zhs{} conserva todas las capacidades de \aires{} y agrega la
 	Dado que la mayor contribuci\'on al campo el\'ectrico proviene de las part\'iculas de media y baja energ\'ia, es poco deseable la aparici\'on de partículas con peso extremadamente alto.
 	En consecuencia y como bajar el nivel de thinning es poco eficiente, en la simulación se utiliza un \emph{weight factor} peque\~no.
 
+\section{Dificultades técnicas}
+
+Intentando no volver esta sección tediosa se pretende enumerar una serie de dificultades técnicas a la hora de simular la señal de radio emitida por neutrinos ES utilizando \zhs{}.
+
+En primer lugar, al igual que en las simulaciones realizadas para Auger es necesario utilizar los productos de decaimiento generados con \tauola{} y luego inyectarlos en \aires{} con las posiciones y velocidades correctas.
+
+Luego, la mayor dificultad técnica resulta de la gran cantidad de tiempo de máquina que requiere realizar la simulación de la emisión de radio.
+Para contextualizar la situación, una simulación típica puede implicar la necesidad de conocer la señal en algunos cientos de observadores.
+Dado que cada vez que se avanza una partícula es necesario calcular la señal en cada uno de ellos, luego de la primer decena el tiempo de simulación depende casi linealmente de su numero, es decir, se torna despreciable el tiempo que toma simular la evolución de la lluvia.
+Con todo esto, como la simulación de una lluvia de \cant{10^{18}}{eV} puede tomar del orden de algunas horas por decena de anteas\footnote{Este número depende fuertemente del nivel de thinning elegido}, la simulación completa de cada lluvia puede requerir del orden del centenar de horas de tiempo de CPU.
+La única manera de salvar este inconveniente es partiendo el detector en grupos mas pequeños de antenas, de entre 10 y 40, donde es necesario tener la precaución de que la evolución de la lluvia se simule con la misma semilla en cada vez.
+
+	
 \section{Caracterizaci\'on de eventos ES}
 
 Dado que este es el primer trabajo en el que se simula la señal de radio emitida por neutrinos ES, se dedicará esta sección a su caracterización.
 
-	\subsection{Caracter\'isticas generales}
+	\subsection{Caracter\'isticas generales: evento típico}
 	
 	Para caracterizar la emisión de radio de una lluvia iniciada por un neutrino ES es buena idea comenzar con un \emph{evento típico}, y luego observar su comportamiento al variar diferentes parámetros.
 	En particular, a la hora de definir una lluvia ES será necesario determinar el canal de decaimiento del \tauon{}, la energía transferida a la lluvia $E_v$ y sus parámetros geométricos $(\theta,{\rm x_d},\phi)$.
@@ -157,125 +170,132 @@ Dado que este es el primer trabajo en el que se simula la señal de radio emitid
 	\end{figure}
 	%
 	Como se expuso en la sección \ref{ch:easRadio}, el pico observado en la señal corresponde a la emisión coherente de las partículas generadas en el máximo de la lluvia por lo que su espectro muestra coherencia hasta frecuencias casi del $\rm GHz$.
+	Es importante destacar que esta señal se encuentra a un nivel que puede ser detectado por sobre le nivel del ruido. 
+	Los detalles de este aspecto se desarrollan en la sección \ref{sbsc:tratSig}.
 	
+	\subsubsection{Huella sobre el detector - Cono \cher}
 	
+	Otra cualidad importante a tener en cuenta es la geometría de la huella que pueden dejar estas lluvias sobre el detector.
+	En las figuras \ref{fig:testFootprint_Cone} a \ref{fig:testFootprint_E0z} se grafican las distintas componentes de la se\~nal de radio sobre un arreglo de antenas cuyo paso es \cant{1000}{m} en la dirección de propagación y \cant{100}{m} en la dirección transversal para una lluvia que fue inyectada en el punto $(x,y,z)=(0,0,25){\rm m}$.
 	
-	En las figuras \ref{fig:testFootprint_E0} a \ref{fig:testFootprint_E0z} se grafican las distintas componentes de la se\~nal de radio en el suelo.
+	La figura \ref{fig:testFootprint_Cone} muestra el módulo del máximo campo eléctrico registrado por cada antena a nivel del suelo.
 	%
-	\begin{figure}[ht!]
-		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0}.png}
-		\caption{\label{fig:testFootprint_E0}
-		asd
-		}
-	\end{figure}
-	
-	\begin{figure}[ht!]
-		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0x}.png}
-		\caption{\label{fig:testFootprint_E0tr}
-		asd
-		}
-	\end{figure}
-	
-	\begin{figure}[ht!]
-		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0y}.png}
-		\caption{\label{fig:testFootprint_E0fw}
-		asd
-		}
-	\end{figure}
-	
-	\begin{figure}[ht!]
-		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0z}.png}
-		\caption{\label{fig:testFootprint_E0z}
-		asd
-		}
-	\end{figure}
-	
-	\subsubsection{Emisi\'on coherente - Cono \cher}
-	
 	\begin{figure}[ht!]
 		\centering
 		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_Cone_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0}.png}
 		\caption{\label{fig:testFootprint_Cone}
-		asd
+		Huella de campo eléctrico generada por la lluvia ES típica. En rojo se muestra la zona de impacto del cono \cher{} si el máximo de la lluvia se encuentra a \cant{11}{km} del punto de decaimiento. Esta curva se obtuvo a partir de la ecuación \ref{eq:conewidth}, a la que se llegó mediante hipótesis geométricas.
+		}
+	\end{figure}
+	%
+	Hay tres aspectos muy importantes a destacar de esta figura.
+	El primero es que, como se observa en línea roja, la zona de impacto del cono \cher{} predicha por la ecuación \ref{eq:conewidth} coincide con la huella de radio de manera notable.
+	Para obtener la predicción se utilizaron los parámetros de la simulación para la altura de decaimiento y el ángulo cenital, mientras que la posición del máximo de la lluvia se obtuvo mediante prueba y error, pero utilizando valores razonables\footnote{Para una lluvia de \cant{10^{18}}{eV} el máximo de la lluvia ronda los \cant{10}{km}}.
+	Si bien \zhs{} realiza la simulación microscópicamente, es decir, sin realizar ninguna suposición sobre los mecanismos de emisión, se nota que los resultados obtenidos pueden ser descriptos a orden cero a partir de razonamientos meramente geométricos (ver sección \ref{sbsc:geom_emision}).
+	
+	La segunda observación es que en al dirección de propagación de la lluvia la huella alcanza niveles detectables ($>\sim100{\rm \mu V/m}$) durante aproximadamente \cant{50}{km}.
+	Esta es una cualidad muy favorable a la hora detectar este tipo de eventos, ya que aumenta la probabilidad de disparar antenas.
+	Por último, en contraposición a lo anterior, en la dirección transversal a la de propagación el tamaño de la huella es de al rededor de \cant{2}{km}, es decir, las lluvias ES generan huellas muy alargadas sobre el detector.
+	Esta es la característica fundamental a partir de la cual se pueden distinguír neutrinos ES. 
+	Ya que los eventos inclinados que podrían generar su background se desarrollan muy alto en la atmósfera, generarán huellas cuyo largo será similar al de las lluvias ES, pero con un ancho mucho mayor.
+	Esta última conclusión se infiere de que, al ubicarse el máximo de la lluvia más alto en la atmósfera, la apertura del cono al alcanzar el suelo serña mucho mayor.
+	Este tema se volverá a abordar con mayor detalle en la sección \ref{REF}.
+	
+	También es interesante analizar las componentes del camponentes del campo eléctrico de la huella.
+	En la figura \ref{fig:malField} se muestran las contribuciones al campo eléctrico a nivel del suelo para una lluvia completamente horizontal ($\theta=90^\circ$) y que se desplaza de Oeste a Este ($\phi=90^\circ$).
+	%
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{./fig/simulacionRadio/malField}
+		\caption{\label{fig:malField}
+		Esquema de las componentes del campo elctrico para una lluvia que se desplaza de Oeste a Este en Malargüe. Se considerarán los campos hacia arriba, o la componente $z$, y el campo transversal a la dirección de propagación de la lluvia sobre el suelo, componente ${\rm TR}$. Se desprecia por el momento la componente ${\rm FW}$, tambien sobre el suelo pero en la dirección de propagación. La contribución geomagnética conserva su dirección (transversal y hacia arriba) en todo el suelo. Por otro lado, el aporte del efecto Askaryan tiene una componentes transversales opuestas en el sector norte y el sur, mientras que la componente $z$ siempre es positiva.
+		}
+	\end{figure}
+	%
+	Por simplicidad es conveniente pensar en el campo en el sistema de referencia definido por la coordenada $z$ y las direcciónes paralela (${\rm FW}$) y transversal (${\rm TR}$) sobre el suelo a la dirección de propagación.
+	Desde esta persectiva, a primer orden la contribución geomagnética al campo eléctrico tiene dirección $({\rm TR},z)$ ya que por construcción es perpendicular a la dirección de propagación.
+	Por otro lado, a cada lado del eje de la lluvia la componente Askaryan tiene direcciones opuestas pero sobre el suelo siempre posee componente en $z>0$.
+	
+	En las figuras \ref{fig:testFootprint_E0tr} y \ref{fig:testFootprint_E0z} se grafican el campo en dirección ${\rm TR}$ y en dirección $z$ de la huella de la lluvia.
+	%
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0x}.png}
+		\caption{\label{fig:testFootprint_E0tr}
+		Huella de campo eléctrico en la dirección ${\rm TR}$. La intensidad del cono \cher{} es distinta a ambos lados del eje de la lluvia.
+		Cuando la coordenada transversal es positiva el efecto Askaryan y el geomagnético se suprimen mientras que cuando es negativa se favorecen.
+		}
+	\end{figure}
+	%
+	Como puede observarse en la figura \ref{fig:testFootprint_E0tr}, la intensidad del cono \cher{} no es simétrica respecto del eje de la lluvia.
+	Esto se debe a que, como se esquematizó en la figura \ref{fig:malField}, de un lado del mismo las contribuciones Askaryan y geomagnética en la dirección ${\rm TR}$ se suprimen mientras que del otro se favorecen.
+	%
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0z}.png}
+		\caption{\label{fig:testFootprint_E0z}
+		Huella de campo eléctrico en la dirección $z$. En esta dirección las contribuciones geomagnética y Askaryan se suman en cualquier punto del suelo.
+		}
+	\end{figure}
+	%
+	Por otro lado, si se considera la componente $z$ del campo de ambas contribuciones no presenta ningun cambio de signo en el plano del suelo.
+	Por esta razon la figura \ref{fig:testFootprint_E0z} presenta una huella mucho más simétrica.
+	
+	Por ultimo, hasta el momento se despreció la componente ${\rm FW}$. 
+	Dado que las lluvias ES son casi horizontales la aparición de esta componente a nivel del suelo se vuelve despreciable, como se observa en la figura \ref{fig:testFootprint_E0fw} si se compara la intensidad de campo de la huella con la de las figuras \ref{fig:testFootprint_E0tr} y \ref{fig:testFootprint_E0z}.
+	%
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0y}.png}
+		\caption{\label{fig:testFootprint_E0fw}
+		Campo eléctrico en la dirección ${\rm FW}$. Su intensidad es despreciable si se la compara con la de las direcciones ${\rm TR}$ y $z$.
 		}
 	\end{figure}
 	
-	\clearpage
+% 	\clearpage
 	\subsection{Tratamiento de la se\~nal}
+	\label{sbsc:tratSig}
+	
+	Una vez obtenidas las señales en las antenas del detector, es necesario simular su respuesta.
+	Para ello, es común modelarlas comon filtro pasa banda. 
 	
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=0.8\textwidth]{./fig/simulacionRadio/antennaFilt.png}
-		\caption{\label{fig:antFilt}
-		asd
-		}
-	\end{figure}
-	
-	\begin{figure}[ht!]
-		\centering
-		\includegraphics[width=0.8\textwidth]{./fig/simulacionRadio/antennaHEnv.png}
+		\includegraphics[width=0.8\textwidth]{./fig/simulacionRadio/antennaHEnv}
 		\caption{\label{fig:antHEnv}
 		asd
 		}
 	\end{figure}
 	
-	
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E}.png}
-		\caption{\label{fig:testFootprint_E}
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_E}.png}
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_E0}.png}
+		\caption{\label{fig:footprint_E_HEnv}
 		asd
 		}
 	\end{figure}
 	
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_Ex}.png}
-		\caption{\label{fig:testFootprint_Etr}
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_EHB}.png}
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_ELB}.png}
+		\caption{\label{fig:footprint_HB-LB_HEnv}
 		asd
 		}
 	\end{figure}
 	
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_Ey}.png}
-		\caption{\label{fig:testFootprint_Efw}
-		asd
-		}
-	\end{figure}
-	
-	\begin{figure}[ht!]
-		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_Ez}.png}
-		\caption{\label{fig:testFootprint_Ez}
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_E}.png}
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.22_ChTest_phi_90_18_89.5_90_25_1238_E0}.png}
+		\caption{\label{fig:footprint_E_HEnv}
 		asd
 		}
 	\end{figure}
 	
 	\clearpage
-	\subsection{Evoluci\'on de la se\~nal a nivel del suelo}
-		
 	
-	mostrar evolucion del EMax a lo largo de la lluvia
-	
-	mostrar espectro y evolucion
-	
-	mostrar fit del maximo de la lluvia como funcion de xd y theta y dependencia con la energia
-	
-		\subsubsection{Evoluci\'on de la polarizaci\'on}
-		
-		cambio askaryan geomagnetico?
-	
-	\subsection{Corte en $\theta$}
-	
-	plots dado xd para diferentes thetas
-	mostrar tomataso
-	
-	\clearpage
 	\subsection{Influencia del campo magn\'etico terrestre}
 	
 	\begin{figure}[ht!]
@@ -334,8 +354,28 @@ Dado que este es el primer trabajo en el que se simula la señal de radio emitid
 	
 	mostrar que los efectos son comparables.
 	
-	velocidad de drift peque\~na por alra densidad en la atmosfera.
+	velocidad de drift peque\~na por alra densidad en la atmósfera.
 	
+	
+% 	\subsection{Evoluci\'on de la se\~nal a nivel del suelo}
+% 		
+% 	
+% 	mostrar evolucion del EMax a lo largo de la lluvia
+% 	
+% 	mostrar espectro y evolucion
+% 	
+% 	mostrar fit del maximo de la lluvia como funcion de xd y theta y dependencia con la energia
+% 	
+% 		\subsubsection{Evoluci\'on de la polarizaci\'on}
+% 		
+% 		cambio askaryan geomagnetico?
+	
+	\subsection{Corte en $\theta$}
+	
+	plots dado xd para diferentes thetas
+	mostrar tomataso
+	
+	\clearpage
 	\clearpage
 	\subsection{Distribuci\'on de part\'iculas vs. se\~nal de radio}
 	
@@ -343,7 +383,7 @@ Dado que este es el primer trabajo en el que se simula la señal de radio emitid
 	
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=0.8\textwidth]{./fig/simulacionRadio/ZHSEvent_1238_denseArray_E_Particulas}
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/ZHSEvent_1238_denseArray_E_Particulas}
 		\caption{\label{fig:sim_foot_y_part}
 		asd
 		}
@@ -351,6 +391,31 @@ Dado que este es el primer trabajo en el que se simula la señal de radio emitid
 	
 	\subsection{Dependencia con el canal de decaimiento del \tauon{}}
 	
+	
+	
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{showerWidth_ZWv1.43_ntuples_v1.22_Channels_All}.pdf}
+		\caption{\label{fig:showerWidth}
+		asd
+		}
+	\end{figure}
+	
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{showerMaxE_ZWv1.43_ntuples_v1.22_Channels_All}.pdf}
+		\caption{\label{fig:showerMaxE}
+		asd
+		}
+	\end{figure}
+	
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{showerArea_ZWv1.43_ntuples_v1.22_Channels_All}.pdf}
+		\caption{\label{fig:showerArea}
+		asd
+		}
+	\end{figure}
 	Graficar distribuciones de diferentes variables que importen para diferentes canales.
 	
 	Energia visible
