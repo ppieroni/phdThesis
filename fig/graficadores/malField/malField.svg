@@ -22,9 +22,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="507.62242"
-     inkscape:cy="71.880817"
+     inkscape:zoom="1.4"
+     inkscape:cx="310.95654"
+     inkscape:cy="182.82572"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -196,6 +196,61 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-74.718715,-137.96576)">
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path3912"
+       d="m 226.67825,211.20384 18.8396,61.63662"
+       style="fill:none;stroke:#ff8400;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow2MstartZ);marker-end:none"
+       inkscape:transform-center-x="9.1950794"
+       inkscape:transform-center-y="-20.779928" />
+    <g
+       transform="matrix(0.78521057,0,0,0.78521057,-19.62253,62.316875)"
+       id="g3914">
+      <text
+         sodipodi:linespacing="125%"
+         id="text3916"
+         y="184.25195"
+         x="276.17346"
+         style="font-size:26.31562805px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyrePagella;-inkscape-font-specification:TeXGyrePagella"
+         xml:space="preserve"><tspan
+           y="184.25195"
+           x="276.17346"
+           id="tspan3918"
+           sodipodi:role="line">E</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:10.60807991px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyrePagella;-inkscape-font-specification:TeXGyrePagella"
+         x="293.50677"
+         y="174.30896"
+         id="text3920"
+         sodipodi:linespacing="125%"
+         transform="scale(1.0000571,0.9999429)"><tspan
+           sodipodi:role="line"
+           id="tspan3922"
+           x="293.50677"
+           y="174.30896">GEOM</tspan></text>
+      <text
+         transform="scale(1.0000571,0.9999429)"
+         sodipodi:linespacing="125%"
+         id="text3924"
+         y="184.30948"
+         x="293.50677"
+         style="font-size:10.60807991px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyrePagella;-inkscape-font-specification:TeXGyrePagella"
+         xml:space="preserve"><tspan
+           y="184.30948"
+           x="293.50677"
+           id="tspan3926"
+           sodipodi:role="line" /></text>
+    </g>
+    <path
+       inkscape:transform-center-y="-20.779928"
+       inkscape:transform-center-x="9.1950794"
+       style="fill:none;stroke:#ff8400;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow2MstartZ);marker-end:none"
+       d="m 456.76208,344.04279 18.8396,61.63662"
+       id="path3080"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
     <path
        sodipodi:type="arc"
        style="color:#000000;fill:none;stroke:#0040ff;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -556,7 +611,7 @@
            sodipodi:role="line" /></text>
     </g>
     <g
-       transform="matrix(0.78519909,0,0,0.78519909,214.47171,215.69961)"
+       transform="matrix(0.78519909,0,0,0.78519909,193.76358,211.659)"
        id="g6924">
       <text
          xml:space="preserve"
@@ -671,5 +726,44 @@
        height="363.189"
        x="76.714851"
        y="139.9606" />
+    <g
+       id="g3898"
+       transform="matrix(0.78521057,0,0,0.78521057,254.90801,208.28781)">
+      <text
+         xml:space="preserve"
+         style="font-size:26.31562805px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyrePagella;-inkscape-font-specification:TeXGyrePagella"
+         x="276.17346"
+         y="184.25195"
+         id="text3900"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3902"
+           x="276.17346"
+           y="184.25195">E</tspan></text>
+      <text
+         transform="scale(1.0000571,0.9999429)"
+         sodipodi:linespacing="125%"
+         id="text3904"
+         y="174.30896"
+         x="293.50677"
+         style="font-size:10.60807991px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyrePagella;-inkscape-font-specification:TeXGyrePagella"
+         xml:space="preserve"><tspan
+           y="174.30896"
+           x="293.50677"
+           id="tspan3906"
+           sodipodi:role="line">GEOM</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:10.60807991px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyrePagella;-inkscape-font-specification:TeXGyrePagella"
+         x="293.50677"
+         y="184.30948"
+         id="text3908"
+         sodipodi:linespacing="125%"
+         transform="scale(1.0000571,0.9999429)"><tspan
+           sodipodi:role="line"
+           id="tspan3910"
+           x="293.50677"
+           y="184.30948" /></text>
+    </g>
   </g>
 </svg>

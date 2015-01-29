@@ -172,10 +172,8 @@ Dado que este es el primer trabajo en el que se simula la señal de radio emitid
 	Como se expuso en la sección \ref{ch:easRadio}, el pico observado en la señal corresponde a la emisión coherente de las partículas generadas en el máximo de la lluvia por lo que su espectro muestra coherencia hasta frecuencias casi del $\rm GHz$.
 	Es importante destacar que esta señal se encuentra a un nivel que puede ser detectado por sobre le nivel del ruido. 
 	
-	\subsubsection{Tratamiento de la se\~nal}
-	\label{sbsc:tratSig}
-	
-	Una vez obtenido el campo eléctrico en cada observador del detector, es necesario simular su respuesta.
+	Una vez obtenido el campo eléctrico en cada antena del detector es necesario simular su respuesta.
+	Para ello en este trabajo se considera la posibilidad mas simple de todas
 	
 	
 	\begin{figure}[ht!]
@@ -213,8 +211,10 @@ Dado que este es el primer trabajo en el que se simula la señal de radio emitid
 	Por último, en contraposición a lo anterior, en la dirección transversal a la de propagación el tamaño de la huella es de al rededor de \cant{2}{km}, es decir, las lluvias ES generan huellas muy alargadas sobre el detector.
 	Esta es la característica fundamental a partir de la cual se pueden distinguír neutrinos ES. 
 	Ya que los eventos inclinados que podrían generar su background se desarrollan muy alto en la atmósfera, generarán huellas cuyo largo será similar al de las lluvias ES, pero con un ancho mucho mayor.
-	Esta última conclusión se infiere de que, al ubicarse el máximo de la lluvia más alto en la atmósfera, la apertura del cono al alcanzar el suelo serña mucho mayor.
+	Esta última conclusión se infiere de que, al ubicarse el máximo de la lluvia más alto en la atmósfera, la apertura del cono al alcanzar el suelo será mucho mayor.
 	Este tema se volverá a abordar con mayor detalle en la sección \ref{REF}.
+	
+	\subsection{Polarización de la señal - Influencia del campo magn\'etico terrestre}
 	
 	También es interesante analizar las componentes del camponentes del campo eléctrico de la huella.
 	En la figura \ref{fig:malField} se muestran las contribuciones al campo eléctrico a nivel del suelo para una lluvia completamente horizontal ($\theta=90^\circ$) y que se desplaza de Oeste a Este ($\phi=90^\circ$).
@@ -227,7 +227,7 @@ Dado que este es el primer trabajo en el que se simula la señal de radio emitid
 		}
 	\end{figure}
 	%
-	Por simplicidad es conveniente pensar en el campo en el sistema de referencia definido por la coordenada $z$ y las direcciónes paralela (${\rm FW}$) y transversal (${\rm TR}$) sobre el suelo a la dirección de propagación.
+	Por simplicidad es conveniente pensar en el campo en el sistema de referencia definido por la coordenada $z$ y las direcciónes paralela (${\rm FW}$) y transversal (${\rm TR}$) a la dirección de propagación sobre el suelo.
 	Desde esta persectiva, a primer orden la contribución geomagnética al campo eléctrico tiene dirección $({\rm TR},z)$ ya que por construcción es perpendicular a la dirección de propagación.
 	Por otro lado, a cada lado del eje de la lluvia la componente Askaryan tiene direcciones opuestas pero sobre el suelo siempre posee componente en $z>0$.
 	
@@ -298,8 +298,6 @@ Dado que este es el primer trabajo en el que se simula la señal de radio emitid
 % 	\end{figure}
 % 	
 % 	\clearpage
-	
-	\subsection{Influencia del campo magn\'etico terrestre}
 	
 	\begin{figure}[ht!]
 		\centering
