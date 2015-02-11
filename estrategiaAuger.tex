@@ -2,7 +2,6 @@
 \label{ch:estrategiaAuger}
 
 En este capítulo se presenta la estrategia utilizada en la búsqueda de neutrinos ultra-energéticos con el Observatorio Pierre Auger.
-
 Como se mostró en la sección \ref{sbsc:inclinadas}, el desafío a la hora de detectar UHE$\nu$'s utilizando un detector de superficie es lograr identificar los eventos que estos diparan del inmensamente más poblado fondo de lluvias hadrónicas.
 Esto puede lograrse separando las lluvias jóvenes dentro de los eventos inclinados.
 
@@ -23,21 +22,25 @@ Debido a la diferencias esenciales que presentan estos canales de detección, en
 \end{itemize}
 
 En los tres casos, la estrategia utilizada para la búsqueda fue del tipo \emph{análisis ciego}, cuyo proceder se esquematizan en la figura \ref{fig:strAuger}.
-	\begin{figure}[ht!]
-		\centering
-		\includegraphics[width=\textwidth]{./fig/estrategiaAuger/analysisSchema}
-		\caption{\label{fig:strAuger}
-		Esquema de la estrategia utilizada en las búsquedas de neutrinos con el Observatorio Pierre Auger.
-		}
-	\end{figure}
-Este consiste en definir un criterio de selección mediante el cual se decidirá si un evento es candidato a neutrino o no, sin utilizar datos o utilizando una pequeña fracción de los mismos que luego no podrá ser utilizada para la búsqueda.
+%
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=\textwidth]{./fig/estrategiaAuger/analysisSchema}
+	\caption{\label{fig:strAuger}
+	Esquema de la estrategia utilizada en las búsquedas de neutrinos con el Observatorio Pierre Auger. Ver la explicación en el texto.
+	}
+\end{figure}
+%
+Este consiste en definir un criterio de selección mediante el cual se decidirá si un evento es candidato a neutrino o no, sin utilizar datos o utilizando una pequeña fracción de los mismos que luego no podrá ser utilizada para realizar la búsqueda.
 
-Para definir este criterio es necesario contar con una muestra de señal y otra de fondo.
-En los tres análisis se utilizaron simulaciones de Monte Carlo para generar una muestra de señal y una pequeña fracción de los datos ($\sim15\%$) como muestra de fondo, debido a que se encuentran completamente dominados por eventos que no son neutrinos.
-Una vez definidas las muestras de señal y fondo, se eligieron criterios de calidad con el fin de eliminar eventos espureos y se optimizaron cortes en diferentes variables del detector que permiten elegir las lluvias jóvenes entre las inclinadas.
+Para entrenar el criterio de selección es necesario contar con una muestra de señal (neutrinos) y otra de fondo (no neutrinos).
+En los tres análisis se utilizaron simulaciones de Monte Carlo para generar la muestra de señal y una fracción de los datos como muestra de fondo.
+Es lícito utilizar datos con este fin debido a que se encuentran dominados por eventos que no son neutrinos y, en caso de haber algún evento iniciado por un neutrino, el criterio de selección lo identificaría.
+
+Una vez obtenidas las muestras de señal y fondo, se definieron criterios de calidad con el fin de eliminar eventos espureos y se optimizaron cortes en diferentes variables del detector que permiten elegir las lluvias jóvenes entre las inclinadas.
 Así, con el criterio de selección listo es posible, por un lado calcular la exposición del detector a los distintos tipos de neutrinos y estimar las incertezas sistemáticas cometidas, y por el otro realizar la búsqueda de candidatos sobre los datos que no fueron utilizados hasta el momento.
 Luego, si hubiese candidatos sería posible informar la magnitud de el flujo con su error, o en caso contrario ponerle una cota superior.
 
 En los próximos capítulos se abordarán las distintas etapas de este análisis para las tres búsquedas.
 
-% \textbf{DEBERIA MENCIONAR LAS TRES TESIS EN ESTA SECCION ME PARECE}
+\textbf{XXX DEBERIA MENCIONAR LAS TRES TESIS EN ESTA SECCION ME PARECE. no estoy dejando claro en ningun lado en qué de todo lo que pongo trabaje.}

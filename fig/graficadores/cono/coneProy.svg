@@ -105,9 +105,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.29984082"
-     inkscape:cx="1382.896"
-     inkscape:cy="560.47871"
+     inkscape:zoom="0.074960205"
+     inkscape:cx="1580.3906"
+     inkscape:cy="908.05886"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -151,7 +151,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -160,6 +160,16 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(566.71875,1080.0625)">
+    <rect
+       style="color:#000000;fill:#ffffff;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;fill-opacity:1"
+       id="rect3040"
+       width="4452.4209"
+       height="2122.4465"
+       x="-155.64607"
+       y="-257.17584"
+       transform="translate(-410.0625,-821.875)"
+       rx="0.47241735"
+       ry="0.47241735" />
     <path
        style="opacity:0.8;fill:url(#linearGradient3920);fill-opacity:1;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="M 0,1066.9948 2305.4774,449.24402 3563.0107,1175.2811 1257.5332,1793.032 z"
@@ -259,17 +269,7 @@
            height="452.78857"
            width="740.49799"
            id="rect3018" /></flowRegion><flowPara
-         id="flowPara3020">Cono Ĉherenkov</flowPara></flowRoot>    <rect
-       style="color:#000000;fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect3040"
-       width="4452.4209"
-       height="2122.4465"
-       x="-155.64607"
-       y="-257.17584"
-       transform="translate(-410.0625,-821.875)"
-       rx="0.47241735"
-       ry="0.47241735" />
-    <flowRoot
+         id="flowPara3020">Cono Ĉherenkov</flowPara></flowRoot>    <flowRoot
        transform="matrix(3.2411509,0,0,3.2411509,-8911.6593,-1042.9479)"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyrePagella;-inkscape-font-specification:TeXGyrePagella"
        id="flowRoot3018"
@@ -392,7 +392,7 @@
        sodipodi:cy="1636.306"
        sodipodi:rx="16.507917"
        sodipodi:ry="16.507917"
-       d="m 1006.983,1636.306 a 16.507917,16.507917 0 1 1 -33.01588,0 16.507917,16.507917 0 1 1 33.01588,0 z"
+       d="m 1006.983,1636.306 c 0,9.1171 -7.39089,16.5079 -16.50796,16.5079 -9.11707,0 -16.50792,-7.3908 -16.50792,-16.5079 0,-9.117 7.39085,-16.5079 16.50792,-16.5079 9.11707,0 16.50796,7.3909 16.50796,16.5079 z"
        transform="translate(-564.95004,-1083.0103)" />
     <path
        sodipodi:nodetypes="cc"
@@ -427,7 +427,7 @@
        sodipodi:cy="1357.265"
        sodipodi:rx="192.1852"
        sodipodi:ry="192.1852"
-       d="m 1745.1354,1208.2428 a 192.1852,192.1852 0 0 1 54.7415,72.0519"
+       d="m 1745.1354,1208.2428 c 23.7218,19.318 42.4892,44.02 54.7415,72.0519"
        transform="translate(-566.71875,-1080.0625)"
        sodipodi:start="5.3958224"
        sodipodi:end="5.8711221"
