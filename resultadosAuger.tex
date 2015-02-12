@@ -235,16 +235,16 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	\label{sbsc:idealEff}
 	
 	Para construir las eficiencias en un detector real es útil estidiarlas antes sobre un detector ideal.
-	Mientras que el detector real no solo es finito sino que su forma puede variar en el tiempo, debido a que es común que las estaciones entren y salgan de servicio, un detector ideal consiste en una representación infinita y regular del verdadero.
-	Entonces, para obtener las eficiencias de identificación de cada uno de los análisis se consideró una copia del SD de Auger de \cant{50\times50}{km} y se lanzó sobre el centro de la misma las lluvias simuladas y se obtuvo la señal en el detector tal como se explicó en la sección \ref{sc:offline}.
-	Luego, se aplicaron los criterios de identificación de neutrinos y se calculó la eficiencia en cada bin con la siguiente ecuación:
+	Mientras que el detector real no solo es finito sino que su forma puede variar en el tiempo, por ejemplo debido a que es común que las estaciones entren y salgan de servicio, un detector ideal consiste en una representación infinita y regular del verdadero.
+	Entonces, para obtener las eficiencias de identificación de cada uno de los análisis se simuló una copia del SD de Auger de \cant{50\times50}{km}, infinita a los fines prácticos\footnote{Ningún eventos simulado supera los \cant{25}{km} de extensión.}, se lanzó sobre su centro lluvias simuladas y se obtuvo la señal en el detector tal como se explicó en la sección \ref{sc:offline}.
+	Luego, se aplicaron los criterios de identificación de neutrinos desarrollados en el capítulo \ref{ch:selAuger} y se calculó la eficiencia en cada bin con la siguiente ecuación:
 	%
 	\begin{equation}
-	 \epsilon(X)=\frac{N_{id}(X)}{N_{sim}(X)}
+	 \epsilon_\chi(X)=\frac{N_{\chi}(X)}{N_{sim}(X)}
 	 \label{eq:effDef}
 	\end{equation}
 	%
-	en esta $X$ es la etiqueta del bin mientras que $N_{id}$ y $N_{sim}$ son la cantidad de lluvias que se identificaron y simularon en el mismo.
+	donde $X$ es la etiqueta del bin, mientras que $N_{\chi}$ y $N_{sim}$ son la cantidad de lluvias que se identificaron con el criterio $\chi$ y simularon en el mismo. En nuestro análisis $\chi$ puede representar el nivel de disparo T3 del detector, la clasificación de  evento inclinado y la identificación como neutrino.
 	
 	\subsubsection{Eficiencias a neutrinos DG}
 	
@@ -260,10 +260,10 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	%
 	A esta energía y para este ángulo la eficiencia de disparo satura para profundidades intermedias.
 	Cuando la lluvia se inicia muy cerca del detector no alcanza a evolucionar lateralmente lo suficiente como para disparar tres o mas estaciones, provocando menos eventos detectados. 
-	Por otro lado, cuando se inicia alto en la atmósdera si bien en cerca del $70\%$ de los casos la componente muónica de la lluvia es suficiente para disparar el detector, no pueden ser identificados como neutrinos al ser muy similares a las lluvias iniciadas por hadrones.
+	Por otro lado, cuando se inicia alto en la atmósfera si bien en cerca del $70\%$ de los casos la componente muónica de la lluvia es suficiente para disparar el detector, no pueden ser identificados como neutrinos por ser muy similares a las lluvias iniciadas por hadrones.
 	
 	Por otro lado, en la figura \ref{fig:effDG_en} se muestran las eficiencias para lluvias iniciadas por $\nu_e$ via CC con \cant{\theta=85}{^\circ} y \cant{E_\nu=10^{17},~10^{18},~10^{19}}{eV}.
-	Si bien la eficiencia de detección disminuye con la energía del primario, las bajas energías son relativamente importantes en el cálculo de la exposición dado que los modelos actuales predicen una dependencia del tipo $E_\nu^{-2}$ para el espectro de energía de los neutrinos de origen cosmogénico.
+	Si bien, como era de esperarse\footnote{La cantidad de partículas que se genera con la lluvia son proporcionales a la energía de la misma.}, la eficiencia de detección disminuye con la energía del primario, las bajas energías son relativamente importantes en el cálculo de la exposición dado que los modelos actuales predicen una dependencia del tipo $E_\nu^{-2}$ para el espectro de energía de los neutrinos de origen cosmogénico.
 	%
 	\begin{figure}[h!]
 		\begin{center}
@@ -281,7 +281,7 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 			\includegraphics[width=0.47\textwidth]{fig/resultadosAuger/eff_1EeV_80}
 			\hfill
 			\includegraphics[width=0.47\textwidth]{fig/resultadosAuger/eff_1EeV_85}
-			\caption{}
+			\caption{El panel izquierdo (derecho) muestra las eficiencias de disparo T3, de selección de eventos inclinados y de indentificación como función de la profundidad medida desde el detector para neutrinos con \cant{\theta=80}{^\circ} (\cant{\theta=85}{^\circ}). Es posible observar que la eficiencia alcanzada por el discriminante de fisher es alta para ambos ángulos.}
 			\label{fig:effDG_th}
 		\end{center}
 	\end{figure}
@@ -294,7 +294,7 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	\begin{figure}[h!]
 		\begin{center}
 			\includegraphics[width=0.7\textwidth]{fig/resultadosAuger/huellas}
-			\caption{}
+			\caption{La cantidad promedio de estaciones disparadas por evento aumenta con el ángulo cenital $theta$ debido a que la huella de las llubias sobre el detector crece aproximadamente con un factor $1/\cos\theta$.}
 			\label{fig:effDG_th_sktch}
 		\end{center}
 	\end{figure}
@@ -313,7 +313,10 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 		\end{center}
 	\end{figure}
 	%
-	El panel derecho de la misma 
+	El panel derecho de la misma se observa para los mismos parámetros la comparación entre el canal de CN y CC via $\nu_\tau$.
+	En la sección \ref{sbsc:easDG} se explicó el mecanismo DB, en el que un $\nu_\tau$ interactua via CC produciendo un lepton $\tau$ que puede decaer generando una segunda lluvia a algunos km de la primer interacción.
+	Teniendo en cuenta que la transferencia de energía $\nu$-nucleón no depende de si la interacción es via CC o CN, se deduce de la figura que incluso cuando la cascada generada en la primer interacción no es suficiente para disparar el detector (para profundidades mayores a \cant{\sim2000}{g cm^{-2}}) la segunda cascada a veces lo hace, recuperando del orden del 10$\%$ de los eventos.
+	
 	
 	\subsubsection{Eficiencias a neutrinos ES}
 	
