@@ -2,7 +2,7 @@
 
 cMessage=$1
 
-git add *.tex fig* gitCommiter.sh 
+git add -A *.tex fig* gitCommiter.sh 
 echo "Do you want to commit with message: "$cMessage"?"
 echo "enter to continue - ctrl-c to skip"
 read
