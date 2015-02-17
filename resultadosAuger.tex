@@ -103,8 +103,8 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	El resultado anterior se puede extender para analizar el caso de un flujo diferencial difuso~$\Phi(E_{\nu})$ y un detector plano que registra todas las lluvias producidas por neutrinos que satisfacen las siguientes condiciones  (ver figura \ref{fig:diferencialMasa}):
 	%
 	\begin{itemize}
-	\item su dirección de arribo apunta a una región $\Delta A$ del detector ubicada en $\vec{r}$
-	\item su dirección de arribo $(\theta,\phi)$ está en un rango 
+	\item su dirección de arrivo apunta a una región $\Delta A$ del detector ubicada en $\vec{r}$
+	\item su dirección de arrivo $(\theta,\phi)$ está en un rango 
 	$\Delta \Omega=\sen\theta\,\Delta\theta\,\Delta\phi$
 	\item su energía~$E_{\nu}$ está en un rango $\Delta E_{\nu}$
 	\item interactúa a una profundidad másica~$D$ en el rango $[D, D+\Delta D]$. 
@@ -127,7 +127,7 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	\end{array}$
 	\end{center}
 	\caption{
-	\textit{Panel izquierdo}: vista esquemática de un detector plano imaginario que registra todos los eventos producidos por partículas cuya dirección de arribo cruza su superficie. \textit{Panel derecho}: diagrama de diferencial de masa $\Delta M$ según se define en el texto. Puede observarse que $\Delta M$ crece al disminuir el ángulo cenital $\theta$.
+	\textit{Panel izquierdo}: vista esquemática de un detector plano imaginario que registra todos los eventos producidos por partículas cuya dirección de arrivo cruza su superficie. \textit{Panel derecho}: diagrama de diferencial de masa $\Delta M$ según se define en el texto. Puede observarse que $\Delta M$ crece al disminuir el ángulo cenital $\theta$.
 	}
 	\label{fig:diferencialMasa}
 	\end{figure}
@@ -248,6 +248,18 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	
 	\subsubsection{Eficiencias a neutrinos DG}
 	
+	La eficiencia a neutrinos DG depende de los siguientes parámetros:
+	%
+	\begin{itemize}
+	 \item la profundidad de interacción $D$
+	 \item el ángulo cenital $\theta$
+	 \item la energía del neutrino $E_\nu$
+	 \item sabor del neutrino $(e,\mu,\tau)$
+	 \item tipo de interacción (CC o CN)
+	\end{itemize}
+	%
+	Por otro lado, si bien esta también podría depender del ángulo azimutal $\phi$, al haberse simulado de manera aleatoria, la eficiencia obtenida en cada bin de $(E_\nu,\theta,D)$ y para cada sabor y canal, será un promedio en el ángulo azimutal.
+	
 	La figura \ref{fig:effDG_tr_id} muestra la eficiencia de disparo T3 e identificación como función de la profundidad de interacción para lluvias iniciadas por $\nu_e$ via CC para \cant{10^{19}}{eV} y \cant{85}{^\circ}.
 	%
 	\begin{figure}[h!]
@@ -317,64 +329,228 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	En la sección \ref{sbsc:easDG} se explicó el mecanismo DB, en el que un $\nu_\tau$ interactua via CC produciendo un lepton $\tau$ que puede decaer generando una segunda lluvia a algunos km de la primer interacción.
 	Teniendo en cuenta que la transferencia de energía $\nu$-nucleón no depende de si la interacción es via CC o CN, se deduce de la figura que incluso cuando la cascada generada en la primer interacción no es suficiente para disparar el detector (para profundidades mayores a \cant{\sim2000}{g cm^{-2}}) la segunda cascada a veces lo hace, recuperando del orden del 10$\%$ de los eventos.
 	
-	
 	\subsubsection{Eficiencias a neutrinos ES}
 	
-	\subsection{Combinaci\'on de las eficiencias}
+	La eficiencia a neutrinos ES depende de los siguientes parámetros:
+	%
+	\begin{itemize}
+	 \item la energía del tauón $E_\tau$
+	 \item la altura a la que decae $x_d$
+	 \item el ángulo cenital $\theta$
+	\end{itemize}
+	%
+	En este caso, dado que tanto el canal de decaimiento del tauón y la energía acarreada por sus productos, como el ángulo azimutal $\phi$ se simularon de manera aleatorea, la eficiencia obtenida en cada bin de $(E_\tau,x_d,\theta)$ será un promedio sobre el ángulo azimutal y las maneras de decaer del tauón.
 	
-	\begin{figure}[h!]
-		\begin{center}
-			\includegraphics[width=0.9\textwidth]{fig/resultadosAuger/sketch_combined_4}
-			\caption{asd}
-			\label{fig:sketch_combined_4}
-		\end{center}
-	\end{figure}
-	
-% 	you are right, these numbers are important. I will work on that after the ICRC. For the moment I can only give you the exposure contribution (gain) in an E^{-2} scenario matrix, and it looks like:
-% 
-%           &    ES crit    &    DGH crit    &     DGL crit
-% ES sh     &    0.695      &    0.035       &     neglect.
-% DGH sh    &    0.045      &    0.185       &     neglect.
-% DGL sh    &    neglect.   &    neglect.    &     0.04
-% 
-% please take into account that we have a systematic error of 40%. 
-% for instance, from the table you can see that 3.5% of the total limit to an E^-2 flux is due to simulated 
-% ES neutrinos selected by the DGH analysis. This gives an idea of the probability of "missclassification", but its no so simple, since the most of the ES simulated neutrinos that passes ES crit, also passes the DGH crit with a high reconstructed angle...
-% In any case, if any of the three analysis finds a candidate we will have to scrutinize it with as many eyes 
-% as possible and try to (1) make sure it is a neutrino and not a detector fluke, and (2) identify it as ES or 
-% Down-Going quasi-horizontal, something that might not be that easy. 
-	
-	\subsection{Integración de las eficiencias sobre el área del detector}
-	
-	Para llevar a cabo la integración en área de la ecuación \ref{eq:exp2} es necesario estudiar cómo varían las eficiencias cuando se considera un detector finito, osea, con bordes.
-	Cuando una lluvia cae sobre una región completamente instrumentada del detector (interior y sin estaciones faltantes) la eficiencia será la ideal, calculada en la sección \ref{sbsc:idealEff}.
-	Por otro lado, existirán casos en los que parte de las partículas caen fuera del mísmo, como se esquematiza en la figura \ref{fig:lluviaFuera}, o en zonas con estaciones fuera de servicio.
+	En la figura \ref{fig:effES_tr_id} se muestra a modo de ejemplo la eficiencia de disparo T3 y de identificación como función de la altura de decaimiento $x_d$ para una energía de \cant{E_\tau=1}{EeV} y un ángulo cenital $\theta=90.68^\circ$.
 	%
 	\begin{figure}[h!]
 		\begin{center}
-			\includegraphics[width=0.9\textwidth]{fig/resultadosAuger/lluviaFuera}\\
+			\includegraphics[width=0.7\textwidth]{fig/resultadosAuger/eff_18_8931_forThesis}
+			\caption{Eficiencia de disparo T3 e identificación en función de la altura de decaimiento del tauón para \cant{E_\tau=1}{EeV} y $\theta=90.68^\circ$. La línea horizontal marca la máxima eficiencia posible debido al canal a $\mu\nu_\mu\nu_\tau$ mientras que la línea vertical señala la altura de decaimiento típica a esta energía y ángulo (ver texto).}
+			\label{fig:effES_tr_id}
+		\end{center}
+	\end{figure}
+	%
+	Se observa que el criterio de identificación de neutrinos ES selecciona la mayoría de los eventos que logran disparar el detector.
+	También, por debajo de \cant{x_d=300}{m} tanto la eficiencia de disparo como la de identificación alcanzan el máximo valor posile, que no puede exceder 0.822 debido a que el canal $\mu\nu_\mu\nu_\tau$ no da lluvias detectables.
+	Este valor se señala con una línea horizontal punteada.
+	
+	Por encima de \cant{x_d=300}{m} la eficiencia decrece con $x_d$ debido a que cada vez menos partículas alcanzan el detector.
+	Sin embargo, la altura característica de decaimiento para \cant{E_\tau=1}{EeV} y $\theta=90.68^\circ$ es $\lambda_h = \lambda_D\times\cos(\pi - \theta) = 4.9{\rm km} \times 0.0119 = 580{\rm m}$, como se indica con una líena punteada vertical.
+	Esto quiere decir que, como se detectan eventos hasta \cant{x_d\sim800}{m}, el $75\%$ de los $\tau$'s decaerán a alturas con eficiencia de decaimiento mayor a cero.
+	
+	En la figura \ref{fig:effES_en} se grafica la eficiencia de identificación para \cant{E_\tau=10^{17.5},~E_\tau=10^{18},~E_\tau=10^{18.5}}{eV}.
+	Como era de esperarse, existe un incremento en la eficiencia con la energía, producto de la mayor cantidad de partículas generada durante la evolución de la lluvia, que aumenta las chances de disparar más estaciones.
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=0.7\textwidth]{fig/resultadosAuger/eff_multEnergy_forThesis}
+			\caption{Eficiencia de disparo T3 e identificación en función de la altura de decaimiento del tauón para $\theta=90.68^\circ$ y diferentes energías. Las líneas verticales señalan la altura de decaimiento típica del tauón:\cant{185}{m} (\cant{E_\tau=10^{17.5}}{eV}), \cant{580}{m} (\cant{E_\tau=10^{18}}{eV}) y \cant{1850}{m} (\cant{E_\tau=10^{18.5}}{eV}).}
+			\label{fig:effES_en}
+		\end{center}
+	\end{figure}
+	%
+	Por un lado, cuando el decaimiento se produce cerca del suelo (valores $x_d$ bajos) la eficiencia crece hasta alcanzar su valor máximo, 0.822.
+	Por otro, a energías más altas se extiende el rango de $x_d$ con eficiencia no nula.
+	Cabe destacar aunque la eficiencia crezca con la energía, la altura de decaimiento típica lo hace de manera mucho más pronunciada (directamente proporcional a la energía), por ende, en resumen, el porcentaje de eventos detectados como función de la energía decrece.
+	Esto puede observarse en la figura \ref{fig:effES_en}, en la que se marca con lineas verticales la altura de decaimiento típica de cada energía. 
+	
+	Otro aspecto interesante de las eficiencias a neutrinos ES reside en su dependencia con el ángulo cenital.
+	Como puede observarse en la figura \ref{fig:effES_th} la eficiencia decrece a medida que el tauón emerge de la tierra mas verticalmente.
+	Esto se entiende debido a que las partículas del frente de la lluvia tendrán menos chances de alcanzar el suelo debido a que su dirección de propagación, en promedio, será también más vertical.
+	Por otro lado, la altura de decaimiento característica del tauón depende del ángulo cenital según $\lambda_h=\lambda_D\times\cos(\pi-\theta)$, por lo que a energía fija ($\lambda_D$ fijo), la fracción de eventos detectados decrece rápidamente con el ángulo.
+	Por ejemplo, para los 3 ángulos cenitales que se muestran en la figura \ref{fig:effES_th} la fracción de tauones que decaen a alturas en las que la eficiencia de identificación es 0 es 0.21 a $\theta=90.68^\circ$, 0.68 a $\theta=91.83^\circ$ y 0.85 a $\theta=92.98^\circ$.
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=0.47\textwidth]{fig/resultadosAuger/eff_multiTheta_forThesis}
+			\hfill
+			\includegraphics[width=0.47\textwidth]{fig/resultadosAuger/eff_multTheta_h10_forThesis}
+			\caption{Izquierda: eficiencia de identificación como función de la altura de decaimiento del tauón con energía \cant{E_\tau=10^{18}}{eV} y varios ángulos cenitales. La líena vertical a \cant{x_d=580}{m} marca la altura típica del decaimiento para $\theta=90.68^\circ$. Para $\theta=91.83^\circ$ y $\theta=92.98^\circ$ las alturas típicas de decaimiento son 1560 y \cant{2540}{m}, fuera de escala.
+			Derecha: Las mismas eficiencias pero como función del parámetro $h_{10}$ (ver texto).}
+			\label{fig:effES_th}
+		\end{center}
+	\end{figure}
+	%
+	
+	Es muy interesante introducir la variable $h_10\equiv x_d + 10{\rm km} \times\cos(\pi-\theta)$, que corresponde a la altitud del eje de la lluvia a \cant{10}{km} del decaimiento del tauón.
+	En el panel derecho de la figura \ref{fig:effES_th} se uestra la eficiencia como función de $h_{10}$ para los 3 ángulos cenitales.
+	Puede observarse como a primer orden, la eficiencia de identificación no depende de $\theta$ y $x_d$ por separado sino de $h_{10}$.
+	Esto se debe a que al tratarse de eventos muy horizontales, la probabilidad de detección depende básicamente de la altura a la que se alcanza el máximo desarrollo de la lluvia \cite{verTesisYann125}.
+	Para las energías consideradas en este análisis, este máximo se produce aproximadamente a \cant{10}{km} del decaimiento del tauón.
+	En particular, la figura \ref{fig:effES_th} muestra que es altamente improbable detectar un evento iniciado por un tauón de \cant{E_\tau=10^{18}}{eV} cuyo máximo se produce a más de \cant{1000}{m} sobre detector.
+	 
+	
+	\subsection{Integración de las eficiencias sobre el área del detector}
+	
+	Para llevar a cabo la integración en área de la ecuación \ref{eq:exp2} es necesario estudiar cómo varían las eficiencias cuando se considera un detector finito, es decir, con bordes.
+	Cuando una lluvia cae sobre una región completamente instrumentada del detector (interior y sin estaciones faltantes) la eficiencia será la ideal, calculada en la sección \ref{sbsc:idealEff}.
+	Sin embargo, existen casos en los que el baricentro de las partículas de la lluvia puede caer hasta una decena de kilómetros fuera del detector y aun así disparar suficientes estaciones para ser identificado como neutrino. 
+	Esto se esquematiza en la figura \ref{fig:lluviaFuera} para neutrinos DG y ES.
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{fig/resultadosAuger/lluviaFuera}\\
 			\vspace*{0.1\textwidth}
-			\includegraphics[width=0.9\textwidth]{fig/resultadosAuger/lluviaFuera_ES}
+			\includegraphics[width=0.8\textwidth]{fig/resultadosAuger/lluviaFuera_ES}
 			\caption{asd}
 			\label{fig:lluviaFuera}
 		\end{center}
 	\end{figure}
 	%
 	
-	Bajo estas circunstancias, para evaluar las eficiencias de una configuración dada del detector es posible considerar un área extendida que contenga no sólo toda la región instrumentada, sino todas las ubicaciones de la huella de la lluvia que puedan disparar estaciones, lo que se puede observar en la figura \ref{fig:areaExtendida}.
+	En este contexto, se define un área circular extendida que contiene al detector finito y es suficientemente grande como para contemplar la contribución de las lluvias cuyo punto de impacto $\vec{r}$ cae fuera del detector\footnote{En otras palabras, el tamaño del círculo se selecciona tal que las lluvias que caen fuera de él tiengan un probabilidad nula de disparar el detector.} (ver figura \ref{fig:aperturaReal}).
+	
+	Realizar la integral en área de la eficiencia consiste en hallar la eficiencia de identificación promedio en el área circular extendida~$A$.
+	%
+	\begin{equation}
+	\langle\epsilon(\psi)\rangle_{\rm A} \equiv \epsilon(\psi) =
+	\frac{\int\!\epsilon(\vec{r},\psi)\,{\rm d}A}{A}
+	\end{equation}
+	%
+	En esta ecuación, $\psi$ representa los parámetros $(E_\nu,\theta,D)$ para el canal DG y $(E_\tau,\theta,x_d)$ en ES.
+	Esta eficiencia depende de la cantidad y distribución espacial (configuración) de las estaciones de superficie que conforman al detector finito que se está considerando.
+	Es importante notar que si bien $\epsilon(\psi)$ depende de la elección del área extendida $A$ (cae al aumentarla), su producto $\epsilon(\psi)\times A$ es una constante que define una propiedad intrínseca del detector llamada área efectiva $A_{\rm ef}$:
+	%
+	\begin{equation}
+	A_{\rm ef}(\psi,t)=\int\!\epsilon(\vec{r},\psi,t)\,{\rm d}A
+	\label{eq:Aeff}
+	\end{equation}
+	%
+	Este área representa la superficie de un detector equivalente 100\% eficiente.
+	Para calcular esta magnitud, se podría en principio, repetir para cada configuración, la cadena de simulación completa desde la generación de la primera interacción a la respuesta del detector (finito en este caso).
+	Sin embargo, este camino es impráctico y requeriría un volumen de cómputo inaceptable.
+	Por esta razón, se decidió tomar un enfoque diferente en el que fuera posible reusar las simulaciones producidas sobre el detector infinito para calcular la eficiencia de identificación de todas las posibles configuraciones del SD real.
+
+	Los puntos de impacto $\vec{r}$ de las lluvias simuladas sobre un arreglo ideal son ubicados al azar dentro de la circunferencia del área extendida y las estaciones de los eventos simulados sobre el arreglo infinito que no coinciden con una estación activa del arreglo finito son descartadas (ver figura \ref{fig:aperturaReal}).
+	De esta manera se calcula el evento que se obtendría si la simulación se hubiera realizado sobre el detector finito.
+	Utilizando las estaciones así seleccionadas, se reevalúan las condiciones de trigger T3 y, en caso de que se satisfagan, se recomputan las variables globales, los cortes de selección de lluvias inclinadas y lluvias jóvenes. 
+	En la figura \ref{fig:aperturaReal} se resume, a modo de ejemplo, los resultados posibles de reevaluar un evento que se identifica como neutrino sobre un arreglo infinito.
+	
+% 	El cociente de eventos identificados sobre eventos totales, determina la eficiencia de identificación promedio $\epsilon(E_\nu,\theta,D)$ de la configuración:
+% %
+% \begin{equation}
+% \epsilon (E_\nu, \theta, D) = \frac{N_{\rm id}(E_\nu, \theta, D)}{N_{\rm sim}(E_\nu, \theta, D)} 
+% \end{equation}
+% %
+% El $A_{\rm ef}(E_\nu,\theta,D,t)$ se obtiene multiplicando este valor por la superficie del área extendida $A$.
+	
 	%
 	\begin{figure}[h!]
 		\begin{center}
-			\includegraphics[width=0.9\textwidth]{fig/resultadosAuger/aperturaReal}
-			\caption{asd}
-			\label{fig:areaExtendida}
+			\includegraphics[width=0.63\textwidth]{fig/resultadosAuger/aperturaReal}
+			\caption{Ejemplo del resultado de ubicar la misma lluvia, iniciada por un neutrino profundo, en cuatro posiciones diferentes, sobre una configuración dada del detector.
+			Las flechas indican la dirección de avance de la lluvia, los puntos representan el arreglo ideal e infinito de estaciones y la circunferencia el área de detección extendida (ver texto).
+			Los símbolos sólidos corresponden a estaciones de la lluvia simulada que presentan trigger T2 y que también están activas en la configuración de referencia.
+			Los símbolos abiertos indican estaciones que no se encuentran en el arreglo real. Los símbolos redondos indican las lluvias identificadas como neutrinos y los cuadrados las que no.
+			En el caso~1 la lluvia está completamente contenida y es identificada como neutrino. En~2 cae completamente fuera de la configuración de referencia y, por lo tanto, no produce T3 sobre el detector real.
+			Aunque en el caso~3 la lluvia está parcialmente contenida y dispara el SD, no es identificada como neutrino debido a que sus estaciones tempranas no son registradas en el detector real. En~4, la lluvia pierde sus estaciones tardías pero es aún identificada ya que conserva su región temprana que es la que más influye en la discriminación.}
+			\label{fig:aperturaReal}
 		\end{center}
 	\end{figure}
 	%
+% 	\clearpage
 	
-	Entonces, para realizar la integral en área de las eficiencias, 
+	\subsection{Integración temporal: evolución del detector}
 	
-	\subsection{Envejecimiento del detector}
+	Incluir la evolución temporal del detector en la integración de la ecuación \ref{eq:exp2} no es simple.
+	Si bien la construcción del SD de Auger concluyó a finales de 2008, y se comporta de manera estable desde entonces, es común que algunas estaciones entren o salgan de servicio por mantenimiento, fallas o situaciones fortuitas.
+	Por este motivo el estado del detector es monitoreado cada segundo mediante la frecuencia de disparo T2 de todas las estaciones.
+	A partir de esta información se generan archivos que registran las configuraciones (conjunto de estaciones activas) del SD con una resolución de un segundo.
+	
+	Entonces, de manera ideal, habría que evaluar la exposición de todas las configuraciones por las que pasa el detector y realizar la integración mediante una suma pesada por la cantidad de tiempo que se mantiene en cada una.
+	Como no es posible procesat tal cantidad de información, se dividió el periodo de búsqueda de en intervalos de 3 días y se tomó, para cada uno de ellos, una configuración de representativa. 
+	Luego, a cada una de estas configuraciones se le asignó un peso determinado por la fracción del tiempo en que el detector se encuetra en dicha configuración representativa, o en una de mayor eficiencia dentro de dicho intervalo.
+	
+	Para cada periodo de tiempo, no es evidente cual de las configuraciones por las que pasa el SD es conveniente elegir.
+	Para abordar este problema se trabajó bajo la aproximación de que, dentro de los 3 días de duración del periodo, la exposición es una función de la cantidad de estaciones activas y no de su distribución espacial particular.
+	Si bien es claro que esta aproximación no es válida en general\footnote{Por ejemplo, a misma cantidad de estaciones, una fila de estaciones no tiene la misma exposición que un arreglo cuadrado}, es muy buena al restringirse a periodos de tiempo lo suficientemente cortos tal que las configuraciones, con muchas estaciones activas, por las que pasa el detector son muy similares.
+	
+	En la figura \ref{fig:t2FilePlot} se muestra, a modo de ejemplo, la cantidad de estaciones activas en función del tiempo para el periodo que va del 3/01/08 al 5/01/08. Las zonas sombreadas corresponden a periodos, conocidos como ``bad periods", en los que el detector se encontraba particularmente inestable y que son removidos del análisis.
+	Como puede verse, la cantidad de estaciones activas es esencialmente constante la mayor parte del tiempo con la excepción de breves periodos en los que puede caer significativamente.
+	En estos intervalos la configuración espacial del detector puede ser significativamente diferente y la aproximación de que la exposición depende solo del número de estaciones deja de ser válida.
+	Es por ello que estos intervalos son eliminados y se restan de la fracción de tiempo en que se considera activa a la configuración de referencia, es decir, se subestima la eficiencia como 0.
+	
+	Para elegir la confguración de referencia se busca maximizar el producto $N \times F$, en donde $N$ es la cantidad de estaciones activas y $F$ la fracción de tiempo que el detector permanece en la configuración de referencia o en una equivalente (esto es, con igual o mayor número de estaciones activas).
+	Entonces, con este criterio se selecciona una configuración representativa para cada uno de los periodos de 3 días.
+	Si para un periodo existe más de una configuración, se toma la que ocurre primero en el tiempo (es indistinto bajo la aproximación en que se trabaja).
+	Este método permite obtener una cota inferior para la exposición del detector, ya que siempre se subestima la cantidad de tiempo que este permanece activo.
+	Con el fin de estimar este error sistemático se estudió, para un intervalo de tiempo reducido, como varía la exposición al considerar periodos de duración inferior a los 3 días. Se obtuvo como resultado que la diferencia es del orden del 1\%, muy por debajo de las otras fuentes de error que se discuten en la sección \ref{sc:systErr}.
+	%
+	\begin{figure}[ht!]
+	\begin{center}
+	\includegraphics [width=0.90\textwidth]{fig/resultadosAuger/t2FilePlot.pdf}
+	\caption{Cantidad de estaciones activas en función del tiempo para el periodo periodo del 3/01/08 al 5/01/08. La zona tachada corresponden a un ``bad period" (ver texto). La configuración de referencia elegida para este periodo cuenta con 1403 estaciones activas.
+	La zona sombreada corresponde a $N \times T$ en donde $N$ es la cantidad de estaciones activas y $T$ el tiempo en que el detector permanece en la configuración de referencia o en una equivalente (esto es, con igual o mayor número de estaciones activas).}
+	\label{fig:t2FilePlot}
+	\end{center}
+	\end{figure}
+	%
+	
+	\subsubsection{Envejecimiento del detector}
+	
+	Además de la cantidad de estaciones activas, otro factor a tener en cuenta a la hora de realizar la integración temporal es el envejecimiento del detector.
+	Para ello, es necesario contemplar cómo se modifica con el paso del tiempo el comportamiento de sus distintos componentes, sobre todo cuando éste afecta la señal registrada.
+	
+	Ante el pasaje de partículas por la estación, la señal en el PMT presenta un flanco de subida abrupto y un decaimiento exponencial.
+	Mientras que el rápido crecimiento inicial se encuentra dominado por una única reflexión de la luz Cherenkov en el Tyvec de la estación, el decaimiento posterior se produce debido a varias de estas reflexiones.
+	Es por esto que tanto la reflectividad del Tyvec como la longitud de absorción de la luz en el agua son parámetros de la estación que afectan fuertemente las características de la señal.
+	Por otro lado, por ejemplo debido a que las estaciones se encuentran a al intemperie\footnote{Las estaciones sufren cambios de temperatura diarios, estacionales y hasta episodios de congelamiento.}, ambos parámetros son afectados por el envejecimiento del detector y habrá que tener en cuenta su variación a la hora de simular las estaciones.
+	
+	Si bien hasta la fecha no existe ningún mecanismo implementado que permita monitorear constantemente la reflectividad del Tyvec (TyRef) y la absorción del agua (wAbs) de las estaciones, el tiempo de decaimiento de la señal (LDT por sus siglas en inglés, \emph{light decay time}) depende fuertemente de estos parámetros y sirve como una medida indirecta de los mismos.
+	Entonces, para modelar el detector se estudiará el comportamiento de esta cantidad en función del tiempo, y además su dependencia con los parámetros TyRef y wAbs.
+	
+	Con esto en mente, la estrategia es la siguiente:
+	\begin{enumerate}
+	 \item \textbf{Estudiar el LDT:} para entender la evolución del detector es importante estudiar el comportamiento del LDT en los distintos sectores del detector como función del tiempo.
+	 \item \textbf{Definir una estrategia de simulación:} teniendo en cuenta cuánto y cómo varía el LDT es posible decidir cómo se modelará el detector. Esto puede implicar utilizar un detector promedio o incluso uno que incluya sus fluctuaciones segun el momento y la posición de la estación.
+	 \item \textbf{Obtener LDT(tyRef,wAbs):} dado que para simular la señal en las estaciones con \Offline{} se utilizan como parámetros de entrada la reflectividad del Tyvec y la absorción del agua, será necesario analizar como obtener el valor de LDT buscado como función de estos parámetros.
+	\end{enumerate}
+
+	En la figura \ref{fig:ldtArray} se muestra como ejemplo la distribución de LDT promedio de cada estación del array en el mes de Enero de 2005, 2008 y 2013. 
+	%
+	\begin{figure}[ht!]
+		\begin{center}
+			\includegraphics[width=0.67\textwidth]{fig/resultadosAuger/Out_decaytime_main_2005_01}
+			\includegraphics[width=0.67\textwidth]{fig/resultadosAuger/Out_decaytime_main_2008_01} 
+			\includegraphics[width=0.67\textwidth]{fig/resultadosAuger/Out_decaytime_main_2013_01}
+			\caption{LDT promedio de cada estación para tres estados del detector. La derivación de estos gráficos se explica en el texto.}
+			\label{fig:ldtArray}
+		\end{center}
+	\end{figure}
+	%
+	Cada una de las estaciones que se grafica participó en el mes de al menos un evento clasificado como T3.
+	Para obtener el valor del LDT promedio se utilizó lo que se denomina el \emph{shape histogram} de cada estación.
+	Este consiste en un registro de señales debidas a muones atmosféricos algunos minutos previos al evento T3.
+	Sobre cada una de estas señales se ajustó un decaimiento exponencial sobre los cuatro bines posteriores al de máxima intensidad (\cant{100}{ns}) y se utilizó la constante de decaimiento obtenida en cada caso para calcular un valor promedio.
+	Si alguna estación aparece en más de un evento T3 simplemente se promedia los LDT sobre cada aparición.
+	
+	Puede observarse en la figura \ref{fig:ldtArray} es que el LDT parece tomar valores similares en las regiones del detector que fueron puestas en operación en momentos cercanos.
+	Esto puede notarse en que la parte sur, primera en ser desplegada, tiene un color en promedio diferente que la parte norte, más nueva.
+	
+	
+	
+	
 	
 	\begin{figure}[h!]
 		\begin{center}
@@ -392,14 +568,6 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 		\end{center}
 	\end{figure}
 	
-	\begin{figure}[h!]
-		\begin{center}
-			\includegraphics[width=0.9\textwidth]{fig/resultadosAuger/exposure_Arrays}
-			\caption{asd}
-			\label{fig:}
-		\end{center}
-	\end{figure}
-	
 	\begin{table}[h!]
 	\centering
 	\renewcommand{\arraystretch}{1.4}
@@ -412,11 +580,87 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 			\end{tabular}
 	\end{table}
 	
-	\subsection{Integración temporal: evolución del detector}
-	
-	
-	
 	\subsection{Resultado final}
+	
+	Con todo lo expuesto hasta el momento es posible realizar la integración completa de las ecuaciones \ref{eq:exp4DG} y \ref{eq:exp4ES}, y obtener así las exposiciónes a los distintos canales de detección de neutrinos en Auger, ES, DGH y DGL.
+	Sin embargo, dado que hasta la fecha ningún experimento ha detectado neutrinos de energías cercanas al EeV~\footnote{Los neutrinos detectados por IceCube tienen una energía reconstruida 100 veces menor.}, es tambien interesante calcular la exposición a neutrinos, es decir, sin importar su dirección de arrivo.
+	
+	\subsubsection{Exposición a neutrinos - Combinaci\'on de los análisis}
+	
+	Si bien cada uno de los análisis fue optimizado para identificar neutrinos en cierto rango de ángulo cenital, en principio la sensibilidad de cada uno puede extenderse más allá del mismo.
+	Por ejemplo, un neutrino ES que haya sido rechazado por el criterio de identificación ES por una fluctuación, puede todavia ser aceptado por el criterio de identificación DGH, dado que sus cortes en velocidad son algo más laxos.
+	Por otro lado, el criterio de DGH no utiliza eventos de 3 estaciones, pero pueden ser recuperados por el criterio ES.
+	Entonces, la manera correcta de calcular la exposición a cada uno de los canales se esquematiza en la figura \ref{fig:sketch_combined}.
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=0.65\textwidth]{fig/resultadosAuger/sketch_combined_5}
+			\caption{asd}
+			\label{fig:sketch_combined}
+		\end{center}
+	\end{figure}
+	%
+	Logicamente, si lo que interesa medir es el flujo de neutrinos sin importar la dirección de la que proviene (flujo difuso), basta con que un evento satisfaga al menos uno de los tres criterios de selección para que sea identificado como neutrino.
+	Con esto en mente, para calcular la exposición a neutrinos en cierto rango angular (lluvias simuladas ES, DGH o DGL) es necesario aplicarle a cada evento simulado los tres criterios de selección (crit ES, DGH y DGL) y, en caso de pasar alguno de los tres, calcular su contribución a la exposición de su canal.
+	
+	Una vez obtenidas las exposiciónes a cada canal, es posible calcular la exposición a neutrinos como en la ecuación \ref{eq:expTot}.
+	%
+	\begin{equation}\renewcommand{\arraystretch}{2}
+	\begin{array}{rcl}
+	 N_{esp}& =& N_{esp}^{DGL}+N_{esp}^{DGH}+N_{esp}^{ES} \\
+	 & = & \int\limits_{E_\nu}\Phi(E_\nu)~({\cal E}^{DGL}+{\cal E}^{DGH}+{\cal E}^{ES})(E_\nu)~dE_\nu\\
+	 & \equiv & \int\limits_{E_\nu}\Phi(E_\nu)~{\cal E}(E_\nu)~dE_\nu
+	\end{array}
+	\label{eq:expTot}
+	\end{equation}
+	%
+	
+	Es interesante entonces estudiar como afecta aplicar los tres criterios de selección a cada canal de detección.
+	En la tabla \ref{tab:missclass} se muestra para cada canal la fracción (pesada) de neutrinos que detecta cada uno de los canales:
+	%
+	\begin{table}[h!]
+		\begin{center}\renewcommand{\arraystretch}{1.4}
+			\begin{tabular}{|c|c|c|c|}
+			\hline
+			\diagbox{Lluvia}{Criterio} & ES & DGH & DGL \\ \hline
+			ES & 0.951 & 0.048 & despreciable \\ \hline
+			DGH & 0.195 & 0.804 & despreciable \\ \hline
+			DGL & despreciable & despreciable & 0.999 \\
+			\hline
+			\end{tabular}
+		\end{center}
+		\label{tab:missclass}
+		\caption{asd}
+	\end{table}
+	%
+	
+%	0.84:0.14:0.02
+%	
+%           &    ES crit    &    DGH crit    &     DGL crit
+% ES sh     &    0.789      &    0.042       &     neglect.
+% DGH sh    &    0.027      &    0.112       &     neglect.
+% DGL sh    &    neglect.   &    neglect.    &     0.020
+% 	you are right, these numbers are important. I will work on that after the ICRC. For the moment I can only give you the exposure contribution (gain) in an E^{-2} scenario matrix, and it looks like:
+% 
+%           &    ES crit    &    DGH crit    &     DGL crit
+% ES sh     &    0.695      &    0.035       &     neglect.
+% DGH sh    &    0.045      &    0.185       &     neglect.
+% DGL sh    &    neglect.   &    neglect.    &     0.04
+% 
+% please take into account that we have a systematic error of 40%. 
+% for instance, from the table you can see that 3.5% of the total limit to an E^-2 flux is due to simulated 
+% ES neutrinos selected by the DGH analysis. This gives an idea of the probability of "missclassification", but its no so simple, since the most of the ES simulated neutrinos that passes ES crit, also passes the DGH crit with a high reconstructed angle...
+% In any case, if any of the three analysis finds a candidate we will have to scrutinize it with as many eyes 
+% as possible and try to (1) make sure it is a neutrino and not a detector fluke, and (2) identify it as ES or 
+% Down-Going quasi-horizontal, something that might not be that easy.
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	\begin{figure}[h!]
 		\begin{center}
@@ -427,6 +671,7 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	\end{figure}
 	
 \section{Errores sistem\'aticos}
+\label{sc:systErr}
 			
 	\begin{table}[h!]
 	\centering
