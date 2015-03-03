@@ -1,0 +1,5 @@
+\diagbox{Lluvia}{Criterio} & ES $\wedge$ DGH &  ES    &  DGH   &  DGL      \\ \hline
+ES                         & 0.90            &  0.86  &  0.48  &  0.00     \\ \hline
+DGH                        & 0.10            &  0.14  &  0.52  &  0.03     \\ \hline
+DGL                        & 0.00            &  0.00  &  0.00  &  0.97     \\ \hline\hline
+Probabilidad               & 0.69            &  0.20  &  0.09  &  0.02     \\

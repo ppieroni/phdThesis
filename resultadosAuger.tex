@@ -540,70 +540,101 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	\end{figure}
 	%
 	Cada una de las estaciones que se grafica participó en el mes de al menos un evento clasificado como T3.
-	Para obtener el valor del LDT promedio se utilizó lo que se denomina el \emph{shape histogram} de cada estación.
-	Este consiste en un registro de señales debidas a muones atmosféricos algunos minutos previos al evento T3.
-	Sobre cada una de estas señales se ajustó un decaimiento exponencial sobre los cuatro bines posteriores al de máxima intensidad (\cant{100}{ns}) y se utilizó la constante de decaimiento obtenida en cada caso para calcular un valor promedio.
-	Si alguna estación aparece en más de un evento T3 simplemente se promedia los LDT sobre cada aparición.
+	Para obtener el valor del LDT de cada una se utilizó lo que se denomina el \emph{shape histogram}, que se registra para gada estación que participa de un evento T3.
+	Este histograma es el promedio de todas las señales aleatoreas cercanas a \cant{1}{VEM} registradas durante algunos minutos previos a cada evento, es decir, es una suerte de señal elemental promedio.
+	Sobre la misma se ajustó un decaimiento exponencial sobre los cuatro bines posteriores al de máxima intensidad (un rango temporal de \cant{100}{ns}) y obtuvo una estimación del LDT.
+	Si alguna estación aparece en más de un evento T3 durante el mes, simplemente se promedia los LDT de cada aparición.
 	
 	Puede observarse en la figura \ref{fig:ldtArray} es que el LDT parece tomar valores similares en las regiones del detector que fueron puestas en operación en momentos cercanos.
-	Esto puede notarse en que la parte sur, primera en ser desplegada, tiene un color en promedio diferente que la parte norte, más nueva.
+	La parte sur del detector, primera en ser desplegada, muestra un color en promedio diferente que la parte norte, instalada algunos años despues.
+	También puede notarse que el valor de LDT mínimo del detector (fácilmente apreciable en la escala de color de los gráficos), decreció de manera apreciable con los años, de \cant{\sim54}{ns} en 2005 hasta \cant{\sim44}{ns} en 2003.
 	
+	Para obtener el efecto de la evolución del LDT en el cálculo de exposure, el único camino posible es resimular la señal que generan las lluvias en las estaciones y un nuevo cálculo de eficiencias.
+	Dado que esto es muy costoso computacionalmente, fue necesario elegir un número manejable de detectores representativos.
+	Entonces el camino elegido fue despreciar las fluctuaciones locales entre estaciones y simplemente simular algunos \emph{detectores promedio}, que posean un LDT constante que represente el estado del detector durante algún período de tiempo y al mismo tiempo teniendo cuidado de no sobreestimar la exposición.
 	
-	
-	
-	
+	Para elegir qué detectores promedio simular, se observó la evolución del LDT promedio sobre todo el SD, lo que se muestra en el panel superior de la figura \ref{fig:timeEvolution} junto con su desviación estandar.
+	%
 	\begin{figure}[h!]
 		\begin{center}
 			\includegraphics[width=\textwidth]{fig/resultadosAuger/timeEvolution}
-			\caption{asd}
-			\label{fig:}
+			\\ \vspace{0mm}
+			\includegraphics[width=\textwidth]{fig/resultadosAuger/fractionEvolution}
+			\caption{Arriba: Evolución del LDT del detector como función del tiempo. La línea negra gruesa marca el promedio del LDT sobre todo el SD y las líneas rojas punteadas su desviación estandar.
+			Se señalan además el valor estandar utilizado por \Offline{} y los valores elegidos para representar el detector en los diferentes períodos de tiempo.
+			Abajo: Fracción de las estaciones por encima del LDT elegido para simular. La mayor parte del tiempo más del 50$\%$ del detector se encuentra por encima del valor simulado.}
+			\label{fig:timeEvolution}
 		\end{center}
 	\end{figure}
+	%
+	Se observa en línea negra gruesa que el valor promedio del LDT tiende a decrecer con el tiempo.
+	Para contemplar este descenso se eligieron tres valores por debajo del mismo que se utilizó como referencia para simular las eficiencias.
+	Los valores elegidos fueron \cant{63}{ns} entre 2004 y 2009, \cant{60}{ns} entre 2010 y 2011 y \cant{57}{ns} desde 2012 en adelante, como se señala en línea punteada en el panel superior de la figura \ref{fig:timeEvolution}.
+	Se consideró que estos tres períodos son un buen balance en el compromiso entre representar de manera fiel el detector y no exceder la capacidad de cómputo a la que se tenia acceso.
+	Como se observa en el panel inferior de la figura \ref{fig:timeEvolution} la fracción de estaciones por encima del valor elegido supera el 50$\%$ la mayor parte del tiempo.
 	
+	Una vez definidos los valores de LDT que se quieren representar, fue necesario determinar qué conjunto de valores de tyRef y wAbs utilizar para obtener el LDT deseado.
+	Los valores estandar utilizados en \Offline{} son \cant{{\rm wAbs}=100}{m} y tyRef=0.96, con los que se obtiene un valor de \cant{{\rm LDT}=63}{ns}, como se señala en el panel superior de la figura \ref{fig:timeEvolution}.
+	Para definir el resto de los valores, se utilizó el mapa LDT(tyRef,wAbs) que se muestra en la figura \ref{fig:timedecay_vs_reflect_absorp}, cedido por Mariangela Settimo~\footnote{ Laboratoire de Physique Nucléaire et de Hautes Energies (LPNHE), Universités Paris 6 et Paris 7, CNRS-IN2P3, Paris, France}.
+	%
 	\begin{figure}[h!]
 		\begin{center}
-			\includegraphics[width=0.9\textwidth]{fig/resultadosAuger/timedecay_vs_reflect_absorp}
-			\caption{asd}
-			\label{fig:}
+			\includegraphics[width=0.9\textwidth]{fig/resultadosAuger/timedecay_vs_reflect_absorp_2}
+			\caption{Valor de LDT obtenido con \Offline{} utilizando (tyRef,wAbs) como parámetros de entrada.}
+			\label{fig:timedecay_vs_reflect_absorp}
 		\end{center}
 	\end{figure}
-	
+	%
+	Para obtenerlo, para cada juego de (tyRef,wAbs) se inyecto en una estación del detector un muón vertical y luego de simular su señal en los PMTs se ajustó sobre la misma un decaimiento exponencial. Luego de realizar el procedimiento del orden de cien veces se obtuvieron los valores promedio que se muestran en la figura.
+	Tal como puede observarse, la mayor parte del cambio en el LDT parece deberse a un cambio en la reflectividad del Tyvec, mientras que la absorción del agua implica un cambio de un orden menor\footnote{Se necesita un cambio de un $30\%$ en la absorción del agua para obtener el cambio que sucede al variar 1$\%$ la reflectividad del Tyvec.}.
+	Pero por otro lado, existe una degeneración en LDT(tyRef,wAbs), es decir, más de un conjunto (tyRef,wAbs) genera el mismo LDT.
+	Debido a la falta de información sobre cuál es la verdadera causa del decenso del LDT en el detector, se decidió variar indistintamente tyRef y wAbs para obtener los LDT que se decidieron simular.
+	Estos valores se señalan con línea punteada en la figura \ref{fig:timedecay_vs_reflect_absorp} y se detallan en la tabla \ref{tab:ageingEffect}.
+	%
 	\begin{table}[h!]
 	\centering
 	\renewcommand{\arraystretch}{1.4}
-	 \begin{tabular}{l|ccc|c|c}
-				Período       & tyRef & wAbs & LDT        & Constribución &   Cambio relativo \\
+	 \begin{tabular}{|l|ccc|c|}
 				\hline
-				$[2004 - 2008]$ & 0.94  & 100  & $\sim63$ns & $33.2\%$     &   $--$ \\
-				$[2009 - 2010]$ & 0.94  & 80   & $\sim60$ns & $25.6\%$     &   $-15.2\%$\\
-				$[2011 - 2013]$ & 0.93  & 100  & $\sim57$ns & $41.2\%$     &   $-17.5\%$\\
-			\end{tabular}
+				Período       & tyRef & wAbs & LDT        &    Pérdida de exposición \\
+				\hline
+				$2004 - 2008$ & 0.94  & 100  & $\sim63$ns &    $--$ \\
+				$2009 - 2010$ & 0.94  & 80   & $\sim60$ns &    $-15.2\%$\\
+				$2011 - 2013$ & 0.93  & 100  & $\sim57$ns &    $-17.5\%$\\
+				\hline
+	 \end{tabular}
+	 \caption{Valores de los parámetros tyRef y wAbs elegidos para representar el estado del detector en los períodos que se detallan en la primer columna. La cuarta columna muestra el valor de LDT que se busca simular mientras que la última muestra la pérdida de exposición que el cambio implica.}
+	 \label{tab:ageingEffect}
 	\end{table}
+	%
+	Finalmente, con estos valores se obtuvieron tres juegos de eficiencias que se utilizaron para calcular la exposición en los tres períodos de tiempo correspondientes.
+	La última columna de la tabla \ref{tab:ageingEffect} muestra la pérdida de exposición por unidad de tiempo obtenida en el cálculo.
 	
 	\subsection{Resultado final}
 	
 	Con todo lo expuesto hasta el momento es posible realizar la integración completa de las ecuaciones \ref{eq:exp4DG} y \ref{eq:exp4ES}, y obtener así las exposiciónes a los distintos canales de detección de neutrinos en Auger, ES, DGH y DGL.
-	Sin embargo, dado que hasta la fecha ningún experimento ha detectado neutrinos de energías cercanas al EeV~\footnote{Los neutrinos detectados por IceCube tienen una energía reconstruida 100 veces menor.}, es tambien interesante calcular la exposición a neutrinos, es decir, sin importar su dirección de arrivo.
+	Sin embargo, dado que hasta la fecha ningún experimento ha detectado neutrinos de energías cercanas al EeV~\footnote{Los neutrinos detectados por IceCube tienen una energía reconstruida 100 veces menor.}, es también interesante calcular la exposición total a neutrinos, es decir, sin importar su dirección de arrivo.
 	
-	\subsubsection{Exposición a neutrinos - Combinaci\'on de los análisis}
+	\subsubsection{Exposición total a neutrinos - Combinaci\'on de los análisis}
 	
-	Si bien cada uno de los análisis fue optimizado para identificar neutrinos en cierto rango de ángulo cenital, en principio la sensibilidad de cada uno puede extenderse más allá del mismo.
+	Antes de obtener la exposición total a neutrinos en Auger, es necesario combinar los análisis, teniendo en cuenta que cada uno puede mejorar la exposición de los demás.
+	Si bien cada análisis fue optimizado para identificar neutrinos en cierto rango de ángulo cenital, en principio su sensibilidad puede extenderse más allá del mismo.
 	Por ejemplo, un neutrino ES que haya sido rechazado por el criterio de identificación ES por una fluctuación, puede todavia ser aceptado por el criterio de identificación DGH, dado que sus cortes en velocidad son algo más laxos.
-	Por otro lado, el criterio de DGH no utiliza eventos de 3 estaciones, pero pueden ser recuperados por el criterio ES.
-	Entonces, la manera correcta de calcular la exposición a cada uno de los canales se esquematiza en la figura \ref{fig:sketch_combined}.
+	Por otro lado, el criterio de DGH no acepta eventos de 3 estaciones pero pueden ser seleccionados por el criterio ES.
+	
+	Logicamente, si lo que interesa medir es el flujo de neutrinos sin importar la dirección de la que proviene (flujo difuso), basta con que un evento satisfaga al menos uno de los tres criterios de selección para que sea identificado como neutrino.
+	Con esto en mente, en la figura \ref{fig:sketch_combined} se esquematiza la manera correcta de calcular la exposición.
 	%
 	\begin{figure}[h!]
 		\begin{center}
 			\includegraphics[width=0.65\textwidth]{fig/resultadosAuger/sketch_combined_5}
-			\caption{asd}
+			\caption{Para calcular la exposición a cada canal es necesario aplicar los tres criterios de selección a todas las lluvias simuladas. En case de ser seleccionada por al menos uno de los tres criterios, dicha lluvia contribuye a la exposición de su canal. Luego La exposición total es la suma de las individuales, como se muestra en la ecuación \ref{eq:expTot}.}
 			\label{fig:sketch_combined}
 		\end{center}
 	\end{figure}
 	%
-	Logicamente, si lo que interesa medir es el flujo de neutrinos sin importar la dirección de la que proviene (flujo difuso), basta con que un evento satisfaga al menos uno de los tres criterios de selección para que sea identificado como neutrino.
-	Con esto en mente, para calcular la exposición a neutrinos en cierto rango angular (lluvias simuladas ES, DGH o DGL) es necesario aplicarle a cada evento simulado los tres criterios de selección (crit ES, DGH y DGL) y, en caso de pasar alguno de los tres, calcular su contribución a la exposición de su canal.
-	
-	Una vez obtenidas las exposiciónes a cada canal, es posible calcular la exposición a neutrinos como en la ecuación \ref{eq:expTot}.
+	Al igual que con los datos, cada lluvia simulada, sea ES, DGH o DGL, debe ser evaluada por los tres análisis (criterios de ES, DGH y DGL) y en caso de ser seleccionada por cualquiera de los tres criterios debe constribuir a su correspondiente exposición.
+	Luego, una vez obtenidas correctamente las exposiciónes a cada canal, se debe calcular la exposición total a neutrinos con la ecuación \ref{eq:expTot}.
 	%
 	\begin{equation}\renewcommand{\arraystretch}{2}
 	\begin{array}{rcl}
@@ -615,25 +646,74 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	\end{equation}
 	%
 	
-	Es interesante entonces estudiar como afecta aplicar los tres criterios de selección a cada canal de detección.
-	En la tabla \ref{tab:missclass} se muestra para cada canal la fracción (pesada) de neutrinos que detecta cada uno de los canales:
+	En la figura \ref{fig:expTot} se muestra la exposición del Observatorio para el período completo de medición (1 Enero 2004 - 20 Junio 2013), junto con las exposiciones correspondientes a cada canal. 
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=0.9\textwidth]{fig/resultadosAuger/exposure_combined_ageing}
+			\caption{Exposición combinada del Observatorio Pierre Auger para el período de medición (1 Enero 2004 - 20 Junio 2013), como función de la energía del neutrino. También se detallan las exposiciones obtenidas para cada canal.}
+			\label{fig:expTot}
+		\end{center}
+	\end{figure}
+	%
+	A baja energía la exposición es básicamente la del canal ES y los canales DG toman importancia por encima de \cant{E_\nu=10^{18.5}}{eV}.
+	
+	Es interesante entonces estudiar cuál es la ganancia de aplicar los tres criterios de selección a cada canal de detección.
+	En la tabla \ref{tab:expDist} se muestra la distribución de eventos esperados según canal y criterio de selección, en un escenario de $\Phi(E_\nu)\propto E_\nu^{-2}$.
+	La última columna de esta tabla muestra la suma de cada fila, es decir, qué cantidad de eventos de cada canal se espera haber detectado.
 	%
 	\begin{table}[h!]
 		\begin{center}\renewcommand{\arraystretch}{1.4}
-			\begin{tabular}{|c|c|c|c|}
+			\begin{tabular}{|c|c|c|c|c|}
 			\hline
-			\diagbox{Lluvia}{Criterio} & ES & DGH & DGL \\ \hline
-			ES & 0.951 & 0.048 & despreciable \\ \hline
-			DGH & 0.195 & 0.804 & despreciable \\ \hline
-			DGL & despreciable & despreciable & 0.999 \\
+			\diagbox{Lluvia}{Criterio} & ES & DGH & DGL  & Total\\ \hline
+			ES     &    0.80       &    0.04       &     $<0.001$ & 0.84 \\ \hline
+			DGH    &    0.03       &    0.11       &     $<0.001$ & 0.14 \\ \hline
+			DGL    &    $<0.001$   &    $<0.001$   &     0.02     & 0.02 \\
+			\hline
+			\end{tabular}
+		\end{center}
+		\label{tab:expDist}
+		\caption{Distribución de eventos según tipo de lluvia y criterio de selección en un escenario de $\Phi(E_\nu)\propto E_\nu^{-2}$. Los elementos diagonales muestran el efecto de aplicar sólo los criterios de selección optimizados para cada canal. El 93$\%$ de los eventos esperados proviene de los criterios optimizados (suma de la diagonal), mientras que el 7$\%$ restante se gana con la combinación de los análisis. En este escenario, se espera que el 84$\%$ de los eventos detectados correspondan a lluvias ES, el 14$\%$ a eventos DGH y sólo el 2$\%$ a eventos DGL.}
+	\end{table}
+	%
+	Los elementos diagonales de esta matriz representan la fracción de los eventos que se obtiene de aplicar sólo el criterio de selección optimizado para cada canal, mientras que los no diagonales la ganancia que implican los otros criterios.
+	De esta, se desprende que el 93$\%$ de los eventos se detectan por los criterios optimizados específicamente\footnote{La suma de los elementos diagonales es $0.80+0.11+0.02=0.93$.} y que la combinación de los análisis implica una ganancia de 7$\%$~\footnote{La suma de los elementos no diagonales es $0.03+0.04=0.07$.}.
+	También se muestra que el criterio de DGL no implica ninguna ganancia apreciable a los canales ES y DGH debido a que, por un lado los neutrinos ES tienen chances casi nulas de ser clasificados como eventos DGL y por otro, si bien algunas lluvias DGH pueden ser clasificadas como DGL debido a fluctuaciones en la resconstrucción angular, el peso estadístico de estos eventos es despreciable.
+	Del mismo modo, las probabilidades de que una lluvia DGL sea clasificada como ES son despreciables y si bien algunas de las DGL pueden ser clasificadas como DGH, su peso relativo en la exposición total es bajísimo (ver tabla \ref{tab:expDist}).
+	
+	
+	Con el cálculo de la exposición completo también es posible calcular la matriz de clasificación erronea (\emph{missclassification matrix} en inglés) de esta selección.
+	Sus elementos dan cuenta de la probabilidad de que un evento identificado por un dado criterio de selección haya sido en realidad iniciado por un evento correspondiente a un canal dado (ver tabla \ref{tab:missclass}).
+	%
+	\begin{table}[h!]
+		\begin{center}
+		\renewcommand{\arraystretch}{1.4}
+			\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			\diagbox{Lluvia}{Criterio} & ES $\wedge$ DGH &  ES    &  DGH   &  DGL      \\ \hline
+			ES                         & 0.90            &  0.86  &  0.48  &  0.00     \\ \hline
+			DGH                        & 0.10            &  0.14  &  0.52  &  0.03     \\ \hline
+			DGL                        & 0.00            &  0.00  &  0.00  &  0.97     \\ \hline\hline
+			Probabilidad               & 0.69            &  0.20  &  0.09  &  0.02     \\
 			\hline
 			\end{tabular}
 		\end{center}
 		\label{tab:missclass}
-		\caption{asd}
+		\caption{Matriz de clasificación erronea (\emph{missclassification matrix} en inglés). La última fila representa la probabilidad de aparición de cada tipo de clasificación. De los eventos identificados como neutrinos, se espera en el 69$\%$ de los casos una clasificación ES y DGH simultánea, mientras que en el 20$\%$ sólo ES, en el 9$\%$ clasificación DGH y en el 2$\%$ DGL. En caso de que un evento sea ES $\wedge$ DGH se espera que el 90$\%$ realmente sea ES y el 10$\%$ restante DGH. Las clasificaciones ES serán 86$\%$ lluvias ES y el 14$\%$ DGH. Un evento etiquetado como DGH será en el 52$\%$ realmente DGH y el 48$\%$ restante ES. Por último el 97$\%$ de los eventos DGL seran realmente DGL mientras que el 3$\%$ restante serán DGH mal clasificados.}
 	\end{table}
 	%
+	En esta se muestra como se espera que el 69$\%$ de los eventos sean clasificados como eventos ES y DGH simultaneamente, el 20$\%$ ES, el 9$\%$ DGH y el 2$\%$ DGL.
+	En caso de clasificación simultánea de los canales ES y DGH, el 90$\%$ de los casos corresponderá a eventos iniciados por neutrinos ES mientras que el 10$\%$ restante a lluvias DGH. 
+	Si se tuviera un evento sólo clasificado como ES, el 86$\%$ de los mismos correspondería a lluvias ES y el 14$\%$ restante a lluvias DGH.
+	En cambio si se registrara un evento clasificado como DGH, el 52$\%$ de las veces provendrá de una lluvia DGH, mientras que el 48$\%$ restante corresponderá a lluvias ES. 
+	Si bien esto podría parecer llamativo, no hay que perder de vista que se esperan sobre el detector al rededor de 8 veces más eventos ES que DGH.
+	Por último, el 97$\%$ de los eventos clasificados como DGL habran sido iniciados por lluvias DGL mientras que el 3$\%$ restante serán DGH mal clasificados.
 	
+	
+% 			ES & 0.951 & 0.048 & despreciable \\ \hline
+% 			DGH & 0.195 & 0.804 & despreciable \\ \hline
+% 			DGL & despreciable & despreciable & 0.999 \\
 %	0.84:0.14:0.02
 %	
 %           &    ES crit    &    DGH crit    &     DGL crit
@@ -654,56 +734,134 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 % as possible and try to (1) make sure it is a neutrino and not a detector fluke, and (2) identify it as ES or 
 % Down-Going quasi-horizontal, something that might not be that easy.
 	
+\section{Errores sistem\'aticos}
+\label{sc:systErr}
+
+El cálculo de la exposición descripto el la sección \ref{sc:expoNu} involucra una gran cantidad de factores. 
+Algunos de ellos, como la sección eficaz neutrino nucleón, las pérdidas de energía del \tauon{} en la tierra o el modelo hadrónico, no son conocidos con precisión y la comunidad científica convive con una variedad de opciones a las que asigna un similar grado de creencia.
+Entonces es importante entonces estimar la incerteza sistemática asociada a la particular selección de ingredientes utilizados y a los programas elegidos para llevar a cabo la simulación.
+En este contexto, es útil clasificar las elecciones realizadas en las siguientes categorías:
+%
+\begin{itemize}
+ \item \textbf{Simulaciones de Monte Carlo:} algunos de los pasos de las simulaciones Monte Carlo descriptas en el capítulo \ref{ch:simulacionAuger} se basan en modelos que describen física que no se conoce con detalle.
+ \item \textbf{Sección eficaz $\nu$--nucleón y pérdida de enería del \tauon{}:} sus valores no han sido medidas a estas energías y existen extrapolaciones alternativas a las adoptadas en este trabajo.
+ \item \textbf{Flujo de $\tau$s desde las montañas:} su incerteza está dominada por la elección del modelo de sección eficaz $\nu$--nucleón y de propagación del $\tau$ en la roca.
+\end{itemize}
+%
+El objetivo de ésta sección es describir la estrategia utilizada para estimar la incerteza asociada a cada una de estos grupos y discutir su propagación al resultado final.
+
+	\subsection{Método de estimación}
 	
+	Para obtener una estimación del error sistemático inducido por un dado ingrediente, $X$~\footnote{$X$ podría ser por ejemplo la lista productos de la interacción $\nu$--nucleón, que impacta en las eficiencias, o el modelo de pérdida de energía del \tauon{} en la tierra, que cambia el el factor $P(E_\tau|E_\nu,\theta)$ en la ecuación \ref{eq:exp5ES}.}, para los tres análisis se utilizó el mismo procedimiento.
+	Se reevaluó la exposición modificando uno o varios de los parámetros que cambian $X$ y se la comparó con la de referencia, obteniendo así una estimación de magnitud porcentual que puede alcanzar un cambio en dicho ingrediente.
+	Luego, dado que la evaluación de estos errores se encuentra limitada por el repertorio de modelos o programas que existen en la actualidad, en lugar calcular la desviación estandar respecto de la exposición de referencia para cada fuente de error, se utilizó como estimadores del error sistemático a los valores más optimista y más pesimista de entre todos los calculados para dicha fuente.
 	
-	
-	
-	
-	
-	
-	
+	Por otra parte, una comparación exhaustiva que incluya la reevaluación de la exposición en todo el espacio de parámetros requeriría generar ${\cal O}(10^7)$ eventos simulados\footnote{Las librerías de eventos generadas para las búsquedas de neutrinos en Auger tienen ${\cal O}(10^6)$ eventos en total.}. 
+	Este procedimiento es claramente impracticable y fue necesario buscar una alternativa.
+	El camino elegido fue el de restringir la comparación a una pequeña región representativa del espacio de parámetros. 
+	La filosofía para determinar dicha región representativa fue la misma en los trés análisis: elegir entre los bines que representen la mayor parte de la sensitividad en la búsqueda, los que más posibilidades tengan de ser afectados por las fuentes de los sistemáticos.
+	En particular, para el análisis de DGL se utilizó tres energías (\cant{0.3}{EeV},\cant{1}{EeV},\cant{3}{EeV}), de las que se resimuló los ángulos más cercanos a DGH todo el rango de profundidades \cite{tesisNavarro}.
+	Por otro lado, en DGH se consideró suficiente utilizar \cant{E_\nu=1}{EeV} y $\theta=85^\circ$ \cite{tesisJavier}.
+	Finalmente en el análisis de ES se resimuló los bines que se detallan en la figura \ref{fig:importantBins_oldWeights}~\cite{tesisYann}.
+	%
 	\begin{figure}[h!]
 		\begin{center}
-			\includegraphics[width=0.9\textwidth]{fig/resultadosAuger/exposure_combined_ageing}
-			\caption{asd}
-			\label{fig:}
+			\includegraphics[width=0.75\textwidth]{fig/resultadosAuger/importantBins_oldWeights}
+			\caption{Lluvias simuladas para el análisis de ES. En rojo se señalan los bines utilizados para el cálculo de errores sistemáticos.}
+			\label{fig:importantBins_oldWeights}
 		\end{center}
 	\end{figure}
 	
-\section{Errores sistem\'aticos}
-\label{sc:systErr}
-			
+	\subsection{Error asociado a las simulaciones de Monte Carlo}
+	
+	Este grupo incluye el generador de la interacción primaria en los canales DG, la parametrización de las PDFs (parton distribution function) en dicho generador, el simulador de EAS elegido y algunos de sus parámetros como el modelo hadrónico y el nivel de thinning.
+	
+		\subsubsection{Generador de la interacción primaria}
+		
+		Este sistemático aplica solo a los canales DG.
+		Tanto en DGL como en DGH se utilizó como referencia \herwig{} 6.5.10 \cite{herwigRef} y se comparó con {\sc PYTHIA}\cite{pythia} y {\sc HERWIG++} \cite{herwig++}.
+		La incerteza sistemática asociada a esta fuente es de \eband{2.6}{3.7} para DGL y de \eband{0}{7} en DGH.
+		
+		\subsubsection{Función de distribución de partones}
+		
+		Tanto \herwig{} como {\sc PYTHIA} ofrecen la posibilidad de elegir entre varias parametrizaciones de las PDFs o incluso utilizar un modelo externo.
+		Para evaluar esta fuente de sistemático en DGH se utilizó el modelo CTEQ06m~\cite{CTEQ06m} y en DGL el modelo MRST98~\cite{MRST98}.
+		Luego de una comparación exhaustiva contra las posibilidades ofrecidas, la incerteza obtenida para las distribuciones partónicas fue de \eband{2}{7} en DGH y \eband{4}{5} en DGL.
+		
+		\subsubsection{Simulador de EAS y algoritmo de thinning}
+		
+		Además de \aires{}, se recalculó el resultado en las lluvias DG utilizando {\sc CORSIKA} \cite{corsika}.
+		De esta reevaluación se obtuvo una pérdida de exposición del 17$\%$ para {\sc CORSIKA} respecto de \aires{}.
+		Por lo que se cita un error de \eband{0}{17} para DGH y \eband{17}{0} para DGL, en el que la exposición de referencia se calculó utilizando {\sc CORSIKA}.
+		
+		Respecto de esta fuente, para el análisis de ES no fue posible estimar el sistemático debido a que {\sc CORSIKA} no permite simular eventos ascendentes. 
+		%auger.in2p3.fr/DPA/minutes/mal00N/accomparison2.ps
+		
+		Otro parámetro importante a la hora de simular la evolución de las lluvias atmosféricas es el nivel de thinning, que determina el detalle con el que se simulan las partículas de baja energía.
+		Para los tres análisis se utilizó como referencia un factor de $10^{-6}$ y se lo comparó con simulaciones más detalladas, utilizando un factor de $10^{-7}$.
+		Los valores obtenidos fueron \eband{0.3}{0} para ES y \eband{7}{0} para DGH y DGL.
+		
+		\subsubsection{Modelo hadrónico}
+		
+		Otra fuente de incerteza en el proceso de simulaciónde la lluvia atmosférica reside en la elección del modelo utilizado para calcular las interacciones hadrónicas.
+		Estos modelos ajustan sus parámetros para reproducir los datos obtenidos en aceleradores a bajas energías, por lo que la simulacion de lluvias atmosféricas de altas energías requieren su extrapolación.
+		Para obtener el error sistemático asociado a esta fuente se utilizó como referencia el modelo QGSJETII \cite{qgsjetii} y se comparó el resultado con QGSJET \cite{qgsjet} y SYBIL \cite{sybil}.
+		El resultado obtenido fue \eband{4.7}{1} en ES, \eband{5}{2} en DGH y \eband{0}{6} en DGL.
+		
+	\subsection{Error asociado a la sección eficaz neutrino nucleón y a las pérdidas de energía del tauón}
+	
+	Para los canales DG se utilizó la sección eficaz junto con su incerteza asociada calculada por Sarkar en \cite{sarkarNuxSec}.
+	Al propagar el cálculo hacia la exposición se obtuvo una \eband{9}{9} en DGH y \eband{7}{7} en DGL.
+	Es importante resaltar que este resultado es compatible con nuevas extrapolaciones de las funciones de distribución de partones publicadas recientemente \cite{newPDFs}.
+	
+	Este procedimiento no pudo llevarse a cabo en el análisis de ES dado que un cambio en la sección eficaz implica la resimulación del término $f(E_\tau|E_\nu,\theta)$ (ver sección \ref{sbsbsc:sim_prop_tierra}).
+	
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=0.65\textwidth]{fig/resultadosAuger/nu_xsection_models}\\
+			\includegraphics[width=0.65\textwidth]{fig/resultadosAuger/tau_E_loss_models}
+			\caption{asd}
+			\label{fig:crossSectionSist}
+		\end{center}
+	\end{figure}
+	
+	
+	\subsection{Error asociado a la topografía }
+	
+	\subsection{Combinación de las incertezas de cada análisis}
+	
+	
+	
 	\begin{table}[h!]
 	\centering
 	\renewcommand{\arraystretch}{1.4}
 	\footnotesize
-		\begin{tabular}{|c|c|c|c|c|}
+	\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+		\begin{tabular}{|C{0.2\textwidth}|c|c|c|c|}
 		\hline
-		Source of  & ES        & DGH       & DGL        & Combined         \\
-		systematic & ($90^\circ,95^\circ$) & ($75^\circ,90^\circ$) & ($65^\circ,75^\circ$) & ES / DGH / DGL   \\
-		\hline
-		& {\tiny \bf GAP 2013-100}     & \multirow{2}{*}{\tiny \bf PRD 84, 2011}    &   \multirow{2}{*}{\tiny \bf GAP2013-013} & \multirow{2}{*}{\tiny \bf 83.9\% / 13.7\% / 2.4\% }\\
-		& {\tiny \bf PRD 79, 2009}     &     &  &  \\
-		\hline
-		
-		Int. generator                   	    &  not eval.    &   0\%, -7\%     &   +3\%, -4\%  & +0.07\%, -1.0\% \\
-		
+		Fuente del  & ES        & DGH       & DGL        & Combined         \\
+		sistemático & ($90^\circ,95^\circ$) & ($75^\circ,90^\circ$) & ($65^\circ,75^\circ$) & ES / DGH / DGL   \\
+% 		\hline
+% 		& {\tiny \bf GAP 2013-100}     & \multirow{2}{*}{\tiny \bf PRD 84, 2011}    &   \multirow{2}{*}{\tiny \bf GAP2013-013} & \multirow{2}{*}{\tiny \bf 83.9\% / 13.7\% / 2.4\% }\\
+% 		& {\tiny \bf PRD 79, 2009}     &     &  &  \\
 		\hline
 		
-		pdf in generator                &  not eval.    &   0\%, -7\%     &   +4\%, -5\%  & +0.1\%, -1.0\% \\
+		Gen. de interacción primaria    &  no apl. &   0\%, -7\%     &   +3\%, -4\%  & +0.07\%, -1.0\% \\
 		
 		\hline
 		
-		EAS simulation	                     	    &  not eval. &   0\%, -17\%    &   +17\%, 0\%  & +0.4\%, -2.3\% \\
+		PDF en el generador             &  no apl. &   0\%, -7\%     &   +4\%, -5\%  & +0.1\%, -1.0\% \\
 		
 		\hline
 		
-		Hadronic model                  		    & +4.7\%, -1\%      &  +5\%, -2\%     &   +0\%, -6\%  & +4.6\%, -1.3\% \\
+		Simulador de EAS                &  no eval. &   0\%, -17\%    &   +17\%, 0\%  & +0.4\%, -2.3\% \\
 		
 		\hline
-		Thinning                                        & +0.3\%, 0\%   &  +7\%,  0\%     &   +7\%,  0\%  & +1.1\%, -0.0\% \\
+		
+		Modelo hadrónico                & +4.7\%, -1\%      &  +5\%, -2\%     &   +0\%, -6\%  & +4.6\%, -1.3\% \\
+		
 		\hline
-		Detector simulator                              & not eval.     &  not eval.      &   +5\%,  -5\% & +0.1\%, -0.1\% \\
+		Algoritmo de thinning           & +0.3\%, 0\%   &  +7\%,  0\%     &   +7\%,  0\%  & +1.1\%, -0.0\% \\
 		\hline
 		\hline
 		{\bf $\bm{ \sigma_{\nu_\tau}\ \otimes\ \tau}$ E-loss}    & \multirow{2}{*}{\textcolor{Red}{+40\%, -33\%}}  & \multirow{2}{*}{+9\%, -9\%}  & \multirow{2}{*}{+7\%, -7\%} & \multirow{2}{*}{\bf +33.6\%, -27.7} \\
@@ -711,14 +869,16 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 		\hline
 		\hline
 % 				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		{\bf Topography} 	                            &  +18\%, 0\%    & included & not applicable   & +15.1\%, 0\%  \\
+		{\bf Topography} 	                            &  +18\%, 0\%    & +20\%, 0\% & not apl.   & +18.9\%, 0\%  \\
 
 		\hline
 		\hline
-		{\bf Total}                     &  \multicolumn{3}{c|} {}  & {\bf +37.1\%, -27.9\%}         \\
+		{\bf Total}                     &  \multicolumn{3}{c|} {}  & {\bf +38.8\%, -27.9\%}         \\
 		\hline
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\end{tabular}
+		\caption{}
+		\label{tab:sist}
 	\end{table}
 
 \section{Analisis ciego}
