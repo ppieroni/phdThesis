@@ -1,7 +1,9 @@
 \chapter{Resultados y discusi\'on}
 \label{ch:resAuger}
 
-Una vez definidos los criterios de selección es posible calcular la exposición del detector y llevar a cabo la búsqueda de candidatos.
+Una vez definidos los criterios de selección se calcularon las eficiencias de identificación para cada uno de los tres análisis y se llevó a cabo la búsqueda de candidatos sin que ningún evento supere los cortes de selección.
+En este escenario se utilizó las eficiencias para calcular la exposición de la medición y se obtuvo una cota superiór a la magnitud del flujo de neutrinos ultra energéticos.
+
 
 
 
@@ -16,12 +18,12 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	 \label{eq:exp0}
 	\end{equation}
 	%
-	En esta, $\Gamma$ simboliza el conjunto de variables del que dependa la detección, que en este trabajo corresponde a $(E_{\nu},A,\Omega,T)$\footnote{Se desprecia cualquier tipo de inhomogeneidad en el flujo.}, es decir, la energía de los neutrinos incidentes, el área del detector, el ángulo sólido que se observa y el tiempo durante el que se mide, respectivamente.
+	Donde $\Gamma$ simboliza el conjunto de variables del que dependa la detección, que en este trabajo corresponde a $(E_{\nu},A,\Omega,T)$\footnote{Se desprecia cualquier tipo de inhomogeneidad en el flujo.}, es decir, la energía de los neutrinos incidentes, el área del detector, el ángulo sólido que se observa y el tiempo durante el que se mide, respectivamente.
 	
 	De la ecuación \ref{eq:exp0} se desprende entonces que, como $\frac{dN_{\nu}}{d\Gamma}$ es la cantidad de neutrinos de energía $E_{\nu}$ que alcanzan el detector por unidad de área, ángulo sólido y tiempo, la exposición debe representar qué cantidad de cada energía se espera haber detectado en promedio en cada unidad de área del detector y en cada instante de tiempo.
 	Es decir, la exposición contiene toda la información correspondiente a la medición y al detector, mientras que el flujo incluye la física de la fuente de lo que se espera detectar.
 	
-	Si se considera a $\frac{dN_{\nu}}{d\Gamma}$ como un flujo difuso $\Phi(E_{\nu})$, es decir isótropo, homogeneo y constante en el tiempo, la ecuación \ref{eq:exp0} puede escribirse como \ref{eq:exp1}.
+	Si se considera a $\frac{dN_{\nu}}{d\Gamma}$ como un flujo difuso $\Phi(E_{\nu})$, es decir isótropo, homogeneo y constante en el tiempo, la ecuación \ref{eq:exp0} se escribe como en \ref{eq:exp1}.
 	%
 	\begin{equation}
 	 N_{esp}=\int\limits_{E_{\nu}}~\Phi(E_{\nu})\left[~\iiint\limits_{T~\Omega~A}\mathscr{E}(E_{\nu},A,\Omega,T) ~dA~d\Omega~dT~\right]~dE_\nu
@@ -35,7 +37,7 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	 \label{eq:exp2}
 	\end{equation}
 	%
-	El objetivo a partir de aquí es la construcción de esta cantidad que requiere de los siguientes ingredientes:
+	El objetivo a partir de aquí es la construcción de esta cantidad, que requiere de los siguientes ingredientes:
 	\begin{enumerate}
 	 \item La probabilidad de que un neutrino de energía $E_\nu$ proveniente del sector $\Omega$~\footnote{Es decir, cuya dirección se caracteriza por los ángulos $(\theta,\phi)$.} de inicio a una lluvia atmosférica extendida de parámetros $X$.
 	 \item La probabilidad de que una lluvia de parámetros $X$ dispare el detector y que el evento registrado sea identificado como un neutrino, es decir, las eficiencias de identificación.
@@ -191,13 +193,13 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	
 	La expresión de este término en el caso de los eventos ES es algo mas complicada debido a que el proceso de detección consta de dos pasos:
 	\begin{enumerate}
-	 \item La primer interacción dentro de la tierra y la propagación hasta el escape.
-	 \item La propagación en la atmósfera hasta su decaimiento.
+	 \item La primer interacción del \nutau{} dentro de la tierra y la propagación hasta el escape.
+	 \item El decaimiento del \tauon{} en la atmósfera.
 	\end{enumerate}
 	
 	En la sección \ref{sc:pesos} se analizó cada uno de estos pasos para corregir los pesos de las simulaciones de neutrinos ES.
 	La inclusión de la propagación dentro de la tierra se realizó mediante simulaciones de montecarlo, como se detalló en la sección \ref{sbsbsc:sim_prop_tierra}.
-	A partir de estas se obtuvo el término $f(E_\tau|E_\nu,\theta)$, que representa la densidad de probabilidad de la energía de los \tauon{}'s que escapande la tierra si los neutrinos incidentes tienen energía \enu{} y ángulo cenital $\theta$.
+	A partir de estas se obtuvo el término $f(E_\tau|E_\nu,\theta)$, que representa la densidad de probabilidad de la energía de los \tauon{}'s que escapan de la tierra, si los neutrinos incidentes tienen energía \enu{} y ángulo cenital $\theta$.
 	Por otro lado, la incorporación de la probabilidad de decaimiento del \tauon{} en la atmósfera también se analizó en la sección \ref{sc:pesos} y esta dada por la ecuación:
 	%
 	\begin{equation}
@@ -258,7 +260,7 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	 \item tipo de interacción (CC o CN)
 	\end{itemize}
 	%
-	Por otro lado, si bien esta también podría depender del ángulo azimutal $\phi$, al haberse simulado de manera aleatoria, la eficiencia obtenida en cada bin de $(E_\nu,\theta,D)$ y para cada sabor y canal, será un promedio en el ángulo azimutal.
+	Por otro lado, si bien esta también podría depender del ángulo azimutal $\phi$, al haberse simulado de manera aleatoria, la eficiencia obtenida en cada bin de $(E_\nu,\theta,D)$ y para cada sabor y canal de interacción, será un promedio en el ángulo azimutal.
 	
 	La figura \ref{fig:effDG_tr_id} muestra la eficiencia de disparo T3 e identificación como función de la profundidad de interacción para lluvias iniciadas por $\nu_e$ via CC para \cant{10^{19}}{eV} y \cant{85}{^\circ}.
 	%
@@ -352,7 +354,7 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	\end{figure}
 	%
 	Se observa que el criterio de identificación de neutrinos ES selecciona la mayoría de los eventos que logran disparar el detector.
-	También, por debajo de \cant{x_d=300}{m} tanto la eficiencia de disparo como la de identificación alcanzan el máximo valor posile, que no puede exceder 0.822 debido a que el canal $\mu\nu_\mu\nu_\tau$ no da lluvias detectables.
+	También, por debajo de \cant{x_d=300}{m} tanto la eficiencia de disparo como la de identificación alcanzan el máximo valor posile, que no puede exceder 0.822 debido a que el canal a $\mu\nu_\mu\nu_\tau$ no da lluvias detectables.
 	Este valor se señala con una línea horizontal punteada.
 	
 	Por encima de \cant{x_d=300}{m} la eficiencia decrece con $x_d$ debido a que cada vez menos partículas alcanzan el detector.
@@ -405,7 +407,7 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	
 	Para llevar a cabo la integración en área de la ecuación \ref{eq:exp2} es necesario estudiar cómo varían las eficiencias cuando se considera un detector finito, es decir, con bordes.
 	Cuando una lluvia cae sobre una región completamente instrumentada del detector (interior y sin estaciones faltantes) la eficiencia será la ideal, calculada en la sección \ref{sbsc:idealEff}.
-	Sin embargo, existen casos en los que el baricentro de las partículas de la lluvia puede caer hasta una decena de kilómetros fuera del detector y aun así disparar suficientes estaciones para ser identificado como neutrino. 
+	Sin embargo, existen casos en los que el baricentro de las partículas de la lluvia puede caer hasta una decena de kilómetros fuera del detector y aun así disparar suficientes estaciones como para que el evento sea identificado como neutrino. 
 	Esto se esquematiza en la figura \ref{fig:lluviaFuera} para neutrinos DG y ES.
 	%
 	\begin{figure}[h!]
@@ -474,12 +476,12 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	\subsection{Integración temporal: evolución del detector}
 	
 	Incluir la evolución temporal del detector en la integración de la ecuación \ref{eq:exp2} no es simple.
-	Si bien la construcción del SD de Auger concluyó a finales de 2008, y se comporta de manera estable desde entonces, es común que algunas estaciones entren o salgan de servicio por mantenimiento, fallas o situaciones fortuitas.
+	Si bien la construcción del SD de Auger concluyó a finales de 2008, y se comporta de manera estable desde entonces, es común que algunas estaciones salgan de servicio temporalmente por mantenimiento, fallas o situaciones fortuitas.
 	Por este motivo el estado del detector es monitoreado cada segundo mediante la frecuencia de disparo T2 de todas las estaciones.
 	A partir de esta información se generan archivos que registran las configuraciones (conjunto de estaciones activas) del SD con una resolución de un segundo.
 	
 	Entonces, de manera ideal, habría que evaluar la exposición de todas las configuraciones por las que pasa el detector y realizar la integración mediante una suma pesada por la cantidad de tiempo que se mantiene en cada una.
-	Como no es posible procesat tal cantidad de información, se dividió el periodo de búsqueda de en intervalos de 3 días y se tomó, para cada uno de ellos, una configuración de representativa. 
+	Como no es posible procesar tal cantidad de información, se dividió el periodo de búsqueda de en intervalos de 3 días y se tomó, para cada uno de ellos, una configuración de representativa. 
 	Luego, a cada una de estas configuraciones se le asignó un peso determinado por la fracción del tiempo en que el detector se encuetra en dicha configuración representativa, o en una de mayor eficiencia dentro de dicho intervalo.
 	
 	Para cada periodo de tiempo, no es evidente cual de las configuraciones por las que pasa el SD es conveniente elegir.
@@ -513,18 +515,18 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	Para ello, es necesario contemplar cómo se modifica con el paso del tiempo el comportamiento de sus distintos componentes, sobre todo cuando éste afecta la señal registrada.
 	
 	Ante el pasaje de partículas por la estación, la señal en el PMT presenta un flanco de subida abrupto y un decaimiento exponencial.
-	Mientras que el rápido crecimiento inicial se encuentra dominado por una única reflexión de la luz Cherenkov en el Tyvec de la estación, el decaimiento posterior se produce debido a varias de estas reflexiones.
+	Mientras que el rápido crecimiento inicial se encuentra dominado por una única reflexión de la luz Cherenkov en el Tyvec de la estación, el decaimiento posterior se produce debido a varias de estas reflexiones \cite{icrc}.
 	Es por esto que tanto la reflectividad del Tyvec como la longitud de absorción de la luz en el agua son parámetros de la estación que afectan fuertemente las características de la señal.
-	Por otro lado, por ejemplo debido a que las estaciones se encuentran a al intemperie\footnote{Las estaciones sufren cambios de temperatura diarios, estacionales y hasta episodios de congelamiento.}, ambos parámetros son afectados por el envejecimiento del detector y habrá que tener en cuenta su variación a la hora de simular las estaciones.
+	Por otro lado, por ejemplo debido a que las estaciones se encuentran a al intemperie\footnote{Las estaciones sufren cambios de temperatura diarios, estacionales y hasta episodios de congelamiento.}, ambos parámetros se ven afectados durante el envejecimiento del detector y habrá que tener en cuenta su variación a la hora de realizar la integración temporal de la exposición.
 	
-	Si bien hasta la fecha no existe ningún mecanismo implementado que permita monitorear constantemente la reflectividad del Tyvec (TyRef) y la absorción del agua (wAbs) de las estaciones, el tiempo de decaimiento de la señal (LDT por sus siglas en inglés, \emph{light decay time}) depende fuertemente de estos parámetros y sirve como una medida indirecta de los mismos.
-	Entonces, para modelar el detector se estudiará el comportamiento de esta cantidad en función del tiempo, y además su dependencia con los parámetros TyRef y wAbs.
-	
+	Si bien hasta la fecha no hay implementado ningún mecanismo que permita monitorear ni la reflectividad del Tyvec (TyRef) ni la absorción del agua (wAbs) de las estaciones, el tiempo de decaimiento de la señal (LDT por sus siglas en inglés, \emph{light decay time}) depende fuertemente de los mismos y sirve como una medida indirecta.
+	Entonces, para incluir el envejecimiento del detector en la integración temporal se estudiará el comportamiento del LDT y además su dependencia con los parámetros TyRef y wAbs.
 	Con esto en mente, la estrategia es la siguiente:
 	\begin{enumerate}
-	 \item \textbf{Estudiar el LDT:} para entender la evolución del detector es importante estudiar el comportamiento del LDT en los distintos sectores del detector como función del tiempo.
+	 \item \textbf{Estudiar el LDT en el detector:} para entender la evolución temporal del detector es importante estudiar el comportamiento del LDT en los distintos sectores del detector como función del tiempo.
 	 \item \textbf{Definir una estrategia de simulación:} teniendo en cuenta cuánto y cómo varía el LDT es posible decidir cómo se modelará el detector. Esto puede implicar utilizar un detector promedio o incluso uno que incluya sus fluctuaciones segun el momento y la posición de la estación.
 	 \item \textbf{Obtener LDT(tyRef,wAbs):} dado que para simular la señal en las estaciones con \Offline{} se utilizan como parámetros de entrada la reflectividad del Tyvec y la absorción del agua, será necesario analizar como obtener el valor de LDT buscado como función de estos parámetros.
+	 \item \textbf{Recalcular las eficiencias:} Una vez resimuladas las señales en el detector en para distintos valores de LDT, se deben recalcular las eficiencias e incluir esta información en la integración temporal.
 	\end{enumerate}
 
 	En la figura \ref{fig:ldtArray} se muestra como ejemplo la distribución de LDT promedio de cada estación del array en el mes de Enero de 2005, 2008 y 2013. 
@@ -550,7 +552,7 @@ Una vez definidos los criterios de selección es posible calcular la exposición
 	También puede notarse que el valor de LDT mínimo del detector (fácilmente apreciable en la escala de color de los gráficos), decreció de manera apreciable con los años, de \cant{\sim54}{ns} en 2005 hasta \cant{\sim44}{ns} en 2003.
 	
 	Para obtener el efecto de la evolución del LDT en el cálculo de exposure, el único camino posible es resimular la señal que generan las lluvias en las estaciones y un nuevo cálculo de eficiencias.
-	Dado que esto es muy costoso computacionalmente, fue necesario elegir un número manejable de detectores representativos.
+	Dado que esto es computacionalmente muy costoso, fue necesario elegir un número manejable de detectores representativos.
 	Entonces el camino elegido fue despreciar las fluctuaciones locales entre estaciones y simplemente simular algunos \emph{detectores promedio}, que posean un LDT constante que represente el estado del detector durante algún período de tiempo y al mismo tiempo teniendo cuidado de no sobreestimar la exposición.
 	
 	Para elegir qué detectores promedio simular, se observó la evolución del LDT promedio sobre todo el SD, lo que se muestra en el panel superior de la figura \ref{fig:timeEvolution} junto con su desviación estandar.
@@ -810,27 +812,136 @@ El objetivo de ésta sección es describir la estrategia utilizada para estimar 
 		
 	\subsection{Error asociado a la sección eficaz neutrino nucleón y a las pérdidas de energía del tauón}
 	
-	Para los canales DG se utilizó la sección eficaz junto con su incerteza asociada calculada por Sarkar en \cite{sarkarNuxSec}.
+	Para los canales DG se utilizó la sección eficaz junto con su incerteza asociada calculada por Sarkar en \cite{cooper_sarkar}.
 	Al propagar el cálculo hacia la exposición se obtuvo una \eband{9}{9} en DGH y \eband{7}{7} en DGL.
 	Es importante resaltar que este resultado es compatible con nuevas extrapolaciones de las funciones de distribución de partones publicadas recientemente \cite{newPDFs}.
 	
-	Este procedimiento no pudo llevarse a cabo en el análisis de ES dado que un cambio en la sección eficaz implica la resimulación del término $f(E_\tau|E_\nu,\theta)$ (ver sección \ref{sbsbsc:sim_prop_tierra}).
+	Este procedimiento no pudo llevarse a cabo en el análisis de ES, dado que la sección eficaz afecta el cálculo de la exposición a través del término $f(E_\tau|E_\nu,\theta)$, obtenido mediante simulaciones (ver sección \ref{sbsbsc:sim_prop_tierra}).
+	Por otro lado, este término también se ve afectado por el modelo utilizado para describir las pérdidas de energía del \tauon{} en la tierra.
+	Entonces, para obtener la banda de error en la exposición es necesario buscar qué combinación de sección eficaz y modelo de pérdida de energía producen el mayor aumento y disminución del término en cuestión.
 	
+	Dado que tanto un aumento en la sección eficaz neutrino nucleón a CC (interacciones del tipo $\nu_\tau + N \rightarrow \tau + X$) junto con una disminución en las pérdidas de energía del \tauon{} en la tierra producen un aumento en el factor $f(E_\tau|E_\nu,\theta)$ nos referiremos a esta combinación como optimista\footnote{Un aumento en el término $f(E_\tau|E_\nu,\theta)$ se traduce en un aumento en la exposición, es decir, en la cantidad de eventos esperados.}.
+	Por otro lado, la reducción de la sección eficaz junto con un incremento en las pérdidas de energía en la tierra provocarían un descenso en el número de \tauon{} que escapan hacia la atmósfera, por lo que será citado como el caso pesimista.
+	En la tabla \ref{tab:esSyst} se muestra la combinación de modelos que corresponden a las variaciones más extremas con respecto a la exposición de referencia.
+	%
+	\begin{table}[h!]
+	\small
+	\begin{center}
+		\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Modelo}      & Sección eficaz& Pérdida de energía del \tauon{} \\ 
+		\hline
+		Referencia &    Sarkar~\cite{cite:cooper_sarkar,cite:cooper_sarkar2}     & ALLM~\cite{cite:Armesto2008,cite:ALLM} \\ 
+		%
+		Pesimista &  ASW~\cite{cite:Armesto2008,cite:ASW}  &     BB~\cite{bugaev2004propagation} \\ 
+		%
+		Optimista &   Armesto Sat. $\lambda=0.4$~\cite{cite:Armesto2008}   &  ASW~\cite{cite:Armesto2008,cite:ASW}\\
+		\hline 
+		\end{tabular}  
+	\end{center}
+	\caption{
+	\label{tab:esSyst}
+	Combinación de modelos utilizados para estudiar las incertezas sistemáticas al calcular las probabilidades de interacción y escape de la tierra.
+	}
+	\end{table}
+	%
+	Mientras que en la figura \ref{fig:crossSectionSist} se grafican la sección eficaz y el parámetro $\beta$, que determina las pérdidas en la propagación en la tierra. 
+	Esto es así dado que aunque las pérdidas de energía se modelan como $\left\langle dE/dx\right\rangle = \alpha + \beta \times E_\tau$, la influencia del parámetro $\alpha$ es despreciable.
+	%
 	\begin{figure}[h!]
 		\begin{center}
-			\includegraphics[width=0.65\textwidth]{fig/resultadosAuger/nu_xsection_models}\\
-			\includegraphics[width=0.65\textwidth]{fig/resultadosAuger/tau_E_loss_models}
-			\caption{asd}
+			\includegraphics[width=0.49\textwidth]{fig/resultadosAuger/nu_xsection_models}
+			\includegraphics[width=0.49\textwidth]{fig/resultadosAuger/tau_E_loss_models}
+			\caption{Arriba (Abajo): secciones eficaces (parámetro $\beta$ en el modelo de perdida de energía del \tauon{} en la tierra) utilizadas para calcular las incertezas debidas a la interacción y propagación en la tierra. En negro se muestran los modelos utilizadas como referencia, en azul el caso pesimista y en rojo el optimista. Si bien el modelo BB cruza al modelo ALLM (de referencia), lo hace a energías altas, que tienen poca contribución a la exposición. }
 			\label{fig:crossSectionSist}
 		\end{center}
 	\end{figure}
+	%
+	Aunque en el modelo BB se predicen pérdidas de energía en la propagación menores a las de referencia a altas energías del \tauon{}, ese tipo de eventos contribuyen poco cuando se pesa la exposición con un factor $E_\nu^{-2}$.
 	
+	La figura \ref{fig:pdfSyst} muestra el resultado de la simulación del término $f(E_\tau|E_\nu,\theta)$ en los tres casos, para neutrinos de \cant{E_\nu=10^{18}}{eV} y $\theta=90.111^\circ$.
+	En su leyenda se indica la probabilidad de escape mientras que con líneas verticales se señala la energía media.
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{fig/resultadosAuger/pdfSyst}
+			\caption{Probabilidad de que un \tauon{} emerga de la tierra dado que incidió un neutrino con \cant{E_\nu=10^{18}}{eV} y $\theta=90.111^\circ$. En negro se muestra el valor de referencia, en rojo el optimista y en azul el caso pesimista. En la leyenda se indica la integral de cada curva mientras que con líneas verticales se señala la energía media con la que emergen los \tauon{}'s de la tierra.}
+			\label{fig:pdfSyst}
+		\end{center}
+	\end{figure}
+	%
+	Se observa como en el caso pesimista la combinación entre una menor probabilidad de interacción junto con mayor pérdida de energía produce no solo una disminución en la probabilidad de escape (integral de la curva) del $44\%$ sino también una reducción en la energía media de los \tauon{} emergentes.
+	Al contrario, en el caso optimista, además de una ganancia de al rededor del $37\%$ en la probabilidad de escape, se observa un aumento en la energía media al escapar de la tierra.
+	
+	Luego de recalcular la exposición se obtuvo una banda de error de\linebreak \eband{40}{33}, siendo por lejos el sistemático que más afecta el cálculo presentado en este trabajo.
 	
 	\subsection{Error asociado a la topografía }
 	
+	El observatorio Pierre Auger se encuentra cerca de la cordillera de Los Andes, lo que aumenta el tamaño del blanco con el que pueden interactuar los \nutau{}'s.
+	Dado que en la exposición reportada en la sección \ref{sc:expoNu} no incluye su contribución, será tenida en cuenta como un sistemático en los canales ES y DGH.
+	En el caso de DGL, las trayectorias seguidas por los neutrinos no atraviezan las montañas, por lo que este fuente de error no tiene efecto sobre este canal.
+	
+	En \cite{prd2009} se realizó una estimación de la contribución de las montañas al canal ES, que se reporta como \eband{18}{0}.
+	Por otro lado, en \cite{dghPaper} se calculo la exposición debida a los \tauon{}'s que atraviezan las montañas para el canal DGH, reportando un aporte del 20$\%$ sobre la exposición total. 
+	Cuando se incluye la ganancia que da la selección de eventos de tres estaciones de ES sobre este valor, se obtiene una banda de error de \eband{24}{0} en la exposición DGH.
+	
+	
 	\subsection{Combinación de las incertezas de cada análisis}
 	
+	Una vez obtenidas los errores sistemáticos que aplican sobre cada cálculo de exposición (DGL, DGH y ES), es necesario trasladar la incerteza a la exposición total, dada por la ecuación \ref{eq:expTot}.
+	En la ecuación \ref{eq:sistErr01} se muestra la propagación de errores para esta suma de exposiciones, que se debe aplicar para cada fuente de incerteza.
+	%
+	\begin{equation}
+	\begin{aligned}
+	\sigma_{{\cal E}_{Tot}}^2 = & 
+	\ \sigma_{{\cal E}_{ES}}^2 + \sigma_{{\cal E}_{DGH}}^2 + \sigma_{{\cal E}_{DGL}}^2 \\
+	+ &\  2 {\rm Cov}({\cal E}_{ES},{\cal E}_{DGH})
+	+ 2 {\rm Cov}({\cal E}_{ES},{\cal E}_{DGL})
+	+ 2 {\rm Cov}({\cal E}_{DGH},{\cal E}_{DGL})
+	\end{aligned}
+	\label{eq:sistErr01}
+	\end{equation}
+	%
+	Para la mayoría de las fuentes de error la covarianza entre exposiciones es distinta de cero.
+	Por ejemplo, la sección eficaz utilizada para calcular la exposición es la misma en los tres análisis, por lo que una sub o sobrestimación de esta cantidad se traslada directamente a la exposición en los tres análisis.
+	Por otro lado, en el cálculo de ES ese sistemático incluye tambien las pérdidas de energía del \tauon{} en la tierra.
+	Teniendo esto en cuenta se concluye que para calcular el error en la exposición total debido al desconocimiento de la sección eficaz y las pérdidas de energía del \tauon{} en la tierra, es necesario estimar los términos de covarianza ${\rm Cov}({\cal E}_{ES},{\cal E}_{DGH})$, ${\rm Cov}({\cal E}_{ES},{\cal E}_{DGL})$ y ${\rm Cov}({\cal E}_{DGH},{\cal E}_{DGL})$.
+	Una situación similar sucede para el resto de las fuentes de error.
 	
+	Debido a que este cálculo requeriría una re estimación completa de los sistemáticos por una corrección de segundo orden, se decidió sobreestimar los errores suponiendo siempre correlación total para cada fuente.
+	Bajo estas condiciones se tiene que ${\rm Cov}({\cal E}_{X},{\cal E}_{Y})=\sigma_{X}\sigma_{Y}$ por lo que la ecuación \ref{eq:sistErr01} queda como en \ref{eq:sistErr02}
+	%
+	\begin{equation}
+	\begin{aligned}
+	\sigma_{{\cal E}_{Tot}} = \sigma_{{\cal E}_{ES}} + \sigma_{{\cal E}_{DGH}} + \sigma_{{\cal E}_{DGL}}
+	\end{aligned}
+	\label{eq:sistErr02}
+	\end{equation}
+	%
+	Por último, hasta el momento todos los errores fueron presentados de manera relativa porcentual, por lo que la ecuación \ref{eq:sistErr02} queda como \ref{eq:sistErr03}, en la que $f_1=0.84$, $f_2=0.14$ y $f_3=0.02$ como se indica en la última columna de la tabla \ref{tab:expDist}.
+	%
+	\begin{equation}
+	\begin{aligned}
+	\frac{\sigma_{{\cal E}_{Tot}}}{{\cal E}_{Tot}}\times 100 
+	=&\ \frac{{\cal E}_{ES}}{{\cal E}_{Tot}} \frac{\sigma_{{\cal E}_{ES}}}{{\cal E}_{ES}} \times 100
+	+ \frac{{\cal E}_{DGH}}{{\cal E}_{Tot}} \frac{\sigma_{{\cal E}_{DGH}}}{{\cal E}_{DGH}}\times 100
+	+ \frac{{\cal E}_{DGL}}{{\cal E}_{Tot}} \frac{\sigma_{{\cal E}_{DGL}}}{{\cal E}_{DGL}}\times 100\\
+	& \\
+	\varepsilon_{{\cal E}_{Tot}}
+	=&\ f_1\ \varepsilon_{{\cal E}_{ES}}
+	+   f_2\ \varepsilon_{{\cal E}_{DGH}}
+	+   f_3\ \varepsilon_{{\cal E}_{DGL}}
+	\end{aligned}
+	\label{eq:sistErr03}
+	\end{equation}
+	%
+	Luego de obtener el error sistemático debido a cada fuente en la exposición total, dado que cada una es independiente de las demas, se obtiene el error sistemático total sumándolos en cuadratura.
+	Luego de realizar este calculo se obtiene un error sistemático en la exposición total de \eband{39}{29}.
+	
+	En la tabla \ref{tab:sist} se condensa toda la información expuesta hasta el momento.
+	En esta se muestra el error sistemático correspondiente a cada fuente y canal de detección.
+	En la última columna se expone el resultado de aplicar la ecuación \ref{eq:sistErr03} a cada fila.
+	La última celda de la última columna muestra la suma en cuadratura de los errores de la última columna.
+	Se resalta el error dominante, que corresponde a la combinación entre sección eficaz y pérdidas de energía del \tauon{} en la tierra para el canal ES y se propaga hasta el resultado final.
 	
 	\begin{table}[h!]
 	\centering
@@ -864,58 +975,125 @@ El objetivo de ésta sección es describir la estrategia utilizada para estimar 
 		Algoritmo de thinning           & +0.3\%, 0\%   &  +7\%,  0\%     &   +7\%,  0\%  & +1.1\%, -0.0\% \\
 		\hline
 		\hline
-		{\bf $\bm{ \sigma_{\nu_\tau}\ \otimes\ \tau}$ E-loss}    & \multirow{2}{*}{\textcolor{Red}{+40\%, -33\%}}  & \multirow{2}{*}{+9\%, -9\%}  & \multirow{2}{*}{+7\%, -7\%} & \multirow{2}{*}{\bf +33.6\%, -27.7} \\
-		$\sqrt{H^2+I^2}$                                     &                 &                 &             & \\
+		\multirow{2}{*}{\bf $\bm{ \sigma_{\nu_\tau}\ \otimes\ \tau}$ E-loss}    & \multirow{2}{*}{\textcolor{Red}{+40\%, -33\%}}  & \multirow{2}{*}{+9\%, -9\%}  & \multirow{2}{*}{+7\%, -7\%} & \multirow{2}{*}{\bf +35\%, -29\%} \\
+		                                    &                 &                 &             & \\
 		\hline
 		\hline
 % 				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		{\bf Topography} 	                            &  +18\%, 0\%    & +20\%, 0\% & not apl.   & +18.9\%, 0\%  \\
+		{\bf Topography} 	                            &  +18\%, 0\%    & +24\%, 0\% & not apl.   & +18\%, 0\%  \\
 
 		\hline
 		\hline
-		{\bf Total}                     &  \multicolumn{3}{c|} {}  & {\bf +38.8\%, -27.9\%}         \\
+		{\bf Total}                     &  \multicolumn{3}{c|} {}  & {\bf +39\%, -29\%}         \\
 		\hline
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\end{tabular}
-		\caption{}
+		\caption{Resumen de las fuentes de error sistemático consideradas en este trabajo. Luego de obtener la estimación debida a cada fuebte para cada canal se combinaron utilizando la ecuación \ref{eq:sistErr03}, lo que se muestra en la última columna. Por último el error en la exposición total se obtuvo sumando en cuadratura los valores expuestos en la última columna.}
 		\label{tab:sist}
 	\end{table}
 
 \section{Analisis ciego}
 
+
+	
 	\subsection{Abriendo la caja}
+	
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=0.7\textwidth]{fig/resultadosAuger/Unblinding_ES_200613}\\
+			\includegraphics[width=0.7\textwidth]{fig/resultadosAuger/Unblinding_DGH_med_200613}\\
+			\includegraphics[width=0.7\textwidth]{fig/resultadosAuger/DGL_Unblinding_Thesis}
+			\caption{asd}
+			\label{fig:unblindings}
+		\end{center}
+	\end{figure}
 	
 	\subsection{L\'imite al flujo difuso y diferencial}
 	\begin{figure}[h!]
 		\begin{center}
-			\includegraphics[width=0.9\textwidth]{fig/resultadosAuger/limits_combined_ageing}
+			\includegraphics[width=0.9\textwidth]{fig/resultadosAuger/integral_limits_and_models_paper_combined_proton}\\
+			\includegraphics[width=0.9\textwidth]{fig/resultadosAuger/integral_limits_and_models_paper_combined_heavy}
 			\caption{asd}
 			\label{fig:}
 		\end{center}
 	\end{figure}
 	
-	\begin{table}[h!]
+
+	\begin{figure}[h!]
 		\begin{center}
-		\renewcommand{\arraystretch}{2.0}
-			\begin{tabular}{|c|c|} 
-			\hline
-			Diffuse flux       &  Expected number of events   \\
-			Neutrino Model     &  (1 Jan 04 - 20 Jun 13)   \\
-			\hline
-			\hline
-			Cosmogenic (Kampert {\it et al.}) - proton, FRII      &  \textcolor{Red}{$\sim$ 4.0}  \\
-			\hline
-			Cosmogenic (Ahlers {\it et al.}) - proton, Fermi-LAT  &  \textcolor{Red}{$\sim$ 3.2}  \\
-			\hline
-			Cosmogenic (Kampert {\it et al.}) - proton, SFR       &  \textcolor{Blue}{$\sim$ 0.9}  \\
-			\hline
-			Cosmogenic (Kotera {\it et al.}) - band               &  \textcolor{Blue}{$\sim$ 0.5 $-$ 1.4}  \\
-			\hline
-			Cosmogenic (Kampert {\it et al.}) - iron, FRII        &  $\sim$ 0.3  \\
-			\hline
-			\end{tabular}
+			\includegraphics[width=0.9\textwidth]{fig/resultadosAuger/diff_limits_and_models_paper_combined_all}
+			\caption{asd}
+			\label{fig:}
 		\end{center}
-	\end{table}
+	\end{figure}
+	
+	%----------------------------------------------------------------------------------------
+	\begin{table*}[!t]
+	\begin{center}
+	\renewcommand{\arraystretch}{1.3}
+	\scriptsize
+	\begin{tabular}{l c c} 
+	\hline
+	Modelo para       &  Número esperado de eventos     & ~Probabilidad de   \\
+	el flujo difuso   &  (1 enero 2004 - 20 junio 2013) & ~observar $0$   \\
+	\hline
+	Cosmogénico - proton, FRII \cite{Kampert_GZK}     &  $\sim$ 4.0  & $\sim 1.8\times 10^{-2}$ \\
+
+	Cosmogénico - proton, SFR \cite{Kampert_GZK}      &  $\sim$ 0.9  & $\sim 0.4$               \\
+
+	Cosmogénico - proton, Fermi-LAT \cite{Ahlers_GZK} &  $\sim$ 3.2  & $\sim 4\times 10^{-2}$   \\
+
+	Cosmogénico - band \cite{Kotera_GZK}              &  $\sim$ 0.5 $-$ 1.4 & $\sim 0.6~-~0.2$ \\
+
+	Cosmogénico - iron, FRII \cite{Kampert_GZK}       &  $\sim$ 0.3  & $\sim 0.7$ \\
+
+	\hline
+
+	Astrofísico $\nu$ (AGN) \cite{Becker_AGN}     &  $\sim$ 7.2  & $\sim 7\times 10^{-4}$ \\
+
+	\hline
+
+	Exótico \cite{Sigl}                               &  $\sim$ 31.5  & $\sim 2\times 10^{-14}$ \\
+
+	\hline
+	\end{tabular}
+	\end{center}
+	\vskip -3mm
+	\caption{
+	Número esperado de eventos $N_{\rm esp}$ según ecuación \ref{eq:expTot} para varios modelos teóricos de producción de neutrinos para la exposición presentada en la figura \ref{fig:expTot}
+	Number of expected events $N_{\rm evt}$ in Eq.~(\ref{eq:Nevt}) for several theoretical models of UHE neutrino 
+	production, given the combined exposure of the surface detector array
+	of the Pierre Auger Observatory plotted in Fig.~\ref{fig:exposure}.
+	The last column gives the Poisson probability $\exp({-N_{\rm evt}})$ of observing 0 events 
+	when the number of expected events is $N_{\rm evt}$ given in the second column.
+	% Kampert & Unger fluxes: Emax=Zx10^20 eV and alpha=2.0
+	}
+	\label{tab:rates}
+	\end{table*}
+%----------------------------------------------------------------------------------------
+	
+% 	\begin{table}[h!]
+% 		\begin{center}
+% 		\renewcommand{\arraystretch}{2.0}
+% 			\begin{tabular}{|c|c|} 
+% 			\hline
+% 			Diffuse flux       &  Expected number of events   \\
+% 			Neutrino Model     &  (1 Jan 04 - 20 Jun 13)   \\
+% 			\hline
+% 			\hline
+% 			Cosmogenic (Kampert {\it et al.}) - proton, FRII      &  \textcolor{Red}{$\sim$ 4.0}  \\
+% 			\hline
+% 			Cosmogenic (Ahlers {\it et al.}) - proton, Fermi-LAT  &  \textcolor{Red}{$\sim$ 3.2}  \\
+% 			\hline
+% 			Cosmogenic (Kampert {\it et al.}) - proton, SFR       &  \textcolor{Blue}{$\sim$ 0.9}  \\
+% 			\hline
+% 			Cosmogenic (Kotera {\it et al.}) - band               &  \textcolor{Blue}{$\sim$ 0.5 $-$ 1.4}  \\
+% 			\hline
+% 			Cosmogenic (Kampert {\it et al.}) - iron, FRII        &  $\sim$ 0.3  \\
+% 			\hline
+% 			\end{tabular}
+% 		\end{center}
+% 	\end{table}
 	
 
 	
