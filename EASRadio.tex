@@ -2,7 +2,7 @@
 \label{ch:easRadio}
 
 En este capítulo se abordará la emisión de radio de las lluvias atmosféricas extendidas.
-Se discutirán sus características y sus mecanismos de emisión así como un modelo de juguete que permite, mediante razonamientos simples, recuperar sus características principales.
+Se discutirán sus características y sus mecanismos de emisión así como un modelo simplificado que permite, mediante razonamientos elementales recuperar sus características principales.
 
 \section{Mecanismos de emisi\'on}
 	\label{sc:emision}
@@ -13,9 +13,9 @@ Se discutirán sus características y sus mecanismos de emisión así como un mo
 	
 	\subsection{Efecto geomagn\'etico}
 	
-	Este se refiere a la interacción entre las partículas cargadas y el campo magnñetico terrestre.
-	Durante la evoluci\'on de la EAS, debido a la fuerza de Lorentz los \el{+} y \el{-} se deflectan en direcciones opuestas, lo que produce una corriente efectiva, lo que se esquematiza en el panel izquierdo de la figura \ref{fig:geom_sketch}.
-	Dicha corriente, dado que es generada proporcionalmente a $-\vec\beta\times \vec B$, es practicamente perpendicular tanto al eje de la lluvia como al campo magn\`etico terrestre.
+	Este se refiere a la interacción entre las partículas cargadas y el campo magn\'etico terrestre.
+	Durante la evoluci\'on de la EAS, debido a la fuerza de Lorentz los \el{+} y \el{-} se deflectan en direcciones opuestas, lo que produce una corriente efectiva, como se esquematiza en el panel izquierdo de la figura \ref{fig:geom_sketch}.
+	Dicha corriente, dado que es generada proporcionalmente a $-\vec\beta\times \vec B$, es practicamente perpendicular tanto al eje de la lluvia como al campo magn\'etico terrestre.
 	En consecuencia el campo el\'ectrico generado posee una polarizaci\'on uniforme sobre la superficie de la tierra, lo que se observa en el panel derecho de la figura \ref{fig:geom_sketch}.
 	Por otra parte, debido a que la magnitud de la corriente efectiva depende fuertemente de la velocidad de drift de los \el{+} y \el{-}, que a su vez depende directamente de la densidad de la atm\'osfera, no es sorprendente que este sea el mecanismo predominante cuando la lluvia se inicia a gran altitud.
 	
@@ -26,11 +26,11 @@ Se discutirán sus características y sus mecanismos de emisión así como un mo
 		Derecha: polarización del campo eléctrico generado por el efecto geomagnético a nivel del suelo.}
 	\end{figure}
 	
-	\subsection{Efecto askaryan}
+	\subsection{Efecto Askaryan}
 	
-	EL segundo mecanismo de emisión relevante fue estudiado por Askaryan en 1962 \cite{askaryan1962}. Este consiste en que tanto el efecto fotoel\'ectrico como la generacion de rayos delta generan un exceso de carga negativa durante el desarrollo de la lluvia, generando el movimiento de una carga efectiva.
-	Este exceso a su vez es favorecido por la aniquilaci\'on de los positrones con los electrones de los nucleos atmosf\'ericos. 
-	El panel izquierdo de la figura \ref{fig:ask_geom} muestra un esquema del efecto Askaryan.
+	El segundo mecanismo de emisión relevante fue estudiado por Askaryan en 1962 \cite{askaryan1962} y se basa en que tanto el efecto compton como la generacion de rayos delta provocan un exceso de carga negativa durante el desarrollo de la lluvia, lo que puede considerarse como el movimiento de una carga efectiva.
+	Este exceso a su vez es favorecido por la aniquilaci\'on de los positrones con los electrones de los \'atomos atmosf\'ericos. 
+	El panel izquierdo de la figura \ref{fig:ask_sketch} muestra un esquema del efecto Askaryan.
 	
 	Esta carga efectiva genera un campo proporcional a $-\left[\hat u \times \hat u \times \vec\beta\right]$, donde $\hat u$ es la direcci\'on entre la carga que se desplaza y el observador.
 	Por ende, el campo eléctrico producido se encuentra polarizado en dirección radial respecto del punto de impacto del eje de la lluvia, tal como se esquematiza en el panel derecho de la figura \ref{fig:ask_sketch}.
@@ -48,9 +48,9 @@ Se discutirán sus características y sus mecanismos de emisión así como un mo
 	
 	Las características principales de la emisión pueden entenderse como una superposición de estos efectos, que dependen fuertemente de la evolución de la lluvia y, en particular, de la de su cantidad de partículas.
 	Esta superposición provoca que la intensidad de campo electrico tenga una fuerte dependencia en el tiempo y la posición del observador.
-	Es por esto que es razonable abordar este cálculo mediante simulaciones de Monte Carlo, lo que se tratará en el capítulo \ref{ch:simulacionRadio}.
+	Es por esto que resulta razonable abordar este cálculo mediante simulaciones de Monte Carlo, lo que se tratará en el capítulo \ref{ch:simulacionRadio}.
 	
-	Otro aspecto importante respecto a la geometría de la emisión se produce debido a que las cargas y corrientes inducidas por los efectos Askaryan y geomagn\'etico se desplazan a una velocidad mayor a la de la luz en la atm\'osfera ($n\sim1.0003$), provocando efecto \cher{}.
+	Un aspecto importante respecto a la geometría de la emisión se produce debido a que las cargas y corrientes inducidas por los efectos Askaryan y geomagn\'etico se desplazan a una velocidad mayor a la de la luz en la atm\'osfera ($n\sim1.0003$), provocando efecto \cher{}.
 	La ecuación \ref{eq:chAngle} muestra una estimación del valor de su \'angulo.
 	\begin{equation}
 	\cos\theta_{ch} = \frac{1}{n} \sim \frac{1}{1.0003}
@@ -58,7 +58,7 @@ Se discutirán sus características y sus mecanismos de emisión así como un mo
 	\theta_{ch} \sim 1.4^\circ
 	\label{eq:chAngle}
 	\end{equation}
-	Como es posible observar, la emisi\'on de radio de las EAS es realmente \emph{forward}.
+	Como es posible observar, la emisi\'on de radio de las EAS es esencialmente en la direcci\'on de la lluvia.
 	
 	Existen otras dos resultados interesantes respecto de la geometría de la señal al nivel del suelo que se desprenden de la dependencia de los efectos Askaryan y geomagnético con la densidad de partículas.
 	El primero consiste en que la mayor amplitud de la señal se espera en el anillo formado por la intersección entre el cono \cher{} que se proyecta desde el máximo de la lluvia y el suelo, que muestra la figura \ref{fig:cono}.
@@ -77,9 +77,13 @@ Se discutirán sus características y sus mecanismos de emisión así como un mo
 		\caption{\label{fig:chConeSig} Amplitud del espectro de se\~nal como funci\'on de la coordenada Este-Oeste de a lluvia obtenido a partir de simulaciones. En l\'inea punteada verde se grafica la posici\'on de impacto del cono \cher{}}
 	\end{figure}
 	En lineas verdes, y en coincidencia con los máximos para todas las frecuencias se resalta el anillo \cher{} en esa coordenada.
-	Se observa que a medida que la frecuencia aumenta la coherencia se mantiene sólo cerca de dicho anillo.
+	Se observa que a medida que la frecuencia filtrada aumenta la coherencia se mantiene sólo cerca de dicho anillo.
 	
-	Ambos resultados pueden comprenderse intuitivamente si se tiene en cuenta que la señal en un observador es la contribución de la señal generada por cada partícula de la lluvia.
+	Ambos resultados pueden comprenderse tambi\'en si se tiene en cuenta que la señal en un observador es la contribución de la señal generada por cada partícula de la lluvia, sin necesidad de recurrir.
+	En primer lugar 
+	
+	
+	\subsubsection{Geometr\'ia de la emisi\'on en eventos ES}
 	
 	Como ya se ha remarcado en el capítulo \ref{ch:easAuger}, las lluvias ES son fundamentalmente diferentes de las lluvias verticales y en cuanto a la emisión de radio no hay excepción. 
 	Como se grafica en la figura \ref{fig:chConeES}, la proyección del cono \cher{} sobre el suelo no es una elipse sino una hipérbola.
