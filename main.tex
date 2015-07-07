@@ -18,6 +18,7 @@
 \usepackage{upgreek}
 \usepackage{mathrsfs}
 \usepackage{diagbox}
+\usepackage{textcomp}
 
 \let\verbatiminput=\verbatimtabinput
 
@@ -110,13 +111,13 @@
 \thispagestyle{empty}
 \mbox{}
 \input{abstractES}
-\newpage
-\thispagestyle{empty}
-\mbox{}
+% \newpage
+% \thispagestyle{empty}
+% \mbox{}
 \input{abstractEN}
-\newpage
-\thispagestyle{empty}
-\mbox{}
+% \newpage
+% \thispagestyle{empty}
+% \mbox{}
 
 % \maketitle
 % % 
@@ -124,9 +125,9 @@
 % \tableofcontents
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     Introduccion
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %     Introduccion
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \include{introduccion}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %   Deteccion con Auger
@@ -135,20 +136,21 @@
 % \include{EASAuger}
 % \include{detectorAuger}
 % \include{estrategiaAuger}
-% \include{simulacionAuger}
+\include{simulacionAuger}
 % \include{seleccionAuger}
 % \include{resultadosAuger}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Deteccion con radio
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \part{Detecci\'on de neutrinos ultra energ\'eticos con un arreglo de antenas de radio}
-% % \part{Un detector de neutrinos de 10000 antenas de radio}
-% \include{motivacionRadio}
-% \include{EASRadio}
-% \include{deteccionRadio}
-% \include{simulacionRadio}
-% %\include{seleccionRadio}
-% \include{resultadosRadio}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Detecci\'on de neutrinos ultra energ\'eticos con un arreglo de antenas de radio}
+% \part{Un detector de neutrinos de 10000 antenas de radio}
+\include{motivacionRadio}
+\include{EASRadio}
+\include{deteccionRadio}
+\include{simulacionRadio}
+%\include{seleccionRadio}
+\include{resultadosRadio}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %   Conclusiones, apendices y bbl
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%
