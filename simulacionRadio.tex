@@ -1,87 +1,73 @@
 \chapter{Simulaci\'on y caracterizaci\'on de la emisi\'on de radio en eventos ES}
 \label{ch:simulacionRadio}
 
-Tal como se describi\'o en el cap\'itulo \ref{ch:easRadio}, la emisi\'on de radio de las lluvias atmosf\'ericas extendidas conforman un fen\'omeno s\'umamente complicado, cuyo c\'alculo se aborda usualmente mediante modelos efectivos o simulaciones de Monte Carlo.
-En particular, en esta tesis se opt\'o por el segundo tratamiento, lo que permiti\'o utilizar la experiencia adquirida al calcular la exposici\'on de Auger a este nuevo c\'omputo.
+Tal como se describi\'o en el cap\'itulo \ref{ch:easRadio}, la emisi\'on de radio de las lluvias atmosf\'ericas extendidas conforman un fen\'omeno complicado, cuyo c\'alculo se aborda usualmente mediante modelos macrosc\'opicos efectivos o a trav\'es de una representaci\'on microsc\'opica usualmente ligada al uso de simulaciones de Monte Carlo.
+En esta tesis se opt\'o por el segundo tratamiento debido a que no s\'olo hasta el momento no hay modelos efectivos desarrollados para lluvias ES sino que adem\'as este enfoque permiti\'o utilizar la experiencia adquirida al calcular la exposici\'on de Auger en este nuevo periplo.
 
 En la primer parte de este cap\'itulo se describe la cadena de simulaciones utilizada para calcular la se\~nal esperada sobre un arreglo de antenas de radio al detectar neutrinos ES, necesarias para realizar el c\'alculo de exposici\'on.
-En particular, se exponen los detalles m\'as relevantes del algoritmo de c\'alculo de la se\~nal utilizado por \zhs{}, la extensi\'on de \aires{} utilizada para simular la emisi\'on de radio de las EAS.
+En particular, se exponen las caracter\'isticas m\'as relevantes del algoritmo de c\'alculo de la se\~nal utilizado por \zhs{}, la extensi\'on de \aires{} que incluye la simulaci\'on de la emisi\'on de radio de las EAS.
 
 En la segunda parte se realiza una caracterizaci\'on de la huella de campo el\'ectrico dejada por lluvias atmosf\'ericas iniciadas por neutrinos ES.
+\textbf{COMPLETAR}
 
 \section{Simulaci\'on de la se\~nal}
 \label{sc:simRadio}
 	
-	Como ya se describi\'o en el cap\'itulo \ref{ch:simulacionAuger}, la simulaci\'on de la se\~nal de eventos ES consta de tres etapas: la simulaci\'on de la interacci\'on primaria, el desarrollo de la EAS, que esta vez incluye la emisi\'on de radio y el c\'omputo de la se\~nal sobre el detector.
+	Como se discuti\'o en el cap\'itulo \ref{ch:simulacionAuger}, la simulaci\'on de eventos ES requiere tres etapas: la simulaci\'on de la interacci\'on primaria, el desarrollo de la lluvia atmosfrica y el c\'omputo de la se\~nal sobre el detector.
+	A la hora de simular la emisi\'on de radio se requieren las mismas etapas:
+	%
 	\begin{description}
-	\item[Interacción primaria:] Al igual que en la primer parte de esta tesis, la interacci\'on neutrino nucleon se proces\'o utilizando \tauola{}, que se describe en la secci\'on \ref{sbsc:tauola}.
-	\item[Desarrollo de la EAS:] como se discuti\'o en la secci\'on \ref{sc:gen_emision} la emisi\'on de radio de una EAS puede conseguirse superponiendo la generada por cada particula de la lluvia. Por este motivo, para obtener el campo el\'ectrico a nivel del suelo se utiliz\'o el programa \zhs{}, una modificaci\'on de \aires{} que incluye el c\'alculo requerido. La descripci\'on de \zhs{} se realiza en la secci\'on \ref{sbsc:zhaires}.
-	\item[Señal en el detector:] La salida de \zhs{} consiste en el campo el\'ectrico en funci\'on del tiempo sobre una lista de observadores (antenas) ubicados en posici\'ones prefijadas. Para transformar esta se\~nal cruda en la obtenida por una antena real es necesario aplicar una serie de algoritmos, que se describen en la secci\'on \ref{XXX}.
+		\item[Interacción primaria:] Al igual que en la primer parte de esta tesis, la interacci\'on neutrino nucleon se proces\'o utilizando \tauola{}, que fue descripto en la secci\'on \ref{sbsc:tauola}.
+		\item[Desarrollo de la EAS:] como se discuti\'o en la secci\'on \ref{sc:gen_emision} a nivel microsc\'opico la emisi\'on de radio de una EAS puede conseguirse como superponiendo las de cada part\'icula de la lluvia. bajo este principio, el programa \zhs{}, una modificaci\'on de \aires{}, implementa la aproximaci\'on ZHS (ver secci\'on \ref{sbsc:zhs_approx}) sobre cada una de las part\'iculas simuladas. La descripci\'on de \zhs{} se realiza en la secci\'on \ref{sbsc:zhaires}.
+		\item[Señal en el detector:] La salida de \zhs{} consiste en el campo el\'ectrico en funci\'on del tiempo sobre una lista de observadores (antenas) ubicados en posici\'ones puntuales del espacio. Para transformar esta se\~nal \emph{cruda} en la obtenida por una antena real es necesario aplicar una serie de algoritmos, que se describen en la secci\'on \ref{sbsc:sig_treat}.
 	\end{description}
-	
 	
 	\subsection{ZHAireS}
 	\label{sbsc:zhaires}
 
 	\zhs{} es una implementaci\'on del las rutinas de ZHS \cite{1_halzen_zas_stanev_1991,2_zas_halzen_stanev_1992} sobre \aires{} desarrollada por Jaime Alvarez-Muñiz, Washington Rodriguez-Carvhalo Jr. y Matias Tueros en el Departamento de Física de Partículas Universidad de Santiago de Compostela, España.
 	\zhs{}, conserva todas las capacidades de \aires{} y agrega la posibilidad de simular el la emisi\'on de radio de la EAS, incluyendo nuevas directivas de entrada que permiten controlar con buen detalle la simulación.
-
+	
 		\subsubsection{C\'omputo de la se\~nal}
 		
-		La metodolog\'ia aplicada en \zhs{} para calcular la se\~nal es simple: cada vez que el algoritmo de \aires{} avanza una part\'icula se llama a las rutinas de ZHS.
-		Estas calculan el pulso electromagn\'etico que la partícula generar\'ia en ciertos observadores (o antenas) que se ubican en posiciones predefinidas, lo que se esquematiza en la figura \ref{fig:trackSch}.
-		%
-		\begin{figure}[ht!]
-		\centering
-			\includegraphics[width=0.6\textwidth]{fig/simulacionRadio/trackSch}
-			\caption{\label{fig:trackSch} Esquema del track que avanza una par\'icula al ser simulada por \aires{}.}
-		\end{figure}
-		
-		El c\'alculo exacto de la emisi\'on electromagn\'etica de una part\'icula que se desplaza con velocidad constante en cierto camino involucra la resoluci\'on num\'erica de integrales.
-		Esto se vuelve impracticable computacionalmente si se tiene en cuenta que una lluvia típica de \cant{1}{EeV} puede implicar la simulación de $10^{10}$ partículas.
-		Las rutinas de ZHS utilizan una aproximaci\'on que salva este problema a costa de cumplir las siguientes hip\'otesis:
+		La metodolog\'ia aplicada en \zhs{} para calcular la se\~nal es simple: cada vez que el algoritmo de \aires{} avanza una part\'icula se llama a las rutinas de ZHS, una implementaci\'on en fortran de las aproximaciones ZHS.
+
+		Como se mencion\'o en la secci\'on \ref{sbsc:zhs_approx}, para que las aproximaciones sean v\'alidas, es necesario cumplir las siguientes hip\'otesis:
 		\begin{enumerate}
-		\item El observador se encuentra en la zona de campo lejano
-		\begin{equation}
-		kr\gg1
-		\end{equation}
-		\item La longitud del track es peque\~na a comparaci\'on de la distancia al observador, $\eta\ll1$, con
-		\begin{equation}
-		\eta = \frac{k L^2}{R}\sin^2\theta
-		\end{equation}
-		donde $L\equiv v(t_1-t_2)$ es la longitud del track.
-		\item La inversa distancia entre cualquier punto del track y el observador debe poder ser considerada una constante
-		\begin{equation}
-		\frac{1}{r(t)}\sim\frac{1}{R}
-		\end{equation}
+		\item La inversa distancia entre cualquier punto del track y el observador debe poder ser considerada una constante.
+		\item La longitud del track es peque\~na a comparaci\'on de la distancia al observador.
+		\item El observador se encuentra en la zona de campo lejano.
 		\end{enumerate}
 		%
-		Si el tama\~no de los tracks obtenidos a partir del algoritmo de \aires{} no siatisface alguna de las condiciones 2 o 3, una rutina se encarga de partirlo en trozos lo suficientemente chicos como para que suceda.
-		Si no se llegara a cumplir la condici\'on n\'umero 1, ser\'ia necesario utilizar la soluci\'on exacta del problema, lo que no se encuentra implementado en \zhs{} hasta el momento.
-		Esta es una limitaci\'on conocida del c\'odigo, que genera se\~nales artificiales en las antenas. Afortunadamente, la probabilidad de que esto ocurra es muy baja incluso en EAS que se desarrollan muy cerca del detector como las iniciadas por neutrinos ES.
+		Por ende, si el tama\~no de los tracks obtenidos a partir del algoritmo de \aires{} no siatisface alguna de las condiciones 1 o 2, una rutina se encarga de partirlo en trozos lo suficientemente chicos como para que suceda.
+		Por otro lado, si no se llegara a cumplir la condici\'on n\'umero 3, ser\'ia necesario utilizar la soluci\'on exacta del problema, lo que no se encuentra implementado en \zhs{} hasta el momento.
+		Esta es una limitaci\'on conocida del c\'odigo, que genera se\~nales artificiales cuando las part\'iculas propagadas se encuentran muy cerca de las antenas.
+		Afortunadamente, la contribuci\'on de estas part\'iculas es poco importante incluso en EAS que se desarrollan muy cerca del detector como las iniciadas por neutrinos ES, debido a que la mayor parte de la se\~nal proviene de regiones cercanas al eje de la lluvia.
 		
-		Una vez que los tracks cumplen las condiciones necesarias, se calcula el potencial vector $\vec{A}(t,\hat{u})$ y el campo el\'ectrico $\vec{E}(t,\hat{u})$ en la posici\'on del observador utilizando las ecuaciones \ref{eq:afield} y \ref{eq:efield}.
-		\begin{equation}
-		\vec{A}(t,\hat{u})
-		=
-		\frac{\mu e}{4\pi Rc}
-		\vec\beta_{\bot}
-		\frac{\Theta(t-t^{det}_1)-\Theta(t-t^{det}_2)}{1-n\vec\beta\cdot\hat u}
-		\label{eq:afield}
-		\end{equation}
-	% 	$\vec E(t)=-\partial\vec{A}/\partial t $
-		\begin{equation}
-		\vec{E}(t,\hat{u})
-		=
-		-\frac{\mu e}{4\pi Rc}
-		\vec\beta_{\bot}
-		\frac{\delta(t-t^{det}_1)-\delta(t-t^{det}_2)}{1-n\vec\beta\cdot\hat u}
-		\label{eq:efield}
-		\end{equation}
-		En estas, como en la figura \ref{fig:trackSch}, $\hat{u}$ es el versor que indica la direcci\'on entre la mitad del track y el observador, $\vec\beta=\vec v/c$, $\vec\beta_{\bot}=-[\hat{u}\times(\hat{u}\times\vec\beta)]$ es la proyecci\'on de $\vec\beta$ sobre el plano perpendicular a $\hat u$ y $t_{1,2}^{det}=t_{1,2}+nR/c-n\vec\beta \cdot \hat u (t_{1,2}-t_0)$ son los tiempos de detecci\'on del principio y final del track respectivamente, con $t_0=(t_1+t_2)/2$. Por otro lado, $\Theta(x)$ y $\delta(x)$ son las funciones escalón de Heaviside y delta de Dirac respectivamente.
+		Una vez que los tracks cumplen las condiciones necesarias el campo el\'ectrico se calcula mediante la ecuaci\'on \ref{eq:efield_0}, descripta en la secci\'on \ref{sbsc:zhs_approx}.
 		
-		Para realizar un c\'alculo correcto del tiempo de arrivo de la se\~nal a la antena, es necesario tener un modelo que describa el \'indice de refracci\'on de la atm\'osfera.
-		La implementación del mismo en \zhs{} se realiza como en la ecuaci\'on \ref{eq:refIndexEff}.
+% 		, se calcula el potencial vector $\vec{A}(t,\hat{u})$ y el campo el\'ectrico $\vec{E}(t,\hat{u})$ en la posici\'on del observador utilizando las ecuaciones \ref{eq:afield} y \ref{eq:efield}.
+% 		\begin{equation}
+% 		\vec{A}(t,\hat{u})
+% 		=
+% 		\frac{\mu e}{4\pi Rc}
+% 		\vec\beta_{\bot}
+% 		\frac{\Theta(t-t^{det}_1)-\Theta(t-t^{det}_2)}{1-n\vec\beta\cdot\hat u}
+% 		\label{eq:afield}
+% 		\end{equation}
+% 	% 	$\vec E(t)=-\partial\vec{A}/\partial t $
+% 		\begin{equation}
+% 		\vec{E}(t,\hat{u})
+% 		=
+% 		-\frac{\mu e}{4\pi Rc}
+% 		\vec\beta_{\bot}
+% 		\frac{\delta(t-t^{det}_1)-\delta(t-t^{det}_2)}{1-n\vec\beta\cdot\hat u}
+% 		\label{eq:efield}
+% 		\end{equation}
+% 		En estas, como en la figura \ref{fig:trackSch}, $\hat{u}$ es el versor que indica la direcci\'on entre la mitad del track y el observador, $\vec\beta=\vec v/c$, $\vec\beta_{\bot}=-[\hat{u}\times(\hat{u}\times\vec\beta)]$ es la proyecci\'on de $\vec\beta$ sobre el plano perpendicular a $\hat u$ y $t_{1,2}^{det}=t_{1,2}+nR/c-n\vec\beta \cdot \hat u (t_{1,2}-t_0)$ son los tiempos de detecci\'on del principio y final del track respectivamente, con $t_0=(t_1+t_2)/2$. Por otro lado, $\Theta(x)$ y $\delta(x)$ son las funciones escalón de Heaviside y delta de Dirac respectivamente.
+		
+		Por otro aldo, para calcular correctamente el tiempo de arrivo de la se\~nal a la antena, es necesario tener un modelo que describa el \'indice de refracci\'on de la atm\'osfera.
+		Dado que el camino \'optico puede ser escrito como una integral de linea, dada una trayectoria, y haciendo uso del teorema del valor medio integral, se puede definir un \'indice de refracci\'on efectivo seg\'un:
 		%
 		\begin{equation}
 			\begin{matrix}
@@ -98,8 +84,8 @@ En la segunda parte se realiza una caracterizaci\'on de la huella de campo el\'e
 		\label{eq:refIndexEff}
 		\end{equation}
 		%
-		En esta, ${\mathcal R}(h) = \left[ n(h)-1 \right] \times 10^6$.
-		Para ${\mathcal R}(h)$, \zhs{} ofrece la posibilidad de utilizar un valor constante, o un modelo exponencial como el de la ecuaci\'on \ref{eq:refIndexExp} en el que es posible fijar su valor a nivel del suelo.
+		donde, ${\mathcal R}(h) = \left[ n(h)-1 \right] \times 10^6$.
+		Para ${\mathcal R}(h)$, \zhs{} ofrece la posibilidad de utilizar un valor constante, o un modelo exponencial como el de la ecuaci\'on \ref{eq:refIndexExp}, en el que es posible fijar su valor a nivel del suelo.
 		\begin{equation}
 		{\mathcal R}(h)
 		=
@@ -111,80 +97,198 @@ En la segunda parte se realiza una caracterizaci\'on de la huella de campo el\'e
 		Con estos valores es posible reproducir los valores calculados en \cite{gerson1948polar} con un $1\%$ precisi\'on hasta una altura de \cant{20}{km}.
 		A mayor altitud la aproximaci\'on exponencial para ${\mathcal R}$ sobreestima el \'indice de refracci\'on, pero m\'as all\'a de los \cant{20}{km} la lluvia recien ha comenzado a desarrollarse, por lo que la cantidad de part\'iculas es relativamente peque\~na por lo que esta zona contribuye muy poco a la se\~nal total.
 		
-		Otro factor a tener en cuenta es que cuando las lluvia a simular es muy inclinada, la altura que se utiliza en la ecuaci\'on \ref{eq:refIndexExp} debe ser medida desde la superficie de la tierra, sin utilizar la aproximai\'on de tierra plana, como se muestra en la figura \ref{fig:refIndex}.
+		En esta tesis se utiliz\'o el modelo exponencial para el \'indice de refracci\'on con ${\mathcal R}_o=325$ y $K_r=0.1218km^{-1}$ en todas las simulaciones.
+		
+		Otro factor a tener en cuenta aparece cuando las lluvia a simular es muy inclinada.
+		Dado que la cascada puede iniciarse a cientos de kilometros del detector, la aproximaci\'on de tierra plana no es v\'alida.
+		Por ende, la altura que se utiliza en la ecuaci\'on \ref{eq:refIndexExp} debe ser medida cuidadosamente, incluyendo la curvatura de la tierra, como se muestra en la figura \ref{fig:refIndex}.
+		%
 		\begin{figure}[ht!]
 		\centering
 			\includegraphics[width=0.6\textwidth]{fig/simulacionRadio/refIndex}
 			\caption{\label{fig:refIndex} Esquema del m\'etodo mediante el que se tiene en cuenta la curvatura de la tierra al momento de calcular el \'indice de refracci\'on de la atm\'osfera para diferentes alturas.}
 		\end{figure}
-		Dado que realizar la integral descripta en \ref{eq:refIndexEff} en estas condiciones es muy costoso, se discretiza $R$ en un n\'umero finito de tramos y supone el \'indice de refracci\'on constrante en cada uno de ellos.
+		%
+		Dado que realizar la integral descripta en \ref{eq:refIndexEff} en estas condiciones resulta computacionalmente muy costoso, en \zhs{} se discretiza la distancia $R$ en un n\'umero finito de tramos y supone el \'indice de refracci\'on constrante en cada uno de ellos.
 		
-		Una vez calculadas las amplitudes de los campos y los tiempos de arrivo de las se\~nales debidas a cada track, el campo total en cada observador se guarda utilizando bines temporales prefijados, como la ecuaci\'on \ref{eq:eAntField}, donde el \'indice $j$ corre sobre las part\'iculas simuladas y $\omega_j$ es el peso estad\'istico que pose\'ia la part\'icula que emiti\'o el campo $\vec{E}_j$.
+		Una vez calculadas las amplitudes de los campos y los tiempos de arrivo de las se\~nales debidas a cada track, el campo total en cada observador se guarda utilizando bines temporales prefijados, como la ecuaci\'on \ref{eq:eAntField}, donde el \'indice $j$ recorre las part\'iculas simuladas y $\omega_j$ representa el peso estad\'istico de la part\'icula\footnote{Este peso es el peso asignado por el algoritmo de thinning durante la simulaci\'on.} que emiti\'o el campo $\vec{E}_j$.
 		\begin{equation}
 		\vec{E}(t_i)=\sum_{j:t_j\varepsilon[t_i,t_{i+1}]}\vec{E}_j(t_j)\omega_j
 		\label{eq:eAntField}
 		\end{equation}
 		%
-		La ecuaci\'on \ref{eq:eAntField} muestra claramente que la se\~nal simulada en una dada antena depende fuertemente del algoritmo de thinning utilizado. 
-		
+		De la ecuaci\'on \ref{eq:eAntField} es posible notar que la se\~nal simulada en una dada antena depende fuertemente del algoritmo de thinning utilizado. 
 		Dado que la mayor contribuci\'on al campo el\'ectrico proviene de las part\'iculas de media y baja energ\'ia, es poco deseable la aparici\'on de partículas con peso extremadamente alto.
 		En consecuencia y como bajar el nivel de thinning es poco eficiente, en la simulación se utiliza un \emph{weight factor} peque\~no.
-
+		
+		
 		\subsubsection{Dificultades técnicas}
 
-		Intentando no volver esta sección tediosa se pretende enumerar una serie de dificultades técnicas a la hora de simular la señal de radio emitida por neutrinos ES utilizando \zhs{}.
+		Con el fin de no volver tediosa esta sección a continuaci\'on se enumeran una serie de dificultades técnicas presentes a la hora de simular la señal de radio emitida por neutrinos ES utilizando \zhs{}.
 
-		En primer lugar, al igual que en las simulaciones realizadas para Auger es necesario utilizar los productos de decaimiento generados con \tauola{} y luego inyectarlos en \aires{} con las posiciones y velocidades correctas.
+		En primer lugar, al igual que en las simulaciones realizadas con \aires{} para calcular la exposici\'on de Auger, es necesario utilizar los productos de decaimiento del \tauon{} generados con \tauola{} como condici\'on inicial en \aires{}.
+		La dificultad en este paso subyace simplemente en conciliar los sistemas de coordenadas en los que se describen las posiciones y velocidades en \tauola{} y \aires{}.
 
 		Luego, la mayor dificultad técnica resulta de la gran cantidad de tiempo de máquina que requiere realizar la simulación de la emisión de radio.
-		Para contextualizar la situación, una simulación típica puede implicar la necesidad de conocer la señal en algunos cientos de observadores.
-		Dado que cada vez que se avanza una partícula es necesario calcular la señal en cada uno de ellos, luego de la primer decena el tiempo de simulación depende casi linealmente de su numero, es decir, se torna despreciable el tiempo que toma simular la evolución de la lluvia.
+		Para contextualizar la situación, una simulación típica puede implicar el c\'alculo de la señal en algunos cientos de observadores.
+		Dado que cada vez que se avanza una partícula es necesario calcular la señal en cada uno de ellos, luego de la primer decena de antenas el tiempo de simulación depende casi linealmente de su numero, es decir, el tiempo que toma simular la evolución de la lluvia se torna despreciable.
 		Con todo esto, como la simulación de una lluvia de \cant{10^{18}}{eV} puede tomar del orden de algunas horas por decena de anteas\footnote{Este número depende fuertemente del nivel de thinning elegido}, la simulación completa de cada lluvia puede requerir del orden del centenar de horas de tiempo de CPU.
 		La única manera de salvar este inconveniente es partiendo el detector en grupos mas pequeños de antenas, de entre 10 y 40, donde es necesario tener la precaución de que la evolución de la lluvia se simule con la misma semilla en cada vez.
-
-	
-\section{Tratamiento de la se\~nal}
-	
-	- Descripcion de la antena: pag 26 harm thesis
-	
-	
-	\subsubsection{Señal en la antena}
-	La figura \ref{fig:antSig} se grafican las componentes del campo eléctrico en una antena a nivel del suelo y su espectro. La misma se encuentra ubicada sobre el punto de impacto del cono \cher{}.
-	%
-	\begin{figure}[ht!]
+		Una vez finalizada cada simulaci\'on se utilizaron una serie de programas en c++ para compaginar los eventos y luego analizarlos.
+		
+		\subsubsection{Desempe\~no de \zhs{}}
+		
+		Finalmente, es necesario hacer menci\'on del desempe\~no alcanzado por \zhs{} para describir la se\~nal generada por lluvias atmosf\'ericas ya que los resultados de esta parte de la tesis depender\'an fuertemente del mismo.
+		En la figura \ref{fig:zhsvsdata}, tomada de \cite{cite:icrc13Auger}, se compara la distribuci\'on lateral\footnote{La distribuci\'on lateral en este caso se refiere a la dependencia de la amplitud m\'axima observada en la antena con la distancia radial respecto del centro de la lluvia.} de un evento de AERA, la extensi\'on de radio del proyecto Pierre Auger, con la obtenida mediante \zhs{}.
+		%
+		\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=0.8\textwidth]{./fig/simulacionRadio/antennaSignal}\\
-		\includegraphics[width=0.8\textwidth]{./fig/simulacionRadio/antennaSpec}
-		\caption{\label{fig:antSig}
-		Arriba: se observa la señal en una antena colocada a nivel del suelo, ubicada sobre el cono \cher{}. Según lo expuesto en la seccción \ref{ch:easRadio}, el pico de señal correspondiente a la emisión coherente del máximo de la lluvia.
-		Abajo: transformada de Fourier de la señal de la antena. Se observa coherencia hasta frecuencias casi del $\rm GHz$.
-		}
-	\end{figure}
+			\includegraphics[width=0.6\textwidth]{fig/simulacionRadio/ZHAireS_and_data}
+			\caption{\label{fig:zhsvsdata} Tomada de \cite{cite:icrc13Auger}. Comparaci\'on entre la distribuci\'on lateral de un evento de AERA y la obtenida utilizando \zhs{}. Los par\'ametros utilizados para la simulaci\'on se obtuvieron de la reconstrucci\'on del evento. La franja roja representa la zona $\pm1\sigma$ para protones mientras que la azul para eventos iniciados por hierro.}
+		\end{figure}
+		%
+		Como par\'ametros de entrada de las simulaciones se utilizaron los obtenidos en la reconstrucci\'on realizada con el detector de superficie del observatorio. 
+		Debido a la falta de informaci\'on sobre el primario de la lluvia, se realizaron simulaciones utilizando protones y hierro. La franja roja representa la zona $\pm1\sigma$ para protones mientras que la azul para eventos iniciados por hierro.
+		Este resultado muestra un grado de acuerdo dentro del $10\%$ en esta variable (la amplitud de la se\~nal).
+		
+		M\'as adelante, se utilizar\'a la distribuci\'on del m\'aximo de se\~nal a nivel del suelo de las lluvias simuladas para calcular las eficiencias de detecci\'on a neutrinos ES. 
+		Dado que esta cantidad depende de varios factores, y que su simulaci\'on resulta computacionalmente muy costosa, se evitar\'a barrer los par\'ametros cuyo impacto sea del \'orden del $10\%$ o menor.
+		
+	\subsection{Tratamiento de la se\~nal}
+	\label{sbsc:sig_treat}
+	
+	Una vez obtenido el campo el\'ectrico como funci\'on del tiempo, calculado por \zhs{}, es necesario aplicar un tratamiento a la se\~nal que permita aproximar el comportamiento que un detector real frente al mismo.
+	
+	Dado que en el c\'alculo realizado en esta parte de la tesis no esta ligado a ning\'un experimento en particular\footnote{La menci\'on a GRAND en la motivaci\'on de esta parte fue con el fin de fundamentar la factibilidad de un experimento de esta \'indole.}, el tratamiento aplicado a la se\~nal obtenida de \zhs{} intentar\'a capturar algunas t\'ecnicas comunes en los experimentos actuales de radio, aunque guardando libertad para optimizar la detecci\'on de neutrinos ES.
+	A lo largo de esta secci\'on se describen los criterios utilizados para elegir las t\'ecnicas aplicadas al tratamiento de la se\~nal.
+	
+	El primer paso en esta direcci\'on ser\'a entonces estudiar las componentes de un arreglo de antenas gen\'erico y c\'omo afecta la se\~nal recibida.
+	
+	\subsubsection{Detector gen\'erico de antenas de radio}
+	
+	El tipo de detector que se pretende estudiar en este trabajo consiste en un arreglo de estaciones de detecci\'on (RDS por \emph{Radio Detection Station}), como el que se muestra en la figura \ref{fig:detectorSch}.
 	%
-	Como se expuso en la sección \ref{ch:easRadio}, el pico observado en la señal corresponde a la emisión coherente de las partículas generadas en el máximo de la lluvia por lo que su espectro muestra coherencia hasta frecuencias casi del $\rm GHz$.
-	Es importante destacar que esta señal se encuentra a un nivel que puede ser detectado por sobre le nivel del ruido. 
+		\begin{figure}[ht!]
+			\centering
+			\includegraphics[width=\textwidth]{./fig/simulacionRadio/antennaSch}
+			\caption{\label{fig:detectorSch} Esquema de un arreglo de antenas de radio gen\'erico.
+			Cada estaci\'on de detecci\'on (RDS por \emph{Radio Detection Station}) es un elemento aut\'onomo del detector. Las componentes de su fase anal\'ogica son, la antena y un amplificador de bajo ruido (LNA por \emph{Low Noise Amplifier}) seguidos una serie de filtros y amplificadores. Luego, adem\'as de digitalizar la se\~nal se evaluan algoritmos de trigger locales y se agrega una etiqueta temporal mediante GPS.
+			Finalmente, cada RDS se conecta a un sistema de adquisici\'on central (DAQ Central) que se encarga de discriminar eventos globales. M\'as informaci\'on en el texto.
+			}
+			
+		\end{figure}
+	%
+	Si bien cada las componentes de cada RDS var\'ian de detector a detector, usualmente constan de una fase de detecci\'on anal\'ogica, una etapa de digitalizaci\'on y an\'alisis.
+	\begin{enumerate}
+		\item \textbf{Fase anal\'ogica:} esta etapa comienza en la antena. Una vez que el campo el\'ectrico genera un exceso de carga entre sus brazos, la corriente generada es amplificada por un amplificador de bajo ruido (LNA) que suele ubicarse a su pie, con el fin de evitar p\'erdidas. Luego, la se\~nal pasa por una segunda etapa de amplificaci\'on y filtrado y es transmitida hacia la fase digital.
+		\item \textbf{Fase digital:} en este tramo la se\~nal es digitalizada, usualmente por un dispositivo ADC y analizada por un FPGA o un CPU. Este an\'alisis puede incluir la evaluaci\'on de niveles de disparo, el filtrado de frecuencias de ruido conocidas o incluso alguna transformaci\'on conveniente necesaria para el posterior an\'alisis. Una vez finalizada la etapa de tratamiento la se\~nal es almacenada junto a una etiqueta temporal normalmente obtenida mediante GPS. 
+		Cada vez que una RDS cumple con todos los criterios de disparo locales, el tiempo de GPS de la se\~nal es enviado a un sistema de adquisici\'on central (DAQ Central) en el que se evaluan los niveles de disparo globales.
+		Si estos se cumplen el DAQ Central indica a cada RDS del evento que envie la se\~nal almacenada para que sea guardada en disco.
+	\end{enumerate}
 	
-	Una vez obtenido el campo eléctrico en cada antena del detector es necesario simular su respuesta.
-	Para ello en este trabajo se considera la posibilidad mas simple de todas
+	Como consecuencia de este proceso, la se\~nal alcanza la antena es diferente a la que finalmente es almacenada en el disco, donde el mayor impacto proviene del filtrado que se produce en la fase anal\'ogica a consecuencia de las respuestas en frecuencia de la antena y los amplificadores.
+	Dado que estas respuestas pueden ser manejadas para satisfacer las necesidades del detector, en este trabajo se supondr\'a que cada RDS presenta una respuesta plana en frecuencia y adem\'as se se seleccionar\'a una banda particular, determinada por los siguientes factores:
+	\begin{itemize}
+	 \item La contaminaci\'on proveniente de la onda media predomina en la regi\'on \cant{0.2\text{-}30}{MHz}
+	 \item La observaci\'on en frecuencias entre \cant{30\text{-}80}{MHz} es factible y actualmente utilizada por la mayor\'ia de los experimentos de radio actuales.
+	 \item Las emisoras de FM ocupan la banda \cant{80\text{-}120}{MHz}
+	 \item La se\~nal simulada de cascadas atmosf\'ericas en eventos ES muestra coherencia hasta el GHz.
+	\end{itemize}
 	
+	Teniendo esto en cuenta, a la se\~nal simulada con \zhs{} se le aplicar\'a un filtro pasa banda \cant{30\text{-}80\text{/}120\text{-}900}{MHz} a las tres componentes del campo.
 	
+	Por otro lado, el hecho de conservar las tres componentes del campo el\'ectrico es un hecho no menor.
+	Dado que su polarizaci\'on es paralela al frente de la lluvia (ver secci\'on \ref{sc:macroscopico}), la componente $z$ del campo el\'ectric\'o puede llegar a ser importante en lluvias inclinadas, al contrario de lo que sucede en eventos verticales.
+	La figura \ref{fig:antSig} muestra el campo el\'ectrico obtenido mediante \zhs{}, medido en una antena ubicada sobre el anillo \cher{} para un evento ES que se dirige de Este a Oeste.
+	Se grafican las componentes $z$, FW y TR del campo eléctrico, donde FW y TR son en la direcci\'on y transversal al movimiento del frente de la lluvia sobre el plano del suelo, respectivamente.
+	
+	%
 	\begin{figure}[ht!]
 		\centering
 		\includegraphics[width=0.8\textwidth]{./fig/simulacionRadio/antennaFilt}
-		\caption{\label{fig:antHEnv}
-		asd
+		\caption{\label{fig:antSig}
+		En l\'inea llena (punteada) se observa la señal en una antena ubicada a nivel del suelo sobre el anillo \cher{} antes (despu\'es) del filtrado en la banda \cant{30\text{-}80\text{/}120\text{-}900}{MHz}.  
+		La componente FW del campo tiene la direcci\'on de propagaci\'on del frente de la lluvia sobre el plano del suelo, mientras que la componente TR es perpendicular a las componentes $z$ y FW.
+		La ausencia de la componente FW es consistente con los modelos macrosc\'opicos expuestos en la secci\'on \ref{sc:macroscopico}.
 		}
 	\end{figure}
 	
+	\subsubsection{Evaluaci\'on del disparo local}
+	
+	En un detector de radio real, la se\~nal que supera la etapa de digitalizaci\'on y alcanza la de evaluaci\'on de los niveles de disparo locales, se compone del pulso que se busca detectar y alg\'un nivel ruido.
+	Por este motivo, existe siempre un campo incidente m\'inimo sobre la antena necesario para obtener una se\~nal detectable. 
+	Esto es as\'i ya que la elecci\'on de los niveles de disparo locales se basa en un compromiso entre una relaci\'on se\~nal ruido alta \textbf{o} una eficiencia de disparo alta.
+	Por este motivo, es necesario estudiar las fuentes de ruido que pueden afectar la medici\'on.
+	
+	La figura \ref{fig:allanNoise} (tomada de \cite{allan1971}) muestra los valores m\'inimos t\'ipicos que debe tomar el campo el\'ectrico en la antena para generar una se\~nal detectable, frente a diferentes fuentes de ruido y para un ancho de banda de \cant{1}{MHz}.
+	%
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{./fig/simulacionRadio/allanNoise}
+		\caption{\label{fig:allanNoise}
+		Tomada de \cite{allan1971}. Niveles t\'ipicos de campo el\'ectrico m\'inimo detectable como funci\'on de la frecuencia, para diferentes niveles de ruido y un ancho de banda de \cant{1}{MHz}.
+		En la banda \cant{30\text{-}80}{MHz} domina el ruido gal\'actico mientras que para la zona \cant{120\text{-}900}{MHz} lo hace el ruido intr\'inseco del receptor.
+		}
+	\end{figure}
+	%
+	Las posibles fuentes de ruido son las siguientes:
+	%
+	\begin{itemize}
+	 \item \textbf{Ionosf\'erico:} la densidad de carga libre presente en la ion\'osfera provoca que act\'ue como un reflector para las ondas electromagn\'eticas en el rango \cant{100}{kHz}-\cant{30}{MHz}. De esta manera, es posible captar se\~nales originadas ya sea por emisoras de onda media o por tormentas a miles de kil\'ometros del lugar de observaci\'on.
+	 \item \textbf{Proveniente de la ciudad:} el ruido electromagn\'etico presente en las ciudades, que proviene usualmente de aparatos industriales, suele ser el dominante en la mayor parte del ancho de banda si el receptor se encuentra dentro o cerca de la misma.
+	 \item \textbf{Gal\'actico:} el ruido gal\'actico es todo aquel que proviene de fuentes extra terrestres (solar, c\'osmico o proveniente del plano gal\'actico). Este domina la regi\'on \cant{30\text{-}80}{MHz}, en ausencia de ruido humano.
+	 \item \textbf{Intr\'inseco:} tambi\'en conocido como \emph{ruido de Johnson-Nyquist}, aparece en los terminales de la antena debido a fluctuaciones termodin\'amicas de los portadores de carga. Esta fuente depende de la temperatura de trabajo de la antena y se vuelve la fuente dominante por encima de de los \cant{100}{MHz}.
+	\end{itemize}
+	
+	Entonces, idealmente el experimento deber\'a encontrarse lejos de las zonas pobladas para evitar el ruido proveniente de la ciudad.
+	En estas condiciones el nivel de disparo local en la banda \cant{30\text{-}80\text{/}120\text{-}900}{MHz} depender\'a s\'olo del ruido gal\'actico y del intr\'inseco de la antena, donde ser\'a necesario llevar los valores de campo m\'inimo de la figura \ref{fig:allanNoise} al ancho de banda elegido.
+	Para ello, es necesario tener en cuenta que la potencia del ruido es aditiva, es decir, $|E_\nu|^2\propto d\nu$, donde $E_\nu$ es campo el\'ectrico que genera la se\~nal en un ancho de banda $d\nu$.
+	Por lo tanto el campo m\'inimo necesario en el ancho de banda seleccionado ser\'a:
+	%
+	\begin{equation}
+	|E|_{min}=\left(\int_{30}^{80}(|E_\nu|^2_G+|E_\nu|^2_R)\,d\nu+
+	\int_{120}^{900}(|E_\nu|^2_G+|E_\nu|^2_R)\,d\nu
+	\right)^\frac{1}{2}
+	\sim 250 {\rm\ \dfrac{\mu V}{m}}
+	\end{equation}
+	%
+	donde $|E_\nu|_G$ y $|E_\nu|_R$ son los campos m\'inimos necesarios para superar el ruido gal\'actico y del receptor respectivamente, obtenidos a partir de la figura \ref{fig:allanNoise}.
+	
+	Por otra parte, si se tiene en cuenta que el ruido del receptor puede eradicarse, el campo m\'inimo en nuestro ancho de banda ser\'ia el necesario para superar el ruido gal\'actico:
+	%
+	\begin{equation}
+	|E|_{min}=\left(\int_{30}^{80}|E_\nu|^2_G \,d\nu+
+	\int_{120}^{900}|E_\nu|^2_G\, d\nu
+	\right)^\frac{1}{2}
+	\sim 40 {\rm\ \dfrac{\mu V}{m}}
+	\end{equation}
+	%
+	
+	Entonces, se evaluar\'a el disparo local de cada RDS sobre el m\'aximo del campo el\'ectrico simulado.
+	Para ello, y con el fin de no perder generalidad en el resultado, se reportar\'a el resultado para diferentes niveles, entre \cant{25}{\frac{\mu V}{m}} y \cant{200}{\frac{\mu V}{m}} con un paso de \cant{25}{\frac{\mu V}{m}}.
+	En el cap\'itulo \ref{ch:resultadosRadio} se mostrar\'a que el nivel de disparo local elegido, \'intimamente relacionado con la sensibilidad de la antena, es el factor limitante que m\'as afecta la exposici\'on obtenida.
+	
+	
 \section{Caracterizaci\'on de eventos ES}
 
-Dado que este es el primer trabajo en el que se simula la señal de radio emitida por neutrinos ES, se dedicará esta sección a su caracterización.
+En esta secci\'on se realiza un recuento de las caracter\'isticas principales de la se\~nal de radio generada por lluvias ES.
+Esto permitir\'a determinar el espacio de par\'ametros (energ\'ia, \'angulo cenital, etc) en el que este tipo de eventos prodr\'an ser detectados, y que por ende deber\'an ser simulados.
+
+Para que un evento ES sea detectado, es necesario que se cumplan dos condiciones:
+\begin{enumerate}
+ \item La se\~nal de radio a nivel del suelo deber\'a ser lo suficientemente intensa y extensa para disparar varias antenas del detector, es decir, debe ser capaz de satisfacer ciertos criterios de disparo locales y globales.
+ \item Las caracter\'isticas globales del evento deben permitir distinguirlo de los eventos de fondo, que al igual que en Auger son generados por lluvias hadr\'onicas iniciadas cerca del tope de la atm\'osfera.
+\end{enumerate}
+por ende, a continuaci\'on se analizar\'a en qu\'e regi\'on del espacio de par\'ametros se cumplen estas circunstancias.
 
 	\subsection{Caracter\'isticas generales: evento típico}
 	
-	Para caracterizar la emisión de radio de una lluvia iniciada por un neutrino ES es buena idea comenzar con un \emph{evento típico}, y luego observar su comportamiento al variar diferentes parámetros.
-	En particular, a la hora de definir una lluvia ES será necesario determinar el canal de decaimiento del \tauon{}, la energía transferida a la lluvia $E_v$ y sus parámetros geométricos $(\theta,{\rm x_d},\phi)$.
-	Entonces, para el evento típico en este trabajo se eligieron los que se resumen en la tabla \ref{tab:paramTestShower}.
+	Para caracterizar la emisión de radio de una lluvia iniciada por un neutrino ES es buena idea estudiar lo que denominaremos un \emph{evento típico}, o de referencia, para luego observar los cambios que suceden al variar diferentes parámetros que lo caracterizan.
+	En particular, las cualidades que definir\'an la emisi\'on de radio de una lluvia ES son el canal de decaimiento del \tauon{}, la energía transferida a la lluvia $E_v$ (o energ\'ia visible)\footnote{Se denomina energ\'ia visible de la lluvia a la acarreada por las part\'iculas interactuantes en del decaimiento del \tauon{}, es decir, la acarreada por electrones, positrones, fotones y hadrones y que ser\'a transmitida r\'apidamente a las nuevas generaciones de part\'iculas. Por otro lado, la energ\'ia transferida a part\'iculas penetrantes, neutrinos y muones, se perder\'a debido a su baja frecuencia de interacci\'on.} y sus parámetros geométricos $(\theta,{\rm x_d},\phi)$.
+	Cabe destacar que a diferencia del calculo realizado para Auger, en este análisis las lluvias ES se caracterizarán por su energía visible $E_v$ y no por la energía del \tauon{} emergente.
+	Esta elección minimiza la cantidad de simulaciones que deben realizarse si se cumplen ciertas hip\'otesis (ver secci\'on \ref{sbsc:decayChRadio}) y deberá ser tenida en cuenta a la hora de calcular la exposición del detector.
+	
+	En este trabajo se eligieron como par\'ametros del evento t\'ipico los que se muestran en la tabla \ref{tab:paramTestShower}.
 	%
 	\begin{table}[ht!]
 	 \begin{center}
@@ -201,24 +305,17 @@ Dado que este es el primer trabajo en el que se simula la señal de radio emitid
 	 \end{center}
 	\end{table}
 	%
-	La energía visible de una lluvia se refiere a toda la energía que se llevan las partículas no penetrantes, que luego será transferida a la EAS.
-	Por ejemplo, en este caso en partícular la lluvia será iniciada por un electrón de \cant{10^{18}}{eV}.
-	A diferencia del calculo realizado para Auger, en esta parte del análisis las lluvias ES se caracterizarán por su energía visible $E_v$ y no por la energía del \tauon{} emergente.
-	Esto es solo una elección que deberá ser tneida en cuenta a la hora de calcular la exposición del detector.
+	Esta elecci\'on se debe a que, como podr\'a corroborarse en el cap\'itulo \ref{ch:resultadosRadio}, este tipo de eventos alcanza un $100\%$ de eficiencia de disparo.
 	
-	Dado que el efecto geomagnético contribuye con una parte importante de la señal a nivel del suelo, el resultado de la simulación depende de la ubicación geográfica en la que se realiza, en partícular de su intensidad e inclinación.
-	El efecto que eso puede causar en la simulación se trata en la sección \ref{sc:bfield}, pero es importante tener en mente que nuestra lluvia típica se simuló en Malargüe, donde la intensidad del campo es de \cant{0.2414}{Gauss} y tiene una inclinación de $-36.2951^\circ$, es decir, apunta hacia el suelo y el ángulo de su dirección con la normal es de $53.7049^\circ$.
+	Por otra parte, dado que el efecto geomagnético contribuye con una parte importante de la señal a nivel del suelo, el resultado de la simulación depende de la ubicación geográfica en la que se realiza, en partícular de su intensidad e inclinación.
+	El efecto que eso puede causar en la simulación se trata en la sección \ref{sc:bfield}, pero es importante tener en mente que nuestra lluvia típica se simuló en Malargüe, donde la intensidad del campo es de \cant{0.2414}{Gauss} y tiene una inclinación (medida desde el plano del suelo) de $-36.2951^\circ$, es decir, apunta hacia el suelo y el ángulo de su dirección con la normal es de $53.7049^\circ$.
 	
-	
-	
-	
+	Finalmente, para estudiar el evento t\'ipico se simular\'a la se\~nal sobre un arreglo de antenas cuyo paso es \cant{1000}{m} en la dirección de propagación y \cant{100}{m} en la dirección transversal.
 	
 	\subsubsection{Huella sobre el detector - Cono \cher}
 	
-	Otra cualidad importante a tener en cuenta es la geometría de la huella que pueden dejar estas lluvias sobre el detector.
-	En las figuras \ref{fig:testFootprint_Cone} a \ref{fig:testFootprint_E0z} se grafican las distintas componentes de la se\~nal de radio sobre un arreglo de antenas cuyo paso es \cant{1000}{m} en la dirección de propagación y \cant{100}{m} en la dirección transversal para una lluvia que fue inyectada en el punto $(x,y,z)=(0,0,25){\rm m}$.
-	
-	La figura \ref{fig:testFootprint_Cone} muestra el módulo del máximo campo eléctrico registrado por cada antena a nivel del suelo.
+	La primer caracter\'istica imporante de este tipo de eventos es la geometr\'ia de la huella dejada sobre el detector.
+	La figura \ref{fig:testFootprint_Cone} muestra el módulo del máximo campo eléctrico registrado a nivel del suelo.
 	%
 	\begin{figure}[ht!]
 		\centering
@@ -228,22 +325,22 @@ Dado que este es el primer trabajo en el que se simula la señal de radio emitid
 		}
 	\end{figure}
 	%
+	
 	Hay tres aspectos muy importantes a destacar de esta figura.
 	El primero es que, como se observa en línea roja, la zona de impacto del cono \cher{} predicha por la ecuación \ref{eq:conewidth} coincide con la huella de radio de manera notable.
 	Para obtener la predicción se utilizaron los parámetros de la simulación para la altura de decaimiento y el ángulo cenital, mientras que la posición del máximo de la lluvia se obtuvo mediante prueba y error, pero utilizando valores razonables\footnote{Para una lluvia de \cant{10^{18}}{eV} el máximo de la lluvia ronda los \cant{10}{km}}.
-	Si bien \zhs{} realiza la simulación microscópicamente, es decir, sin realizar ninguna suposición sobre los mecanismos de emisión, se nota que los resultados obtenidos pueden ser descriptos a orden cero a partir de razonamientos meramente geométricos (ver sección \ref{sbsc:geom_emision}).
+	Si bien \zhs{} realiza la simulación microscópicamente, es decir, sin realizar ninguna suposición sobre los mecanismos de emisión, se nota que los resultados obtenidos pueden ser descriptos a primer orden mediante razonamientos meramente geométricos (ver sección \ref{sbsc:geom_emision}).
 	
-	La segunda observación es que en al dirección de propagación de la lluvia la huella alcanza niveles detectables ($>\sim100{\rm \mu V/m}$) durante aproximadamente \cant{50}{km}.
+	La segunda observación es que en al dirección de propagación de la lluvia la huella alcanza niveles detectables (\cant{>\sim50}{\mu V/m}) durante aproximadamente \cant{50}{km}.
 	Esta es una cualidad muy favorable a la hora detectar este tipo de eventos, ya que aumenta la probabilidad de disparar antenas.
-	Por último, en contraposición a lo anterior, en la dirección transversal a la de propagación el tamaño de la huella es de al rededor de \cant{2}{km}, es decir, las lluvias ES generan huellas muy alargadas sobre el detector.
-	Esta es la característica fundamental a partir de la cual se pueden distinguír neutrinos ES. 
-	Ya que los eventos inclinados que podrían generar su background se desarrollan muy alto en la atmósfera, generarán huellas cuyo largo será similar al de las lluvias ES, pero con un ancho mucho mayor.
-	Esta última conclusión se infiere de que, al ubicarse el máximo de la lluvia más alto en la atmósfera, la apertura del cono al alcanzar el suelo será mucho mayor.
-	Este tema se volverá a abordar con mayor detalle en la sección \ref{REF}.
+	Por último, en contraposición a lo anterior, en la dirección transversal a la de propagación el tamaño de la huella es de al rededor de \cant{2}{km}, es decir, las lluvias ES generan huellas muy alargadas sobre el detector, lo que se esperaba debido a que el \'angulo \cher{} es $\theta_{Cher}\sim1.4^\circ$.
+	Si bien la poca apertura de la se\~nal en esta direcci\'on desfavorece su detecci\'on, esta es la característica fundamental a partir de la cual se pueden distinguír neutrinos ES de los eventos de fondo. 
+	Esto es as\'i ya que los eventos inclinados que generan el background (hadr\'onicos) se inician y desarrollan muy alto en la atmósfera y por ende generarán huellas de largo similar al de las lluvias ES, pero con un ancho mucho mayor.
+	Este tema se volverá a abordar con mayor detalle en la sección \ref{sbsc:identificacionRadio}.
 	
 	\subsection{Polarización de la señal - Influencia del campo magn\'etico terrestre}
 	
-	También es interesante analizar las componentes del camponentes del campo eléctrico de la huella.
+	Adem\'as de la geometr\'ia, resulta interesante analizar las componentes del camponentes del campo eléctrico de la huella.
 	En la figura \ref{fig:malField} se muestran las contribuciones al campo eléctrico a nivel del suelo para una lluvia completamente horizontal ($\theta=90^\circ$) y que se desplaza de Oeste a Este ($\phi=90^\circ$).
 	%
 	\begin{figure}[ht!]
@@ -385,18 +482,18 @@ Dado que este es el primer trabajo en el que se simula la señal de radio emitid
 	velocidad de drift peque\~na por alra densidad en la atmósfera.
 	
 	
-% 	\subsection{Evoluci\'on de la se\~nal a nivel del suelo}
-% 		
-% 	
-% 	mostrar evolucion del EMax a lo largo de la lluvia
-% 	
-% 	mostrar espectro y evolucion
-% 	
-% 	mostrar fit del maximo de la lluvia como funcion de xd y theta y dependencia con la energia
-% 	
-% 		\subsubsection{Evoluci\'on de la polarizaci\'on}
-% 		
-% 		cambio askaryan geomagnetico?
+	\subsection{Evoluci\'on de la se\~nal a nivel del suelo}
+		
+	
+	mostrar evolucion del EMax a lo largo de la lluvia
+	
+	mostrar espectro y evolucion
+	
+	mostrar fit del maximo de la lluvia como funcion de xd y theta y dependencia con la energia
+	
+		\subsubsection{Evoluci\'on de la polarizaci\'on}
+		
+		cambio askaryan geomagnetico?
 	
 	\subsection{Corte en $\theta$}
 	
@@ -418,7 +515,7 @@ Dado que este es el primer trabajo en el que se simula la señal de radio emitid
 	\end{figure}
 	
 	\subsection{Dependencia con el canal de decaimiento del \tauon{}}
-	
+	\label{sbsc:decayChRadio}
 	
 	
 	\begin{figure}[ht!]
@@ -451,5 +548,32 @@ Dado que este es el primer trabajo en el que se simula la señal de radio emitid
 	Maximo del footprint
 	
 	
-	
+\section{Identificaci\'on de eventos}
 
+\section{Separaci\'on de las lluvias de fondo}
+\label{sbsc:identificacionRadio}
+Al igual que en el an\'alisis realizado para Auger, el desaf\'io 
+
+- eventos gigantes
+
+- se inician lejos y el campo cae como 1/R pero el drift es mayor debido a la baja densidad de la atm\'osfera
+
+- ver v4.20 en ntuple analizer mostrar que la velocidad sobre el eje o el ancho 
+
+
+\section{Resumen del an\'alisis de la se\~nal}
+
+\begin{table}[ht!]
+\centering
+ \begin{tabular}{|p{0.3\textwidth}|p{0.7\textwidth}|}
+ \toprule
+ Descripci\'on & Detalle \\
+ \midrule\midrule
+ Filtrado de la se\~nal & Respuesta plana en la banda \cant{30\text{-}80\text{/}120\text{-}900}{MHz} \\ \midrule
+ Nivel de disparo local &  Entre \cant{25}{\frac{\mu V}{m}} y \cant{200}{\frac{\mu V}{m}} con un paso de \cant{25}{\frac{\mu V}{m}}\\ \midrule
+ Disparo global & Al menos 3, 4 y 5 antenas disparadas compatibles con un frente que se desplaza a la velocidad de la luz \\ \midrule
+ Nivel de identificaci\'on & Eficiencia entre 0.80 y 1.00 con un paso de 0.05 \\
+ 
+ \bottomrule
+ \end{tabular}
+\end{table}

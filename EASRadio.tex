@@ -1,31 +1,34 @@
 \chapter{Emisi\'on de ondas de radio de una EAS}
 \label{ch:easRadio}
 
-El objetivo de este cap\'itulo es ganar intuci\'on sobre la emisión de ondas de radio en las lluvias atmosféricas extendidas.
+El objetivo de este cap\'itulo es ganar intuci\'on sobre la emisión de ondas de radio en lluvias atmosféricas extendidas.
 Para ello, se abordar\'a el problema desde varios puntos de vista.
 En primer lugar se revisar\'a el mecanismo mediante el cu\'al las EAS emiten una se\~nal de radio a nivel microsc\'opico, lo que permite calcular el campo de manera precisa. 
-Luego se discutir\'a los mecanismos efectivos que se proponen para explicar el fen\'omeno, lo que permite estudiar el fen\'omeno desde un punto de vista m\'as intruitivo.
+Luego se discutir\'a algunos mecanismos efectivos que se proponen para explicar el fen\'omeno, lo que permite estudiarlo desde un punto de vista m\'as intruitivo.
 Se abordar\'a tanto la geometr\'ia de la emisi\'on como la polarizaci\'on y distribuci\'on del campo a nivel del suelo.
-Finalmente, se presenta un modelo simplificado que permite mediante razonamientos elementales recuperar las caracter\'isticas principales de la se\~nal emirida por eventos ES.
+Finalmente, se presenta un modelo simplificado que permite mediante razonamientos elementales comprender las caracter\'isticas principales de la se\~nal emitida por eventos ES.
 
 \section{Modelado de la emisi\'on}
 \label{sc:gen_emision}
 
-El modelado de la emisi\'on de radio de las lluvias atmosf\'ericas extendidas puede abordarse de dos maneras, mediante un enfoque microsc\'opico o mediante un enfoque efectivo.
-La mirada microsc\'opica busca obtener el campo emitido por la lluvia como suma de las contribuciones de cada una de sus part\'iculas, mientras que el tratamiento efectivo propone representar la lluvia como una superposici\'on de cargas y corrientes equivalentes a partir de las que es posible obtener el campo electromagn\'etico total de manera relativamente sencilla.
+El modelado de la emisi\'on de radio de las lluvias atmosf\'ericas extendidas suele encararse de alguna de las siguientes maneras, mediante un enfoque microsc\'opico o utilizando un enfoque efectivo.
+
+La mirada microsc\'opica consiste en obtener el campo emitido por la lluvia como suma de las contribuciones de cada una de sus part\'iculas, mientras que el tratamiento efectivo propone representar la lluvia como una superposici\'on de cargas y corrientes equivalentes a partir de las que es posible obtener el campo electromagn\'etico total de manera relativamente sencilla.
 La ventaja m\'as importante que otorga la mirada microsc\'opica radica en la exactitud del c\'alculo realizado, que depende b\'asicamente de la capacidad calcular correctamente la din\'amica de la generaci\'on de part\'iculas en una lluvia atmosf\'erica.
-Por este motivo, y debido a la complejidad inherente del problema se lo aborda mediante t\'ecnicas de Monte Carlo, combinadas usualmente con la necesidad de un alto poder de c\'omputo.
+Por este motivo, y debido a la complejidad inherente del problema se lo aborda mediante t\'ecnicas de Monte Carlo, combinadas usualmente con un alto poder de c\'omputo.
+
 Como contraparte, las ventajas de los modelos efectivos residen en la simplificaci\'on del problema, lo que disminuye la necesidad tiempo de CPU y al mismo tiempo facilita la interpretaci\'on intuitiva de los resultados. 
-Sin embargo dicha reducci\'on deviene en un nuevo conjunto de par\'ametros que necesitan calibraci\'on para entregar resultados confiables.
+Sin embargo dicha reducci\'on deviene en un nuevo conjunto de par\'ametros que necesitan de una calibraci\'on previa para entregar resultados confiables.
+
 Si bien en esta tesis se utiliza un modelo microsc\'opico para calcular la se\~nal sobre el detector, en las siguientes secciones se abordar\'an ambos enfoques, lo que facilitar\'a la interpretaci\'on de los resultados del cap\'itulo \ref{ch:simulacionRadio}.
 
-\section{Modelo microsc\'opico}
+\section{Modelado microsc\'opico}
 
-Como ya se ha mensionado, el modelado microsc\'opico consiste en calcular la emisi\'on de radio de cada part\'icula de la lluvia.
-Luego, el campo total en un punto dado del espacio y a un tiempo determinado se obtiene sumando la contribuci\'on de cada una de ellas.
-Dicho esto, es fundamental comprender el mecanismo mediante el cual cada part\'icula de la lluvia, que pr\'acticamente se desplaza a velocidad constante por un trayecto finito, emite radiaci\'on.
+El modelado microsc\'opico de una EAS se basa en calcular la emisi\'on de radio de cada part\'icula de la lluvia.
+Luego, el campo total en un punto dado del espacio y a un tiempo determinado se obtiene sumando la contribuci\'on de cada una.
+Dicho esto, es fundamental comprender el mecanismo mediante el cual cada part\'icula de la lluvia emite radiaci\'on.
 
-\subsection{Emisi\'on de una part\'icula que viaja en linea recta}
+\subsection{Emisi\'on de cada part\'icula de la lluvia}
 
 En esta secci\'on se sigue los razonamientos desarrollados en \cite{alvarez:2013}, donde pueden encontrarse m\'as detalles sobre el tema.
 El objetivo es encontrar las ecuaciones que describen el campo el\'ectrico generado por un electr\'on ejectado de un \'atomo de la atm\'osfera a tiempo $t=t_1$ y viaja a velocidad constante $\mathbf{v}$ hasta que es absorbido por otro \'atomo a tiempo $t_2$.
@@ -71,7 +74,7 @@ Es importante notar que el gauge de Lorentz en el dominio de frecuencias, que se
 \end{equation}
 %
 
-La soluci\'on a la ecuaci\'on \ref{eq:maxA2} puede obtenerse integrando funciones de Green sobre los punto fuente~\cite{jackson:1998}, como en la ecuaci\'on \ref{eq:greenF}.
+La soluci\'on a la ecuaci\'on \ref{eq:maxA2} puede obtenerse integrando funciones de Green sobre los puntos fuente~\cite{jackson:1998}, como en la ecuaci\'on \ref{eq:greenF}.
 %
 \begin{equation}
 \mathbf{A}(\mathbf{x},\omega)=\frac{\mu}{4\pi}\int d^3\mathbf{x}\textquotesingle
@@ -81,7 +84,7 @@ La soluci\'on a la ecuaci\'on \ref{eq:maxA2} puede obtenerse integrando funcione
 \end{equation}
 %
 En esta, $\mathbf{x}$ representa la posici\'on del observador, mientras que $\mathbf{x}\textquotesingle$ la de la fuente.
-Sin p\'erdida de generalidad puede suponerse que el electr\'on se desplaza en la direcci\'on $\hat z$. Si adem\'as en la ecuaci\'on \ref{eq:eCurrent} se hacen los siguiente reemplazos, $q=-e$; $Z(t)=\Theta(t-t_1)\Theta(t_2-t)$ y $P(\mathbf{x},t)=\delta^{(3)}(\mathbf{x}-vt\hat z-z_o\hat z)$, la ecuaci\'on \ref{eq:greenF} queda como en \ref{eq:greenF2}.
+Sin p\'erdida de generalidad puede suponerse que el electr\'on se desplaza en la direcci\'on $\hat z$. Si adem\'as en la ecuaci\'on \ref{eq:eCurrent} se hacen los siguiente reemplazos, $q=-e$; $Z(t)=\Theta(t-t_1)\Theta(t_2-t)$ y $P(\mathbf{x},t)=\delta^{(3)}(\mathbf{x}-vt\hat z-z_o\hat z)$, la ecuaci\'on \ref{eq:greenF} queda:
 %
 \begin{equation}
 \mathbf{A}(\mathbf{x},\omega)=\frac{\mu}{4\pi}
@@ -93,7 +96,7 @@ Z(t\textquotesingle)P(\mathbf{x}\textquotesingle,t)
 \label{eq:greenF2}
 \end{equation}
 %
-Cabe destacar que en el gauge de Lorentz, el potencial vector de una part\'icula que se desplaza en la direcci\'on $z$ s\'olo tiene componente $z$. Por lo tanto, la ecuaci\'on \ref{eq:gaugeL} puede reescribirse:
+Cabe destacar que como en el gauge de Lorentz, el potencial vector de una part\'icula que se desplaza en la direcci\'on $z$ s\'olo tiene componente $z$, la ecuaci\'on \ref{eq:gaugeL} puede reescribirse:
 %
 \begin{equation}
 	\renewcommand{\arraystretch}{2.5}
@@ -113,7 +116,7 @@ Cabe destacar que en el gauge de Lorentz, el potencial vector de una part\'icula
 \end{equation}
 %
 
-Luego, el campo el\'ectrico $\mathbf{E}(\mathbf{x},\omega)$ puede obtenerse a partir del potencial escalar y del potencial vector utilizando la ecuaci\'on \ref{eq:efieldFromA}~\cite{jackson:1998}.
+Con todo esto, el campo el\'ectrico $\mathbf{E}(\mathbf{x},\omega)$ puede obtenerse a partir del potencial escalar y del potencial vector utilizando la ecuaci\'on \ref{eq:efieldFromA}~\cite{jackson:1998}.
 %
 \begin{equation}
 	\mathbf{E}(\mathbf{x},\omega) = 
@@ -147,7 +150,7 @@ E_\rho(\mathbf{x},\omega)=
 \label{eq:Ez1}
 \end{equation}
 %
-Finalmente, derivando \ref{eq:Ero1} y \ref{eq:Ez1} se obtienen las expresiones para estas componentes del campo, que se muestran en las ecuaciones \ref{eq:Ero2} y \ref{eq:Ez2}.
+Finalmente, derivando \ref{eq:Ero1} y \ref{eq:Ez1} se obtienen las ecuaciones buscadas para el campo el\'ectrico:
 %
 \begin{equation}
 	\renewcommand{\arraystretch}{2.5}
@@ -211,20 +214,74 @@ b(t\textquotesingle) = ik-\dfrac{1}{r(t\textquotesingle)}
 \end{equation}
 
 Las ecuaciones \ref{eq:Ero2} y \ref{eq:Ez2} proveen la soluci\'on exacta para el campo el\'ectrico de una part\'icula que se desplaza a trav\'es de un trayecto finito.
-Usualmente, estas ecuaciones no tienen soluci\'on anal\'itica, por lo que se debe llevar a cabo una integraci\'on num\'erica.
-Dado que en una lluvia atmosf\'erica de \cant{1}{EeV} pueden generarse del orden de $10^10$ part\'iculas, la resoluci\'on de estas ecuaciones para cada una de ellas se torna impracticable.
-Por este motivo los programas de simulaci\'on suelen utilizar aproximaciones mediante las cuales el c\'omputo del campo se obtiene a trav\'es de ecuaciones aritm\'eticas.
-Este tema se desarrollar\'a en el cap\'itulo \ref{ch:simulacionRadio}.
 
-\section{Modelo macrosc\'opico}
+\subsection{Aproximaci\'on ZHS}
+\label{sbsc:zhs_approx}
+
+Usualmente, las ecuaciones \ref{eq:Ero2} y \ref{eq:Ez2} no tienen soluci\'on anal\'itica, por lo que se las debe integrar num\'ericamente.
+Dado que en una lluvia atmosf\'erica de \cant{1}{EeV} pueden generarse del orden de $10^{10}$ part\'iculas, su resoluci\'on a nivel microsc\'opico se torna impracticable.
+% Por este motivo los programas de simulaci\'on suelen utilizar aproximaciones mediante las cuales el c\'omputo del campo se obtiene a trav\'es de ecuaciones aritm\'eticas.
+Para salvar este problema, Zas, Halzen y Stanev~\cite{1_halzen_zas_stanev_1991,2_zas_halzen_stanev_1992} propusieron un conjunto de aproximaciones, conocidas como \emph{aproximaciones ZHS}, que permiten salvar el problema, convirtiendo \ref{eq:Ero2} y \ref{eq:Ez2} en ecuaciones aritm\'eticas relativamente sencillas. Las condiciones que se deben satisfacer son:
+	%
+	\begin{enumerate}
+		\item La inversa distancia entre cualquier punto del track y el observador debe poder ser considerada una constante
+		\begin{equation}
+		\frac{1}{r(t)}\sim\frac{1}{R}
+		\end{equation}
+		\item La longitud del track es peque\~na a comparaci\'on de la distancia al observador, $\eta\ll1$, con
+		\begin{equation}
+		\eta = \frac{k L^2}{R}\sin^2\theta
+		\end{equation}
+		donde $L\equiv v(t_1-t_2)$ es la longitud del track.
+		\item El observador se encuentra en la zona de campo lejano
+		\begin{equation}
+		kR\gg1
+		\end{equation}
+	\end{enumerate}
+	%
+	Entonces, en estas circunstancias, el campo el\'ectrico $\vec{E}(t,\hat{u})$ en la posici\'on del observador puede calcularse mediante la ecuaci\'on \ref{eq:efield_0}.
+	%
+	\begin{equation}
+	\renewcommand{\arraystretch}{2.5}
+	\begin{array}{rl}
+		\vec{E}(t,\hat{u})
+		&=
+		-\dfrac{\mu e}{4\pi Rc}
+		\vec\beta_{\bot}\\
+		& 
+		\dfrac{\delta(t-\frac{nR}{c}-(1-n\beta\cos\theta)t_1)
+			-\delta(t-\frac{nR}{c}-(1-n\beta\cos\theta)t_2)}{1-n\beta\cos\theta}
+	\end{array}
+	\label{eq:efield_0}
+	\end{equation}
+	%
+	donde $\hat{u}$ es el versor que indica la direcci\'on entre la mitad del track y el observador, formando un \'angulo $\theta$ con el mismo. Mientra que $\vec\beta=\vec v/c$ y $\vec\beta_{\bot}=-[\hat{u}\times(\hat{u}\times\vec\beta)]$ es la proyecci\'on de $\vec\beta$ sobre el plano perpendicular a $\hat u$.
+% 	y $t_{1,2}^{det}=t_{1,2}+nR/c-n\vec\beta \cdot \hat u (t_{1,2}-t_0)$ son los tiempos de detecci\'on del principio y final del track respectivamente, con $t_0=(t_1+t_2)/2$.
+	Los detalles del c\'alculo para obtener \ref{eq:efield_0} a partir de \ref{eq:Ero2} y \ref{eq:Ez2} pueden encontrarse en \cite{alvarez:2013}.
+	
+	A partir de la ecuaci\'on \ref{eq:efield_0} puede analizarse el campo el\'ectrico emitido por cada part\'icula de la lluvia en ausencia de campos externos y para diferentes valores de $\theta$, lo que se esquematiza en la figura \ref{fig:zhs_pulse}.
+	La caracter\'istica fundamental de la emisi\'on es que la radiaci\'on es producida s\'olo al principio o al final de la trayectoria descripta, lo que resulta razonable si se tiene en cuenta que el camino se recorre a velocidad constante.
+	Por otro lado, la separaci\'on temporal entre los pulsos viene dada por $(1-n\beta\cos\theta)(t_2-t_1)$, que resulta de la resta entre los tiempos de emisi\'on y la diferencia de camino \'optico recorrido.
+	El \'angulo \cher{} resulta ser el que logra compensar estos efectos, logrando mayor la compresion temporal entre los pulsos.
+	En cuanto a la diferencia de amplitud, proviene de que formalmente en el caso limite $\theta\rightarrow\theta_{cher}$ el campo se obtiene como menos la derivada de la delta de dirac de lo que se obtiene un doble pulso, primero antiparalelo a $\vec\beta$ y luego paralelo \cite{alvarez:2013}.
+	%	
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=0.75\textwidth]{fig/EASRadio/zhs_pulse}
+		\caption{\label{fig:zhs_pulse} Tomado de \cite{alvarez:2013}. Representaci\'on esquematica del campo el\'ectrico emitido por cada part\'icula de la lluvia para observadores posicionados a diferentes \'angulos respecto del eje de la lluvia. Ver detalles en el texto.}
+	\end{figure}
+	
+	
+\section{Modelado macrosc\'opico}
+\label{sc:macroscopico}
 
 Para explotar todo el potencial de un detector de antenas de radio es fundamental ganar intuici\'on sobre las caracter\'isticas de la se\~nal que se espera medir.
 Para ello, resulta \'util abordar la emisi\'on de las lluvias atmosf\'ericas macrosc\'opicamente, reemplazando la din\'amica de la densidad de part\'iculas cargadas de la lluvia por cargas y corrientes efectivas cuyo campo el\'ectrico pueda ser calculado de manera sencilla.
-En esta direcci\'on, existen dos efectos dominantes en este proceso: la deflecci\'on de las part\'iculas cargadas debido al campo geomagn\'etico y el desarrollo de de un exceso de carga generado por ejemplo a medida que el frente de la lluvia incorpora electrones de los nucleos atmosf\'ericos~\cite{scholten:2008}.
+En esta direcci\'on, existen dos efectos que dominan el proceso: la deflecci\'on de las part\'iculas cargadas debido al campo geomagn\'etico y el desarrollo de de un exceso de carga generado, por ejemplo, a medida que el frente de la lluvia incorpora electrones de los nucleos atmosf\'ericos~\cite{scholten:2008}.
 Estos, se denominan efecto geomagn\'etico y efecto Askaryan, respectivamente y se desarrollan en las secciones \ref{sbsc:geom_emision} y \ref{sbsc:ask_emision}.
 
-Por otro lado, dado que las cargas que se generan en las EAS se desplazan a una velocidad mayor a las de la luz en la atm\'osfera se produce efecto \cher{}.
-Esto permite hacer predicciones sobre el comportamiento de la amplitud de la huella de radio a nivel del suelo y en particular, es la base del modelo simplificado que se presenta en la secci\'on \ref{sc:toymodel}. 
+Por otro lado, dado que las part\'iculas cargadas que se incorporan a la EAS se desplazan a una velocidad mayor a las de la luz en la atm\'osfera se produce efecto \cher{}.
+Esto permite hacer predicciones sobre el comportamiento de la amplitud de la huella de radio a nivel del suelo y en particular, es la base del modelo simplificado que se presenta en la secci\'on \ref{sc:toymodel} para emisi\'on en eventos ES. 
 La emisi\'on \cher{} de las EAS se desarrolla en la secci\'on \ref{sbsc:cher_emision}.
 
 Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otros efectos de segundo orden en la emisi\'on de radio de una cascada atmosf\'erica.
@@ -234,15 +291,14 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	
 	El denominado efecto geomagn\'etico engloba el campo generado por la corriente efectiva que generan las part\'iculas cargadas de la lluvia al deflectarsedebido al campo magn\'etico terrestre.
 	Durante la evoluci\'on de la EAS, debido a la fuerza de Lorentz los \el{+} y \el{-} se desv\'ian en direcciones opuestas, lo que produce una corriente el\'ectrica, tal como se esquematiza en el panel izquierdo de la figura \ref{fig:geom_sketch}.
-	Si bien la intensidad de esta corriente depende del tiempo de una manera complicada~\footnote{La intensidad de la corriente depende, entre otros factores, de la distribuci\'on longitudinal de part\'iculas de la lluvia.}, su direcci\'on viene dada b\'asicamente por $\vec\beta\times \vec B$, por lo que pr\'acticamente es perpendicular tanto al eje de la lluvia como al campo magn\'etico terrestre \cite{kahn:1966}.
+	Si bien la intensidad de esta corriente depende del tiempo de una manera complicada\footnote{La intensidad de la corriente depende, entre otros factores, de la distribuci\'on longitudinal de part\'iculas de la lluvia.}, su direcci\'on viene dada b\'asicamente por $\vec\beta\times \vec B$, por lo que pr\'acticamente es perpendicular tanto al eje de la lluvia como al campo magn\'etico terrestre \cite{kahn:1966}.
 	En consecuencia el campo el\'ectrico generado posee una polarizaci\'on uniforme sobre la superficie de la tierra, lo que se observa en el panel derecho de la figura \ref{fig:geom_sketch}.
 	Por otra parte, debido a que la magnitud de la corriente efectiva depende fuertemente de la velocidad de drift de los \el{+} y \el{-}, que a su vez depende directamente de la densidad de la atm\'osfera, este es el mecanismo de generaci\'on predominante cuando la lluvia se inicia a profundidades peque\~nas (\cant{\sim 80}{g/cm^2})\cite{requiered}.
-	
+	%
 	\begin{figure}[ht!]
 		\centering
 		\includegraphics[width=0.75\textwidth]{fig/EASRadio/geom_sketch}
-		\caption{\label{fig:geom_sketch} Izquierda: representaci\'on del efecto geomagnético.
-		Derecha: polarización del campo eléctrico generado por el efecto geomagnético a nivel del suelo en una cascada vertical.}
+		\caption{\label{fig:geom_sketch} Izquierda: representaci\'on del efecto geomagn\'etico. Derecha: polarizaci\'on del campo el\'ectrico generado por el efecto geomagn\'etico a nivel del suelo en una cascada vertical. La variaci\'on en amplitud no se encuentra representada.}
 	\end{figure}
 	
 \subsection{Efecto Askaryan}
@@ -255,15 +311,16 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	Esta carga efectiva genera un campo proporcional a $-\left[\hat u \times \hat u \times \vec\beta\right]$, donde $\hat u$ es la direcci\'on entre la carga que se desplaza y el observador\cite{jackson:1998}.
 	Por ende, el campo eléctrico producido se encuentra polarizado en dirección aproximadamente radial en el plano de la cascada.
 	A nivel del suelo y para una lluvia vertical, la componente Askaryan es tal como se esquematiza en el panel derecho de la figura \ref{fig:ask_sketch}.
-	
+	%
 	\begin{figure}[ht!]
 		\centering
 		\includegraphics[width=0.75\textwidth]{fig/EASRadio/ask_sketch}
 		\caption{\label{fig:ask_sketch} Izquierda: representaci\'on del efecto Askaryan.
-		Derecha: polarización del campo eléctrico generado por el efecto Askaryan a nivel del suelo para una lluvia vertical.}
+		Derecha: polarización del campo eléctrico generado por el efecto Askaryan a nivel del suelo para una lluvia vertical. La variaci\'on en amplitud no se encuentra representada.}
 	\end{figure}
 	
-	
+	Es importante notar en este punto que tanto el la polarizaci\'on del campo generado por el efecto geomagn\'etico como por el Askaryan es paralela al plano de polarizaci\'on de la lluvia.
+	Esta caracter\'istica resultar\'a de suma importancia a la hora de reconstruir la lluvia.
 	
 \subsection{Efecto \cher{}}
 \label{sbsc:cher_emision}
@@ -279,26 +336,31 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	\end{equation}
 	De aqu\'i se desprende que la emisi\'on de radio de las EAS es esencialmente en la direcci\'on de la lluvia.
 	
-	Existen dos resultados interesantes que se desprenden de que la emisi\'on de la lluvia presente efecto \cher{}.
+	Existen dos resultados interesantes que se desprenden de que la emisi\'on de la lluvia presente efecto \cher{}:
+	\begin{enumerate}
+	 \item La aparici\'on de lo que se denomina anillo \cher{}.
+	 \item El aumento de la coherencia en frecuencia sobre dicho anillo.
+	\end{enumerate}
+
 	
-	\subsubsection{Evolucion temporal de la se\~nal a nivel del suelo}
-	
-	Para comprender la evoluci\'on de la se\~nal a nivel del suelo resulta \'util evaluar las diferencias entre la emisi\'on de una fuente de radiaci\'on que se desplaza a una velocidad menor y otra mayor a la de propagaci\'on en el medio, como se observa en la figura \ref{fig:cher_emision_1}.
+	\subsubsection{Amplitud de la se\~nal a nivel del suelo: anillo \cher{}}
+	\label{sbsc:cher_emision2}
+	Al combinar la din\'amica de la lluvia con el efecto \cher{}, aparece una regi\'on a nivel del suelo sobre la que se espera un incremento en la se\~nal, denominado \emph{anillo \cher{}}.
+	Para comprender la situaci\'on resulta \'util primero evaluar las diferencias entre la emisi\'on de una fuente de radiaci\'on que se desplaza a una velocidad menor y otra mayor a la de propagaci\'on de las ondas en el medio, lo que se esquematiza en la figura \ref{fig:cher_emision_1}.
 	%
 	\begin{figure}[ht!]
 		\centering
 		\includegraphics[width=0.85\textwidth]{fig/EASRadio/cherEmmision}
-		\caption{\label{fig:cher_emision_1} Izquierda (derecha) esquema de los frentes de onda generados por un emisor que se desplaza a una velocidad menor (mayor) que la de propagaci\'on en el medio. Se observa como la recepci\'on del observador conserva el orden temporal en el que fueron emitidos los frentes en el caso $v<c/n$. Por otro lado, cuando el emisor se desplaza con velocidad $v>c/n$ el primer frente en alcanzar el observador es el que se emite cuando la direcci\'on de propagaci\'on del emisor forma el \'angulo \cher{} con la recta que lo une a la posici\'on del observador.}
+		\caption{\label{fig:cher_emision_1} Izquierda (derecha) esquema de los frentes de onda generados por un emisor que se desplaza a una velocidad menor (mayor) que la de propagaci\'on en el medio. Se observa como la recepci\'on del observador conserva el orden temporal en el que fueron emitidos los frentes en el caso $v<c/n$. Por otro lado, cuando el emisor se desplaza con velocidad $v>c/n$ el primer frente en alcanzar al observador es el que se emite cuando la direcci\'on de propagaci\'on del emisor forma el \'angulo \cher{} con la recta que lo une a la posici\'on del observador.}
 	\end{figure}
 	%
-	
-	Cuando la velocidad del emisor es menor a la de propagaci\'on de las ondas en el medio, $v<c/n$, los frentes de onda alcanzan al observador en el mismo \'orden que fueron emitidos, mientras que cuando la velocidad de movimiento del emisor es tal que $v>c/n$ esto no sucede.
-	En este caso, el primer frente de onda que interact\'ua con el observador es el que fue emitido en $x_{cher}$, determinado por el instante en el que la direcci\'on de movimiento de la fuente y la recta que une al emisor con el observador forman el \'angulo \cher{} (panel derecho de la figura \ref{fig:cher_emision_1}).
+	Con este ejemplo, se busca destacar que cuando la velocidad del emisor es menor a la de propagaci\'on de las ondas en el medio, $v<c/n$, los frentes de onda alcanzan al observador en el mismo \'orden que fueron emitidos, mientras que cuando la velocidad de movimiento del emisor es tal que $v>c/n$ esto no sucede.
+	En el segundo caso, el primer frente de onda que interact\'ua con el observador es el que fue emitido en $x_{cher}$, determinado por el instante en el que la direcci\'on de movimiento de la fuente y la recta que une al emisor con el observador forman el \'angulo \cher{} (panel derecho de la figura \ref{fig:cher_emision_1}).
 	Luego de recibir el primer frente, el observador ser\'a alcanzado simult\'aneamente por frentes emitidos por la fuente antes y despu\'es de pasar por $x_{cher}$.
-	Como resultado, si bien cuando se produce efecto \cher{} se pierde la coherencia temporal entre la se\~nal recibida y el proceso de emisi\'on, es posible asociar el inicio de la se\~nal en un dado observador con cierta posici\'on de la fuente.
+	Como resultado, si bien cuando se produce efecto \cher{} se pierde el orden temporal entre la se\~nal recibida y el proceso de emisi\'on, es posible asociar el inicio de la se\~nal en un dado observador con una posici\'on dada de la fuente.
 	
-	Este \'ultimo resultado es muy \'util cuando se trata de la emisi\'on de radio en lluvias atmosf\'ericas.
-	Si adem\'as de este efecto se tiene en cuenta que la intensidad de la se\~nal crecer\'a con la cantidad de part\'iculas presentes en la lluvia, es posible predecir el comportamiento que tendr\'a la se\~nal a nivel del suelo, lo que se esquematiza en la figura~\ref{fig:cher_emision_2}.
+	Este \'ultimo resultado es muy \'util cuando adem\'as de este efecto se tiene en cuenta que la intensidad de la se\~nal crecer\'a con la cantidad de part\'iculas presentes en la lluvia.
+	As\'i, es posible predecir el comportamiento que tendr\'a la amplitud m\'axima de la se\~nal a nivel del suelo, lo que se esquematiza en la figura~\ref{fig:cher_emision_2}.
 	%
 	\begin{figure}[ht!]
 		\centering
@@ -306,106 +368,105 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 		\caption{\label{fig:cher_emision_2} Evoluci\'on de la se\~nal de radio emitida por una lluvia, a nivel del suelo. Se observa el mapeo que se produce entre los observadores y las diferentes etapas de la lluvia. Se destaca como la antena que observa la posici\'on en la que se produce el m\'aximo de part\'iculas registrar\'a mayor amplitud de se\~nal.}
 	\end{figure}
 	%
-	En esta se muestra como se produce el mapeo entre las diferentes etapas de evoluci\'on de la lluvia y los observadores a nivel del suelo.
-	Tambi\'en se muestra como el m\'aximo de la se\~nal se espera en la antena que \emph{mira} el m\'aximo de la lluvia.
+	En esta se muestra por un lado, como se produce el mapeo entre las diferentes etapas de evoluci\'on de la lluvia y los observadores a nivel del suelo, y por otro como el m\'aximo de amplitud de la se\~nal se espera en la antena que \emph{mira} la posici\'on de la lluvia en la que se produjo la mayor densidad de part\'iculas.
 	
-	Si se considera ahora un detector bidimensional, el m\'aximo de amplitud se hallar\'a en la intersecci\'on entre el plano del suelo y el cono \cher{} que procede de punto en el que la lluvia alcanza su m\'aximo de se\~nal. Esto se bosqueja en la figura \ref{fig:cono}.
+	Si se considera ahora que el detector es bidimensional, el m\'aximo de amplitud se hallar\'a en la intersecci\'on entre el plano del suelo y el cono \cher{} que procede de punto en el que la lluvia alcanza su m\'aximo. Esta regi\'on de m\'axima se\~nal se denomina anillo \cher{}, y se representa en la figura \ref{fig:cono}.
 	%
 	\begin{figure}[ht!]
 		\centering
 		\includegraphics[width=0.7\textwidth]{fig/EASRadio/chConeSch}
-		\caption{\label{fig:cono} La región de máxima señal a nivel del suelo se encuentra en la intersección entre el cono \cher{} que se proyecta desde el máximo de la lluvia y el suelo.}
+		\caption{\label{fig:cono} La región de máxima señal a nivel del suelo se encuentra en la intersección entre el cono \cher{} que se proyecta desde el máximo de la lluvia y el suelo. Esta regi\'on se denomina anillo \cher{}.}
 	\end{figure}
 	%
 	
-	
 	\subsubsection{Coherencia de la se\~nal seg\'un la posici\'on del observador}
 	
-	Otra consecuencia de que la emisi\'on de las lluvias atmosf\'ericas presenten efecto \cher{} se manifiesta en la frecuencia hasta la que se mantiene la coherencia de la se\~nal en diferentes regiones a nivel del suelo.
-	Teniendo en cuenta que la se\~nal registrada por una antena del detector ser\'a la suma de la contribuci\'on de diferentes part\'iculas de la lluvia, mientras mayor sea la compresi\'on temporal con la que estos pulsos alcancen dicha antena, mayor ser\'a la frecuencia m\'axima que alcance su se\~nal acumulada (suponiendo que la interferencia es puramente constructiva).
+	La segunda consecuencia importante de que la emisi\'on de las lluvias atmosf\'ericas presenten efecto \cher{} se manifiesta en la frecuencia hasta la que se mantiene la coherencia de la se\~nal en diferentes regiones del suelo, alcanzando su m\'aximo sobre el anillo \cher{}.
 	
-	Para comprender esta situaci\'on es \'util estudiar un ejemplo simple que se esquematiza en la figura \ref{fig:coherencia_1}.
+	Este fen\'omeno puede comprenderse si se analiza una situaci\'on simplificada.
+	Para ello, se considera una antena ubicada sobre el \'angulo \cher{} en un dado instante de la evoluci\'on de la lluvia, cuya posici\'on sobre su eje es $l$ y su densidad de part\'iculas $\rho(l)=dN/dl$.
+	En ese dado instante, si se supone que hay un exceso de nuevas part\'iculas generadas entre $l$ y $l+dl$, s\'olo para fijar ideas se puede considerar que se emitir\'an $dN_e$ pulsos que alcanzar\'an la antena entre los tiempos $0$ y $dt=c\,dl$~\footnote{Dado que la antena se encuentra en el \'angulo \cher{} es posible elegir $t=0$ cuando llega el primer pulso de la lluvia.}, donde $c$ es la velocidad de propagaci\'on del frente de la lluvia.
+	Esta situaci\'on se esquematiza en la figura \ref{fig:coherencia_1}.
 	%
-	% figura
-	%
-	En esta se muestra que la se\~nal registrada en un intervalo de tiempo $dt$ se constituye de la suma de $N_e$ pulsos individuales distribuidos temporalmente de manera uniforme. Estos $N_e$ pulsos fueron generados por $N_e$ emisores (part\'iculas) en un tramo $dl$ del eje de la lluvia.
-	En consecuencia podemos escribir:
-	%
-	\begin{equation}
-	dt = \frac{dl}{c}
-	\end{equation}
-	%
-	donde $c$ es la velocidad de propagaci\'on del frente de la lluvia.
-	Por otro lado, si se supone que la densidad lineal de emisores $\rho_e = N_e/dl$ es proporcional a la densidad de part\'iculas de la lluvia $rho(l)$, la ecuaci\'on para $dt$ se reescribe como:
-	%
-	\begin{equation}
-	 dt = \frac{N_e}{\rho(l) c}
-	\end{equation}
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=0.9\textwidth]{fig/EASRadio/coherencia_1}
+		\caption{\label{fig:coherencia_1} Esquema de la situaci\'on simplificada. En $dt$ la antena ubicada en el \'angulo \cher{} recibir\'a $dN_e$ pulsos provenientes de las part\'iculas ubicadas entre $l$ y $l+dl$. Resulta razonable suponer que $dN_e$ es proporcional a la cantidad de part\'iculas presentes en la zona de emisi\'on $\rho(l)dl$.}
+	\end{figure}
 	%
 	
-	Si se supone ahora que para que la se\~nal sea medible es necesario contar con al menos $N_{min}$ pulsos dentro del intervalo $dt$, se obtiene una ecuaci\'on para $dt_{min}$, seg\'un:
+	Por otro lado, es razonable suponer que la densidad lineal de emisores $\rho_e(l) = dN_e/dl$ es proporcional a la densidad de part\'iculas presentes en ese lugar de la lluvia $\rho(l)$, por lo que la ecuaci\'on para $dt$ se reescribe como:
 	%
 	\begin{equation}
-	 dt_{min} = \frac{N_{min}}{\rho(l) c}
+	 dt = \frac{dN_e}{\rho(l) c}
+	 \label{eq:dt1}
 	\end{equation}
 	%
-	Teniendo en cuenta que este intervalo de tiempo m\'inimo en el que es posible registrar se\~nal define una frecuencia m\'axima $f_{max}$, se tiene:
+	
+	Es razonable suponer ahora que para que la se\~nal pueda ser medida es necesario recibir al menos $dN_{min}$ pulsos dentro de cada intervalo de duraci\'on $dt$.
+	Esto, define un intervalo de tiempo m\'inimo $dt_{min}$ sobre el que habr\'ia que integrar las se\~nales individuales para poder obtener alg\'un registro. A partir de \ref{eq:dt1} se tiene:
 	%
 	\begin{equation}
-	 f_{max}\sim \frac{1}{dt_{min}} = \frac{\rho(l) c}{N_{min}}
+	 dt_{min} = \frac{dN_{min}}{\rho(l) c}
 	\end{equation}
 	%
-	donde cabe destacar que $f_{max}\sim\rho(l)$, lo que significa que se espera que las antenas que observan (en el sentido definido en la secci\'on anterior) el m\'aximo de part\'iculas de la lluvia, no s\'olo registrar\'an una se\~nal de mayor amplitud, sino que adem\'as \'esta mostrar\'a coherencia hasta frecuencias m\'as altas.
-	Si bien el ejemplo tenido en cuenta es extremadamente simplificado, sus concluciones pueden extrapolarse al fenomeno completo.
-	Como ejemplo, en la figura \ref{fig:chConeSig} se muestra la amplitud de la señal a diferentes frecuencias como función de la coordenada Este-Oeste de la lluvia, obtenida a partir de simulaciones.
+	Entonces, bajo estas suposiciones la componente de m\'axima frecuencia de la se\~nal $f_{max}$  ser\'a aproximadamente:
+	%
+	\begin{equation}
+	 f_{max}\sim \frac{1}{dt_{min}} = \frac{\rho(l) c}{dN_{min}}
+	\end{equation}
+	%
+	donde el resultado importante es que $f_{max}\sim\rho(l)$. 
+	Esto implica que las antenas que observan\footnote{En el sentido definido en la secci\'on \ref{sbsc:chsbsc:cher_emision2}.} el m\'aximo de part\'iculas de la lluvia, no s\'olo registrar\'an una se\~nal de mayor amplitud, sino que adem\'as \'esta mostrar\'a coherencia hasta frecuencias m\'as altas.
+	
+	Si bien el ejemplo tenido en cuenta desprecia el efecto que podr\'ia generar la cancelaci\'on con los pulsos generados por las part\'iculas absorbidas por \'atomos de la atm\'osfera o el caracter estoc\'astico subyacente, este efecto se observa en simulaciones detalladas.
+	Por ejemplo, la figura \ref{fig:chConeSig} muestra la amplitud de la señal a diferentes frecuencias como función de la coordenada Este-Oeste de una lluvia, obtenida a partir de simulaciones.
 	\begin{figure}[ht!]
 	\centering
 		\includegraphics[width=0.7\textwidth]{fig/EASRadio/chConeSig}
 		\caption{\label{fig:chConeSig} Amplitud del espectro de se\~nal como funci\'on de la coordenada Este-Oeste de a lluvia obtenido a partir de simulaciones. En l\'inea punteada verde se grafica la posici\'on de impacto del cono \cher{}}
 	\end{figure}
 	En l\'ineas verdes, y en coincidencia con los máximos para todas las frecuencias se resalta el anillo \cher{} en esa coordenada.
-	Se observa que a medida que la frecuencia filtrada aumenta la coherencia se mantiene sólo cerca de dicho anillo.
+	Se observa como a medida que la frecuencia filtrada aumenta la coherencia de la se\~nal se mantiene sólo en las cercanias de dicho anillo.
 	
 \subsection{Otros efectos}
 \label{sbsc:other_emision}
 	
-	Adem\'as de los efectos geomagn\'etico, Askaryan y \cher{} existen otros que, si bien afectan la emisi\'on de radio de las cascadas atmosf\'ericas, lo hacen en menor medida. 
-	En esta secci\'on se hace un recuento de estos efectos.
+	Adem\'as de los efectos geomagn\'etico, Askaryan y \cher{} existen otros que si bien afectan la emisi\'on de radio de las cascadas atmosf\'ericas, lo hacen en menor medida. 
+	A continuaci\'on se realiza un recuento de los mismos.
 	
 	\subsubsection{Efecto geosincrotr\'on}
 	Los electrones y positrones de la lluvia, adem\'as de ser separados, son acelerados en su interacci\'on con el campo geomagn\'etico, que curva sus trayectorias.
 	En este proceso se emite radiaci\'on de sincritr\'on que, segun estudios te\'oricos recientes~\cite{geosintrotron}, representan una contribuci\'on menor en la emisi\'on total de la lluvia.
 	
 	\subsubsection{Campos electricos atmosf\'ericos}
-	Los campos el\'ectricos atmosf\'ericos tambi\'en son capaces de acelerar las part\'iculas cargadas de las EAS, generando una contribuci\'on a la emisi\'on total de la lluvia.
-	Durante per\'iodos de tormentas el\'ectricas, en el que el campo en la atmosfera puede ser \cant{E_{atm}\sim10000}{V/m}, este aporte puede ser incluso mayor que el del efecto geomagn\'etico~\cite{atmosphericField}.
-	Los valores normales del campo son \cant{E_{atm}\sim100}{V/m}, por lo que este efecto es despreciable.
+	Los campos el\'ectricos atmosf\'ericos tambi\'en son capaces de acelerar las part\'iculas cargadas de las EAS, generando una contribuci\'on a veces considerable a la emisi\'on total de la lluvia.
+	Por ejemplo, durante per\'iodos de tormentas el\'ectricas el que el campo en la atmosfera puede ser alcanzar niveles de \cant{E_{atm}\sim10000}{V/m}, por lo que este fen\'omeno puede ser incluso mayor que el del efecto geomagn\'etico~\cite{atmosphericField}.
+	En condiciones normales los valores del campo atmosf\'erico rondan \cant{E_{atm}\sim100}{V/m}, por lo que su efecto suele despreciarse.
 	
 	\subsubsection{Bremsstrahlung molecular}
 	
-	La emisi\'on de radio debido a efecto de bremsstrahlung molecular generado por cascadas de part\'iculas fue medido en experimentos de aceleradores~\cite{bremsstrahlungMolec}. La coherencia de esta emisi\'on fue medida a frecuencias del orden de los $\rm GHz$.
-	Gracias a estos resultados, varios experimentos comenzaron el desarrollo de una t\'ecnica especializada en medir lluvias atmosf\'ericas extendidas en frecuencias del $\rm GHz$.
-	No es claro si el bremsstrahlung molecular constribuye de manera significativa a la emisi\'on en el \'orden de los $\rm MHz$.
+	La emisi\'on de radio debido a efecto de bremsstrahlung molecular generado por cascadas de part\'iculas fue medido recientemente en experimentos de aceleradores~\cite{bremsstrahlungMolec} y su coherencia fue medida a frecuencias del orden de los $\rm GHz$.
+	Gracias a estos resultados, varios experimentos comenzaron el desarrollo de t\'ecnicas especializadas para medir lluvias atmosf\'ericas extendidas en estas frecuencias, pero es todav\'ia una t\'ecnica en desarrollo.
+	Actualmente no es claro si el bremsstrahlung molecular constribuye de manera significativa a la emisi\'on en el \'orden de los $\rm MHz$.
 	
 \section{Emisi\'on de radio en eventos ES}
 \label{sc:toymodel}
 	
-% 	Como ya se ha remarcado en el capítulo \ref{ch:easAuger}, las lluvias ES son fundamentalmente diferentes de las lluvias verticales y en cuanto a la emisión de radio no hay excepción.
+	Esta secci\'on profundiza el estudio de la emisi\'on de radio en lluvias atmosf\'ericas extendidas a eventos ES. 
+	La principal diferencia entre las lluvias verticales y los eventos ES radica en su geometr\'ia.
+	Debido a que, como se expuso en la secci\'on \ref{sbsc:cher_emision}, la geometr\'ia juega un papel fundamental en la emisi\'on de radio de las EAS, es escencial estudiar los cambios implica que los eventos sean ascendentes.
 	
-	Esta secci\'on profundiza el estudio de la emisi\'on de radio en lluvias atmosf\'ericas a eventos ES. 
-	En primer lugar, la diferencia m\'as notoria entre las lluvias verticales y los eventos ES radica en su geometr\'ia.
-	Debido a que, como se expuso en la secci\'on \ref{sbsc:cher_emision}, la geometr\'ia juega un papel fundamental en la emisi\'on de radio de las EAS, ser\'a fundamental estudiar como cambia debido a que ahora se consideran eventos ascendentes.
-	
-	\subsection{Cono \cher{} en eventos ES}
+	\subsection{Anillo \cher{} en eventos ES}
 	\label{sbsc:conoEs}
 	
-	Cuando se trata de eventos ES, la proyección del cono \cher{} sobre el suelo no es una elipse (o anillo) sino una hipérbola, como se grafica en la figura \ref{fig:chConeES}.
+	La proyección sobre el suelo del cono \cher{} en eventos ES no es una elipse (o anillo) sino una hipérbola, como se grafica en la figura \ref{fig:chConeES}.
 	\begin{figure}[ht!]
 	\centering
-		\includegraphics[width=0.85\textwidth]{fig/EASRadio/coneProy}
+		\includegraphics[width=\textwidth]{fig/EASRadio/coneProy}
 		\caption{\label{fig:chConeES} La proyección del cono en el suelo para una lluvia ES es ua hip\'erbola.}
 	\end{figure}
-	La ecuación \ref{eq:conewidth} muestra la expresión con la que se calcula el ancho $w$ de dicha hip\'erbola como función de la coordenada $d$.
+	Esta hip\'erbola puede ser descripta de manera sencilla, como se muestra en la ecuación \ref{eq:conewidth}, que muestra la expresión con la que se calcula su ancho $w$ como función de la coordenada $d$.
 	\begin{equation}
 	\renewcommand{\arraystretch}{2.5}
 	\begin{array}{rcl}
@@ -420,7 +481,7 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	Entran como parámetros el ángulo \cher{} $\theta_{cher}$, el ángulo cenital de la lluvia $\theta$ y la posición del máximo de la lluvia $h_{max}$ y $l_{max}$.
 	Los detalles de este cálculo pueden encontrarse en el apendice \ref{ap:intPlanCon}.
 	
-	La figura \ref{fig:chConeWidth} muestra el ancho en función de $d$ para $l_{max}=10000 \rm m$ y $h_{max}=l_{max}\cos \theta \rm m$.
+	La figura \ref{fig:chConeWidth} muestra el ancho en función de $d$ y $theta$ para \cant{l_{max}=10000}{m} y \cant{h_{max}=l_{max}\cos \theta}{m}.
 	\begin{figure}[ht!]
 	\centering
 		\includegraphics[width=0.85\textwidth]{fig/EASRadio/anchoLluvia}
@@ -437,7 +498,7 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	Adem\'as del cambio en la posici\'on de los m\'aximos de se\~nal dados por la zona de impacto del cono \cher{}, es posible mediante argumentos simples basados en lo expuesto en las secciones previas, recuperar varias caracter\'isticas importantes de la se\~nal de eventos ES a nivel del suelo.
 	Para ello, se sigue la filosofía utilizada en~\cite{zhairezAir}, en el que se desarrolla un modelo simplificado para cascadas verticales.
 	
-	Supongamos que de la tierra emerge un $\tau$ con ángulo cenital $\theta$ y decae a una altura $h_d$, como se esquematiza en la figura \ref{fig:esRadio_schema}. 
+	Se considera que de la tierra emerge un $\tau$ con ángulo cenital $\theta$ y decae a una altura $h_d$, como se esquematiza en la figura \ref{fig:esRadio_schema}. 
 	\begin{figure}[ht!]
 		\centering
 		\includegraphics[width=0.95\textwidth]{./fig/EASRadio/timeDelaySchema}
@@ -447,8 +508,8 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	\end{figure}
 	En esta se señalan las coordenadas $d$ y $l$ correspondientes a la distancia sobre el suelo y el eje de la lluvia respectivamente, medidas desde el punto de decaimiento.
 	
-	Nuestro objetivo es calcular la señal en una antena ubicada en una posición $d_a$ arbitraria.
-	Para ello consideraremos la señal proveniente de cada punto de emisión $l_e$ de la lluvia, la distancia $R$ entre el punto de emisión y la antena, y la distancia de referencia $d_{ref}$ correspondiente a la que tiene que recorrer una señal emitida desde el punto de decaimiento.
+	El objetivo a partir de aqu\'i es calcular la señal en una antena ubicada en una posición $d_a$ arbitraria.
+	Para ello se considerar\'a la señal proveniente de cada punto de emisión $l_e$ de la lluvia, la distancia $R$ entre el punto de emisión y la antena, y la distancia de referencia $d_{ref}$ correspondiente a la que tendr\'ia que recorrer una señal emitida desde el punto de decaimiento.
 	Con todo esto, las hipótesis del modelo son las siguientes:
 	\begin{enumerate}
 	 \item La emisi\'on proviene de una fuente puntual que se desplaza a la velocidad de la luz por el eje de la lluvia.
@@ -461,18 +522,18 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	%
 	\begin{equation}
 	\begin{array}{rcl}
-	t & = & \frac{1}{c}\left[l_e+nR(d_a,l_e,h_d,\theta)-n\,d_{ref}(d_a,h_d,\theta)\right]
+	t & = & \frac{1}{c}\left[l_e+nR(d_a,l_e,h_d,\theta)-n\,d_{ref}(d_a,l_e,h_d,\theta)\right]
 	\end{array}
 	\label{eq:toytimedelay1}
 	\end{equation}
 	%
-	En esta se distinguen las tres contribuciones expuestas en el punto 2, el tiempo que tarda el frente en llegar a $l_e$, el tiempo que le toma a la señal llegar desde el punto de emisión a la antena a través de un medio de índice de refracción $n$ y se resta el tiempo de referencia que necesita para recorrer $d_{ref}$.
-	Luego, utilizando trigonometría básica se consigue:
+	donde pueden distinguirse las tres contribuciones expuestas en el punto 2, el tiempo que tarda el frente en llegar a $l_e$, el tiempo que le toma a la señal llegar desde el punto de emisión a la antena a través de un medio de índice de refracción $n$ y se resta el tiempo de referencia que necesita para recorrer $d_{ref}$.
+	Luego, utilizando trigonometría básica sobre lo definido en la figura \ref{fig:esRadio_schema} se consigue:
 	%
 	\begin{equation}
 	\begin{array}{rcl}
 	t & =  & 
-	 \frac{1}{c}\left[l_e +
+	 \dfrac{1}{c}\left[l_e +
 		n \sqrt{h_d^2+d_a^2+l_e^2+2h_dl_e \sin\theta - 2d_al_e\cos\theta} 
 		-
 		n \sqrt{h_d^2+d_a^2}
@@ -481,7 +542,7 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	\label{eq:toytimedelay2}
 	\end{equation}
 	
-	A partir de aquí, fijemos dos de los cuatro parámetros, $\theta=90.5^\circ$ y \cant{h_d=50}{m}, lo que corresponde a valores t\'ipicos en los que se espera tener sensibilidad a \nutau{}'s con radio (ver cap\'itulo \ref{ch:resultadosRadio}).
+	A partir de aquí, se fijan dos de los cuatro parámetros: $\theta=90.5^\circ$ y \cant{h_d=50}{m}, valores t\'ipicos en los que se espera tener sensibilidad a \nutau{}'s con radio (ver cap\'itulo \ref{ch:resultadosRadio}).
 	En la figura \ref{fig:timeDelay_at} se grafica $t(l)$ en estas condiciones para diferentes valores de $d_a$.
 	\begin{figure}[ht!]
 		\centering
@@ -490,21 +551,21 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 		Tiempo de arrivo respecto de $d_{ref}/c$ como funci\'on del punto de emisi\'on a lo largo del eje de la lluvia. Los distintos colores representan antenas a diferentes distancias del punto de $l=0$, que corresponde al punto de decaimiento del \tauon{}, es decir, la posici\'on en la que se inicia la lluvia atmosf\'erica extendida.
 		}
 	\end{figure}
-	Para una cierta posición de la antena, el tiempo de arrivo a $l=0$ es exactamente el de referencia, por ello todas las curvas comienzan en $t = 0$.
+	Para una cierta posición de la antena $d_a$, el tiempo de arrivo de la se\~nal que proviene de $l=0$ se considera el tiempo de referencia (ver ecuaci\'on \ref{eq:toytimedelay1}), por ello todas las curvas comienzan en $t=0$.
 	La pendiente negativa al comienzo se debe a que si bien el trayecto que hay que considerar es mayor que la distancia de referencia ($l_e+R>d_{ref}$ en la figura \ref{fig:esRadio_schema}), la primer parte del recorrido lo realiza la lluvia a velocidad $c$ y la segunda la señal a $c/n$,  por consiguiente, el tiempo de arrivo obtenido es negativo ($t<0$).
+	En otras palabras, una se\~nal emitida m\'as tarde desde la lluvia puede llegar antes al detector que una emitida m\'as temprano, como se discuti\'o en la secci\'on \ref{sbsc:cher_emision}.
 	Este efecto llega a un máximo para cierto valor de $l$, generando un tiempo de arrivo mínimo, y luego disminuye para valores de $l$ grandes, como muestra la curva de pendiente positiva.
-	
-	Como indica el punto 3 del modelo, si la señal proveniente de dos lugares de la lluvia llegan a cierta antena al mismo tiempo estas se suman, por lo que los bines con mayor señal serán tales que $dt/dl\sim0$.
+	Como indica el punto 3 del modelo, si la señal proveniente de dos lugares de la lluvia llegan a cierta antena \emph{al mismo tiempo} estas se suman, por lo que los bines temporales con mayor señal serán tales que $dt/dl\sim0$. Este fen\'omeno se denomina compresi\'on temporal.
 	
 	Por otro lado, tambien será necesario considerar el peso asignado por el modelo al punto $l_e$, que como se indica en el punto 4. 
-	Dado que la emisi\'on total proveniente de un dado punto es proporcionales a la densidad de partículas en el mismo, es razonable pesar utilizando una función de Gaiser-Hillas.
-	Por otro lado, hay que tener en cuenta el decaimiento del término de radiación que va como $1/R$.
+	Dado que por hip\'otesis la emisi\'on total que proviene de un dado punto es proporcionales a la densidad de partículas en el mismo, es razonable pesar utilizando una función de Gaiser-Hillas.
+	Por otro lado, hay que tener en cuenta el decaimiento del término de radiación que va como $1/R$ (ecuaci\'on \ref{eq:efield_0}).
 	En la figura \ref{fig:timeDelay_pd} se muestra en línea punteada la distribución de Gaiser-Hillas para una lluvia cuyo máximo se encuentra a los \cant{10000}{m} del inicio (\cant{\sim10^{18}}{eV}), mientras que en línea llena se grafica el término $1/R$ para diferentes valores de $d_a$.
 	\begin{figure}[ht!]
 		\centering
 		\includegraphics[width=\textwidth]{./fig/EASRadio/timeDelay_pd}
 		\caption{\label{fig:timeDelay_pd}
-		En linea punteada se muestra la distribuci\'on de part\'iculas a lo largo del eje de la lluvia. En linea llena se grafica el factor $1/R$ para antenas en diferentes posiciones seg\'un el c\'odigo de colores de la figura \ref{fig:timeDelay_at}.
+		En l\'inea punteada se muestra la distribuci\'on de part\'iculas a lo largo del eje de la lluvia. En l\'inea llena se grafica el factor $1/R$ para antenas en diferentes posiciones seg\'un el c\'odigo de colores de la figura \ref{fig:timeDelay_at}.
 		El campo el\'ectrico registrado en cada antena ser\'a proporcional al producto de estas funciones.
 		}
 	\end{figure}
@@ -517,7 +578,7 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	\label{eq:tint}
 	\end{equation}
 	%
-	donde, $S(t_i)$ es la señal recibida en $t_i\leq t<t_{i+1}$, $l_i$ son los $l_i:t_i\leq t(l_i)<t_{i+1}$, $w_i$ es su peso.
+	donde, $S(t_i)$ es la señal recibida en $t_i\leq t<t_{i+1}$, $\Delta l_i$ es la longitud del intervalo definido por $l_i:t_i\leq t(l_i)<t_{i+1}$ y $w_i=N_i/R_i$ es su peso.
 	El resultado de esta integral se expone en la figura \ref{fig:timeDelay_as} para diferentes valores de $d_a$.
 	%
 	\begin{figure}[ht!]
@@ -527,7 +588,11 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 		Se\~nal acumulada en funci\'on del tiempo, obtenidamediante el modelo aproximado (a partir de la ecuación \ref{eq:tint}) para distintos valores de $d_a$ seg\'un el c\'odigo de colores de la figura \ref{fig:timeDelay_at}.
 		}
 	\end{figure}
-	Si bien el adelanto de la señal respecto de la referencia es de alguna decena de $\rm ns$, cada antena se encuentra separada alrededor de \cant{2000}{m}, o \cant{6000}{ns} entre sí, por lo que es posible suponer que para este tipo de lluvias (ES) la señal a nivel del suelo se desplaza aproximadamente a la velocidad de la luz.
+	Cada curva representa la se\~nal en funci\'on del tiempo que registrar\'ia cada antena bajo las suposiciones del modelo, donde se combinan los efectos de la compresi\'on temporal y la combinaci\'on de los pesos correspondientes la funci\'on de Gaiser-Hillas y a la distancia entre la antena y el eje de la lluvia.
+	
+	Cabe destacar que el adelanto de la señal respecto de la referencia (frente que se desplaza a $c$) es del orden de la decena de $\rm ns$, mientras que las antenas se encuentra separadas por alrededor de \cant{2000}{m} entre si, o \cant{6000}{ns} a la velocidad de la luz.
+	Por este motivo es razonable suponer que en este tipo de lluvias (ES) la señal a nivel del suelo se desplaza a la velocidad de la luz.
+	
 	Finalmente, la figura \ref{fig:timeDelay_spa} muestra como es la evolución del máximo de la señal como función de $d_a$.	
 	\begin{figure}[ht!]
 		\centering
@@ -536,5 +601,5 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 		M\'aximo de la se\~nal acumulada como función de la posici\'on de la antena.
 		}
 	\end{figure}
-	Esta presenta un máximo que se ubica en \cant{\sim 14000}{m}, la posición en la que se espera el máximo según lo expuesto en la sección \ref{sbsc:conoEs} si se considera un cono \cher{} de \cant{1.4}{^\circ}.
+	Esta presenta un máximo que se ubica en \cant{\sim 14000}{m}, la posición en la que se espera el máximo según lo expuesto en la sección \ref{sbsc:conoEs} si se considera un cono \cher{} de $1.4^\circ$.
 	

@@ -30,8 +30,8 @@ def main(argv):
     spectrum = np.interp(time,frec*1,reciever)
     spectrum = np.hstack((np.fliplr(np.atleast_2d(spectrum))[0],spectrum))
 
-    #recfft = spectrum*np.exp(1j*np.random.uniform(0, 2*np.pi, (3002,)))
-    recfft = spectrum
+    recfft = spectrum*np.exp(1j*np.random.uniform(0, 2*np.pi, (3002,)))
+    #recfft = spectrum
     s = np.fft.ifft(recfft)
     plt.plot(np.linspace(0,1500,3002),np.absolute(s))
     plt.show()
