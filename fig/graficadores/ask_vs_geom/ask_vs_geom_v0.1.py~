@@ -73,8 +73,8 @@ def main(argv):
     gz, = plt.plot(phi,geom[2,:],c="#D20010",ls='--',lw=2)
     gt, = plt.plot(phi,geom2D[0,:],c="#008702",ls='--',lw=2)
     gm, = plt.plot(phi,norm,c="#000000",ls='-',lw=3)
-    plt.xlabel(r'$\phi \rm [deg]$',fontsize=22)
-    plt.ylabel(r'$B\  \rm [arb\ units]$',fontsize=22)
+    plt.xlabel(r'$\phi \rm [deg]$',fontsize=18)
+    plt.ylabel(r'$B\  \rm [arb\ units]$',fontsize=18)
     plt.legend([gx,gy,gz,gt,gm],['Bx','By','Bz','Btr','|B|'],loc=3)
     plt.savefig("geomComps_Tunka.pdf",format = "pdf")
 
