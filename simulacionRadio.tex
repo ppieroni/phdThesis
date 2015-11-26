@@ -560,7 +560,7 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 % 		\subsubsection{Evoluci\'on de la polarizaci\'on}
 % 		
 % 		cambio askaryan geomagnetico?
-	
+	\clearpage
 	\subsection{Dependencia en los par\'ametros la lluvia}
 	
 	A fin de cuentas la exposici\'on a neutrinos depende de dos factores, las probabilidades de que se inicie una lluvia de par\'ametros dados y la eficiencia de detecci\'on e identificaci\'on de tales lluvias.
@@ -570,6 +570,9 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 	
 	\subsubsection{Efecto del \'angulo cenital $\theta$}
 	
+	Debido a la geometr\'ia del cono \cher{} existir\'a un \'angulo cenital m\'aximo a partir del cu\'al la emisi\'on de radio de la lluvia no interactuar\'a con el detector.
+	Seg\'un el modelo simplificado presentado en la secci\'on \ref{sc:toymodelES} \'este \'angulo de corte deber\'ia ser $1.4^\circ$, como lo indica la figura \ref{fig:chConeWidth}.
+	
 	\begin{figure}[ht!]
 		\centering
 		\begin{tabular}{cc}
@@ -577,9 +580,9 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 		\includegraphics[width=0.45\textwidth]{./fig/simulacionRadio/theta/{foorPrint_ZWv1.21_ntuples_v1.21_Misc_phi_90_18_89.9_90_25_1238_E0}.png} &
 		\includegraphics[width=0.45\textwidth]{./fig/simulacionRadio/theta/{foorPrint_ZWv1.21_ntuples_v1.21_Misc_phi_90_18_89.5_90_25_1238_E0}.png}\\
 		
-		$90.7^\circ$ & $91.1^\circ$ \\
-		\includegraphics[width=0.45\textwidth]{./fig/simulacionRadio/theta/{foorPrint_ZWv1.21_ntuples_v1.21_Misc_phi_90_18_89.3_90_25_1238_E0}.png} &
-		\includegraphics[width=0.45\textwidth]{./fig/simulacionRadio/theta/{foorPrint_ZWv1.21_ntuples_v1.21_Misc_phi_90_18_88.9_90_25_1238_E0}.png}\\
+		$90.9^\circ$ & $91.3^\circ$ \\
+		\includegraphics[width=0.45\textwidth]{./fig/simulacionRadio/theta/{foorPrint_ZWv1.21_ntuples_v1.21_Misc_phi_90_18_89.1_90_25_1238_E0}.png} &
+		\includegraphics[width=0.45\textwidth]{./fig/simulacionRadio/theta/{foorPrint_ZWv1.21_ntuples_v1.21_Misc_phi_90_18_88.7_90_25_1238_E0}.png}\\
 		
 		$91.7^\circ$ & $92.3^\circ$ \\
 		\includegraphics[width=0.45\textwidth]{./fig/simulacionRadio/theta/{foorPrint_ZWv1.21_ntuples_v1.21_Misc_phi_90_18_88.3_90_25_1238_E0}.png} &
@@ -592,16 +595,47 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 		}
 	\end{figure}
 	
+	La figura \ref{fig:theta_dependence} muestra la huella dejada sobre el detector por el evento de referencia para distintos \'angulos ceintales.
+	Dado que en todos los casos el evento se inici\'o en $(x,y)=(0,0)$, el punto de impacto del cono \cher{} se desplaza hacia valores positivos de $x$ a medida que este crece.
+	En particular, para valores de $\theta$ superiores a $\sim91.3^\circ$ la se\~nal coherente, emitida por el m\'aximo de la lluvia, no alcanza el detector.
+	De esta manera, este fen\'omeno determina un \'anguo de corte a partir del cual la eficiencia de detecci\'on ser\'a practicamente nula\footnote{Si la coherencia de la se\~nal es baja el campo el\'ectrico m\'aximo ser\'a peque\~no y por ende la se\~nal no superar\'a los umbrales de detecci\'on.}.
+	Por este motivo no se simular\'an eventos cuyo \'angulo cenital supere los $\sim91.5^\circ$.
 	
 	\subsubsection{Efecto del \'angulo azimutal $\phi$}
 	
+	En base a lo estudiado en el cap\'itulo \ref{ch:easRadio}, el efecto geomagn\'etico provoca que la distribuci\'on de campo el\'ectrico a nivel del suelo dependa del \'angulo azimutal.
+	Para comprender mejor esta dependencia es interesante estudiar el t\'ermino $E(\phi)\propto\vec\beta(\phi)\times \vec B$ en Tunka\footnote{La declinaci\'on del campo geomagn\'etico en Tunka es de $71.2^\circ$.}.
+	La figura \ref{fig:geomComps_Tunka} muestra la variaci\'on de las componentes $E_x$, $E_y$, $E_z$, $E_{TR}$ y $|E|$ con el \'angulo azimutal para un \'angulo cenital de $\theta=90.5^\circ$.
+	%
 	\begin{figure}[ht!]
 		\centering
 		\includegraphics[width=\textwidth]{./fig/simulacionRadio/geomComps_Tunka}
 		\caption{\label{fig:geomComps_Tunka}
-		asd
+		Componentes $E_x$, $E_y$, $E_z$, $E_{TR}$ y $|E|$ en funci\'on del \'angulo azimutal $\phi$, calculados a partir de la ecuaci\'on $E(\phi)\propto\vec\beta(\phi)\times \vec B$. El campo geomagn\'etico utilizado tiene la declinaci\'on que se observa en Tunka,$71.2^\circ$. 
 		}
 	\end{figure}
+	%
+	Debido a que el campo geomagn\'etico en Tunka es casi vertical, si bien las componentes $E_x$ y $E_y$ var\'ian significativamente con $\phi$, la componente transversal $E_{TR}$ del campo se mantiene practicamente constante, lo que se observa en l\'inea de trazos verde. 
+	Esto se debe a que esta componente depende b\'asicamente de la proyecci\'on vertical del campo geomagn\'etico.
+	La peque\~na variaci\'on que se aprecia aparece debido a que el c\'alculo se realiz\'o suponiendo una lluvia no horizontal.
+	Por otro lado, esta verticalidad en $\vec B$ provoca que para lluvias cuasi-horizontales, la coponente $E_z$ sea 0 para $\phi=0^\circ$ y $\phi=180^\circ$, y tome un valor m\'aximo para $\phi=90^\circ$, lo que se dibuja en l\'inea de trazos roja. 
+	Como resultado de estas dos constribuciones, el m\'odulo total del campo el\'ectrico $|E|$ muestra una variaci\'on de aproximadamente $10\%$ entre 0 y 180 grados. 
+	
+	Con esto en mente resulta interesante entonces observar como se modifica la huella de $|E|$ del evento de referencia al cambiar el \'angulo azimutal entre $\phi=0^\circ$ y $\phi=90^\circ$, lo que se muestra para el evento de referencia en la figura \ref{fig:footprintPhi}. 
+	\begin{figure}[ht!]
+		\centering
+		\begin{tabular}{cc}
+		$0^\circ$ & $90^\circ$ \\
+		\includegraphics[width=0.45\textwidth]{./fig/simulacionRadio/phi/{foorPrint_ZWv1.21_ntuples_v1.21_Misc_TestPhi_18_89.5_0_25_1238_E0}.png} &
+		\includegraphics[width=0.45\textwidth]{./fig/simulacionRadio/phi/{foorPrint_ZWv1.21_ntuples_v1.21_Misc_TestPhi_18_89.5_90_25_1238_E0}.png}\\
+		
+		\end{tabular}
+		\caption{\label{fig:theta_dependence}
+		Huella sobre el detector del evento de referencia para $\phi=0^\circ$ y $\phi=90^\circ$.
+		}
+	\end{figure}
+	En acuerdo con la figura \ref{fig:geomComps_Tunka} la huella para $\phi=0^\circ$ en promedio valores de campo el\'ectrico menores que para $\phi=90^\circ$, sin embargo, la variaci\'on a lo largo de la huella resulta mayor a $10\%$.
+	Esta diferencia puede deberse a que el cambio de direcci\'on de la contribuci\'on del efecto geomagn\'etico provoque una cancelaci\'on con la contribuci\'on Askaryan.
 	
 	\subsubsection{Efecto de altura de decaimiento del tauon \xd{}}
 	
@@ -614,24 +648,10 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 	
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{showerWidth_ZWv1.43_ntuples_v1.22_Channels_All}.pdf}
-		\caption{\label{fig:showerWidth}
-		asd
-		}
-	\end{figure}
-	
-	\begin{figure}[ht!]
-		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{showerMaxE_ZWv1.43_ntuples_v1.22_Channels_All}.pdf}
-		\caption{\label{fig:showerMaxE}
-		asd
-		}
-	\end{figure}
-	
-	\begin{figure}[ht!]
-		\centering
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{showerWidth_ZWv1.43_ntuples_v1.22_Channels_All}.pdf}\\
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{showerMaxE_ZWv1.43_ntuples_v1.22_Channels_All}.pdf}\\
 		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{showerArea_ZWv1.43_ntuples_v1.22_Channels_All}.pdf}
-		\caption{\label{fig:showerArea}
+		\caption{\label{fig:showerVars}
 		asd
 		}
 	\end{figure}
