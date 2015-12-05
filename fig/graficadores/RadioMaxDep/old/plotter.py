@@ -19,11 +19,9 @@ figsize = plt.figaspect(0.5)*1.2
 def main():
     
     thEn = {'90.9':[],'91.3':[],'90.7':[],'91.9':[],'91.1':[],'92.1':[],
-    '91.5':[],'92.3':[],'92.5':[],'92.7':[],'92.9':[],'91.7':[],'90.5':[],'90.1':[]}
+    '91.5':[],'92.3':[],'91.7':[],'90.5':[],'90.1':[]}
     
-    fList = ['maxInfo_en_17.5_th_All_phi_All_xd_25.dat',
-    'maxInfo_en_18_th_All_phi_All_xd_25.dat',
-    'maxInfo_en_18.5_th_All_phi_All_xd_25.dat']
+    fList = ['ZHSEvent_17.5_Maxenth.txt','ZHSEvent_18_Maxenth.txt','ZHSEvent_18.5_Maxenth.txt']
     en = [17.5,18,18.5]
 
     n_lines = 3
@@ -56,7 +54,7 @@ def main():
         plt.plot([x[0] for x in thEn[key]],[x[1] for x in thEn[key]],lw=1.5,label='{}'.format(key))
     
     plt.grid()
-    plt.legend(title=r'{\rm $\theta\ [deg]$}',loc=2,ncol=4,fontsize=14)
+    plt.legend(title=r'{\rm $\theta\ [deg]$}',loc=4,ncol=4,fontsize=16)
     plt.yscale("log", nonposy='clip')
     plt.xlabel(r'$\log{E_v}$')
     plt.ylabel(r'$E_{max}\ [\mu V/m]$')
@@ -67,9 +65,7 @@ def main():
     xdEn = {' 75':[],'  0':[],'100':[],' 25':[],' 50':[],'200':[],'150':[]
     ,'300':[]}
     
-    fList = ['maxInfo_en_17.5_th_89.5_phi_All_xd_All.dat',
-    'maxInfo_en_18_th_89.5_phi_All_xd_All.dat',
-    'maxInfo_en_18.5_th_89.5_phi_All_xd_All.dat']
+    fList = ['ZHSEvent_17.5_Maxenxd.txt','ZHSEvent_18_Maxenxd.txt','ZHSEvent_18.5_Maxenxd.txt']
     en = [17.5,18,18.5]
 
     n_lines = 3

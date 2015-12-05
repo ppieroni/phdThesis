@@ -569,21 +569,21 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 	\subsection{Dependencia en los par\'ametros la lluvia}
 	
 	A fin de cuentas la exposici\'on a neutrinos depende de dos factores, las probabilidades de que se inicie una lluvia de par\'ametros dados y la eficiencia de detecci\'on e identificaci\'on de tales lluvias.
-	Mientras que modificar las probabilidades de interacci\'on se encuentra fuera de alcance\footnote{Estas probabilidades dependen en gran medida del blanco con el que interact\'uan los neutrinos, que en este caso es la corteza de La Tierra.}, las eficiencias de detecci\'on pueden ser controladas en gran medida mediante el dise\~no del detector. 
+	Mientras que modificar las probabilidades de interacci\'on se encuentra fuera de alcance\footnote{Estas probabilidades dependen en gran medida del blanco con el que interact\'uan los neutrinos, que en eventos ES es la corteza de La Tierra.}, las eficiencias de detecci\'on pueden ser controladas en gran medida mediante el dise\~no del detector. 
 	Es por esto que resulta clave entender c\'omo var\'ia la huella de radio de los eventos al variar los distintos par\'ametros de la lluvia.
 	As\'i, a partir de este conocimiento y del estudio de las probabilidades de interacci\'on ser\'a posible optimizar el dise\~no del detector.
 	
 	Como se expuso en la secci\'on \ref{sbsc:localTriggerRadio}, la eficiencia de disparo de cada antena depende de del campo el\'ectrico m\'aximo registrado sobre la misma.
 	Asimismo, el \'area sobre la cu\'al la huella de la radio supera el umbral de detecci\'on resulta ser una variable altamente relacionada con el disparo global de los eventos.
 	En la misma l\'inea, el campo el\'ectrico m\'aximo registrado a lo largo de la huella permite inferir si un la lluvia tiene o no la capacidad de producir disparos locales.
-	Por \'ultimo, como se ver\'a en la secci\'on \ref{sc:identificacionRadio} medidas del ancho de la huella se encuentran relacionadas con la posibilidad de distinguir eventos ES de las lluvias de fondo.
+	Por \'ultimo, como se ver\'a en la secci\'on \ref{sc:identificacionRadio}, medidas del ancho de la huella se encuentran relacionadas con la posibilidad de distinguir eventos ES de las lluvias de fondo.
 	Con todo esto en mente, en las siguientes secciones se estudiar\'a el comportamiento de algunas de estas variables al variar los par\'ametros del evento de referencia.
 	
 	\subsubsection{Efecto del \'angulo cenital $\theta$}
 	
 	En primer lugar se estudiar\'a c\'omo cambia la huella al variar el \'angulo cenital del evento.
 	Debido a la geometr\'ia del cono \cher{} existir\'a un \'angulo m\'aximo a partir del cu\'al la emisi\'on de radio de la lluvia no interactuar\'a con el detector.
-	Seg\'un el modelo simplificado presentado en la secci\'on \ref{sc:toymodelES} \'este \'angulo de corte deber\'ia ser $1.4^\circ$, como lo indica la figura \ref{fig:chConeWidth}.
+	Seg\'un el modelo simplificado presentado en la secci\'on \ref{sc:toymodelES} \'este \'angulo de corte deber\'ia ser cercano a $1.4^\circ$, como lo indica la figura \ref{fig:chConeWidth}.
 	
 	\begin{figure}[ht!]
 		\centering
@@ -609,7 +609,10 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 	
 	La figura \ref{fig:theta_dependence} muestra la huella dejada sobre el detector por el evento de referencia con distintos \'angulos ceintales.
 	Dado que en todos los casos la lluvia se inici\'o en $(x,y)=(0,0)$, el punto de impacto del cono \cher{} se desplaza hacia valores positivos de $x$ a medida que $\theta$ crece.
-	En particular, para valores superiores a $\sim91.3^\circ$ la se\~nal que alcanza el detector no es coherente, lo que genera un corte en la eficiencia de detecci\'on.
+	Sumado a este efecto, la amplitud de la huella en general disminuye, lo que puede deberse tanto al factor $1/R$ como a un efecto de compresi\'on de la se\~nal.
+	A fin de cuentas este hecho sugiere que existir\'a un \'angulo m\'aximo a partir del cu\'al los eventos ES no poseen la capacidad de dsparar el detector.
+% 	En particular, para valores superiores a $\sim91.3^\circ$ el m\'aximo de se\~nal coherente no alcanza el detector, lo que genera un corte en la eficiencia de detecci\'on.
+	
 	Para apoyar este punto en la figura \ref{fig:theta_dependence2} se muestra el campo el\'ectrico m\'aximo de la lluvia para diferentes \'angulos cenitales y energ\'ias.
 	%
 	\begin{figure}[ht!]
@@ -620,10 +623,9 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 		}
 	\end{figure}
 	%
-	\textbf{Para una se observa como el campo decae exponencialmente hasta }
-	
-	Este fen\'omeno determina un \'anguo de corte a partir del cual la eficiencia de detecci\'on ser\'a practicamente nula\footnote{Si la coherencia de la se\~nal es baja el campo el\'ectrico m\'aximo ser\'a peque\~no y por ende la se\~nal no superar\'a los umbrales de detecci\'on.}.
-	Por este motivo no se simular\'an eventos cuyo \'angulo cenital supere los $\sim91.5^\circ$.
+	Dicha variable presenta un decaimiento aproximadamente exponencial hasta cerca de $92.5^\circ$ donde el comportamiento cambia.
+	Para este \'angulo, incluso a \cant{E_v=10^{18.5}}{eV} el m\'aximo de la huella no alcanza niveles detectables.
+	Este comportamiento tambien se observa para diferentes alturas de decaimiento del \tauon{} por lo que no se simular\'an eventos cuyo \'angulo cenital supere los $\sim92.5^\circ$.
 	
 	\subsubsection{Efecto de altura de decaimiento del tauon \xd{}}
 	
@@ -646,9 +648,10 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 		}
 	\end{figure}
 	Se observa como a medida que \xd{} aumenta la huella se traslada hacia valores positivos de $x$, lo que resulta nuevamente compatible con el modelo del cono \cher{}, en el que el plano de corte (la superficie de la tierra) se aleja paralelamente de su inicio.
-	Cabe destacar que adem\'as de desplazarse, la intensidad de la huella disminuye a medida que aumenta \xd{}
-	Esto puede observarse con mayor claridad en la figura \ref{fig:xd_dependence2}, que muestra como var\'ia el m\'aximo campo el\'ectrico registrado en la lluvia para diferentes valores de altura de decaimiento y energ\'ia visible.
-	Se observa como a medida que \xd{} aumenta el campo decae de manera aproximadamente exponencial.
+	Cabe destacar que adem\'as de desplazarse, la intensidad de la huella disminuye a medida que aumenta \xd{}, lo que nuevamente puede deberse al decaimiento de $1/R$ del campo o a efectos de compresi\'on temporal de la se\~nal. 
+	
+	Una vez m\'as esto sugiere la existencia de una altura de decaimiento a partir de la cual la se\~nal en el detector no es suficiente para dispararlo.
+	Entonces resulta \'util estudiar como var\'ia el m\'aximo campo el\'ectrico registrado en la lluvia para diferentes valores de altura de decaimiento y energ\'ia visible, lo que se muestra en la figura \ref{fig:xd_dependence2}.
 	%
 	\begin{figure}[ht!]
 		\centering
@@ -659,8 +662,10 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 		}
 	\end{figure}
 	
-	Todo esto indica que existe una altura de decaimiento a partir de la cual los eventos dejer\'an de ser detectables. 
-	Como se ver\'a mas adelante, este efecto tendr\'a importancia s\'olo a baja energ\'ia, mientras que para energ\'ias superioras a \cant{\sim10^{18}}{eV} la eficiencia a altos \xd{} se ver\'a suprimida por el efecto de la curvatura de la tierra (ver ap\'endice \ref{ap:tierraCurva} y cap\'itulo \ref{ch:resultadosRadio}).
+	Se observa como a medida que \xd{} aumenta esta variable decae de manera aproximadamente exponencial, por lo que a partir de cierto valor de \xd{} ningun sector de la huella ser\'a capaz de dar trigger.
+	A diferencia de lo que sucede con el \'angulo cenital, en el que el corte en $92.5^\circ$ es com\'un a todas las energ\'ias y alturas de decaimiento, el corte en \xd{} depende tanto de \ev{} como de $\theta$.
+	Adem\'as, como se ver\'a mas adelante, este efecto tendr\'a importancia s\'olo a baja energ\'ia, mientras que para energ\'ias superioras a \cant{\sim10^{18}}{eV} la eficiencia a altos \xd{} se ver\'a suprimida por el efecto de la curvatura de la tierra (ver ap\'endice \ref{ap:tierraCurva} y cap\'itulo \ref{ch:resultadosRadio}).
+	Por estos motivos, para cada bin de energ\'ia y \'angulo cenital se decidir\'a el m\'aximo \xd{} a simular basados en las posibilidades de disparar el detector.
 	
 	\subsubsection{Efecto del \'angulo azimutal $\phi$}
 	
@@ -745,8 +750,8 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 	Finalmente es necesario estudiar como afecta el canal de decaimiento del \tauon{} a la huella de radio sobre el detector.
 	Dado que el par\'ametro de control de energ\'ia elegido en esta parte de la tesis es la energ\'ia visible, es decir, la que portan las part\'iculas poco penetrantes al inicio de la lluvia, el canal de decaimiento queda determinado por las part\'iculas la inician y por como se distribuye la energ\'ia entre ellas\footnote{Como contraparte, en el an\'alisis para Auger lo que determinaba el decaimiento del \tauon{}, ademas de las part\'iculas y la distribuci\'on de energ\'ia, es qu\'e fracci\'on de la energ\'ia del tau\'on se transmitia a las part\'iculas interactuantes.}.
 	Por otro lado, ya se ha expuesto que la emisi\'on de radio en lluvias atmosf\'ericas extendidas depende fuertemente de el n\'umero de part\'iculas de la lluvia, lo que, dada la universalidad de las EAS, se encuentra estrechamente relacionado con la energ\'ia del primario.
-	Entonces, a la luz de estos dos hechos se espera que a misma energ\'ia visible y par\'ametros geom\'etricos, el canal de decaimiento del \tauon{} no afecte significativamente las caracter\'isticas de la huella de radio sobre el detector.
-	Para poner a prueba esta hip\'otesis, en la figura \ref{fig:tdec_dependence} se muestra la se\~nal a nivel del suelo para cuatro de los canales de decaimiento m\'as representativos. Se observa que las caracter\'isticas generales de la huella se conserva en todos los casos, variando levemente en forma e intensidad.
+	Entonces, a la luz de estos dos hechos se espera que a misma energ\'ia visible y par\'ametros geom\'etricos, el canal de decaimiento del \tauon{} no afecte las caracter\'isticas fundamentales de la huella de radio sobre el detector.
+	Para poner a prueba esta hip\'otesis, en la figura \ref{fig:tdec_dependence} se muestra la se\~nal a nivel del suelo para cuatro de los canales de decaimiento m\'as representativos. Se observa que las caracter\'isticas generales de la huella se conserva en todos los casos, aunque var\'ia levemente en forma e intensidad.
 	%
 	\begin{figure}[ht!]
 		\centering
@@ -778,67 +783,15 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 	\end{figure}
 	%
 	Para construir estas distribuciones se tomaron 30 decaimientos del \tauon{} al azar, respetando los \emph{branching ratios} de la tabla \ref{tab:tauDecay}, y se simul\'o la se\~nal sobre el detector.
-	El m\'aximo de la huella se obtuvo simplemente como la m\'axima se\~nal registrada por las antenas simuladas.
-	Por otro lado, el \'area sobre el $80\%$ del m\'aximo se determin\'o sumando el \'area representada por cada observador (antena) cuya se\~nal se encontr\'o por sobre este umbral.
+% 	El m\'aximo de la huella se obtuvo simplemente como la m\'axima se\~nal registrada por las antenas simuladas.
+	Para calcular el \'area sobre el $80\%$ del m\'aximo se sum\'o la superficie representada por cada observador (antena) cuya se\~nal super\'o el umbral.
 	Dado que la distancia entre antenas en la direcci\'on de propagaci\'on es \cant{1}{km} y en la direcci\'on transversal es \cant{100}{m}, cada antena contribuy\'o al \'area total con \cant{0.1}{km^2}.
-	Por \'ultimo, el c\'alculo del ancho promedio de la requieri\'o tres pasos.
-	Primero se calcul\'o la direcci\'on de propagaci\'on de la se\~nal mediante el ajuste de un frente plano a los tiempos en los que cada antena alcanz\'o su m\'aximo. 
-	Segundo, se obtuvo el baricentro de se\~nal de la huella. Tercero, se comput\'o la distancia promedio a la recta determinada por la direcci\'on de propagaci\'on de la se\~nal y por dicho baricentro.
+	Por otro lado, el c\'alculo del ancho promedio de la huella requieri\'o tres pasos.
+	Primero se calcul\'o la direcci\'on de propagaci\'on de la se\~nal ($\phi_{rec}$) mediante el ajuste de un frente plano a los tiempos en los que cada antena alcanz\'o su m\'aximo. 
+	Segundo, se obtuvo el baricentro de la huella. Tercero, se comput\'o la distancia promedio a la recta, determinada por la direcci\'on de propagaci\'on de la se\~nal y por dicho baricentro.
 	
 	Las variaciones debido al canal de decaimiento observadas en la figura \ref{fig:showerVars} resultan del orden del $10-15\%$ en el m\'aximo campo de la lluvia, de alrededor de $30\%$ en el \'area sobre el umbral y $3\%$ en el ancho promedio.
-	Sin embargo, en todos los histogramas se encuentra marcado el bin en el que se ubica el evento de referencia.
-	Es interesante notar que su variaci\'on de distribuci\'on a distribuci\'on parece ser menor que la dispersi\'on de cada variable en s\'i, lo que implica correlaci\'on entre ellas.
-	Finalmente, tambi\'en se puede notar que el evento de referencia se encuentra en todos los casos cerca del promedio de la distribuci\'on.
-	Esto resultar\'a conveniente m\'as adelante, cuando sea necesario determinar el espacio de par\'ametros que se simular\'a para realizar el c\'alculo de exposici\'on.
+	Por otro lado, en todos los histogramas se encuentra marcado el bin en el que se ubica el evento de referencia.
+	Es interesante notar que su variaci\'on de distribuci\'on a distribuci\'on parece ser menor que la dispersi\'on de cada variable en s\'i, lo que implica correlaci\'on entre las variables, 
+	En particular, este evento se encuentra en todos los casos cerca del promedio de la distribuci\'on, por lo que podr\'ia ser un buen representante de tales distribuciones.
 	
-	\textbf{REVSAR}
-	
-	
-\clearpage
-\section{Discriminaci\'on en el fondo de eventos hadr\'onicos}
-\label{sc:identificacionRadio}
-
-Como se expuso en la primer parte de esta tesis, el mayor desaf\'io a la hora de detectar neutrinos ES mediante detectores de superficie resulta ser su discriminaci\'on en el fondo dominante de eventos hadr\'onicos.
-En Auger esto se logra debido a que los tanques \cher{} permiten detectar las lluvias j\'ovenes entre los eventos inclinados, a trav\'es de variables sensibles a la presencia de componente electromagn\'etica.
-En un detector de antenas de radio esto no resulta posible debido a que b\'asicamente toda la emisi\'on es generada en el m\'aximo de la lluvia por los electrones de media y baja energ\'ia.
-Sin embargo, la geometr\'ia de la emisi\'on permite salvar este escollo, ya que guarda informaci\'on sobre la ubicaci\'on en la que se produjo dicho m\'aximo.
-Para representar la situci\'on en la figura \ref{fig:dg_vs_es_radio} se bosqueja el cono \cher{} de un evento DG inclinado, que representa el background, y uno ES.
-%
-\begin{figure}[ht!]
-	\centering
-	\includegraphics[width=\textwidth]{./fig/simulacionRadio/idRadio.png}
-	\caption{\label{fig:dg_vs_es_radio}
-	Esquema de las caracter\'isticas que permiten distinguir los eventos ES del fondo de lluvias hadr\'onicas horizontales (DG). Dado que las lluvias DG se inician alto en la atm\'osfera la apertura del cono \cher{} al nivel de la superficie (l\'inea azul) resulta mucho mayor que la que alcanzar\'ia en un evento ES, debido a que su m\'aximo se produce mucho m\'as cerca de la superficie.
-	Adem\'as de la apertura del cono, otro posible factor de discriminaci\'on puede ser la topograf\'ia de la se\~nal a nivel del suelo, ya que en los eventos DG imprimen elipses y los ES hip\'erbolas.
-	}
-\end{figure}
-%
-Puede notarse como la apertura del cono del evento DG al nivel de la superficie resulta mayor que el de la se\~nal dejada por el evento ES.
-Tambi\'en, se nota como la opograf\'ia de la huella en ambos casos es fundamentalmente distinta, ya que el evento DG imprime una elipse sobre el suelo y el evento ES una hip\'erbola.
-En consecuencia se estudiar\'a si es posible explotar estas diferencias para identificar eventos ES.
-
-Por otra parte, en la figura 
-
-- eventos gigantes
-
-- se inician lejos y el campo cae como 1/R pero el drift es mayor debido a la baja densidad de la atm\'osfera
-
-- ver v4.20 en ntuple analizer mostrar que la velocidad sobre el eje y el ancho 
-
-
-\section{Resumen del an\'alisis de la se\~nal}
-
-\begin{table}[ht!]
-\centering
- \begin{tabular}{|p{0.3\textwidth}|p{0.7\textwidth}|}
- \toprule
- Descripci\'on & Detalle \\
- \midrule\midrule
- Filtrado de la se\~nal & Respuesta plana en la banda \cant{30\text{-}80\text{/}120\text{-}900}{MHz} \\ \midrule
- Nivel de disparo local &  Entre \cant{25}{\frac{\mu V}{m}} y \cant{200}{\frac{\mu V}{m}} con un paso de \cant{25}{\frac{\mu V}{m}}\\ \midrule
- Disparo global & Antenas disparadas compatibles con un frente que se desplaza a la velocidad de la luz \\ \midrule
- Nivel de identificaci\'on & Eficiencia entre 0.80 y 1.00 con un paso de 0.05 \\
- 
- \bottomrule
- \end{tabular}
-\end{table}
