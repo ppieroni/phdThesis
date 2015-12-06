@@ -25,8 +25,8 @@ def main(argv):
     td = getTC(xd)
     plt1, = plt.plot(td,xd,'b--',lw=3)
     plt.grid()
-    plt.xlabel(r'$\theta_D \rm[deg]$',fontsize=18)
-    plt.ylabel(r'$x_d \rm[m]$',fontsize=18)
+    plt.xlabel(r'$\theta_D \rm[deg]$',fontsize=20)
+    plt.ylabel(r'$x_d \rm[m]$',fontsize=20)
     
     plt.text(91.55, 1200, 'Zona permitida',
         bbox={'facecolor':'white', 'alpha':0.5, 'pad':10})
@@ -50,8 +50,8 @@ def main(argv):
         xds.append(str(x))
     plt.grid()
     plt.legend(plots,xds,loc=4,title=r'$\bf{x_d \rm [m]}$')
-    plt.xlabel(r'$\theta_D$',fontsize=18)
-    plt.ylabel(r'$\frac{l_{plano}}{l_{curvo}}$',fontsize=18)
+    plt.xlabel(r'$\theta_D \rm[deg]$',fontsize=20)
+    plt.ylabel(r'$\frac{l_{plano}}{l_{curvo}}$',fontsize=20)
     plt.savefig("lPlane_lCurve.pdf",format="pdf")
     
     
@@ -66,8 +66,8 @@ def main(argv):
         xds.append(str(x))
     plt.grid()
     plt.legend(plots,xds,loc=4,title=r'$\bf{x_d \rm [m]}$')
-    plt.xlabel(r'$\theta_D$',fontsize=18)
-    plt.ylabel(r'$\theta_E$',fontsize=18)
+    plt.xlabel(r'$\theta_D \rm[deg]$',fontsize=20)
+    plt.ylabel(r'$\theta_E \rm[deg]$',fontsize=20)
     plt.savefig("thE_thD.pdf",format="pdf")
     
 if __name__ == "__main__":

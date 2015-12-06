@@ -1,4 +1,4 @@
-\chapter{Simulaci\'on y caracterizaci\'on de la emisi\'on de radio en eventos ES}
+\chapter{Simulaci\'on de la emisi\'on de radio en eventos ES}
 \label{ch:simulacionRadio}
 
 Tal como se describi\'o en el cap\'itulo \ref{ch:easRadio}, la emisi\'on de radio de las lluvias atmosf\'ericas extendidas conforman un fen\'omeno complicado, por lo que su c\'alculo se aborda usualmente mediante modelos macrosc\'opicos efectivos o a trav\'es de una representaci\'on microsc\'opica ligada al uso de t\'ecnicas de Monte Carlo.
@@ -268,8 +268,9 @@ En la segunda parte se realiza una caracterizaci\'on de la huella de campo el\'e
 	Para ello, y con el fin de no perder generalidad en el resultado, se reportar\'a el resultado para diferentes niveles, entre \cant{25}{\frac{\mu V}{m}} y \cant{200}{\frac{\mu V}{m}} con un paso de \cant{25}{\frac{\mu V}{m}}.
 	En el cap\'itulo \ref{ch:resultadosRadio} se mostrar\'a que el nivel de disparo local elegido, \'intimamente relacionado con la sensibilidad de la antena, es el factor limitante que m\'as afecta la exposici\'on obtenida.
 	
-	
-\section{Caracterizaci\'on de eventos ES}
+
+\chapter{Caracterizaci\'on de la emisi\'on de radio en eventos ES}
+\label{ch:caracterizacionRadio}
 
 En esta secci\'on se realiza un recuento de las caracter\'isticas principales de la se\~nal de radio generada por lluvias ES.
 Esto permitir\'a determinar el espacio de par\'ametros (energ\'ia, \'angulo cenital, etc) en el que este tipo de eventos prodr\'an ser detectados, y que por ende deber\'an ser simulados.
@@ -281,7 +282,7 @@ Para que un evento ES sea detectado, es necesario que se cumplan dos condiciones
 \end{enumerate}
 por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en qu\'e regi\'on del espacio de par\'ametros las condiciones 1 y 2 se cumplen.
 
-	\subsection{Caracter\'isticas generales: evento típico}
+	\section{Caracter\'isticas generales: evento típico}
 	
 	En esta direcci\'on, el primer paso en la caracterizaci\'on de la emisión de radio de un evento ES ser\'a estudiar lo que denominaremos un \emph{evento típico} o \emph{de referencia}, cuyas caracter\'isticas ser\'an utilizadas como punto de comparaci\'on al variar los parametros de la simulaci\'on. 
 	A saber, las cualidades que definen la emisi\'on de radio de una lluvia ES en este an\'alisis son: 
@@ -349,7 +350,7 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 	Dado que la contribuci\'on del efecto geomagn\'etico a la se\~nal generada depende del producto $\vec{\beta}\times\vec{B}$, ambas cualidades favorecen la detecci\'on de eventos inclinados.
 	Por este motivo el sitio elegido para todas las sumulaciones fue Tunka.
 	
-	\subsubsection{Huella sobre el detector - Cono \cher}
+	\subsection{Huella sobre el detector - Cono \cher}
 	
 	La primer caracter\'istica imporante de este tipo de eventos es la geometr\'ia de la huella dejada sobre el detector.
 	La figura \ref{fig:testFootprint_Cone} muestra el módulo del máximo campo eléctrico registrado a nivel del suelo, luego de aplicarle a la se\~nal el tratamiento descripto en la secci\'on \ref{sbsc:sig_treat}.
@@ -385,7 +386,7 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 		}
 	\end{figure}
 	
-	\subsubsection{Polarización de la señal - Influencia del campo magn\'etico terrestre}
+	\subsection{Polarización de la señal - Influencia del campo magn\'etico terrestre}
 	
 	Otra car\'acter\'istica de la se\~nal sobre el detector que vale la pena estudiar es la polarizaci\'on del campo el\'ectrico en cada una de las antenas, que podr\'a ser explicada a trav\'es de los modelos macrosc\'opicos delineados en el cap\'itulo \ref{easRadio}.
 	Para ello se considerar\'a al evento de referencia como una lluvia completamente horizontal ($\theta=90^\circ$) y que se desplaza de Oeste a Este ($\phi=90^\circ$) a alguna altura respecto del suelo.
@@ -560,13 +561,13 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 % 		\subsubsection{Evoluci\'on de la polarizaci\'on}
 % 		
 % 		cambio askaryan geomagnetico?
-	\clearpage
+% 	\clearpage
 	
 	\subsection{Caracterizaci\'on temporal}
 	
 	Velocidad de propagacion de la se\~nal.
 	
-	\subsection{Dependencia en los par\'ametros la lluvia}
+	\section{Dependencia en los par\'ametros la lluvia}
 	
 	A fin de cuentas la exposici\'on a neutrinos depende de dos factores, las probabilidades de que se inicie una lluvia de par\'ametros dados y la eficiencia de detecci\'on e identificaci\'on de tales lluvias.
 	Mientras que modificar las probabilidades de interacci\'on se encuentra fuera de alcance\footnote{Estas probabilidades dependen en gran medida del blanco con el que interact\'uan los neutrinos, que en eventos ES es la corteza de La Tierra.}, las eficiencias de detecci\'on pueden ser controladas en gran medida mediante el dise\~no del detector. 
@@ -579,7 +580,7 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 	Por \'ultimo, como se ver\'a en la secci\'on \ref{sc:identificacionRadio}, medidas del ancho de la huella se encuentran relacionadas con la posibilidad de distinguir eventos ES de las lluvias de fondo.
 	Con todo esto en mente, en las siguientes secciones se estudiar\'a el comportamiento de algunas de estas variables al variar los par\'ametros del evento de referencia.
 	
-	\subsubsection{Efecto del \'angulo cenital $\theta$}
+	\subsection{Efecto del \'angulo cenital $\theta$}
 	
 	En primer lugar se estudiar\'a c\'omo cambia la huella al variar el \'angulo cenital del evento.
 	Debido a la geometr\'ia del cono \cher{} existir\'a un \'angulo m\'aximo a partir del cu\'al la emisi\'on de radio de la lluvia no interactuar\'a con el detector.
@@ -627,7 +628,7 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 	Para este \'angulo, incluso a \cant{E_v=10^{18.5}}{eV} el m\'aximo de la huella no alcanza niveles detectables.
 	Este comportamiento tambien se observa para diferentes alturas de decaimiento del \tauon{} por lo que no se simular\'an eventos cuyo \'angulo cenital supere los $\sim92.5^\circ$.
 	
-	\subsubsection{Efecto de altura de decaimiento del tauon \xd{}}
+	\subsection{Efecto de altura de decaimiento del tauon \xd{}}
 	
 	Tambien resulta interesante estudiar como cambia la huella del campo el\'ectrico al variar la altura de decaimiento del \tauon{} en el evento de referencia.
 	Esto se muestra en la figura \ref{fig:xd_dependence} para \cant{xd = \left\{25,75,150,300\right\}}{m}, donde nuevamente la cascada se inici\'o en $(x,y)=(0,0)$.
@@ -667,7 +668,7 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 	Adem\'as, como se ver\'a mas adelante, este efecto tendr\'a importancia s\'olo a baja energ\'ia, mientras que para energ\'ias superioras a \cant{\sim10^{18}}{eV} la eficiencia a altos \xd{} se ver\'a suprimida por el efecto de la curvatura de la tierra (ver ap\'endice \ref{ap:tierraCurva} y cap\'itulo \ref{ch:resultadosRadio}).
 	Por estos motivos, para cada bin de energ\'ia y \'angulo cenital se decidir\'a el m\'aximo \xd{} a simular basados en las posibilidades de disparar el detector.
 	
-	\subsubsection{Efecto del \'angulo azimutal $\phi$}
+	\subsection{Efecto del \'angulo azimutal $\phi$}
 	
 	En base a lo estudiado en el cap\'itulo \ref{ch:easRadio}, el efecto geomagn\'etico provoca que la distribuci\'on de campo el\'ectrico a nivel del suelo dependa del \'angulo azimutal.
 	Para comprender mejor esta dependencia es interesante estudiar el t\'ermino $E(\phi)\propto\vec\beta(\phi)\times \vec B$ en Tunka\footnote{La declinaci\'on del campo geomagn\'etico en Tunka es de $71.2^\circ$.}.
@@ -704,7 +705,7 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 	En acuerdo con la figura \ref{fig:geomComps_Tunka} la huella para $\phi=0^\circ$ en promedio valores de campo el\'ectrico menores que para $\phi=90^\circ$, sin embargo, la variaci\'on a lo largo de la huella resulta mayor a $10\%$.
 	Esta diferencia puede deberse a que el cambio de direcci\'on de la contribuci\'on del efecto geomagn\'etico provoque una cancelaci\'on con la contribuci\'on Askaryan.
 	
-	\subsubsection{Efecto de la eneg\'ia visible $E_v$}
+	\subsection{Efecto de la eneg\'ia visible $E_v$}
 	
 	De acuerdo con lo expuesto en el cap\'itulo \ref{ch:easAuger} y en particular en la ecuaci\'on \ref{hi4}, el n\'umero de part\'iculas en el m\'aximo de la lluvia escala con la energ\'ia del primario o, el par\'ametro equivalente en eventos ES, la energ\'ia visible \ev{}.
 	Por otra parte, dado que la emisi\'on de radio depende directamente del n\'umero de part\'iculas en el m\'aximo de la lluvia, resulta razonable suponer que la intensidad del campo el\'ectrico a nivel del suelo variar\'a tambien proporcionalmente a \ev{}.
@@ -744,7 +745,7 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 	Este comportamiento creciente sugiere, como era natural suponer, que a medida que aumente la energ\'ia visible de la lluvia la eficiencia de detecci\'on crecer\'a.
 	
 	
-	\subsubsection{Dependencia con el canal de decaimiento del \tauon{}}
+	\subsection{Dependencia con el canal de decaimiento del \tauon{}}
 	\label{sbsc:decayChRadio}
 	
 	Finalmente es necesario estudiar como afecta el canal de decaimiento del \tauon{} a la huella de radio sobre el detector.

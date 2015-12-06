@@ -7,7 +7,7 @@
 	
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=0.8\textwidth]{./fig/appendix/curveEarthSketch.png}
+		\includegraphics[width=0.8\textwidth]{./fig/appendix/curveEarthSketch.pdf}
 		% curveEarthSketch.png: 2404x1199 pixel, 150dpi, 40.70x20.30 cm, bb=0 0 1154 575
 		\caption{\label{fig:curveEarthSketch}
 		Esquema del cambio en el angulo sobre el detector y el utilizado para calcular las probabilidades de interacci\'on del neutrino en la tierra.
@@ -17,21 +17,21 @@
 	Utilizando el teorema del coseno para \te{} y para el complemento de \td{} se obtiene el siguiente sistema de ecuaciones:	
 	\begin{displaymath}
 		\begin{array}{rcccccl}
-		(R+x_d)^2 & = & l^2 & + & R^2 & - & 2 l R \cos \theta_E \\
-		R^2 & = & l^2 & + & (R+x_d)^2 & + & 2 l (R+x_d) \cos \theta_D \\
+		(R_E+x_d)^2 & = & l^2 & + & R_E^2 & - & 2 l R_E \cos \theta_E \\
+		R_E^2 & = & l^2 & + & (R_E+x_d)^2 & + & 2 l (R_E+x_d) \cos \theta_D \\
 		\end{array}
 	\end{displaymath}
 	sumando y restando se llega a:
 	\begin{displaymath}
 		\begin{array}{rcccl}
-		0 & = & l^2 &+ & l \left[ (R+x_d) \cos \theta_D - R \cos \theta_E \right] \\
-		0 & = & R^2 - (R+x_d)^2 & - & l \left[ (R+x_d) \cos \theta_D + R \cos \theta_E \right] \\
+		0 & = & l^2 &+ & l \left[ (R_E+x_d) \cos \theta_D - R_E \cos \theta_E \right] \\
+		0 & = & R_E^2 - (R_E+x_d)^2 & - & l \left[ (R_E+x_d) \cos \theta_D + R_E \cos \theta_E \right] \\
 		\end{array}
 	\end{displaymath}
 	donde resolviendo para $l$ se obtiene la siguiente expresi\'on:
 	\begin{equation}
 		\begin{array}{rcl}
-		l & = & \dfrac{R^2-(R+x_d)^2}{R \cos \theta_E + (R+x_d) \cos \theta_D}\\
+		l & = & \dfrac{R_E^2-(R_E+x_d)^2}{R_E \cos \theta_E + (R_E+x_d) \cos \theta_D}\\
 		&&\\
 		\end{array}
 		\label{eq:l_curve}
@@ -39,44 +39,64 @@
 	con
 	\begin{equation}
 		\begin{array}{rcl}
-		\cos \theta_E & = & - \left[ \dfrac{R^2 - (R+x_d)^2 (1-\cos^2 \theta_D)}{R^2} \right]^{\frac{1}{2}} \\ 
+		\cos \theta_E & = & - \left[ \dfrac{R_E^2 - (R_E+x_d)^2 (1-\cos^2 \theta_D)}{R_E^2} \right]^{\frac{1}{2}} \\ 
 		\end{array}
 		\label{eq:te_td}
 	\end{equation}
 	
-	La ecuaci\'on \ref{eq:te_td} s\'olo tiene solici\'on real si el numerador es un numero positivo, lo que ocurre si $\theta_D<\theta_D^{cut}$, donde $\theta_D^{cut}$ cumple:
+	La ecuaci\'on \ref{eq:te_td} s\'olo tiene solicu\'on real si el numerador es un n\'umero positivo, lo que ocurre si $\theta_D<\theta_D^{cut}$, donde $\theta_D^{cut}$ cumple:
 	\begin{equation}
-	\cos \theta_D^{cut} = \left[ \frac{2 R x_d+x_d^2}{(R+x_d)^2} \right]^{\frac{1}{2}}
+	\cos \theta_D^{cut} = \left[ \frac{2 R_E x_d+x_d^2}{(R_E+x_d)^2} \right]^{\frac{1}{2}}
 	\label{eq:tdc}
 	\end{equation}
 	
-	La interpretaci\'on de esta cantidad es sencilla si notamos que el m\'inimo \'angulo con el que los neutrinos pueden ingresar a la tierra, \te{}, es $90^\circ$. 
-	Si $\theta_E=90^\circ$, el angulo con el que se observar\'a la lluvia sobre el detector ser\'a $\theta_D^{cut}$, lo que puede observarse en la figura \ref{fig:te_td}, en la que se grafica la ecuaci\'on \ref{eq:te_td} para diferentes valores de \xd{}.
+	La interpretaci\'on de esta cantidad es sencilla si se tiene en cuenta que el m\'inimo \'angulo con el que los neutrinos pueden ingresar a la tierra, \te{}, es $90^\circ$. 
+	Por ende, si $\theta_E=90^\circ$, dado \xd{}, el angulo \'angulo cenital m\'inimo con el que se observar\'a la lluvia sobre el detector ser\'a $\theta_D^{cut}$, tal como se esquematiza en la figura \ref{fig:curveEarthSketch_thCut}.
+	%
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{./fig/appendix/curveEarthSketch_thCut.pdf}
+		% curveEarthSketch.png: 2404x1199 pixel, 150dpi, 40.70x20.30 cm, bb=0 0 1154 575
+		\caption{\label{fig:curveEarthSketch_thCut}
+		Dado \xd{} existe un valor m\'inimo de \td{}, $\theta_D^{cut}$, que corresponde a $\theta_E=90^\circ$.
+		}
+	\end{figure}
 	
+	Por otro lado, en la figura \ref{fig:te_td} se grafica la ecuaci\'on \ref{eq:te_td} para diferentes valores de \xd{}, y puede observarse que si ${\rm x_d}<1500{\rm m}$ la mayor modificaci\'on al \'angulo observado sobre el detector se produce para valores de \te{} por debajo de $92.5^\circ$.
+	%
 	\begin{figure}[ht!]
 		\centering
 		\includegraphics[width=0.95\textwidth]{./fig/appendix/thE_thD}
 		% curveEarthSketch.png: 2404x1199 pixel, 150dpi, 40.70x20.30 cm, bb=0 0 1154 575
 		\caption{\label{fig:te_td}
-		Gr\'afico de la ecuaci\'on \ref{eq:te_td} para diferentes valores de \xd{}.
+		Angulo cenital sobre el detector como funci\'on del \'angulo de los neutrinos incidentes, seg\'un la ecuaci\'on \ref{eq:te_td}, para diferentes valores de \xd{}.
 		}
 	\end{figure}
-	
-	Es clave notar que $\theta_D^{cut}$ depende de la altura de decaimiento del \tauon{} sobre el detector, $x_d$.
-	Por ello, si se invierte la ecuaci\'on \ref{eq:tdc} es posible obtener, dado \td{}, qu\'e alturas de decaimiento \xd{} son geometricamente aceptables, lo que se muestra en la figura \ref{fig:dx_thcut}
-	
+	%
+	Dado que $\theta_D^{cut}$ depende de la altura de decaimiento del \tauon{} sobre el detector, \xd{} si se invierte la ecuaci\'on \ref{eq:tdc} es posible obtener, qu\'e alturas de decaimiento \xd{} son geometricamente aceptablesen funci\'on de \td{}, lo que se muestra en la figura \ref{fig:dx_thcut}
+	%
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=0.95\textwidth]{./fig/appendix/thetaDCut}
+		\includegraphics[width=0.95\textwidth]{./fig/appendix/thetaDCut_mod}
 		% curveEarthSketch.png: 2404x1199 pixel, 150dpi, 40.70x20.30 cm, bb=0 0 1154 575
 		\caption{\label{fig:dx_thcut}
-		Se grafica $\rm x_d^{CUT}$ a partir de la inversi\'on de la ecuaci\'on \ref{eq:tdc}. Se observa el conjunto de par\'ametros geom\'etricamente admitidos.
+		Se grafica ${\rm x_d}^{cut}$ a partir de la inversi\'on de la ecuaci\'on \ref{eq:tdc}. Se observa el conjunto de par\'ametros geom\'etricamente admitidos.
 		}
 	\end{figure}
 
 	Finalmente, es importante estudiar como cambia la distancia que recorre el \tauon{} en la atmosfera al tener en cuenta la curvatura de la tierra.
+	En la figura \ref{fig:curveEarthSketch_plano_vs_curvo} se esquematiza la diferencia entre $l_{plano}$ y $l_{curvo}$.
+	%
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{./fig/appendix/curveEarthSketch_plano_vs_curvo.pdf}
+		\caption{\label{fig:curveEarthSketch_plano_vs_curvo}
+		Esquema de la diferencia entre $l_{plano}$ y $l_{curvo}$.
+		}
+	\end{figure}
+	%
 	Recordando la ecuaci\'on \ref{eq:l_curve} y que en la aproximaci\'on de tierra plana se utiliza la expresi\'on $l_{plano}=\frac{x_d}{\cos \theta_D}$, es posible graficar el cociente $\frac{l_{plano}}{l_{curvo}}$ para diferentes valores de \xd{} y \td{}, lo que se muestra en la figura \ref{fig:lp_lc}.
-	
+	%
 	\begin{figure}[ht!]
 		\centering
 		\includegraphics[width=0.95\textwidth]{./fig/appendix/lPlane_lCurve}
