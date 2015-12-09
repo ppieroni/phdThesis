@@ -38,7 +38,8 @@ def main(argv):
     
     thD = np.arange(90.1,95,0.00001)
     cThD = np.cos(thD*kdeg2rad)
-    Xd = np.arange(100,1700,200)
+    #Xd = np.arange(100,1700,200)
+    Xd = np.arange(100,3700,400)
     
     plt.figure(figsize=plt.figaspect(0.55))
     plots = []

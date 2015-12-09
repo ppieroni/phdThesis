@@ -2,25 +2,169 @@
 \label{ch:resultadosRadio}
 
 El objetivo de este cap\'itulo (y de la segunda parte de esta tesis) es estimar el desempe\~no  de un detector de antenas de radio a la hora de detectar neutrinos ES.
-Para ello, al igual que en Auger 
+Para ello, al igual que en Auger se calcular\'a la exposici\'on del detector en un caso gen\'erico.
+Se utilizar\'a lo aprendido en el capitulo \ref{ch:caracterizacionRadio} para definir un criterio de disparo y se estimar\'an las eficiencias de detecci\'on.
+Todo lo anterior se realizar\'a utilizando distintas disposiciones espaciales de las antenas (topograf\'ias del detector), para encontrar una disposici\'on \'optima.
+Finalmente, teniendo en cuenta todo lo anterior se comparar\'a el desempe\~no que puede alcanzar un detector de radio frente a la pr\'oxima generaci\'on de detectores de neutrinos ultra energ\'eticos.
 
 \section{C\'alculo de la exposici\'on}
 	
-	El c\'alculo de la exposici\'on se realiz\'o de manera similar a lo expuesto en la secci\'on \ref{sc:expoNu}, aunque existen ciertas diferencias, que se describen a continuaci\'on.
+	Para calcular la exposici\'on en el detector se utiliz\'o una modificaci\'on de la ecuaci\'on \ref{eq:exp5ES} de la secci\'on \ref{sc:expoNu}, con la que se obtuvo la exposici\'on a neutrinos ES en Auger.
+	Tales modificaciones fueron necesarias debido a que:
+	\begin{enumerate}
+	 \item Se incluy\'o la curvatura de la tierra en el c\'alculo de la exposici\'on.
+	 \item Las eficiencias se calcularon en funci\'on de la energ\'ia visible.
+	 \item Se considera un detector ideal, que no var\'ia a trav\'es del tiempo ni en su forma.
+	\end{enumerate}
 	%
-	\begin{description}
-	 \item[Inclusi\'on de la curvatura de la tierra] asd
-	 
+	Estos tres puntos implican cambios en el t\'ermino de probabilidad, en las eficiencias y en las integrales que se deben realizar.
+	Por este motivo las siguientes secciones se avocan a desarrollarlos en detalle.
+	
+% 	\begin{equation}
+% 		\begin{aligned}
+% 		{\cal E}_{ES}(E_\nu)\equiv2\pi\iiint\limits_{E_v~{\rm x_d}~\theta}P({\rm x_d},E_v|E_{\nu},\theta)~
+% 		\left[~
+% 		\iint\limits_{T~A}\epsilon({\rm x_d},E_v,A,\theta_D,T)~dA~dT
+% 		\right]\\
+% 		~\sen\theta_D d\theta_D~d{\rm x_d}~dE_v
+% 		\end{aligned}
+% 	 \label{eq:exp1ESRadio}
+% 	\end{equation}
+% 	%
+
+	\subsection{Inclusi\'on de la curvatura de la tierra}
+	El primer cambio en el c\'alculo es inducido por la inclusi\'on de la curvatura de la tierra en el modelo. 
+	Esto resulta en que el \'angulo cenital con el que los neutrinos atraviezan la tierra, \te{}, difiere del observado sobre el detector \td{}, tal como se esquematiza en la figura \ref{fig:curveEarthSketch0}.
+	%
 	 \begin{figure}[ht!]
 		\centering
-		\includegraphics[width=0.8\textwidth]{./fig/appendix/curveEarthSketch.png}
-		\caption{\label{fig:curveEarthSketch}
+		\includegraphics[width=0.8\textwidth]{./fig/appendix/curveEarthSketch.pdf}
+		\caption{\label{fig:curveEarthSketch0}
 		Esquema del cambio en el angulo sobre el detector y el utilizado para calcular las probabilidades de interacci\'on del neutrino en la tierra.
 		}
 	\end{figure}
-	 
-	 \item[Manejo de la energ\'ia visible]
-	 
+	%
+	Como consecuencia el c\'alculo se ve afectdo de dos maneras:
+	\begin{enumerate}
+	 \item Se modifican las probabilidades de decaimiento del \tauon{} en la atm\'osfera.
+	 \item Para cada valor de \xd{} existe una zona de \'angulos cenitales prohibidos.
+	\end{enumerate}
+	
+	\subsubsection{Cambio en las probabilidades de decaimiento en la atm\'osfera}
+	Tal como se discuti\'o en la secci\'on \ref{sbsc:corrES}, el decaimiento del \tauon{} en la atm\'osfera se puede modelar como una distribuci\'on exponencial, de forma:
+	%
+	\begin{equation}
+		h({\rm x_d},(E_\tau,\theta_D))=
+		\exp{\left(
+		-\frac{l({\rm x_d},\theta_D)}{\lambda(E_\tau)}
+		\right)}
+		\frac{dl({\rm x_d})}{d{\rm x_d}}
+		\frac{1}{\lambda(E_\tau)}
+		\label{eq:decayTayRadio}
+	\end{equation}
+	%
+	Entonces, si se tiene en cuenta la curvatura de la tierra, la expresi\'on de $l({\rm x_d},\theta_D)$ queda:
+	%
+	\begin{equation}
+		\begin{array}{rcl}
+		l({\rm x_d},\theta_D) & = & \dfrac{R_E^2-(R_E+{\rm x_d})^2}{R_E \cos \theta_E + (R_E+{\rm x_d}) \cos \theta_D}\\
+		&&\\
+		\end{array}
+		\label{eq:l_curve0}
+	\end{equation}
+	donde $R_E$ es el radio de la tierra y:
+	\begin{equation}
+		\begin{array}{rcl}
+		\cos \theta_E & = & - \left[ \dfrac{R_E^2 - (R_E+{\rm x_d})^2 (1-\cos^2 \theta_D)}{R_E^2} \right]^{\frac{1}{2}} \\ 
+		\end{array}
+		\label{eq:te_td0}
+	\end{equation}
+	%
+	Luego, derivando \ref{eq:l_curve0} puede obtenerse anal\'iticamente la expresi\'on de $\frac{dl({\rm x_d})}{d{\rm x_d}}$:
+	\begin{equation}
+	\begin{aligned}
+		\frac{dl({\rm x_d})}{d{\rm x_d}}
+		=&-
+		\frac{
+		2(R_E+{\rm x_d})
+		(R_E\cos{\theta_E}+(R_E+{\rm x_d}\cos{\theta_D}))
+		}{
+		(R_E\cos{\theta_E}+(R_E+{\rm x_d}\cos{\theta_D}))^2
+		}\\
+% 		\ & \\
+		&-
+		\frac{(R_E^2+(R_E+{\rm x_d})^2)(R_E\frac{d\cos{\theta_E}}{d{\rm x_d}}+\cos{\theta_D})
+		}{
+		(R_E\cos{\theta_E}+(R_E+{\rm x_d}\cos{\theta_D}))^2
+		}
+	\end{aligned}
+	\end{equation}
+	%
+	con:
+	\begin{equation}
+	\frac{d\cos{\theta_E}}{d{\rm x_d}}
+	=
+	\frac{
+	(R_E+{\rm x_d})
+	(1-\cos^2\theta_D)
+	}{\cos{\theta_E}R_E^2
+	}
+	\end{equation}
+	%
+	La derivaci\'on de estas ecuaciones puede encontrarse en el ap\'endice \ref{ap:tierraCurva} junto con un peque\~no an\'alisis de su impacto.
+	
+	\subsubsection{\'Angulos cenitales prohibidos}
+	Por simple geometr\'ia, para cada valor de \xd{} aparecer\'a un \'angulo observado m\'inimo sobre el detector, $\theta_D^{cut}$, correspondiente al m\'inimo valor con el que los neutrinos pueden incidir sobre la tierra, $\theta_E=90^\circ$.
+	Esta situaci\'on se bosqueja en la figura \ref{fig:curveEarthSketch_thCut0}.
+	%
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{./fig/appendix/curveEarthSketch_thCut.pdf}
+		% curveEarthSketch.png: 2404x1199 pixel, 150dpi, 40.70x20.30 cm, bb=0 0 1154 575
+		\caption{\label{fig:curveEarthSketch_thCut0}
+		Dado \xd{} existe un valor m\'inimo de \td{}, $\theta_D^{cut}$, que corresponde a $\theta_E=90^\circ$.
+		}
+	\end{figure}
+	%
+	Este valor l\'imite puede calcularse anal\'iticamente (ver ap\'endice \ref{ap:tierraCurva}), y su expresi\'on es:
+	\begin{equation}
+	\cos \theta_D^{cut} = \left[ \frac{2 R_E {\rm x_d}+{\rm x_d}^2}{(R_E+{\rm x_d})^2} \right]^{\frac{1}{2}}
+	\label{eq:tdc0}
+	\end{equation}
+	%
+	Entonces, para cada \xd{} pueden calcularse los valores permitidos para \td{}, que se grafican en la figura \ref{fig:dx_thcut0}.
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=0.95\textwidth]{./fig/appendix/thetaDCut_mod}
+		% curveEarthSketch.png: 2404x1199 pixel, 150dpi, 40.70x20.30 cm, bb=0 0 1154 575
+		\caption{\label{fig:dx_thcut0}
+		Conjunto de par\'ametros geom\'etricamente admitidos.
+		}
+	\end{figure}
+	%
+	Si bien este efecto no tiene mucha relevancia en la exposici\'on de Auger\footnote{Esto se debe a que el rango angular en el que Auger es eficiente es de alrededor de $5^\circ$. Entonces, los eventos cuyo \'angulo se ve modificado siguen siendo detectados (ver figura \ref{fig:te_td} del apendice \ref{ap:tierraCurva}).}, tiene un impacto considerable en detectores de radio, cuyo rango angular es cercano a los $2.5^\circ$.
+	
+	\subsection{Manejo de la energ\'ia visible}
+	Las eficiencias de detecci\'on ser\'an calculadas en funci\'on de la energ\'ia visible de la lluvia, \ev{}, por lo que es necesario modificar el c\'alculo de la exposici\'on.
+	Recordando las ecuaci\'ones \ref{eq:exp5ES} y \ref{eq:exp5.2ES} del cap\'itulo \ref{ch:resAuger}, en este caso el t\'ermino de probabilidad puede ser escrito de la siguiente manera:
+	%
+	\begin{equation}
+		\begin{aligned}
+		P({\rm x_d},E_v|E_{\nu},\theta_D)=
+		\int\limits_{E_v}^{E_\nu}
+		g(E_v|E_\tau)
+		& f(E_\tau|E_\nu,\theta_E(\theta_D,{\rm x_d}))\\
+		&h({\rm x_d},(E_\tau,\theta_D))
+		|\cos\theta_D|
+		dE_\tau
+		\end{aligned}
+	\end{equation}
+	%
+	donde la funci\'on $f(E_\tau|E_\nu,\theta_E(\theta_D,{\rm x_d}))$ nuevamente describe la probabilidad de obtener un \tauon{} emergente de energ\'ia \etau{}, dado que incidi\'o un neutrino sobre la tierra de par\'ametros $E_\nu,\theta_E(\theta_D,{\rm x_d})$ y al igual que en Auger se calcularon mediante simulaciones de Monte Carlo.
+	Por otro lado, $h({\rm x_d},(E_\tau,\theta_D))$ es la de la ecuaci\'on \ref{eq:decayTayRadio} y $g(E_v|E_\tau)$ representa la probabilidad de que un evento tenga energ\'ia \ev{} dado que fue iniciado por el dacimiento de un \tauon{} de energ\'ia \etau{}.
+	En lugar de $g(E_v|E_\tau)$, para realizar la integral se calcul\'o $\tilde{g}(\log E_v-\log E_\tau)$ a partir de la librer\'ia de \tauola{} utilizada para simular los decaimientos del \tauon{} en Auger.
+	Esta funci\'on se muestra entre $-3$ y $0$ en la figura \ref{fig:ev_etau} en la que se observa que aproximadamente el $95\%$ de los casos obtienen una energ\'ia visible en el mismo orden de magnitud que la del \tauon{}.
+	%
 	 \begin{figure}[h!]
 		\begin{center}
 			\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/ev_etau}
@@ -30,58 +174,72 @@ Para ello, al igual que en Auger
 		\end{center}
 	\end{figure}
 	 
-	 \item[Integraci\'on temporal y en superficie] Dado que esta parte de la tesis se enfoca en un detector gen\'erico, no ser\'a necesario realizar la integral por unidad de tiempo y \'area. 
-	 Para analizar com cambia la exposici\'on en funci\'on de los distintos par\'ametros
-	 La contribuci\'on de estos factores se obtendr\'a calculando la exposici\'on por unidad de \'area y tiempo, que luego podra ser multiplicada seg\'un 
-	\end{description}
-	%
-	Teniendo en cuenta todos estos puntos, la ecuaci\'on para calcular la exposici\'on resulta:
+	\subsection{Integraci\'on temporal y espacial}
+	Finalmente, dado que esta parte de la tesis se enfoca en un detector gen\'erico, no ser\'a necesario realizar la integral por unidad de tiempo y \'area y simplemente se multiplicar\'a por un factor \cant{T\ A=1}{s cm^2} o en caso de que se pretenda comparar con un detector, se utilizar\'a el factor correspondiente.
 	
-	\begin{displaymath}
+	Teniendo en cuenta todo lo anterior, la ecuaci\'on para calcular la exposici\'on resulta:
+	%
+	\begin{equation}
 		\begin{aligned}
 			{\cal E} (E_\nu) = 2 \pi T A
 			\int_{0}^{\infty} 
 			\int_{\theta_D^{cut}}^{\theta_D^{max}} 
 			\int_{0}^{E_\nu} 
 			\int_{0}^{E_\tau} 
-			\epsilon (x_d,\theta_D,Ev) 
-			\frac{e^{\frac{l(x_d)}{\lambda(E_\tau)}}}{\lambda(E_\tau)}\frac{dl(x_d)}{dx_d}
-			P(E_v|E_\tau)\\
-			P(E_\tau|E_\nu,\theta_E(\theta_D))
-			\sin \theta_D \cos \theta_D
-			dE_v dE_\tau  d\theta_D dx_d
+			\epsilon ({\rm x_d},\theta_D,E_v)& 
+			\frac{e^{\frac{l({\rm x_d})}{\lambda(E_\tau)}}}{\lambda(E_\tau)}\frac{dl({\rm x_d})}{d{\rm x_d}}
+			\tilde{g}(\log E_v-\log E_\tau)\\
+			f(E_\tau|E_\nu,\theta_E(\theta_D,{\rm x_d}))
+			&\sin \theta_D |\cos \theta_D|
+			dE_v dE_\tau  d\theta_D d{\rm x_d}
 		\end{aligned}
-	\end{displaymath}
+		\label{eq:exp2ESRadio}
+	\end{equation}
+
+	Una vez obtenidas las eficiencias (ver secci\'on \ref{sc:effRadio}) esta integral se computa numericamente.
 	
-% 	\subsection{Manejo de la energ\'ia visible}
 	
-	
-	\subsection{L\'imites de la t\'ecnica ES}
+\section{Detector ideal - Rendimiento de la corteza terrestre como blanco}
+	Antes de pasar al c\'alculo de las eficiencias de detecci\'on, es interesante estudiar las capacidades que tendria un detector ideal, es decir, que detecte todos los eventos iniciados por neutrinos ES que emerjan de la tierra.
+	Para ello, se calcul\'o la integral de la ecuaci\'on \ref{eq:exp2ESRadio} bajo la condici\'on $\epsilon ({\rm x_d},\theta_D,E_v) = 1$ y $TA=1$, para diferentes valores de $\theta_D^{max}$.
+% 	Recordando la ecuaci\'on \ref{eq:exp0} del cap\'itulo \ref{ch:resAuger}, 
+	En la figura \ref{fig:exposuresFluxThetas} se grafica esta cantidad multiplicada por $E_\nu^{-2}$, lo que, recordando la ecuaci\'on \ref{eq:exp0} del cap\'itulo \ref{ch:resAuger}, se debe integrar en $E_\nu$ para obtener la cantidad de eventos por unidad de \'area y tiempo bajo la condici\'on de \cant{k=1}{GeV\ s^{-1}\ sr^{-1}\ cm^{-2}}.
+%
 	\begin{figure}[h!]
 		\begin{center}
 			\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/exposureFullEff_thetas}
-			\caption{\label{fig:exposuresFluxThetas} Eventos esperados sobre el detector por unidad de \'area y tiempo, en funci\'on de la energ\'ia y suponiendo eficiencia m\'axima en el rango angular indicado.
+			\caption{\label{fig:exposuresFluxThetas} Eventos esperados sobre el detector por unidad de \'area y tiempo para un flujo $\phi(E_\nu)= E^{-2}{\rm GeV\ s^{-1}\ sr^{-1}\ cm^{-2}}$, en funci\'on de la energ\'ia y suponiendo eficiencia m\'axima en el rango angular indicado.
 			Naturalmente, la cantidad esperados aumenta a medida que lo hace el rango angular del \emph{detector ideal}.
 			}
 		\end{center}
 	\end{figure}
+	%
+	Como era de suponerse, a medida que aumenta el rango angular de detecci\'on la cantidad de eventos esperados por unidad de energ\'ia aumenta.
+	Por otro lado, dado el rango angular, estas curvas representan la sensibilidad en energ\'ia del blanco.
+	Puede notarse como a medida que aumenta $\theta_D^{max}$ el m\'aximo de la curva se desplaza hacia energ\'ias m\'as bajas.
+	Este fen\'omeno se debe a que mientras mayor es el \'angulo de incidencia, los neutrinos m\'as energ\'eticos interactuar\'an en promedio m\'as lejos del lugar de escape hacia la atm\'osfera que los menos energ\'eticos, lo que le quita probabilidad de escapar al \tauon{} resultante.
 	
-	Integral en energ\'ia de las curvas de la figura \ref{fig:exposuresFluxThetas}
-	
+	Ademas de la forma, para comparar la normalizaci\'on de las curvas, que es proporcional a la cantidad de eventos esperados, se puede realizar la integral en $E_\nu$ de cada una, lo que se muestra en la figura \ref{fig:gainThetas} en unidades de la integral obtenida para el rango angular del detector de radio ($N_{92.5}$). 
+	%
 	\begin{figure}[h!]
 		\begin{center}
 			\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/eventGain_thetas}
-			\caption{\label{fig:gainThetas} Cantidad de eventos esperados como funci\'on del m\'aximo del rango angular, en relaci\'on al m\'aximo calculado ($N_{99.5}$).
-			En rojo se observa un ajuste lineal de pendiente 0.127, que aproxima la curva para valores de $\theta_{MAX}>94$.
-			Esto quiere decir que cada grado por encima de $94^\circ$ aporta un exceso de $\sim12.7\%$ eventos sobre el detector.
+			\caption{\label{fig:gainThetas} Cantidad de eventos esperados como funci\'on del m\'aximo del rango angular, en relaci\'on al calculado para el del detector de radio ($N_{92.5}$).
+			En rojo se grafica un ajuste lineal de pendiente 0.908, que aproxima la curva para valores de $\theta_{MAX}>94$.
+			Esto quiere decir que cada grado por encima de $94^\circ$ aporta una cantidad constante eventos sobre el detector.
 			}
-			
 		\end{center}
 	\end{figure}
+	%
+	La primer observaci\'on interesante sobre la figura es que la relaci\'on entre $N(95^\circ)$ y $N(92.5^\circ)$ es aproximadamente 3.
+	Esto quiere decir que en principio el detector de superficie de Auger tiene la capacidad de detectar el triple de eventos que uno equivalente basado en la t\'ecnica de radio.
+	Esta desventaja debe ser compensada por un aumento significativo en el \'area instrumentada.
 	
+	Adem\'as, en la figura se muestra una recta de pendiente 0.908 obtenida mediante un ajuste lineal para los valores de $\theta_{MAX}>94$.
+	Esto quiere decir que cada grado por encima de $94^\circ$ aporta una cantidad constante eventos sobre el detector (un $90\%$ de lo esperado para $\theta_{MAX}=92.5^\circ$).
 	
 \section{C\'alculo de eficiencias}
-	
+\label{sc:effRadio}
 	\begin{enumerate}
 	 \item Especificar los bines a simular segun pesos de la lluvia.
 	 \item Definir las caracteristicas del detector para calcular las eficiencias de disparo.
@@ -90,7 +248,24 @@ Para ello, al igual que en Auger
 
 	
 	\subsubsection{Pesos de las lluvias}
-
+	
+	\begin{equation}
+		\begin{aligned}
+			P_\nu(\theta_D,\log E_v,{\rm x_d})
+			\propto
+			\sin{\theta_D}\cos{\theta_D}
+			\iint_{E_\tau,E_\nu}&
+			P({\rm x_d}|E_\tau;\theta_D)
+			P(\log{E_v}|\log{E_\tau})&\\
+			&P(\log{E_\tau}|\log{E_\nu})
+			E_\nu^{-1}
+			d\log{E_\tau}d\log{E_\nu}
+		\end{aligned}
+	\end{equation}
+	
+	Los limites de integraci\'on son $E_\tau\rightarrow\left[E_v,E_\nu\right]$ y $E_\nu\rightarrow\left[E_v,\infty\right]$
+	
+	
 	\begin{figure}[ht!]
 		\centering
 		\begin{tabular}{cc}
@@ -111,22 +286,68 @@ Para ello, al igual que en Auger
 	
 	\subsubsection{Caracteristicas del detector}
 	
-	\subsubsection{Posibles topograf\'ias del detector}
+	Otro par\'ametro que afecta la eficiencia de disparo del detector es la disposici\'on espacial de las antenas, o topograf\'ia del detector.
+	En este trabajo se consideraron varias opciones que ofrecen diversas ventajas y se enumeran a continuaci\'on.
+	
+	\begin{description}
+	 \item[Regular:] asd
+	 \item[Tipo pana\~n de abeja:] asd
+	 \item[Bordes densos:] asd
+	\end{description}
 	
 	
-	\textbf{Arreglo regular}
+% 	\begin{figure}[h!]
+% 		\begin{center}
+% 		\begin{tabular}{cc}
+% 			\cant{a_1=a_2=1000}{m}, $\alpha=90^\circ$ &
+% 			\cant{a_1=a_2=1500}{m}, $\alpha=60^\circ$ \\
+% 			\includegraphics[width=0.5\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_1000_1000_90_re}.pdf} &
+% 			\includegraphics[width=0.5\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_1500_1500_60_re}.pdf} \\
+% 			\cant{a_1=a_2=750}{m}, $\alpha=60^\circ$ &
+% 			\cant{d=250}{m}, \cant{D=4000}{m} $\alpha=60^\circ$ \\
+% 			\includegraphics[width=0.5\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_750_750_60_hc}.pdf} &
+% 			\includegraphics[width=0.5\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_250_4000_90_de}.pdf}
+% 		\end{tabular}
+% 			\caption{asd}
+% 			\label{fig:}
+% 		\end{center}
+% 	\end{figure}
 	
-	\textbf{Arreglo tipo panal de abeja}
 	
-	\textbf{Arreglo tipo panal de abeja}
+	\subsubsection{M\'etodo de c\'alculo}
 	
-	Explicacion dle metodo.
-	PLOT PAR DEFINIR TOPOGRAFIAS
+	\begin{figure}[ht!]
+		\begin{center}
+		\begin{tabular}{cc}
+			\cant{a_1=a_2=1000}{m}, $\alpha=90^\circ$ \\
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_1000_1000_90_re}.pdf} \\
+			\cant{a_1=a_2=1500}{m}, $\alpha=60^\circ$ \\
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_1500_1500_60_re}.pdf} \\
+		\end{tabular}
+			\caption{\label{fig:corePos1}
+			Arriba, una grilla cuadrada de \cant{1000}{m} de paso. Abajo, una grilla hexagonal centrada de \cant{1500}{m} de paso como la del SD de Auger.
+			En rojo se muestra la posici\'on del baricentro de la lluvia, lanzado al azar de 1000 dentro de la correspondiente celda primitva.
+			}
+		\end{center}
+	\end{figure}
 	
+	\begin{figure}[ht!]
+		\begin{center}
+		\begin{tabular}{cc}
+			\cant{a_1=a_2=750}{m}, $\alpha=60^\circ$ \\
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_750_750_60_hc}.pdf} \\
+			\cant{d=500}{m}, \cant{D=4000}{m} $\alpha=60^\circ$ \\
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_500_4000_90_de}.pdf}
+		\end{tabular}
+			\caption{\label{fig:corePos2}
+			Arriba, una grilla hexagonal tipo panal de abeja de \cant{750}{m} de paso. Abajo, una de tipo bordes densos de \cant{4000}{m} de paso y \cant{500}{m} de paso interno.
+			Nuevamente en rojo se muestra la posici\'on del baricentro de la lluvia, lanzado al azar de 1000 dentro de la correspondiente celda primitva.}
+		\end{center}
+	\end{figure}
 	
 	\begin{figure}[h!]
 		\begin{center}
-			\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/17_00_89_90_00_00_00000_01238_60}
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/trigger}
 			\caption{asd}
 			\label{fig:}
 		\end{center}
@@ -235,7 +456,7 @@ Para ello, al igual que en Auger
 	\end{table}
 
 	
-\section{Desempe\~no de un detector de 100000 antenas}
+\section{Desempe\~no de un detector de 90000 antenas}
 
 El objetivo de esta secci\'on es discutir la posibilidad de armar un detector de 10000 antenas de radio cuyo fin ser\'ia detectar neutrinos ES.
 Para ello, ser\'a necesario utilizar toda la informaci\'on racavada hasta el momento, as\'i como analizar las diferentes topolog\'ias con las que se podrian distribuir 

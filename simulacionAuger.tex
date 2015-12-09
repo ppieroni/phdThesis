@@ -354,7 +354,7 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 		que se utiliza para definir la importancia relativa entre los eventos simulados.
 		
 		\subsection{Corrección en ES}
-		
+		\label{sbsc:corrES}
 		El caso de las lluvias ES es bastante más complicado dado que los parámetros que nos interesa corregir son $(E_\tau,\theta,\phi,x_d)$.
 		Por esto, además de la dependencia con el ángulo sólido, es necesario incluir la probabilidad de que el \tauon{} escape de la tierra con cierta energía y decaiga a cierta altura.
 		Entonces, para construir los pesos de los eventos ES puede escribirse:
@@ -365,23 +365,23 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 		\end{equation}
 		%
 		donde la integral aparece porque deben tenerse en cuenta todos los \nutau{}'s que pueden generar un \tauon{} de energía \etau{}.
-		La aparición de los términos $E_\tau \Delta\log E_\tau \Delta x_d$ se debe nuevamente a que lis bines simulados no se encuentran uniformemente distribuidos en las variables $(E_\tau,x_d)$.
+		La aparición de los términos $E_\tau \Delta\log E_\tau \Delta x_d$ se debe nuevamente a que los bines simulados no se encuentran uniformemente distribuidos en las variables $(E_\tau,x_d)$.
 		Al igual que para las lluvias DG, el flujo difuso de neutrinos se supone $\Phi=k\cdot E^{-2}$.
-		La función $h(x_d,(E_\tau,\theta))$ corresponde a la probabilidad de que un \tauon{} de parámetros $(E_\tau,\theta)$ decaiga a una altura $x_d$ del detector, y tiene la forma:
+		La función $h({\rm x_d},(E_\tau,\theta))$ corresponde a la probabilidad de que un \tauon{} de parámetros $(E_\tau,\theta)$ decaiga a una altura \xd{} del detector, y tiene la forma (distribuci\'on exponencial):
 		%
 		\begin{equation}
-		 h(x_d,(E_\tau,\theta))=
+		 h({\rm x_d},(E_\tau,\theta))=
 		 \exp{\left(
-		 -\frac{l(x_d,\theta)}{\lambda(E_\tau)}
+		 -\frac{l({\rm x_d},\theta)}{\lambda(E_\tau)}
 		 \right)}
 		 \frac{dl}{dx_d}\frac{1}{\lambda(E_\tau)}
 		\end{equation}
 		%
-		donde $\lambda(E_\tau)=c\uptau\frac{E_\tau}{m_\tau}\sim49\left(\frac{E_\tau}{\rm EeV}\right){\rm km}$ y $l(x_d,\theta)=\frac{x_d}{|\cos\theta|}$, quedando:
+		donde $\lambda(E_\tau)=c\uptau\frac{E_\tau}{m_\tau}\sim49\left(\frac{E_\tau}{\rm EeV}\right){\rm km}$ y $l({\rm x_d},\theta)=\frac{{\rm x_d}}{|\cos\theta|}$, quedando:
 		\begin{equation}
-		 h(x_d,(E_\tau,\theta))=
+		 h({\rm x_d},(E_\tau,\theta))=
 		 \exp{\left(
-		 -\frac{x_d}{|\cos\theta|\lambda(E_\tau)}
+		 -\frac{{\rm x_d}}{|\cos\theta|\lambda(E_\tau)}
 		 \right)}
 		 \frac{1}{|\cos\theta|\lambda(E_\tau)}
 		 \label{eq:ptaudecay}

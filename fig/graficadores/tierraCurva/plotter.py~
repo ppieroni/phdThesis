@@ -38,7 +38,8 @@ def main(argv):
     
     thD = np.arange(90.1,95,0.00001)
     cThD = np.cos(thD*kdeg2rad)
-    Xd = np.arange(100,1700,200)
+    #Xd = np.arange(100,1700,200)
+    Xd = np.arange(100,3700,200)
     
     plt.figure(figsize=plt.figaspect(0.55))
     plots = []
@@ -66,8 +67,8 @@ def main(argv):
         xds.append(str(x))
     plt.grid()
     plt.legend(plots,xds,loc=4,title=r'$\bf{x_d \rm [m]}$')
-    plt.xlabel(r'$\theta_D$ \rm[deg]',fontsize=20)
-    plt.ylabel(r'$\theta_E$ \rm[deg]',fontsize=20)
+    plt.xlabel(r'$\theta_D \rm[deg]$',fontsize=20)
+    plt.ylabel(r'$\theta_E \rm[deg]$',fontsize=20)
     plt.savefig("thE_thD.pdf",format="pdf")
     
 if __name__ == "__main__":
