@@ -238,34 +238,50 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a el desempe\~no qu
 	Adem\'as, en la figura se muestra una recta de pendiente 0.908 obtenida mediante un ajuste lineal para los valores de $\theta_{MAX}>94$.
 	Esto quiere decir que cada grado por encima de $94^\circ$ aporta una cantidad constante eventos sobre el detector (un $90\%$ de lo esperado para $\theta_{MAX}=92.5^\circ$).
 	
-\section{C\'alculo de eficiencias}
+\section{Obtenci\'on de las eficiencias}
 \label{sc:effRadio}
+
+Para calcular la integral de la ecuaci\'on \ref{eq:exp2ESRadio} son necesarias las eficiencias de detecci\'on a neutrinos en funci\'on de los par\'ametros $E_v$, $\theta_D$ y ${\rm x_d})$. Para ello fueron necesarios los siguientes pasos:
+%
 	\begin{enumerate}
-	 \item Especificar los bines a simular segun pesos de la lluvia.
-	 \item Definir las caracteristicas del detector para calcular las eficiencias de disparo.
-	 \item Determinar las eficiencias de identificaci\'on.
+	 \item Especificar el espacio de par\'ametros en el que las eficiencias ser\'ian calculadas para definir qu\'e eventos hacia falta simular.
+	 \item Definir el criterio de disparo global y aplicarlo a diferentes topograf\'ias del detector.
+	 \item Estimar las eficiencias de identificaci\'on.
 	\end{enumerate}
 
 	
 	\subsubsection{Pesos de las lluvias}
-	
+	Para determinar qu\'e bines (conjunto de valores $E_v$, $\theta_D$ y ${\rm x_d}$) se deben simular se calcul\'o el peso relativo que tendr\'ia cada uno en la integral \ref{eq:exp2ESRadio} dado un flujo $\Phi(E_\nu)\propto E_\nu^{-2}$.
+	Esto es equivalente a calcular la probabilidad relativa de ocurrencia de eventos en funci\'on de los par\'ametros $(E_v,\theta_D,{\rm x_d})$, lo que viene dado por la integral de la ecuaci\'on \ref{eq:weightsRadio}.
+	%
 	\begin{equation}
 		\begin{aligned}
-			P_\nu(\theta_D,\log E_v,{\rm x_d})
+			P_\nu(E_v,\theta_D,{\rm x_d})
 			\propto
-			\sin{\theta_D}\cos{\theta_D}
+			\sin{\theta_D}|\cos{\theta_D}|
 			\iint_{E_\tau,E_\nu}&
-			P({\rm x_d}|E_\tau;\theta_D)
-			P(\log{E_v}|\log{E_\tau})&\\
-			&P(\log{E_\tau}|\log{E_\nu})
-			E_\nu^{-1}
-			d\log{E_\tau}d\log{E_\nu}
+			\frac{e^{\frac{l({\rm x_d})}{\lambda(E_\tau)}}}{\lambda(E_\tau)}\frac{dl({\rm x_d})}{d{\rm x_d}}
+			%P({\rm x_d}|E_\tau;\theta_D)
+			\tilde{g}(\log E_v-\log E_\tau)\\
+			%P(\log{E_v}|\log{E_\tau})\\
+			&f(E_\tau|E_\nu,\theta_E(\theta_D,{\rm x_d}))
+			%&P(\log{E_\tau}|\log{E_\nu})
+			E_\nu^{-2}
+			dE_\tau dE_\nu
 		\end{aligned}
+		\label{eq:weightsRadio}
 	\end{equation}
+	%
+	Recordando el significado probabil\'istico de cada uno de los factores, resulta evidente que el valor de dicha integral, para cierto conjunto de par\'ametros $(E_v^*,\theta_D^*,{\rm x_d}^*)$, es proporcional a la cantidad de eventos que se espera en las cercanias de ese punto del espacio de fases\footnote{Las integrales en $E_\nu$ y $E\tau$ dan cuenta de la suma sobre todos los neutrinos y taus que dan lugar a eventos de par\'ametros $(E_v^*,\theta_D^*,{\rm x_d}^*)$.}.
+	As\'i, con esta medida es posible establecer la importancia relativa entre diferentes bines.
 	
-	Los limites de integraci\'on son $E_\tau\rightarrow\left[E_v,E_\nu\right]$ y $E_\nu\rightarrow\left[E_v,\infty\right]$
-	
-	
+	La figura \ref{fig:radioShWeights} muestra el resultado de esta integral para diferentes varios valores de $E_v$, $\theta_D$ y ${\rm x_d})$.
+	Se observa un decaimiento a medida que aumenta \xd{}, lo que es compatible con la probabilidad exponencial en la atm\'osfera. 
+	Sin embargo a medida que aumenta la energ\'ia este se atenua, lo que es compatible con el hecho de que la longitud de decaimiento es proporcional a la energ\'ia del \tauon{}.
+	Por otro lado, comprender el comportamiento en funci\'on de \td{} y \ev{} resulta complicado ya que mezcla la dependencia de las pdf (funcion $f(E_\tau|E_\nu,\theta_E(\theta_D,{\rm x_d}))$), el efecto de la tierra curva y el flujo de neutrninos, supuesto $\propto E^{-2}$.
+	No obstante, este ultimo factor parece ser relevante ya que entre \cant{10^{16.25}}{eV} y \cant{10^{18.25}}{eV} los pesos caen en tres \'ordenes de magnitud.
+	Por este motivo no se podndran esfuerzos en calcular con detalle las eficiencias por encima de \cant{10^{18}}{eV} y se las aproximar\'a por las obtenidas para este valor.
+	%
 	\begin{figure}[ht!]
 		\centering
 		\begin{tabular}{cc}
@@ -278,13 +294,17 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a el desempe\~no qu
 		\end{tabular}
 
 		\caption{\label{fig:radioShWeights}
-		Pesos de las lluvias en funci\'on de la altura de decaimiento y el \'angulo cenital para diferentes valores de energ\'ia visible, suponiendo un flujo $phi(E_\nu)\propto E^{-2}$ y eficiencia m\'axima.
+		Probabilidad relativa  de las lluvias en funci\'on de la altura de decaimiento y el \'angulo cenital para diferentes valores de energ\'ia visible, suponiendo un flujo $\Phi(E_\nu)\propto E^{-2}$ y eficiencia m\'axima.
 		Estos gr\'aficos muestran la importancia relativa en la exposici\'on de los diferentes bines de energ\'ia visibles, \'angulos cenitales y alturas de decaimiento.
 		Por ejemplo, para $\sim90^\circ$ y \cant{150}{m} se esperan del orden de 100 veces m\'as eventos a \cant{10^{17.25}}{eV} que a \cant{10^{18.25}}{eV}.
 		}
 	\end{figure}
 	
-	\subsubsection{Caracteristicas del detector}
+	Teniendo en cuenta todo lo anterior, y teniendo en cuenta el 
+	\textbf{Justificar 1 lluvia por bin}
+	La tabla \ref{tab:simRadio} muestra los bines simulados, es decir para  los cuales se calcular\'a la eficiencia de disparo.
+	
+	\subsubsection{Topograf\'ia del detector}
 	
 	Otro par\'ametro que afecta la eficiencia de disparo del detector es la disposici\'on espacial de las antenas, o topograf\'ia del detector.
 	En este trabajo se consideraron varias opciones que ofrecen diversas ventajas y se enumeran a continuaci\'on.
@@ -406,18 +426,18 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a el desempe\~no qu
 
 	Para dar sustento a esta conjetura fue necesario simular eventos hadr\'onicos descendentes.
 	Debido a 
-	que se muestran en la figura \ref{fig:dg_thetas}.s
+	que se muestran en la figura \ref{fig:dg_thetas}.
 
 		\begin{figure}[ht!]
 			\centering
 			\begin{tabular}{cc}
-			$85^\circ$ & $87^\circ$ \\
+			$\theta_D=85^\circ$ & $\theta_D=87^\circ$ \\
 			\includegraphics[width=0.5\textwidth]{./fig/resultadosRadio/dg/{foorPrint_ZWv1.33_ntuples_v1.22_Downgoing_phi_90_19.5_85_90_100_1_E}.png} &
 			\includegraphics[width=0.5\textwidth]{./fig/resultadosRadio/dg/{foorPrint_ZWv1.33_ntuples_v1.22_Downgoing_phi_90_18.5_87_90_100_2_E}.png}\\
 			
-			$88^\circ$ & $89^\circ$ \\
-			\includegraphics[width=0.5\textwidth]{./fig/resultadosRadio/dg/{foorPrint_ZWv1.33_ntuples_v1.22_Downgoing_phi_90_18.5_89_90_100_5_E}.png} &
-			\includegraphics[width=0.5\textwidth]{./fig/resultadosRadio/dg/{foorPrint_ZWv1.33_ntuples_v1.22_Downgoing_phi_90_19.5_89.5_90_100_3_E}.png}\\
+			$\theta_D=88^\circ$ & $\theta_D=89^\circ$ \\
+			\includegraphics[width=0.5\textwidth]{./fig/resultadosRadio/dg/{foorPrint_ZWv1.33_ntuples_v1.22_Downgoing_phi_90_18.5_88_90_100_6_E}.png} &
+			\includegraphics[width=0.5\textwidth]{./fig/resultadosRadio/dg/{foorPrint_ZWv1.34_ntuples_v1.22_Downgoing_phi_90_18.5_89_90_100_5_E}.png}\\
 			\end{tabular}
 			\caption{\label{fig:dg_thetas}
 			Huella sobre el detector

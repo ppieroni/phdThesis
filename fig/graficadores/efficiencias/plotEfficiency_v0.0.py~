@@ -1,0 +1,114 @@
+#!/usr/bin/python
+
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
+import sys
+
+def getUniqeVlues(nplst):
+    return np.unique(np.sort(nplst))
+
+def main(argv):
+    
+    
+    for fName in argv:
+        res = []
+        fName = fName.strip()
+        
+        inFile = open(fName)
+        firstLine = inFile.readline().strip().split()
+        th = firstLine[1]
+        an = firstLine[2]
+        a1 = firstLine[3]
+        a2 = firstLine[4]
+        al = firstLine[5]
+        ef = firstLine[6]
+        tp = firstLine[7]
+        inFile.close()
+        
+        data = np.loadtxt(fName,comments='#')
+        for i in np.arange(data.shape[0]):
+            res.append([float(th),float(an),float(a1),float(a2),float(al),float(ef),data[i,1],data[i,2],data[i,4],data[i,5],tp])
+    
+        res = np.array(res)
+        
+        thrs = getUniqeVlues(res[:,0])
+        ants = getUniqeVlues(res[:,1])
+        step = getUniqeVlues(res[:,2])
+        alph = getUniqeVlues(res[:,4])
+        effs = getUniqeVlues(res[:,5])
+        ener = getUniqeVlues(res[:,6])
+        topo = getUniqeVlues(res[:,-1])
+        
+        print topo
+        fig1 = plt.figure(figsize=plt.figaspect(0.55))
+        
+        for th in thrs:
+            for an in ants:
+                for st in step:
+                    for al in alph:
+                        for ef in effs:
+                            for en in ener:
+                                for tp in topo:
+                                    print th,an,st,al,ef,ef,en,tp
+                                    #~ title = r'Threshold: '+str(th)+r'$\rm \mu Vm$ - Trigger: '+str(an)+r'aOT - ID eff: '+str(ef)
+                                    #~ title = "$\log(\frac{"+str(en)+"}{EeV})$"
+                                    title = "10^"+str(en)+"eV"
+                                    print title
+                                    name1 = "eff"+str(th)+"_"+str(an)+"_"+str(st)+"_"+str(st)+"_"+str(al)+"_"+str(ef)+"_"+str(en)+"_m1.pdf"
+                                    name2 = "eff"+str(th)+"_"+str(an)+"_"+str(st)+"_"+str(st)+"_"+str(al)+"_"+str(ef)+"_"+str(en)+"_m2.pdf"
+                                    cond1 = res[:,0] == th
+                                    cond2 = res[:,1] == an 
+                                    cond3 = res[:,2] == st
+                                    cond4 = res[:,4] == al 
+                                    cond5 = res[:,5] == ef
+                                    cond6 = res[:,6] == en
+                                    cond6 = res[:,-1] == tp
+                                    cond = np.multiply(cond1,cond2)
+                                    cond = np.multiply(cond,cond3)
+                                    cond = np.multiply(cond,cond4)
+                                    cond = np.multiply(cond,cond5)
+                                    cond = np.multiply(cond,cond6)
+                                    
+                                    if not np.any(cond):
+                                        continue
+                                    
+                                    thts = [float(x) for x in getUniqeVlues(res[cond,7])]
+                                    xdss = [float(x) for x in getUniqeVlues(res[cond,8])]
+                                    print thts,xdss
+                                    fig1.clf()
+                                    plts = []
+                                    legs = []
+                                    for tt in thts:
+                                        ncond = np.multiply(cond,res[:,7] == tt)
+                                        asort = np.argsort(res[ncond,8])
+                                        plot, = plt.plot(res[ncond,8][asort],res[ncond,9][asort],lw=2,color=cm.jet((tt-thts[0])/(thts[-1]-thts[0]),1))
+                                        plts.append(plot)
+                                        legs.append(str(tt))
+                                    plt.legend(plts,legs,title=r'$\theta [deg]$')
+                                    plt.xlabel(r'$\rm x_d$',fontsize=18)
+                                    plt.ylabel(r'Efficiencia',fontsize=18)
+                                    plt.ylim(0,1)
+                                    plt.title(title)
+                                    plt.savefig(name1,format="pdf")
+
+                                    fig1.clf()
+                                    plts = []
+                                    legs = []
+                                    for xd in xdss:
+                                        ncond = np.multiply(cond,res[:,8] == xd)
+                                        asort = np.argsort(res[ncond,7])
+                                        plot, = plt.plot(res[ncond,7][asort],res[ncond,9][asort],lw=2,color=cm.jet((xd-xdss[0])/(xdss[-1]-xdss[0]),1))
+                                        plts.append(plot)
+                                        legs.append(str(xd))
+                                    plt.legend(plts,legs,title=r'$\rm xd [m]$',loc=2)
+                                    plt.xlabel(r'$\theta$',fontsize=18)
+                                    plt.ylabel(r'Efficiencia',fontsize=18)
+                                    plt.xlim(87.5,90)
+                                    plt.ylim(0,1)
+                                    plt.title(title)
+                                    plt.savefig(name2,format="pdf")
+                
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
