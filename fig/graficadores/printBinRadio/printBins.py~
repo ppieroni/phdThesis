@@ -8,6 +8,9 @@ data = np.loadtxt("binList.txt")
 fig = plt.figure()
 ax = fig.gca(projection='3d')
 
-ax.scatter(data[:,0],data[:,1],data[:,2],zdir='x',s=20)
+ax.scatter(data[:,0],data[:,1],data[:,2],s=20)
+plt.xlabel(r'$\log E_v$',fontsize=20)
+plt.ylabel(r'$\theta_D$')
+plt.zlabel(r'${\rm x_d}$')
 plt.show()
 

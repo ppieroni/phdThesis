@@ -241,18 +241,27 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a el desempe\~no qu
 \section{Obtenci\'on de las eficiencias}
 \label{sc:effRadio}
 
-Para calcular la integral de la ecuaci\'on \ref{eq:exp2ESRadio} son necesarias las eficiencias de detecci\'on a neutrinos en funci\'on de los par\'ametros $E_v$, $\theta_D$ y ${\rm x_d})$. Para ello fueron necesarios los siguientes pasos:
+Con el fin de calcular la integral de la ecuaci\'on \ref{eq:exp2ESRadio} es necesario obtener las eficiencias de detecci\'on a neutrinos en funci\'on de los par\'ametros $E_v$, $\theta_D$ y ${\rm x_d}$. 
+Para ello, el enfoque elegido fue similar al desarrollado en el c\'alculo de Auger, que consisti\'o de los siguientes pasos:
 %
-	\begin{enumerate}
-	 \item Especificar el espacio de par\'ametros en el que las eficiencias ser\'ian calculadas para definir qu\'e eventos hacia falta simular.
-	 \item Definir el criterio de disparo global y aplicarlo a diferentes topograf\'ias del detector.
-	 \item Estimar las eficiencias de identificaci\'on.
-	\end{enumerate}
+\begin{enumerate}
+	\item Simular la se\~nal a nivel del suelo.
+	\item \emph{Lanzar} la huella a nivel del suelo sobre el detector repetidas veces y en posiciones al azar.
+	\item Calcular la fracci\'on de veces que la condici\'on de disparo global es alcanzada y as\'i obtener una eficiencia de disparo.
+	\item Aplicar un criterio de selecci\'on a variables globales de cada evento y as\'i calcular una eficiencia de identificaci\'on.
+\end{enumerate}
+%
 
+El cuello de botella en este c\'alculo result\'o ser el tiempo de CPU que requiere simular la se\~nal a nivel del suelo.
+Esto es consecuencia de que para que la se\~nal se encuentre bien representada es necesario simular una superficie instrumentada de aproximadamente \cant{70\times3}{km} en la direcci\'on paralela y transversal a la direcci\'on de propagaci\'on de la lluvia.
+Asimismo, la granularidad no debe ser inferior a \cant{1000}{m} y \cant{100}{m} respectivamente, lo que implica que cada evento considerado necesita de la simulaci\'on de alrededor de 2000 antenas.
+El tiempo que lleva realizar tal c\'alculo en las energ\'ias de inter\'es es cercano a los 10 dias de CPU por evento\footnote{Esta estimaci\'on corresponde a una CPU \texttt{Intel(R) Xeon(R) E5410 @ 2.33GHz}}, lo que puede volverlo r\'apidamente inviable.
+En estas condiciones, se fue necesario utilizar todo el conocimiento obtenido hasta el momento para minimizar la cantidad de simulaciones realizadas.
+En esta direcci\'on, es posible estudiar la probabilidad relativa de ocurrencia de los eventos como funci\'on de $E_v$, $\theta_D$ y ${\rm x_d}$, lo que se desarrolla a continuaci\'on.
 	
 	\subsubsection{Pesos de las lluvias}
-	Para determinar qu\'e bines (conjunto de valores $E_v$, $\theta_D$ y ${\rm x_d}$) se deben simular se calcul\'o el peso relativo que tendr\'ia cada uno en la integral \ref{eq:exp2ESRadio} dado un flujo $\Phi(E_\nu)\propto E_\nu^{-2}$.
-	Esto es equivalente a calcular la probabilidad relativa de ocurrencia de eventos en funci\'on de los par\'ametros $(E_v,\theta_D,{\rm x_d})$, lo que viene dado por la integral de la ecuaci\'on \ref{eq:weightsRadio}.
+	Para determinar qu\'e bines (conjunto de valores $E_v$, $\theta_D$ y ${\rm x_d}$) es importante simular es posible calcular la probabilidad relativa de ocurrencia, o lo que resulta equivalente, el peso relativo que tendr\'ia cada uno en la integral \ref{eq:exp2ESRadio} dado un flujo $\Phi(E_\nu)\propto E_\nu^{-2}$.
+	Esta cantidad viene dada por la integral de la ecuaci\'on \ref{eq:weightsRadio}.
 	%
 	\begin{equation}
 		\begin{aligned}
@@ -273,14 +282,14 @@ Para calcular la integral de la ecuaci\'on \ref{eq:exp2ESRadio} son necesarias l
 	\end{equation}
 	%
 	Recordando el significado probabil\'istico de cada uno de los factores, resulta evidente que el valor de dicha integral, para cierto conjunto de par\'ametros $(E_v^*,\theta_D^*,{\rm x_d}^*)$, es proporcional a la cantidad de eventos que se espera en las cercanias de ese punto del espacio de fases\footnote{Las integrales en $E_\nu$ y $E\tau$ dan cuenta de la suma sobre todos los neutrinos y taus que dan lugar a eventos de par\'ametros $(E_v^*,\theta_D^*,{\rm x_d}^*)$.}.
-	As\'i, con esta medida es posible establecer la importancia relativa entre diferentes bines.
+	Luego, con esta medida es posible establecer la importancia relativa entre diferentes bines.
 	
 	La figura \ref{fig:radioShWeights} muestra el resultado de esta integral para diferentes varios valores de $E_v$, $\theta_D$ y ${\rm x_d})$.
 	Se observa un decaimiento a medida que aumenta \xd{}, lo que es compatible con la probabilidad exponencial en la atm\'osfera. 
-	Sin embargo a medida que aumenta la energ\'ia este se atenua, lo que es compatible con el hecho de que la longitud de decaimiento es proporcional a la energ\'ia del \tauon{}.
-	Por otro lado, comprender el comportamiento en funci\'on de \td{} y \ev{} resulta complicado ya que mezcla la dependencia de las pdf (funcion $f(E_\tau|E_\nu,\theta_E(\theta_D,{\rm x_d}))$), el efecto de la tierra curva y el flujo de neutrninos, supuesto $\propto E^{-2}$.
-	No obstante, este ultimo factor parece ser relevante ya que entre \cant{10^{16.25}}{eV} y \cant{10^{18.25}}{eV} los pesos caen en tres \'ordenes de magnitud.
-	Por este motivo no se podndran esfuerzos en calcular con detalle las eficiencias por encima de \cant{10^{18}}{eV} y se las aproximar\'a por las obtenidas para este valor.
+	Sin embargo a medida que aumenta la energ\'ia este se atenua, lo que es compatible con el hecho de que la longitud de decaimiento es proporcional a \etau{}.
+	Por otro lado, comprender el comportamiento en funci\'on de \td{} y \ev{} resulta complicado ya que mezcla la dependencia de las pdf (funci\'on $f(E_\tau|E_\nu,\theta_E(\theta_D,{\rm x_d}))$), el efecto de la tierra curva y la forma funcionarl del flujo de neutrninos, supuesto $\propto E^{-2}$.
+	No obstante, este \'ultimo factor parece ser relevante ya que entre \cant{10^{16.25}}{eV} y \cant{10^{18.25}}{eV} los pesos caen en dos \'ordenes de magnitud.
+	Por este motivo no se utilizar\'an recursos para calcular con detalle las eficiencias por encima de \cant{10^{18}}{eV} y se las aproximar\'a por las obtenidas para esta energ\'ia, lo que constituye un enfoque conservador. 
 	%
 	\begin{figure}[ht!]
 		\centering
@@ -300,21 +309,50 @@ Para calcular la integral de la ecuaci\'on \ref{eq:exp2ESRadio} son necesarias l
 		}
 	\end{figure}
 	
-	Teniendo en cuenta todo lo anterior, y teniendo en cuenta el 
-	\textbf{Justificar 1 lluvia por bin}
-	La tabla \ref{tab:simRadio} muestra los bines simulados, es decir para  los cuales se calcular\'a la eficiencia de disparo.
+	\subsection{Espacio de par\'ametros simulado}
+	
+	Teniendo en cuenta lo anterior y lo expuesto en el cap\'itulo de caracterizaci\'on, se siguieron las siguientes consideraciones para determinar el espacio de par\'ametros para los que se calcular\'an las eficiencias:
+	%
+	\begin{enumerate}
+		\item La simulaci\'on de cada evento ES sobre un detector que permita representar adecuadamente la huella a nivel del suelo es extremadamente costosa, de al rededor de 
+		\item El \'angulo sobre el detector se simular\'a entre el \'angulo m\'inimo admitido para cada valor de \xd{} (seg\'un figura \ref{fig:dx_thcut0}) y $92.5^\circ$, de acuerdo con lo discutido en la secci\'on \ref{sbsc:depThetaRadio}.
+		\item Si bien la probabilidad de disparo de la lluvia aumenta a medida que lo hace la energ\'ia visible (ver secci\'on \ref{sbsc:depEvRadio}), de acuerdo con la figura \ref{fig:radioShWeights} la importancia de un evento de \cant{E_v=10^{18}}{eV} resulta ser aproximadamente dos \'ordenes de magnitud menor que uno tal que \cant{E_v=10^{16}}{eV}. Por este motivo no se simular\'an eventos cuya energ\'ia visible supere los \cant{10^{18}}{eV}. 
+		\item Para encontrar las alturas de decaimiento a ser simuladas, se analiz\'o en para cada valor de \ev{} el campo el\'ectrico m\'aximo de la huella (de acuerdo con lo expuesto en la secci\'on \ref{sbsc:depXdRadio}) en combinaci\'on con la probabilidad de ocurrencia de acuerdo con la figura \ref{fig:radioShWeights}.
+	\end{enumerate}
+	
+	En Auger, la eficiencia era promediada en $\phi$ y en el canal de decaimiento del \tauon{} al simular varias lluvias para cada bin de $\theta$, \xd{} y \etau{}.
+	Dado que aqu\'i se requiere minimizar la cantidad de eventos simulados, se utiliz\'o para todos $\phi=0^\circ$ como \'angulo azimutal y $\tau\rightarrow\nu_\tau e^-\nu_e$ canal de decaimiento del \tauon{}.
+	La primer elecci\'on resulta conservadora seg\'un lo expuesto en la secci\'on \ref{sbsc:depPhiRadio}, mientras que la segunda parece ser una buena estimaci\'on del promedio en esa variable (secci\'on \ref{sbsc:decayChRadio}).
+	
+	Tendiendo todo esto en cuenta se simul\'o un evento para cada bin de $E_v$, $\theta_D$ y ${\rm x_d}$ que se grafica en la figura \ref{fig:binesRadio}.
+	En total la simulaci\'on requiri\'o alrededor de 7500 dias de CPU, lo que tom\'o un mes en el cluster de la Universidad de Santiago de Compostela, que cuenta con 500 nodos compartidos entre varios grupos de investigaci\'on. 
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/binesRadio}
+			\caption{\label{fig:binesRadio} Espacio de par\'ametros cubierto para calcular las eficiencias de disparo. Cada punto indica una lluvia simulada.
+			}
+		\end{center}
+	\end{figure}
 	
 	\subsubsection{Topograf\'ia del detector}
 	
-	Otro par\'ametro que afecta la eficiencia de disparo del detector es la disposici\'on espacial de las antenas, o topograf\'ia del detector.
-	En este trabajo se consideraron varias opciones que ofrecen diversas ventajas y se enumeran a continuaci\'on.
-	
+	Una vez obtenida la se\~nal a nivel del suelo para todo el espacio de par\'ametros, el siguiente paso es definir la topograf\'ia del detector, es decir, la distribuci\'on de antenas en la superficie.
+	Para ello, se consideraron tres familias distintas, que se esquematizan en la figura \ref{fig:topoRadio} y se describen a continuaci\'on:
+	%
 	\begin{description}
-	 \item[Regular:] asd
-	 \item[Tipo pana\~n de abeja:] asd
-	 \item[Bordes densos:] asd
+	 \item[Regular:] Consiste en un arreglo bidimensional definido por dos pasos $a_1$ y $a_2$, y un \'angulo $\alpha$. El SD de Auger es un arreglo de este tipo con \cant{a_1=a_2=1500}{m} y $\alpha=60^\circ$.
+	 \item[Tipo panal de abeja:] Igual que el anterior pero con un detector faltante cada tres, por lo que permite cubrir una mayor superficie con la misma cantidad de antenas. Nuevamente se parametriza con los pasos $a_1$ y $a_2$, y el \'angulo $\alpha$. 
+	 \item[Bordes densos:] Este tipo de arreglo busca sacar ventaja de las dos dimensiones presentes en la huella de radio. Dependiendo de los valores que tomen los par\'ametros $D$ y $d$ la superficie cubierta puede ser mayor o menos que un arreglo regular para la misma cantidad de celdas primitivas.  
 	\end{description}
-	
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/topografia}
+			\caption{\label{fig:topoRadio} Topograf\'ias estudiadas al calcular las eficiencias. Tanto el arreglo regular como el tipo panal de abeja se parametrizan mediante los pasos $a_1$ y $a_2$, y el \'angulo $\alpha$. Por otro lado, el arreglo de bordes densos queda determinado por los pasos mayor y menor, $D$ y $d$ respectivamente.
+			}
+		\end{center}
+	\end{figure}
 	
 % 	\begin{figure}[h!]
 % 		\begin{center}
@@ -336,6 +374,12 @@ Para calcular la integral de la ecuaci\'on \ref{eq:exp2ESRadio} son necesarias l
 	
 	\subsubsection{M\'etodo de c\'alculo}
 	
+	Dados todos los par\'ametros que definen las topograf\'ias estudiadas, queda completamente definida la celda primitiva del arreglo.
+	Entonces, para calcular la eficiencia de detecci\'on se lanz\'o cada una de las lluvias simuladas sobre el detector en 1000 posiciones al azar dentro de dicha celda, sorteando cada vez el \'angulo azimutal $\phi$\footnote{Si bien la se\~nal fue simulada eligiendo $\phi=0^\circ$, es necesario sortear el \'angulo azimutal para incluir en el c\'alculo la anisotrop\'ia del detector.}.
+	En las figuras \ref{fig:corePos1} y \ref{fig:corePos2} se muestran las posiciones de utilizadas ara una de las lluvias.
+	En la figura \ref{fig:corePos1} se observa un arreglo regular cuadrado, con \cant{a_1=a_2=1000}{m} y $\alpha=90^\circ$, y un arreglo regular como el del SD de Auger, \cant{a_1=a_2=1500}{m}y $\alpha=60^\circ$.
+	Por otra parte, en la figura \ref{fig:corePos2} se expone un arreglo tipo panal de abeja \cant{a_1=a_2=750}{m} y $\alpha=60^\circ$, y uno de bordes densos con \cant{d=500}{m}, \cant{D=4000}{m}.
+	
 	\begin{figure}[ht!]
 		\begin{center}
 		\begin{tabular}{cc}
@@ -356,7 +400,7 @@ Para calcular la integral de la ecuaci\'on \ref{eq:exp2ESRadio} son necesarias l
 		\begin{tabular}{cc}
 			\cant{a_1=a_2=750}{m}, $\alpha=60^\circ$ \\
 			\includegraphics[width=\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_750_750_60_hc}.pdf} \\
-			\cant{d=500}{m}, \cant{D=4000}{m} $\alpha=60^\circ$ \\
+			\cant{d=500}{m}, \cant{D=4000}{m}\\
 			\includegraphics[width=\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_500_4000_90_de}.pdf}
 		\end{tabular}
 			\caption{\label{fig:corePos2}
@@ -365,42 +409,74 @@ Para calcular la integral de la ecuaci\'on \ref{eq:exp2ESRadio} son necesarias l
 		\end{center}
 	\end{figure}
 	
+	Una vez ubicada la lluvia en el detector para determinar qu\'e antenas del mismo fueron disparadas se asign\'o a cada antena la se\~nal del observador simulado m\'as cercano, siempre y cuando se encontrase a menos de \cant{500}{m} en direcci\'on forward y \cant{50}{m} en direcci\'on transversal.
+	Adem\'as se corrigi\'o el tiempo del m\'aximo de la se\~nal, que luego ser\'a el tiempo de disparo, segun la distancia en la direcci\'on forward, en unidades de la velocidad de la luz.
+	Para evaluar la condici\'on de disparo local se utiliz\'o un valor fijo, de acuerdo con lo discutido en la secci\'on \ref{sbsc:localTriggerRadio}, que se encontr\'o entre \cant{25}{\frac{\mu V}{m}} y \cant{200}{\frac{\mu V}{m}}.
+	Tal nivel de disparo fue comparado con el campo m\'aximo alcanzado sobre la antena.
+	En la figura \ref{fig:globalTriggerRadio} se esquematiza el procedimiento para una lluvia de \cant{E_v=10^{18}}{eV}, $\theta_D=90.5^\circ$ y \cant{{\rm x_d}=25}{m} y un arreglo regular de \cant{a_1=a_2=1000}{m} y $\alpha=90^\circ$.
+	%
 	\begin{figure}[h!]
 		\begin{center}
 			\includegraphics[width=\textwidth]{fig/resultadosRadio/trigger}
-			\caption{asd}
-			\label{fig:}
+			\caption{Evaluaci\'on del disparo global del detector para una lluvia de \cant{E_v=10^{18}}{eV}, $\theta_D=90.5^\circ$ y \cant{{\rm x_d}=25}{m}. Los puntos negros representan las antenas de un arreglo regular de \cant{a_1=a_2=1000}{m} y $\alpha=90^\circ$. En azul se dibuja la regi\'on del suelo en el que la se\~nal super\'o el nivel de disparo local, en este caso \cant{100}{\frac{\mu V}{m}}. En rojo se detallan las antenas pertenecientes al evento.}
+			\label{fig:globalTriggerRadio}
 		\end{center}
 	\end{figure}
+	%
+	Cada marca negra representa una antena del detector, mientras que la zona azul corresponde al regi\'on en la que la condici\'on de disparo local fue alcanzada, en este caso \cant{100}{\frac{\mu V}{m}}.
+	Los puntos rojos representan las antenas que se consideran parte del evento.
 	
-	definicion del threshold
+	Adem\'as de la topograf\'ia y el nivel de disparo local, otro par\'ametro que entr\'o en juego es la m\'inima cantidad de antenas disparadas para satisfacer la condici\'on de disparo global.
+	Se repiti\'o el procedimiento pidiento al menos 3, 5, 7 y 9 antenas disparadas.
 	
-	descarte del canal muonico
-	
-% 	reescaleo por identificacion
-	
+	Con todo esto, se tuvieron en cuenta m\'as de 5000 combinaciones de par\'ametros.
+	Para cada se obtuvo la eficiencia de disparo en funci\'on de $E_v$, $\theta_D$ y ${\rm x_d}$.
+	Para descontar el canal de decaimiento $\tau^{-}\rightarrow \mu^{-}\bar{\nu_{\mu}}\nu_{\tau}$ se multiplic\'o cada valor por un factor $0.826$.
+	De esta manera se obtuvieron curvas como las de la figura \ref{fig:effRadio} en la que se grafican las eficiencias de disparo para un detector regular de par\'ametros \cant{a_1=a_2=1500}{m} y $\alpha=60^\circ$ y para un nivel de disparo local de \cant{75}{\frac{\mu V}{m}}.
+	%
 	\begin{figure}[h!]
 		\begin{center}
 				\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/eff75_0_4_0_1500_0_1500_0_60_0_1_0_17_0_m2.pdf} 
 				\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/eff75_0_4_0_1500_0_1500_0_60_0_1_0_17_5_m2.pdf}
 				\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/eff75_0_4_0_1500_0_1500_0_60_0_1_0_18_0_m2.pdf}
-			\caption{asd}
-			\label{fig:}
+			\caption{Curvas de eficiencia obtenidas para un detector de par\'ametros \cant{a_1=a_2=1500}{m} y $\alpha=60^\circ$ y para un nivel de disparo local de \cant{75}{\frac{\mu V}{m}}.}
+			\label{fig:effRadio}
 		\end{center}
 	\end{figure}
+	%
+	Como se esperaba seg\'un lo discutido en el cap\'itulo \ref{ch:caracterizacionRadio} la eficiencia de disparo global aumenta con la energ\'ia visible.
+	Otro detalle que resulta caracter\'istico en este tipo de eventos es la rapidez con la que se pasa de saturar la eficiencia a no conseguir ningun disparo a medida que cambia el \'angulo.
+	
+	Una vez obtenidas las curvas fue posible comparar cada detector con el desempe\~no alcanzado por Auger.
+	Para ello, se calcul\'o la integral \ref{eq:exp2ESRadio} utilizando las eficiencias de Auger y se agreg\'o un factor de correcci\'on por la diferencia de superficie cubierta por la celda primitiva y la cantidad de celdas en el detector.
+	La informaci\'on necesaria para realizar dicha conversi\'on se resume en la tabla  \ref{tab:conv2Auger}.
+	\begin{table}
+	\centering
+	\renewcommand{\arraystretch}{2}
+	\footnotesize
+	\begin{tabular}{cccc}
+	 Topograf\'ia & \'Area cubierta por celda  & Antenas por celda & N\'umero de celdas \\
+	 Auger &\cant{1.94\ 10^6}{m^2}&1&1600\\
+	 Regular &\multirow{2}{*}{$a_1a_2\sin\alpha$}&1&90000\\
+	 Panal de abeja &&$\frac{2}{3}$&90000\\
+	 Bordes densos &$D^2$&$\frac{2D}{d}-1$& $\dfrac{90000}{\frac{2D}{d}-1}$
+	\end{tabular}
+	\caption{\label{tab:conv2Auger} Factores necesarios para comparar detectores con diferentes topograf\'ias.
+	}
+	\end{table}
+	
+	Con todo esto se realizaron gr\'aficos como los de la figura \ref{fig:compRadioAuger}, en la que se muestra la relaci\'on entre los eventos esperados para un detector cuyos par\'ametros 
 	
 	\begin{figure}[h!]
 		\begin{center}
-% 		\begin{ta
 			\includegraphics[width=0.7\textwidth]{fig/resultadosRadio/CompRadioAuger_10_0_4_0_0_9_hc_modo1.pdf}
 			\includegraphics[width=0.7\textwidth]{fig/resultadosRadio/CompRadioAuger_25_0_4_0_0_9_hc_modo1.pdf}
 			\includegraphics[width=0.7\textwidth]{fig/resultadosRadio/CompRadioAuger_75_0_4_0_0_9_hc_modo1.pdf}
 			\includegraphics[width=0.7\textwidth]{fig/resultadosRadio/CompRadioAuger_100_0_4_0_0_9_hc_modo1.pdf}
-			\caption{asd}
-			\label{fig:}
+			\caption{Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
+			\label{fig:compRadioAuger}
 		\end{center}
 	\end{figure}
-	
 	
 	\subsection{Eficiencias de identificaci\'on - Discriminaci\'on en el fondo de eventos hadr\'onicos}
 	\label{sc:identificacionRadio}
