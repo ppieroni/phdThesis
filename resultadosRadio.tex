@@ -384,9 +384,9 @@ En esta direcci\'on, es posible estudiar la probabilidad relativa de ocurrencia 
 		\begin{center}
 		\begin{tabular}{cc}
 			\cant{a_1=a_2=1000}{m}, $\alpha=90^\circ$ \\
-			\includegraphics[width=\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_1000_1000_90_re}.pdf} \\
+			\includegraphics[width=0.8\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_1000_1000_90_re}.pdf} \\
 			\cant{a_1=a_2=1500}{m}, $\alpha=60^\circ$ \\
-			\includegraphics[width=\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_1500_1500_60_re}.pdf} \\
+			\includegraphics[width=0.8\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_1500_1500_60_re}.pdf} \\
 		\end{tabular}
 			\caption{\label{fig:corePos1}
 			Arriba, una grilla cuadrada de \cant{1000}{m} de paso. Abajo, una grilla hexagonal centrada de \cant{1500}{m} de paso como la del SD de Auger.
@@ -399,9 +399,9 @@ En esta direcci\'on, es posible estudiar la probabilidad relativa de ocurrencia 
 		\begin{center}
 		\begin{tabular}{cc}
 			\cant{a_1=a_2=750}{m}, $\alpha=60^\circ$ \\
-			\includegraphics[width=\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_750_750_60_hc}.pdf} \\
+			\includegraphics[width=0.8\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_750_750_60_hc}.pdf} \\
 			\cant{d=500}{m}, \cant{D=4000}{m}\\
-			\includegraphics[width=\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_500_4000_90_de}.pdf}
+			\includegraphics[width=0.8\textwidth]{fig/resultadosRadio/{17.00_89.90_00.00_00025_01238_500_4000_90_de}.pdf}
 		\end{tabular}
 			\caption{\label{fig:corePos2}
 			Arriba, una grilla hexagonal tipo panal de abeja de \cant{750}{m} de paso. Abajo, una de tipo bordes densos de \cant{4000}{m} de paso y \cant{500}{m} de paso interno.
@@ -417,7 +417,7 @@ En esta direcci\'on, es posible estudiar la probabilidad relativa de ocurrencia 
 	%
 	\begin{figure}[h!]
 		\begin{center}
-			\includegraphics[width=\textwidth]{fig/resultadosRadio/trigger}
+			\includegraphics[width=0.8\textwidth]{fig/resultadosRadio/trigger}
 			\caption{Evaluaci\'on del disparo global del detector para una lluvia de \cant{E_v=10^{18}}{eV}, $\theta_D=90.5^\circ$ y \cant{{\rm x_d}=25}{m}. Los puntos negros representan las antenas de un arreglo regular de \cant{a_1=a_2=1000}{m} y $\alpha=90^\circ$. En azul se dibuja la regi\'on del suelo en el que la se\~nal super\'o el nivel de disparo local, en este caso \cant{100}{\frac{\mu V}{m}}. En rojo se detallan las antenas pertenecientes al evento.}
 			\label{fig:globalTriggerRadio}
 		\end{center}
@@ -430,26 +430,27 @@ En esta direcci\'on, es posible estudiar la probabilidad relativa de ocurrencia 
 	Se repiti\'o el procedimiento pidiento al menos 3, 5, 7 y 9 antenas disparadas.
 	
 	Con todo esto, se tuvieron en cuenta m\'as de 5000 combinaciones de par\'ametros.
-	Para cada se obtuvo la eficiencia de disparo en funci\'on de $E_v$, $\theta_D$ y ${\rm x_d}$.
-	Para descontar el canal de decaimiento $\tau^{-}\rightarrow \mu^{-}\bar{\nu_{\mu}}\nu_{\tau}$ se multiplic\'o cada valor por un factor $0.826$.
-	De esta manera se obtuvieron curvas como las de la figura \ref{fig:effRadio} en la que se grafican las eficiencias de disparo para un detector regular de par\'ametros \cant{a_1=a_2=1500}{m} y $\alpha=60^\circ$ y para un nivel de disparo local de \cant{75}{\frac{\mu V}{m}}.
+	Para cada una se obtuvo la eficiencia de disparo en funci\'on de $E_v$, $\theta_D$ y ${\rm x_d}$.
+	El canal de decaimiento $\tau^{-}\rightarrow \mu^{-}\bar{\nu_{\mu}}\nu_{\tau}$, que no genera lluvia atmosf\'efica, fue descontado multiplicando cada curva por $0.826$.
+	De esta manera se obtuvieron valores de $\epsilon ({\rm x_d},\theta_D,E_v)$ como los que se grafican en la figura \ref{fig:effRadio}, para cada juego de par\'ametros. 
+	En esta se muestran las eficiencias de disparo para un detector regular de par\'ametros \cant{a_1=a_2=1500}{m} y $\alpha=60^\circ$, para un nivel de disparo local de \cant{75}{\frac{\mu V}{m}}, para \cant{E_v=\{10^{17},10^{17.5},10^{18}\}}{eV} y para diferentes valores de \xd{} y \td{}.
 	%
-	\begin{figure}[h!]
+	\begin{figure}[ht!]
 		\begin{center}
-				\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/eff75_0_4_0_1500_0_1500_0_60_0_1_0_17_0_m2.pdf} 
-				\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/eff75_0_4_0_1500_0_1500_0_60_0_1_0_17_5_m2.pdf}
-				\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/eff75_0_4_0_1500_0_1500_0_60_0_1_0_18_0_m2.pdf}
+				\includegraphics[width=0.8\textwidth]{fig/resultadosRadio/eff75_0_4_0_1500_0_1500_0_60_0_1_0_17_0_m2.pdf} 
+				\includegraphics[width=0.8\textwidth]{fig/resultadosRadio/eff75_0_4_0_1500_0_1500_0_60_0_1_0_17_5_m2.pdf}
+				\includegraphics[width=0.8\textwidth]{fig/resultadosRadio/eff75_0_4_0_1500_0_1500_0_60_0_1_0_18_0_m2.pdf}
 			\caption{Curvas de eficiencia obtenidas para un detector de par\'ametros \cant{a_1=a_2=1500}{m} y $\alpha=60^\circ$ y para un nivel de disparo local de \cant{75}{\frac{\mu V}{m}}.}
 			\label{fig:effRadio}
 		\end{center}
 	\end{figure}
 	%
-	Como se esperaba seg\'un lo discutido en el cap\'itulo \ref{ch:caracterizacionRadio} la eficiencia de disparo global aumenta con la energ\'ia visible.
+	No resulta sorprendente si se tiene en cuenta lo discutido en el cap\'itulo \ref{ch:caracterizacionRadio} la eficiencia de disparo global aumenta con la energ\'ia visible.
 	Otro detalle que resulta caracter\'istico en este tipo de eventos es la rapidez con la que se pasa de saturar la eficiencia a no conseguir ningun disparo a medida que cambia el \'angulo.
 	
-	Una vez obtenidas las curvas fue posible comparar cada detector con el desempe\~no alcanzado por Auger.
-	Para ello, se calcul\'o la integral \ref{eq:exp2ESRadio} utilizando las eficiencias de Auger y se agreg\'o un factor de correcci\'on por la diferencia de superficie cubierta por la celda primitiva y la cantidad de celdas en el detector.
-	La informaci\'on necesaria para realizar dicha conversi\'on se resume en la tabla  \ref{tab:conv2Auger}.
+	Una vez obtenidas las eficiencias fue posible comparar cada detector\footnote{Definido seg\'un la topograf\'ia y criterios de disparlo local y global.} analizado con el desempe\~no alcanzado por Auger para neutrinos ES.
+	Para ello, se calcul\'o la integral de la ecuaci\'on \ref{eq:exp2ESRadio} utilizando las eficiencias de Auger y se agreg\'o un factor de correcci\'on para incorporar la diferencia de superficie cubierta por cada celda primitiva y la diferencia en la cantidad de celdas en el detector.
+	La informaci\'on necesaria para realizar dicha conversi\'on se resume en la tabla  \ref{tab:conv2Auger}, en la que se detalla para cada familia de topograf\'ias el \'area de la celda primitiva, cu\'antas antenas se requieren para conformar una celda el n\'umero de celdas que conformar\'ian al detector.
 	\begin{table}
 	\centering
 	\renewcommand{\arraystretch}{2}
@@ -458,98 +459,131 @@ En esta direcci\'on, es posible estudiar la probabilidad relativa de ocurrencia 
 	 Topograf\'ia & \'Area cubierta por celda  & Antenas por celda & N\'umero de celdas \\
 	 Auger &\cant{1.94\ 10^6}{m^2}&1&1600\\
 	 Regular &\multirow{2}{*}{$a_1a_2\sin\alpha$}&1&90000\\
-	 Panal de abeja &&$\frac{2}{3}$&90000\\
+	 Panal de abeja &&$\frac{2}{3}$&$90000\frac{3}{2}$\\
 	 Bordes densos &$D^2$&$\frac{2D}{d}-1$& $\dfrac{90000}{\frac{2D}{d}-1}$
 	\end{tabular}
-	\caption{\label{tab:conv2Auger} Factores necesarios para comparar detectores con diferentes topograf\'ias.
+	\caption{\label{tab:conv2Auger} Factores necesarios para comparar detectores con diferentes topograf\'ias. En el arreglo de bordes densos se utiliz\'o como v\'inculo que $\frac{D}{d}\,\epsilon\,\mathbb{N}$.
 	}
 	\end{table}
-	
-	Con todo esto se realizaron gr\'aficos como los de la figura \ref{fig:compRadioAuger}, en la que se muestra la relaci\'on entre los eventos esperados para un detector cuyos par\'ametros 
-	
+	%
+	Luego, se realizaron gr\'aficos como los de la figura \ref{fig:compRadioAuger}, en la que se muestra para diferentes combinaciones de juegos de par\'ametros el n\'umero de eventos esperados en unidades de los esperados en Auger.
+	%
 	\begin{figure}[h!]
 		\begin{center}
-			\includegraphics[width=0.7\textwidth]{fig/resultadosRadio/CompRadioAuger_10_0_4_0_0_9_hc_modo1.pdf}
-			\includegraphics[width=0.7\textwidth]{fig/resultadosRadio/CompRadioAuger_25_0_4_0_0_9_hc_modo1.pdf}
-			\includegraphics[width=0.7\textwidth]{fig/resultadosRadio/CompRadioAuger_75_0_4_0_0_9_hc_modo1.pdf}
-			\includegraphics[width=0.7\textwidth]{fig/resultadosRadio/CompRadioAuger_100_0_4_0_0_9_hc_modo1.pdf}
+		\begin{tabular}{cc}
+			\includegraphics[width=0.5\textwidth]{fig/resultadosRadio/CompRadioAuger_10_0_4_0_0_9_hc_modo1.pdf} &
+			\includegraphics[width=0.5\textwidth]{fig/resultadosRadio/CompRadioAuger_25_0_4_0_0_9_hc_modo1.pdf} \\
+			\includegraphics[width=0.5\textwidth]{fig/resultadosRadio/CompRadioAuger_75_0_4_0_0_9_hc_modo1.pdf} &
+			\includegraphics[width=0.5\textwidth]{fig/resultadosRadio/CompRadioAuger_100_0_4_0_0_9_hc_modo1.pdf}
+		\end{tabular}
 			\caption{Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
 			\label{fig:compRadioAuger}
 		\end{center}
 	\end{figure}
+	%
+	
 	
 	\subsection{Eficiencias de identificaci\'on - Discriminaci\'on en el fondo de eventos hadr\'onicos}
 	\label{sc:identificacionRadio}
-
+	
+	Adem\'as de las eficiencias de disparo, es necesario realizar una estimaci\'on de las eficiencias de identificaci\'on para cada detector.
 	Como se expuso en la primer parte de esta tesis, el mayor desaf\'io a la hora de detectar neutrinos ES mediante detectores de superficie resulta ser su discriminaci\'on en el fondo dominante de eventos hadr\'onicos.
 	En Auger esto se logra debido a que los tanques \cher{} permiten detectar las lluvias j\'ovenes entre los eventos inclinados, a trav\'es de variables sensibles a la presencia de componente electromagn\'etica.
-	En un detector de antenas de radio esta separaci\'on no resulta posible debido a que b\'asicamente toda la emisi\'on es generada en el m\'aximo de la lluvia por los electrones de media y baja energ\'ia.
-	Sin embargo, su geometr\'ia permite salvar este escollo, ya que guarda informaci\'on sobre la ubicaci\'on en la que se produjo dicho m\'aximo.
-	Para clarificar la situci\'on, en la figura \ref{fig:dg_vs_es_radio} se representa la emisi\'on \cher{} de un evento DG inclinado (un evento de background), y uno ES.
+	En un detector de antenas de radio esta separaci\'on no resulta posible debido a que b\'asicamente toda la emisi\'on es generada proviene de los electrones de media y baja energ\'ia presentes en el m\'aximo de la lluvia.
+	Sin embargo, la geometr\'ia del cono \cher{} permite salvar este escollo, ya que guarda informaci\'on sobre la ubicaci\'on en la que se produjo dicho m\'aximo.
+	Para clarificar la situci\'on, en la figura \ref{fig:dg_vs_es_radio} se representa la emisi\'on de un evento DG inclinado (un evento de background), y uno ES.
 	%
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/idRadio.png}
+		\includegraphics[width=0.8\textwidth]{./fig/simulacionRadio/idRadio.png}
 		\caption{\label{fig:dg_vs_es_radio}
 		Esquema de las caracter\'isticas que permiten distinguir los eventos ES del fondo de lluvias hadr\'onicas horizontales (DG). Dado que las lluvias DG se inician alto en la atm\'osfera la apertura del cono \cher{} al nivel de la superficie (l\'inea azul) resulta mucho mayor que la que alcanzar\'ia en un evento ES, debido a que su m\'aximo se produce mucho m\'as cerca de la superficie.
 	% 	Adem\'as de la apertura del cono, otro posible factor de discriminaci\'on puede ser la topograf\'ia de la se\~nal a nivel del suelo, ya que en los eventos DG imprimen elipses y los ES hip\'erbolas.
 		}
 	\end{figure}
 	%
-	La apertura del cono del evento DG a nivel del suelo resulta mayor que la que imprime el evento ES.
-	Esto se debe a que los eventos hadr\'onicos inclinados se inician cerca del tope de la atm\'osfera, por lo que la emisi\'on debe recorrer hasta 36 atm\'osferas antes de alcanzar el detector.
-	De esta manera, el cono \cher{} es cortado por el detector mucho m\'as lejos de su v\'ertice (que resulta ser aproximadamente el m\'aximo de la lluvia) que en eventos ES, los que se desarollan mucho m\'as cerca del detector.
+	Con esto en mente, la identificaci\'on de eventos ES puede en principio llevarse a cabo a trav\'es de las siguientes diferencias entre las huellas:
+	\begin{enumerate}
+	 \item La apertura del cono del evento DG a nivel del suelo resulta mayor que la que imprime el evento ES.
+	 \item La geometr\'ia de la huella resulta fundamentalmente distinta en los dos casos. En eventos DG es una elipse mientras que en los ES es una hip\'erbola.
+	\end{enumerate}
 
-	Para dar sustento a esta conjetura fue necesario simular eventos hadr\'onicos descendentes.
-	Debido a 
-	que se muestran en la figura \ref{fig:dg_thetas}.
-
-		\begin{figure}[ht!]
-			\centering
-			\begin{tabular}{cc}
-			$\theta_D=85^\circ$ & $\theta_D=87^\circ$ \\
-			\includegraphics[width=0.5\textwidth]{./fig/resultadosRadio/dg/{foorPrint_ZWv1.33_ntuples_v1.22_Downgoing_phi_90_19.5_85_90_100_1_E}.png} &
-			\includegraphics[width=0.5\textwidth]{./fig/resultadosRadio/dg/{foorPrint_ZWv1.33_ntuples_v1.22_Downgoing_phi_90_18.5_87_90_100_2_E}.png}\\
-			
-			$\theta_D=88^\circ$ & $\theta_D=89^\circ$ \\
-			\includegraphics[width=0.5\textwidth]{./fig/resultadosRadio/dg/{foorPrint_ZWv1.33_ntuples_v1.22_Downgoing_phi_90_18.5_88_90_100_6_E}.png} &
-			\includegraphics[width=0.5\textwidth]{./fig/resultadosRadio/dg/{foorPrint_ZWv1.34_ntuples_v1.22_Downgoing_phi_90_18.5_89_90_100_5_E}.png}\\
-			\end{tabular}
-			\caption{\label{fig:dg_thetas}
-			Huella sobre el detector
-			}
-		\end{figure}
-
-	6800 horas cpu
+	La primer diferencia proviene de que los eventos hadr\'onicos inclinados se inician cerca del tope de la atm\'osfera, por lo que la emisi\'on debe recorrer distancia mucho mayor que en eventos ES antes de alcanzar el detector.
+	De esta manera, el cono \cher{} es cortado por el detector mucho m\'as lejos de su v\'ertice (que resulta ser aproximadamente el m\'aximo de la lluvia), permitiendo una apertura en la huella mucho mayor.
+	La segunda diferencia deviene de la forma en la que el detector corta el cono.
+	Si bien ambas caracter\'isticas tienen potencial de identificaci\'on, la segunda se vuelve m\'as dif\'icil de detectar debido a que en todas las topograf\'ias consideradas la separaci\'on entre antenas es bastante grande y el detalle de la huella se pierde.
+	Por este motivo el resto de esta secci\'on busca determinar la factibilidad de la identificaci\'on basado en la medici\'on de la apertura de la huella.
+	
+	Lo expuesto hasta el momento es una conjetura basada en la intuici\'on ganada por el estudio de los resultados del cap\'itulo \ref{ch:caracterizacionRadio}.
+	Para sostenerla se realizaron simulaciones de eventos DG, que se muestran en la figura \ref{fig:dg_thetas}.
+	%
+	\begin{figure}[ht!]
+		\centering
+		\begin{tabular}{cc}
+		$\theta_D=85^\circ$ & $\theta_D=87^\circ$ \\
+		\includegraphics[width=0.5\textwidth]{./fig/resultadosRadio/dg/{foorPrint_ZWv1.33_ntuples_v1.22_Downgoing_phi_90_19.5_85_90_100_1_E}.png} &
+		\includegraphics[width=0.5\textwidth]{./fig/resultadosRadio/dg/{foorPrint_ZWv1.33_ntuples_v1.22_Downgoing_phi_90_18.5_87_90_100_2_E}.png}\\
+		
+		$\theta_D=88^\circ$ & $\theta_D=89^\circ$ \\
+		\includegraphics[width=0.5\textwidth]{./fig/resultadosRadio/dg/{foorPrint_ZWv1.33_ntuples_v1.22_Downgoing_phi_90_18.5_88_90_100_6_E}.png} &
+		\includegraphics[width=0.5\textwidth]{./fig/resultadosRadio/dg/{foorPrint_ZWv1.34_ntuples_v1.22_Downgoing_phi_90_18.5_89_90_100_5_E}.png}\\
+		\end{tabular}
+		\caption{\label{fig:dg_thetas}
+		Huella sobre el detector para eventos DG de $\theta_D=\{85^\circ,87^\circ,88^\circ,89^\circ\}$. De acuerdo con lo esperado, el tama\~no en la direcci\'on transversal resulta sustancialmente mayor que en eventos ES. 
+		}
+	\end{figure}
+	%
+	En estas se muestra la huella dejada por un evento iniciado por un proton de \cant{10^{18}}{eV} a una profundidad de \cant{200}{g/cm^2}, y con $\theta_D=\{85^\circ,87^\circ,88^\circ,89^\circ\}$.
+	Es importante observar en primer lugar c\'omo crece su largo a medida que el \'angulo aumenta, pasando de \cant{\sim40}{km} hasta casi \cant{300}{km}.
+	Por otro lado, el ancho en todos los casos parece superar el observado en eventos ES, aumentando tambien con el \'angulo.
+	Esto se debe a que el m\'aximo ocurre en todos los casos aproximadamente a la misma profundidad \cant{\sim 1000}{g/cm^2}, que se aleja del detector a medida que \td{} crece.
+	
+	Para estudiar con detalle la eficiencia de identificaci\'on se deber\'ian realizar por lo menos algunos cientos de simulaciones de eventos DG. 
+	Al iniciarse cerca del tope de la atm\'osfera el volumen de simulaci\'on de \aires{} es inmenso, lo que implica el seguimiento de las part\'iculas durante mucho m\'as timepo de simulaci\'on, calculando en cada avance la se\~nal en todas las antenas.
+	Por este motivo este tipo de eventos requieren mucho m\'as tiempo de CPU que los eventos ES.
+	En particular, para obtener cada lluvia de las que se muestran en la figura \ref{fig:dg_thetas} se utilizaron del orden de 300 dias de CPU, lo que vuelve el estudio impracticable con los recursos disponibles.
+	Como alternativa, en la figura \ref{fig:dg_vs_es_Idradio} se muestra el ancho promedio de la huella calculado sobre el detector denso para toda la muestra de eventos ES y DG.
+	De acuerdo con lo expuesto hasta el momento se observa como claramente los eventos DG muestran un ancho mayor que los eventos ES.
+	En base a esta caracter\'istica es posible presumir que la identificaci\'on de eventos ES no s\'olo es factible sino que ser\'a adem\'as eficiente.
+	En el resto de la tesis se evaluar\'an todos los resultados suponiendo una eficiencia de identificaci\'on entre 0.8 y 1\footnote{Estos n\'umeros son razonables si se tiene en cuenta que la eficiencia de identificaci\'on de neutrinos ES en Auger supera el 90$\%$.}.
+	%
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=\textwidth]{./fig/resultadosRadio/showerWidth_Comp_DG_ES_Wt}
+		\caption{\label{fig:dg_vs_es_Idradio}
+		Separaci\'on en el ancho de la lluvia de eventos DG y ES. 
+		}
+	\end{figure}
+	
 	% 
 	% 
 	% Tambi\'en, se nota como la opograf\'ia de la huella en ambos casos es fundamentalmente distinta, ya que el evento DG imprime una elipse sobre el suelo y el evento ES una hip\'erbola.
 	% En consecuencia se estudiar\'a si es posible explotar estas diferencias para identificar eventos ES.
 
-	Por otra parte, en la figura 
+% 	Por otra parte, en la figura 
 
-	- eventos gigantes
+% 	- eventos gigantes
 
-	- se inician lejos y el campo cae como 1/R pero el drift es mayor debido a la baja densidad de la atm\'osfera
+% 	- se inician lejos y el campo cae como 1/R pero el drift es mayor debido a la baja densidad de la atm\'osfera
 
-	- ver v4.20 en ntuple analizer mostrar que la velocidad sobre el eje y el ancho 
+% 	- ver v4.20 en ntuple analizer mostrar que la velocidad sobre el eje y el ancho 
 
-\subsubsection{Resumen del an\'alisis de la se\~nal}
-
-	\begin{table}[ht!]
-	\centering
-	\begin{tabular}{|p{0.3\textwidth}|p{0.7\textwidth}|}
-	\toprule
-	Descripci\'on & Detalle \\
-	\midrule\midrule
-	Filtrado de la se\~nal & Respuesta plana en la banda \cant{30\text{-}80\text{/}120\text{-}900}{MHz} \\ \midrule
-	Nivel de disparo local &  Entre \cant{25}{\frac{\mu V}{m}} y \cant{200}{\frac{\mu V}{m}} con un paso de \cant{25}{\frac{\mu V}{m}}\\ \midrule
-	Disparo global & Antenas disparadas compatibles con un frente que se desplaza a la velocidad de la luz \\ \midrule
- 	Nivel de identificaci\'on & Eficiencia entre 0.80 y 1.00 con un paso de 0.05 \\
-	
-	\bottomrule
-	\end{tabular}
-	\end{table}
+% \subsubsection{Resumen del an\'alisis de la se\~nal}
+% 
+% 	\begin{table}[ht!]
+% 	\centering
+% 	\begin{tabular}{|p{0.3\textwidth}|p{0.7\textwidth}|}
+% 	\toprule
+% 	Descripci\'on & Detalle \\
+% 	\midrule\midrule
+% 	Filtrado de la se\~nal & Respuesta plana en la banda \cant{30\text{-}80\text{/}120\text{-}900}{MHz} \\ \midrule
+% 	Nivel de disparo local &  Entre \cant{25}{\frac{\mu V}{m}} y \cant{200}{\frac{\mu V}{m}} con un paso de \cant{25}{\frac{\mu V}{m}}\\ \midrule
+% 	Disparo global & Antenas disparadas compatibles con un frente que se desplaza a la velocidad de la luz \\ \midrule
+%  	Nivel de identificaci\'on & Eficiencia entre 0.80 y 1.00 con un paso de 0.05 \\
+% 	
+% 	\bottomrule
+% 	\end{tabular}
+% 	\end{table}
 
 	
 \section{Desempe\~no de un detector de 90000 antenas}
