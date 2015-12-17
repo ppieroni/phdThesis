@@ -17,10 +17,10 @@ En la primer parte de esta tesis se presenta la medici\'on del flujo de neutrino
 El cap\'itulo \ref{ch:easAuger} contiene una introducci\'on a la f\'isica de las lluvias atmosf\'ericas extendidas que generan los rayos c\'osmicos ultra energ\'eticos. 
 En el cap\'itulo \ref{ch:detectorAuger} se realiza un recuento de las caracter\'isticas m\'as importantes del detector de superficie del Observatorio Pierre Auger.
 M\'as adelante, en el ca\'itulo \ref{ch:estrategiaAuger} se detalla la estrategia utilizada en el experimento para medir el flujo de neutrinos c\'osmicos ultra energ\'eticos.
-El proceso de simulaci\'on de la se\~nal esperada sobre el detector se aborda en el cap\'itulo \ref{ch:simulacionAuger}, mientras que la reconstrucci\~non y selecci\'on de los eventos iniciados por neutrinos se trata en el cap\'itulo \ref{ch:seleccionauger}.
+El proceso de simulaci\'on de la se\~nal esperada sobre el detector se aborda en el cap\'itulo \ref{ch:simulacionAuger}, mientras que la reconstrucci\'on y selecci\'on de los eventos iniciados por neutrinos se trata en el cap\'itulo \ref{ch:selAuger}.
 Por \'ultimo en el cap\'itulo \ref{ch:resAuger} se trata el c\'alculo de la exposici\'on del observatorio al flujo, la b\'usqueda de candidatos y la comparaci\'on de los resultados con las predicciones te\'oricas.
 Por otro lado, en la seunda parte de la tesis se estudia el desempe\~no que podr\'ia alcanzar un detector de superficie conformado por 90000 antenas de radio al medir el mismo flujo de neutrinos.
-En el cap\'itulo \ref{ch:motivacionRadio} se exponen brevemente los motivos por los que vale la pena el estudio de este tipo de detectores.
+En el cap\'itulo \ref{ch:motRadio} se exponen brevemente los motivos por los que vale la pena el estudio de este tipo de detectores.
 El cap\'itulo \ref{ch:easRadio}, como complemento al cap\'itulo \ref{ch:easAuger} se estudia la emisi\'on de ondas de radio de lluvias atmosf\'ericas extendidas.
 Los m\'etodos empleados en la simulaci\'on de la se\~nal sobre el detector se detalla en el cap\'itulo \ref{ch:simulacionRadio} y su caracterizaci\'on en el cap\'itulo \ref{ch:caracterizacionRadio}.
 Por \'ultimo, en el cap\'itulo \ref{ch:resultadosRadio} se aborda tanto la factibilidad de la detecci\'on como el c\'alculo de la exposici\'on en un arreglo de antenas de radio.
@@ -41,9 +41,9 @@ En esta direcci\'on, la medici\'on de UHECRs cargados presenta dos grandes limit
 A energ\'ias por debajo de los \cant{10^{19.5}}{eV} las trayectorias desde la fuente se ven modificadas debido a la interacci\'on con los campos magn\'eticos gal\'acticos e intergal\'acticos lo que implica que la direcci\'on de arribo de los rayos a la tierra no apunta a la fuente.
 Por otro lado, el corte GZK refiere al mecanismo propuesto por Greisen, Zatsepin y Kusmin~\cite{cite:Greisen,cite:Zatsepin}, que provoca una caida en el flujo de UHECRs por encima de \cant{5\times10^{19}}{eV} debido a la p\'erdida de energ\'ia inducida por la interacci\'on con el fondo c\'osmico de microondas (CMB por sus siglas en ingl\'es), via la siguiente reacci\'on:
 %
-\begin{eqnarray}
-p + \gamma_{\rm CMB} &\rightarrow& \Delta^{+}(1232)  \rightarrow p +\pi^{0}\quad {\rm or}\quad n +\pi^{+}
-\end{eqnarray}
+\begin{equation}
+p + \gamma_{\rm CMB}\, \rightarrow\, \Delta^{+}(1232)  \rightarrow p +\pi^{0}\quad {\rm or}\quad n +\pi^{+}
+\end{equation}
 %
 La longitud de atenuaci\'on para este proceso es $L_{att}=\frac{L_{int}}{y}$, donde $y$ es la fracci\'on de energ\'ia perdida por longitud de interacci\'on y $L_{int}$ es la longitud de interacci\'on, dada por $L_{int}=(\sigma_{p\gamma}\times n_{\gamma})^{-1}$.
 Valores t\'ipicos son $\sigma_{p\gamma}\sim 10^{-28}$~cm$^{2}$, $ n_{\gamma}=410\,{\rm cm}^{-3}$ and $y\sim0.5$\footnote{$y\sim0.2$ a la energ\'ia de corte y se incrementa hasta 0.5.}, resultando en 
@@ -118,32 +118,136 @@ En las siguientes secciones se desarrollas las ideas enumeradas hasta aqu\'i.
 	\pi^{+} \rightarrow \mu^{+}+ \nu_{\mu} \rightarrow e^{+} + \nu_{e} + \bar{\nu}_{\mu} + \nu_{\mu}
 	\end{equation}
 	
+	La precencia del corte GZK, indica que los UHECRs provienen de fuentes extra gal'acticas.
+	Esto implica que los llamados neutrinos GZK son el flujo m'as verosimil entre todas las posibles teor'ias. 
+	Sin embargo, su c'alculo contiene una gr\'an cantidad de supuestos que se traducen en incertezas en el resultado final.
+	Los factores m\'as relevantes en su determinaci\'on son los siguientes~\cite{cite:nuEngel,cite:nuAve,cite:nuAhlers1,cite:nuAllard1,cite:nuYuksel}:
+	
+	\begin{description}
+	\item[Composici\'on de los UHECRs] Las primeras predicciones sobre el flujo de neutrinos cosmol\'ogicos asum\'ian que los primarios son protones, mientras que recientemente han aparecido resultados en los que se consideran como primarios $^{56}{\rm Fe}$, $^{4}{\rm H}$, $^{16}{\rm O}$ o mezclas entre ellos y con protones\cite{cite:nuAve,cite:nuHooper}.
+	Los n\'ucleos m\'as pesados pierden energ\'ia por foto-desintegraci\'on, produciendo n\'ucleos secundarios, que luego producen fotopiones que al decaer generan neutrinos UHE$\nu$.
+	Adem\'as, fujos de anti neutrinos electr\'onicos son predichos via decaimiento de neutrones\cite{cite:nuFeComposition}, pero su energ\'ia resulta peque\~na para ser detectados por Auger.
+	Por otro lado, los flujos que provienen de una composici\'on primaria no pura son peque\~nos cuando se los compara con una composici\'on de protones pura\cite{cite:nuHooper}.
+	En particular, la energ\'ia por nucle\'on luego de una fotodesintegraci\'on resulta mucho m\'as peque\~na que la del primario, lo que desfavorece la generaci\'on de neutrinos GZK a trav\'es de este proces.
+	Tambi\'en existen modelos en los que se propone una distribuci\'on de primarios en acuerdo con la composici\'on observada en los rayos c\'osmicos gal\'acticos\cite{cite:nuAllard1}.
+	Como consecuencia de estas suposiciones los flujos predichos pueden fluctuar en un \'orden de magnitud.
+	 
+	Resultados recientes de Auger indican, aunque con cierto nivel de debate, que el flujo de UHECRs se encuentra dominado por n\'ucleos pesados\cite{cite:augerComposition}.
+	Sin embargo, mediciones en HiRes y Telescope Array\cite{cite:taComposition} han observado lo opuesto.
+	Si se llegase a dar una observaci\'on por encima de las predicciones para primarios pesados, se podr\'ia echar luz sobre este asunto.
+	 
+	\item[Perfil de energ\'ia] El espectro energ\'etico de los rayos c\'osmicos en el punto de inyecci\'on se supone t\'ipicamente una ley de potencia con la siguiente dependencia en energ\'ia:
+	%
+	\begin{equation}
+		\frac{dN}{dE}=P_{0} \times E^{-\alpha} \times \exp{(-\frac{E}{E_{c}})}
+	\end{equation}
+	%
+	donde $P_0$ es una normalizaci\'on y el \'indice espectral $\alpha$ toma valores entre 1.8 y 2.7, siendo $\alpha\sim2.3$ el m\'as favorecido.
+	El corte de energ\'ia en la inyecci\'on, $E_c$ es considerado entre \cant{10^{20}}{eV} y \cant{10^{23}}{eV}.
+	Tanto $\alpha$ como $E_c$ dependen de las caracter\'isticas de la fuente y del mecanismo de aceleraci\'on de los rayos c\'osmicos.
+	Una vez que estos valores son elegidos, la normalizaci\'on $P_0$ se utiliza para hacer coincidir el flujo con el observado experimentalmente en la Tierra.
+	Valores grandes de $\alpha$ o peque\~nos de $E_c$ producen flujos de neutrinos m\'as peque\~nos a energ\'ias de observaci\'on de Auger debido a la disminuci\'on en la cantidad de protones de altas energ\'ia en la fuente.
+	
+	\item[Modelo cosmol\'ogico]
+	La cosmolog\'ia del universo es otro factor que genera incerteza en la magnitud del fluho de neutrinos GZK. 
+	En la actualidad, observaciones astrof\'isicas apuntan hacia modelos con una constante cosmol\'ogica $\Lambda$\cite{cite:Lambda}, en contraste con los c\'alculos de mediados de la d\'ecada del 90, que supon\'ian un universo de Einstein-de Sitter ($\Omega_{M}=1$). 
+	El modelo favorecido actualmente posee $\Omega_{\Lambda}=0.7$ y $\Omega_{M}=0.3$\cite{cite:LambdaM}, lo que significa que la energ\'ia oscura representa alrededor del 70\% de la energ\'ia del universo.
+	Como consecuencia el universo debi\'o haberse estado expandiendo mas lentamente en el momento en el que los flujos cosmol\'ogicos se generaron, ocasionando un incremento en los flujos esperados para corrimientos al rojo grandes.
+	Engel et al. \cite{cite:nuEngel} compararon el flujo derivado de los dos modelos cosmol\'ogicos y encontraron que valores de $\Omega_{\Lambda}=0.7$ podr\'ian ocasionar hasta un 60\% de incremento en el flujo de neutrinos esperado.
+	
+	\item[Evoluci\'on cosmol\'ogica]
+	La predicci\'on de los flujos de neutrinos dependen fuertemente de la evoluci\'on cosmol\'ogica de de las fuentes de rayos c\'osmicos.
+	Existen al menos 4 modelso de evoluci\'on utilizados comunmente en la bibliograf\'ia:
+	\begin{enumerate}
+	 \item Sin evoluci\'on;
+	 \item Star Formation Rate;
+	 \item Active Galactic Nuclei-FRII (FRII) y
+	 \item Strong Gamma Ray Burst (GRB).
+	\end{enumerate}
+	
+	Las diferencias inducidas por esta elecci\'on puede modificar el flujo esperado en un \'orden de magnitud.
+	
+	\item[Secci\'on efic\'az proton-fot\'on]
+	El ritmo de producci\'on de neutrinos mediante la interacci\'on:
+	%
+	\begin{displaymath}
+	p + \gamma_{\rm CMB}\, \rightarrow\, \Delta^{+}  \rightarrow p +\pi^{0}\quad {\rm or}\quad n +\pi^{+}
+	\end{displaymath}
+	%
+	viene dado por la secci\'on efic\'az prot\'on-fot\'on, $\sigma_{p\gamma}$.
+	Las mediciones de esta cantidad provienen de aceleradores, por lo que se encuentran bien caracterizadas en un rango de energ\'ias totalmente distinto al que corresponde da lugar a la producci\'on de neutrinos.
+	\item[Oscilaciones de neutrinos]
+	En el decaimiento de un pi\'on, la relaci\'on con la que se producen neutrinos mu\'onicos y electr\'onicos es $2:1$. 
+	En este trabajo, al menos que se especifique lo contrario, hablar de neutrinos de cierto sabor $\nu_x$, har\'a referencia al par $\nu_x + \bar\nu_x$.
+	Dado que los neutrinos oscilan, al recorrer distancias cosmol\'igicas la relaci\'on entre los flujos $\nu_e :\nu_\mu :\nu_\tau$ de $1:2:0$ en la fuente se transformar\'a en una relaci\'on $1:1:1$ en la tierra.
+	\end{description}
+	%
+	Aunque la existencia de los neutrinos cosmol\'ogicos es verosimil, los flujos predichos por este mecanismo var\'ian cuatro \'ordenes de magnitud.
+	Algunas de estas predicciones se muestran en la figura \ref{fig:flujosGZK} para los tres sabores de neutrinos.
+	
 	\begin{figure}[ht]
 		\begin{center}
 		\includegraphics[width=\textwidth]{fig/introduccion/gzk_fluxes}
-		\caption{\label{fig:flujosGZK} }
+		\caption{\label{fig:flujosGZK} Flujos cosmog\'enicos para los tres sabores de neutrinos. En todos los casos el modelo cosmol\'ogico usado corresponde con $\Omega_{\Lambda}=0.7$ y $\Omega_{M}=0.3$. 
+		En rojo se muestra un flujo GZK t\'ipico para una composici\'on pura de protones, un \'indice $\alpha$ = 2 y \cant{E_{c}=10^{21.5}}{eV}\cite{cite:nuEngel}.
+% 		En linea azul s\'olida
+% In solid light blue the GRB model for the cosmological evoultion is used\cite{cite:nuYuksel}.
+% % In solid green Ref.\cite{cite:nuAhlers1} where they make a prediction using also the measurements of the Fermi-LAT experiment.
+% In solid green a prediction using the measurements of the Fermi-LAT experiment\cite{cite:nuAhlers1}.
+% The shaded area is obtained from Ref.\cite{cite:nuAllard1}, bracketing a wide range a parameters: 
+% several source evolution models (not including uniform and FRII), 
+% for pure protons and a mixed Galactic composition. 
+% Including the uniform source evolution would lower the prediction by almost an order of magnitude.
+% The pink dot-dashed line corresponds to an optimistic scenario with a FRII strong source evolution case with a pure proton composition, 
+% % dip transition model 
+% and $E_{c}=10^{21.5}$~eV\cite{cite:nuAllard1}. 
+% The blue dashed lineis an extreme pessimistic scenario with pure
+% iron composition and uniform evolution\cite{cite:nuAllard1}.
+% % $E_{c}$ = 1021.5 eV. For the cosmological evolution of the cosmic ray sources, ${\cal H}$(z), they use the
+% % aforementioned QSO model with the parameterization of Ref. [33], as given in Eqn.1.7. The
+% % default cosmological assumption used is the model with
+% 		
+		}
 		\end{center}
 	\end{figure}
 	
 	\subsection{AGNs y GRBs}
+	Los n\'ucleos de galaxias activos (AGN) pueblan de manera isotr\'opica el cielo y representan algunos de los obj\'etos m\'as luminosos en el espacio, con emisiones en el \'orden de los \cant{10^{45\pm3}}{erg/s}\cite{cite:GHZ}.
+	Por este motivo no s\'olo son considerados unos de los m\'as fiables candidatos a fuentes de UHECRs, sino que varios autores predicen flujos medibles de neutrinos si la regi\'on de aceleraci\'on se encuentra rodeada de la suficiente cantidad de materia.
+	
+	Se cree que la enorme radiaci\'on emitida por los AGNs se alimenta de la energ\'ia gravitacional liberada por la materia que cae hacia su centro, en el que se ubica un agujero negro super masivo.
+	Durante este proceso, el momento angular provoca que parte del material forme un disco de acresi\'on mientras que otra parte se vea despedida hacia chorros perpendiculares al mismo.
+	En tal proceso, los shocks turbulentos aceleran part\'iculas hacia altas energ\'ias.
+	De esta manera, una parte significativa de la energ\'ia gravitatoria es transferida a part\'iculas ultra relativistas, via el mecanismo de fermi de primer orden\cite{cite:Fermi1}.
+	Por otro lado, la fricci\'on convierte la materia en caida en plasma, que produce un fuerte campo magn\'etico.
+	Las colisiones entre los protones ultra relativistas que el intenso campo de fotones del AGN produce neutrinos de alta energ\'ia mediante $p\gamma \rightarrow \pi^{+} + n$ y el subsecuente decaimiento $\pi^{+} \rightarrow \mu^{+} + \nu_{\mu}$ deguido de $\mu^{+} \rightarrow e^{+} + \nu_{e} + \bar{\nu_{\mu}}$.
+	
+	Otros modelos proponen que los protones colisionan con part\'iculas de gas y polvo, prvocando $pp\,\rightarrow\,\pi s + X$.
+	Como en el mecanismo GZK, los neutrinos incluidos inicialmente son $\nu_\mu$ y $\nu_e$ pero las oscilaciones homogeneizan los flujos entre sabores al llegar a la tierra.
+	
+	Dependiendo del lugar en el que la producci\'on de neutrinos se leva a cabo, existen dos tipos de modelos de producci\'on en AGNs: AGN core y AGN jet.
+	En el primer caso, propuesto inicialmente por Stecker et. al.\cite{cite:nuAGN}, los protones acelerados interact\'uan con el campo de fotones dentro del n\'ucleo del AGN. 
+	En el segundo modelo, dos jets relativistas emitidos perpendicularmente al disco de acresi\'on formando l\'obulos. 
+	Los protones son acelerados mediante el mecanismo de fermi para luego interactuar con fotones del jet y producir neutrinos.
+	
 	
 	\begin{figure}[ht]
 		\begin{center}
 		\includegraphics[width=0.75\textwidth]{fig/introduccion/AGN_GRB_nufluxes}
-		\caption{\label{fig:flujosAGN} }
+		\caption{\label{fig:flujosAGN} Flujos predichos para AGNs y GRBs. En negro se muestran tres modelos de AGNs\cite{cite:Mannheim1,cite:BBR,cite:SteckerAGN}, mientras que en rojo dos para GRBs\cite{cite:grb_Waxman2,cite:grb_Supernova}.}
 		\end{center}
 	\end{figure}
 	
-	\subsection{Fuentes no convencionales}
-	
-	\begin{figure}[ht]
-		\begin{center}
-		\includegraphics[width=0.75\textwidth]{fig/introduccion/unconventional_nuFluxes}
-		\caption{\label{fig:flujosNoConv} }
-		\end{center}
-	\end{figure}
+% 	\subsection{Fuentes no convencionales}
+% 	
+% 	\begin{figure}[ht]
+% 		\begin{center}
+% 		\includegraphics[width=0.75\textwidth]{fig/introduccion/unconventional_nuFluxes}
+% 		\caption{\label{fig:flujosNoConv} }
+% 		\end{center}
+% 	\end{figure}
 
-\section{Búsquedas de neutrinos cósmicos ultra energéticos}
+% \section{Búsquedas de neutrinos cósmicos ultra energéticos}
 
 % \section{Nacimiento de la astronom\'ia de neutrinos c\'osmicos}
 

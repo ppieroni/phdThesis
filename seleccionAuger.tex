@@ -759,7 +759,9 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	
 	Para definir el criterio de identificación de neutrinos DGL, se tomó el 20$\%$ de la muestra de datos del 01 Ene 2004 al 31 Dic 2011 como muestra de entrenamiento, o de fondo.
 	Esa fracción se eligió de manera aleatoria, seleccionando eventos cuyo número de identificación termine en 0 y 5.
-	El resto de los datos de ese período y la totalidad medida entre el 1 Ene 2012 y el 20 Jun de 2013 (fecha del cambio de trigger \textbf{XXX HAY QUE INCLUIR LA FECHA LÏMITE EN ESTRATEGIA}) se utilizaron para búsqueda.
+	El resto de los datos de ese período y la totalidad medida entre el 1 Ene 2012 y el 20 Jun de 2013 (fecha del cambio de trigger 
+% 	\textbf{XXX HAY QUE INCLUIR LA FECHA LÏMITE EN ESTRATEGIA})
+	se utilizaron para búsqueda.
 	Todo esto se esquematiza en la figura \ref{fig:periodosDGL}.
 	%
 	\begin{figure}[ht]
@@ -795,7 +797,8 @@ Existen dos tipos de variables que permiten seleccionarlos:
 			                 & \multicolumn{3}{c|}{$n\leq5$} & \multicolumn{2}{c|}{$n\leq4$} \\
 			\hline
 			\end{tabular}
-			\caption{Variables utilizadas para entrenar el método de Fisher en cada una de las regiones definidas por el ángulo reconstruido. En las regiones 1 a 3 se utiliza el AoP de las 5 estaciones más tempranas de los eventos y su producto. En las regiones 4 y 5 el análogo de las primeras 4 estaciones.}
+			\caption{\label{tab:fisherDGL}
+			Variables utilizadas para entrenar el método de Fisher en cada una de las regiones definidas por el ángulo reconstruido. En las regiones 1 a 3 se utiliza el AoP de las 5 estaciones más tempranas de los eventos y su producto. En las regiones 4 y 5 el análogo de las primeras 4 estaciones.}
 		\end{center}	 
 	\end{table}
 	%
@@ -844,7 +847,7 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	\includegraphics[width=0.7\textwidth]{fig/seleccionAuger/fisher2dDGL}\\
 	\includegraphics[width=0.7\textwidth]{fig/seleccionAuger/fisher2dInterpolDGL}
 	\caption{Distribución de la variable de Fisher como función del ángulo reconstruido. La muestra de neutrinos MC se muestra en colores mientras que la de fondo (datos) es representada con puntos. Arriba: En linea llena se señalan los cortes en la variable de Fisher obtenidos para cada región. Abajo: En linea llena se muestra el corte efectivo obtenido mediante interpolación lineal.}
-	\label{fig:fisherDGL}
+	\label{fig:fisher2dDGL}
 	\end{center}
 	\end{figure}
 	%
@@ -884,7 +887,8 @@ Existen dos tipos de variables que permiten seleccionarlos:
 			                 & \multicolumn{3}{c|}{Parámetro de asimetría} \\
 			\hline
 			\end{tabular}
-			\caption{Variables utilizadas para entrenar el método de Fisher en cada una de las multiplicidades, definidas por el número de estaciones del evento.}
+			\caption{\label{tab:fisherDGH}
+			Variables utilizadas para entrenar el método de Fisher en cada una de las multiplicidades, definidas por el número de estaciones del evento.}
 		\end{center}	 
 	\end{table}
 	%
@@ -1016,7 +1020,7 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	\end{figure}
 	%
 	
-	Para salvar este inconveniente se aplicó el algoritmo que se detalla a continuación (\textbf{XXX LO PASO A UN APENDICE ESTO?}):
+% 	Para salvar este inconveniente se aplicó el algoritmo que se detalla a continuación: (\textbf{XXX LO PASO A UN APENDICE ESTO?}):
 	\begin{enumerate}
 	 \item \textbf{Encontrar picos sobre \cant{0.6}{VEM_{peak}}:} para cada PMT activo se divide la traza en ventanas de 8 bines. Dentro de cada ventana se busca el bin cuya señal máxima y se define como un pico si su señal se encuentra por encima de los \cant{0.6}{VEM_{peak}}.
 	 \item \textbf{Encontrar bloques de señal:} si en el paso 1 se etiqueta más de más de un bin como pico se busca en sus bines intermedios.
@@ -1028,7 +1032,7 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	 \begin{center}
 	 \includegraphics[width=0.7\textwidth]{fig/seleccionAuger/ev2629688_pmt1_anode}
 	\caption{PMT 1 de la estación 882 del evento 2629688. La traza presenta dos picos con 6 bines contiguos por debajod el umbral establecido.}
-	\label{fig:doublePeakEvent}
+	\label{fig:doublePeakEvent2}
 	\end{center}
 	\end{figure}
 	 %
