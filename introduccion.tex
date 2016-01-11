@@ -236,10 +236,15 @@ En las siguientes secciones se desarrollas las ideas enumeradas hasta aqu\'i.
 	Su emisi\'on ha sido calculada en varias condiciones:
 	%
 	\begin{enumerate}
-	 \item En los modelos de tipo \emph{bola de fuego} o GRB fireball~\cite{cite:grb_Waxman1,cite:grb_Waxman2} la emisi\'on de fotones se produce como producto de colisiones de plasma que se mueve de manera relativista dentro de un chorros de materia (la bola de fuego). 
+	 \item En los modelos de tipo \emph{bola de fuego} o GRB fireball~\cite{cite:grb_Waxman1,cite:grb_Waxman2} la emisi\'on de fotones se produce como producto de colisiones de plasma que se mueve de manera relativista dentro de un chorros de materia (la bola de fuego).
+	 Posteriormente el material expulsado colisiona con el medio material externo (por ejemplo el medio interestelar), produciendo radiaci\'on en en un ancho de banda amplio, que comprende desde los rayos X y ultra violetas hasta el visible, conocido como el GRB afterglow.
+	 Por otro lado, los electrones y protones acelerados en el jet producen la erupci\'on de fotones de alta energ\'ia mediante radiaci\'on de sincrotr\'on y efecto Compton inverso.
+	 Estos fotones de alta energ\'ia interact\'uan con los del afterglow y protones o neutrones del jet produciendo neutrinos ultra energ\'eticos via producci\'on de fotopiones.
+	 \item Otro modelo de GRB bastante difundido consiste en los llamados ``modelos de supernova''~\cite{cite:grb_Supernova}. 
+	 En estos, protones de la cascara remanente de las supernovas, expulsadas antes del GRB, interact\'uan con los fotones emitidos durante el mismo generando neutrinos ultra energ\'eticos, nuevamente via producci\'on de fotopiones.
 	\end{enumerate}
 	%
-	
+	En la figura \ref{fig:flujosAGN} se muestran los flujos esperados para algunos modelos de AGN y GRB.
 	\begin{figure}[ht]
 		\begin{center}
 		\includegraphics[width=0.75\textwidth]{fig/introduccion/AGN_GRB_nufluxes}
@@ -247,7 +252,19 @@ En las siguientes secciones se desarrollas las ideas enumeradas hasta aqu\'i.
 		\end{center}
 	\end{figure}
 	
+	\subsection{L\'imite te\'orico al flujo de neutrinos}
+	
+	E. Waxman y J Bachall establecieron en \cite{cite:WaxmanBahcall1} l\'imites te\'oricos al flujo de neutrinos generados via producci\'on de fotopiones.
+	Para ello, consideraron un espectro en las fuentes de la forma $dN_{CR}/dE_{CR}\propto E_{CR}^{-2}$, consistente con el producido mediante el mecanismo de aceleraci\'on de Fermi~\cite{cite:Waxman1}.
+	Bajo el supuesto de que la fracci\'on de energ\'ia que se transmite al mes\'on en la producci\'on es independiente de la energ\'ia del primario, el espectro de neutrinos resultante en el decaimiento subsiguiente tambien sigue una ley de potencia $\propto E^{-2}$.
+	Asumiento que toda la energ\'ia acarreada por los protones es transmitida a piones en colisiones p-p, el flujo de neutrinos asociado no puede exceder el de los primarios.
+	De esta manera lo autores llegaron a una cota superior al flujo utilizando un modelo de no evoluci\'on con el redshift y el modelo cosmol\'ogico \emph{Quasi Stellar Objects}.
+	Cabe destacar que en la bibliograf\'ia no existe una cota inferior al flujo de neutrinos ultra energ\'eticos.
+	
 % 	\subsection{Fuentes no convencionales}
+% 	
+% 	Este tipo de modelos fueron ropuestos para 
+% 	
 % 	
 % 	\begin{figure}[ht]
 % 		\begin{center}
@@ -256,7 +273,75 @@ En las siguientes secciones se desarrollas las ideas enumeradas hasta aqu\'i.
 % 		\end{center}
 % 	\end{figure}
 
-% \section{Búsquedas de neutrinos cósmicos ultra energéticos}
+\section{Búsquedas de neutrinos cósmicos ultra energéticos}
 
+En la actualidad existen diversos experimentos que desarrollan b\'usquedas de neutrinos c\'osmicos ultraenerg\'eticos. 
+En \cite{cite:nuSearchReview1} puede encontrarse un recuento extensivo de los mismos as\'i como el estado de su detecci\'on. 
+En todos los casos se utiliza un blanco masivo con el que interact\'uan los neutrinos incidentes y se busca medir los efectos de tal interacci\'on.
+En particular, en los distintos experimentos el blanco puede consistir en agua, hielo, el aire de la atm\'osfera terrestre, la corteza terrestre o incluso grandes dep\'ositos naturales de sal.
+En cuanto a la detecci\'on propiamente dicha, en la actualidad existen varias t\'ecnicas implementadas, que comprenden entre otras, detectores \'opticos, de radio y de part\'iculas.
+
+	\subsection{Detectores \'opticos}
+	Las part\'iculas generadas en la interacci\'on entre neutrinos ultra energ\'eticos y medios densos viajan usualmente a velocidades superiores a las de la luz en dicho medio.
+	Por ende, si el medio es transparente la luz \cher{} generada en este proceso puede ser capturada mediante fotomultiplicadores.
+	
+	A finales de los 90's el experimento pionero en esta t\'ecnica fue NT-200~\cite{cite:nt200}, un detector de conformado por 192 m\'odulos \'opticos ubicados a \cant{\sim 1}{km} de profundidad en el lago Baikal, en siberia.
+	Sensible a neutrinos entre \cant{10^{14}\ {\text y}\ 10^{17}}{eV} colecto datos durante casi una d\'ecada, imponiendo una cota superior al flujo de neutrinos de \cant{2\times 10^{-7}}{cm^{-2}s^{-1}sr^{-1}GeV}
+	
+	\textbf{FALTA ICECUBE}
+	
+	
+	\subsection{Detectores de Radio}
+	A energ\'ias por encima de los \cant{10^{18}}{eV} el flujo de neutrinos c\'osmicos predicho por los diferentes modelos resulta demasiado peque\~no para ser detectados en detectores del \'orden del $\rm km^3$. 
+	Una t\'ecnica que permite sortear este obst\'aculo de manera efectiva es la detecci\'on de las ondas de radio generadas por efecto Askaryan, propuesta por Gurgen Askaryan a principios de los 60's~\cite{cite:Askaryan}.
+	\'El not\'o que en el desarrollo de la lluvia de part\'iculas generadas por la interacci\'on del neutrino con el medio material se produce una carga efectiva en movimiento que genera emisi\'on \cher{} en frecuencias de hasta el $\rm GHz$.
+	Incluso en medios densos como hielo, sal o arena, a estas frecuencias la longitud de atenuaci\'on puede rondar los cientos de metros.
+	Si adem\'as se tiene en cuenta el bajo costo relativo de los detectores de radio (frente a por ejemplo fotomultiplicadores) resulta evidente que esta t\'ecnica tiene potencial en detectores de gran tama\~no.
+	A continuaci\'on se realiza un recuento de los experimentos pasados, actuales y futuros que utilizan esta t\'ecnica:
+	\begin{description}
+	 \item[RICE] (Radio Ice Cherenkov Experiment): realiz\'o la b\'usqueda en base a la emisi\'on producida por cascadas electromagn\'eticas y hadr\'onicas inducidas por la interacci\'on de UHE$\nu$'s en el hielo ant\'artico.
+	 Este experimento consisti\'o en un arreglo de 16 antenas, cuyo ancho de banda abarc\'o los \cant{200\-1000}{MHz}, ubicadas en un cubo de \cant{200}{m} de lado a \cant{150}{m} de profundidad cerca del polo sur.
+	 En base a los datos colectados entre 1999 y 2005, RICE impuso un l\'imite superior al flujo de neutrinos c\'osmicos de todos los sabores (All Flavor):
+	 %
+	 \begin{equation}
+	 E^{-2}\phi_\nu \leq 10^{-6}{\rm\ GeVcm^{-2}s^{-1}sr^{-1}}
+	 \end{equation}
+	 %
+	 en un rango energ\'etico entre \cant{10^{17}}{eV} y \cant{10^{20}}{eV}~\cite{cite:RICE} luego de no haber detectado ning\'un evento candidato.
+	 \item[ANITA] (Antartic Impulsive Transient Array): este experimento fue lansado por NASA desde la estaci\'on McMurdo. 
+	 Consiste en un detector conformado por un arreglo de 32 antenas tipo bocina, sensibles en el rango de \cant{200\-1200}{MHz}, y transportado en un globo atmosf\'erico hasta los \cant{37}{km} de altitud sobre el suelo ant\'artico.
+	 Luego del lanzar el prototipo ANITA-LITE en 2004, se lanzo en 2006 el detector completo, que se mantuvo en vuelo durante 35 d\'ias~\cite{cite:Anita1}.
+	 
+	 El segundo vuelo, lanzado en 2008, cont\'o con 8 antenas m\'as en el detectory una mejora en la electr\'onica.
+	 Luego de 28.5 d\'ias m\'as en el aire y habiendo tenido un evento candidato finalmente clasificado como fondo, ANITA-II impuso una cota superior al \cant{90\%}{CL} al flujo de neutrinos de:
+	 %
+	 \begin{equation}
+	 E^{-2}\phi_\nu \leq 1.3\times10^{-7}{\rm\ GeVcm^{-2}s^{-1}sr^{-1}}
+	 \end{equation}
+	 %
+	 en el rango de energ\'ias que comprende \cant{10^{18}}{eV} a \cant{10^{23.5}}{eV}~\cite{cite:Anita2}.
+	 \item[GLUE] (Goldstone Lunar Ultrahigh Energy): realiz\'o una b\'usqueda de p\'ulsos de microondas en el rango de los \cant{10}{\mu s} provenientes del suelo lunar en coincidencia con pulsos de radio. 
+	 Tales pulsos emerger\'ian de cascadas electromagn\'eticas desarrolladas en el interior de la masa lunar, producidas por la interacci\'on de UHE$\nu$'s. 
+	 Luego de 30 horas efectivas de observaci\'on y ningun candidato en los datos GLUE estableci\'o una cota superior al flujo de neutrinos entre \cant{10^{19}}{eV} y \cant{10^{22.5}}{eV}~\cite{cite:Glue}.
+	 Anteriormente, los experimentos Kalyazin \cite{cite:Kalazin} y Parkes \cite{cite:Parkes} ya hab\'ian realizado b\'usquedas de se\~nales provenientes de la luna tambi\'en sin resultados positivos.
+	 Por otra parte, existen otros experimentos que pretenden explotar esta t\'ecnica, como el radio telescopio NuMoon~\cite{cite:NuMoon}, el futuro Square Kilometer Array (SKA)~\cite{cite:SKA}, o LUNASKA (Lunar UHE Neutrino Astrophysics using the Square Kilometer Array)~\cite{cite:LUNASKA}.
+	 \item[ARA] (Askaryan Radio Array): actualmente en construcci\'on, ARA se ubica cerca del polo sur geogr\'afico, cerca de IceCube~\cite{cite:ARA}.
+	 Su dise\~no le permite detectar la interacci\'on de neutrinos GZK en la corteza de hielo de la Ant\'artida, contando as\'i con un blanco que abarca miles de kil\'ometros cuadrados de superficie por \cant{3}{km} de profundidad.
+	 Para ello, ARA desplegar\'a 37 clusters de antenas, separadas por \cant{2}{km} en una grilla hexagonal, distancia que maximiza la sensitividad a \cant{10^{18}}{eV}, e instalados a \cant{200}{m} de profundidad en el hielo.
+	 Actualmente se encuentran instalados 3 estaciones, de las cuales 2 han tomado datos desde finales de 2013~\cite{cite:ARA2}.
+	 \item[ARIANA] (Antartic Ross Ice-Shelf ANtenna Neutrino Array): este detector pretende usar el escudo de Ross en la costa ant\'artica como blanco para neutrinos GZK por encima de los \cant{10^{17.5}}{eV}~\cite{cite:ARIANNA}.
+	 Este detector surgi\'o de estudios recientes~\cite{cite:ARIANNA2} que determinaron que el fondo del casquete de hielo que conforma el escudo de Ross posee buenas propiedades de reflectividad de ondas de radio.
+	 El detector completo ser\'a constituido en un arreglo cuadrado de 36x36 estaciones, donde cada una constar\'a de 8 antenas bajo el hielo de la superficie, en un arreglo octogonal, y 2 en el exterior.
+	 El objetivo de estas antenas es detectar las ondas de radio generadas por las cascadas electromagn\'eticas subsiguientes a la interacci\'on de los neutrinos en el hielo. Dado que estas ondas pueden ser reflejadas en la interface hielo agua sobre el fondo del casquete, ARIANNA tambien es sensible a neutrinos descendentes.
+	 Como prueba de concepto se utilizar\'a una estaci\'on de prueba de 6 antenas de las cuales 3 tomaron datos en 2013 y 2014~\cite{cite:ARIANNA3}.
+	 Tanto ARA como ARIANNA prometen entregar las mediciones m\'as sensibles de la pr\'oxima generaci\'on de detectores de neutrinos ultra energ\'eticos.
+	\end{description}
+
+	
+	\subsection{Detectores de Rayos c\'osmicos}
+	
+	
+	
+	
 % \section{Nacimiento de la astronom\'ia de neutrinos c\'osmicos}
 
