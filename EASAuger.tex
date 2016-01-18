@@ -3,10 +3,13 @@
 
 \section{Generalidades}
 
-A fines de la década del treinta Pierre Auger observó que la coincidencia de disparo entre detectores de CR separados varios kilómetros era mayor a la esperada para eventos independientes. Explicó éste hecho postulando la existencia de partículas muy energéticas que, al interactuar  en la alta atmósfera, pudieran generar nuevas partículas de alta energía capaces, a su vez, de repetir el proceso. De esta manera se inicia una reacción de multiplicación en cadena que lleva hoy el nombre de lluvia atmosférica extendida (EAS, por su sigla en inglés). 
+A fines de la década del treinta Pierre Auger observó que la coincidencia de disparo entre detectores de rayos c\'osmicos separados varios kilómetros era mayor a la esperada si se supon\'ia que los eventos eran independientes.
+Explicó éste hecho postulando la existencia de partículas muy energéticas que al interactuar en la alta atmósfera pudieran generar nuevas partículas de alta energía capaces, a su vez, de repetir el proceso. De esta manera se inicia un proceso de multiplicación en cadena que lleva hoy el nombre de lluvia atmosférica extendida (EAS, por su sigla en inglés). 
 
 Tras 70 años de investigación, la estructura y evolución de las cascadas atmosféricas se considera bien comprendida.
-Tras la primera interacción, su desarrollo puede describirse como un núcleo de partículas de alta energía (usualmente hadrones), que avanza a lo largo del eje de la lluvia produciendo electrones, muones y fotones menos energéticos, pero con mayor momento transverso relativo, que difunden en la dirección radial (ver figura ~\ref{fig:lluvia1}). Así, las cascadas están formadas por tres componentes: hadrónica, muónica y electromagnética (ver figura \ref{fig:showerSchema}).
+Tras la primera interacción, su desarrollo puede describirse como un núcleo de partículas de alta energía (usualmente hadrones), que avanza a lo largo del eje de la lluvia produciendo electrones, muones y fotones menos energéticos.
+Estas part\'iculas secundarias poseen mayor momento transverso relativo, por lo que difunden en la dirección radial (ver figura ~\ref{fig:lluvia1}).
+Por ete motivo se considera que las cascadas se constituyen por tres componentes: hadrónica, muónica y electromagnética (ver figura \ref{fig:showerSchema}).
 
 La estructura detallada es complicada y depende de gran cantidad de factores como partícula primaria, su energ\'ia o profundidad de la interacción entre otras.
 
@@ -14,7 +17,7 @@ La estructura detallada es complicada y depende de gran cantidad de factores com
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=0.75\textwidth]{fig/EASAuger/lluvia1_english.pdf}
-\caption{Esquema de la evolución de una cascada atmosférica. Tras la primera interacción se forma un núcleo de partículas de alta energía (usualmente hadrones), que avanza a lo largo del eje de la lluvia produciendo nuevas partículas menos energéticas, pero con mayor momento transverso relativo, que difunden en la dirección radial}
+\caption{Esquema de la evolución de una cascada atmosférica. Tras la primera interacción se forma un núcleo de partículas de alta energía (usualmente hadrones), que avanza a lo largo del eje de la lluvia produciendo nuevas partículas menos energéticas pero con mayor momento transverso relativo. Por este motivo difunden en dirección radial}
 \label{fig:lluvia1}
 \end{center}
 \end{figure}
@@ -31,10 +34,10 @@ La estructura detallada es complicada y depende de gran cantidad de factores com
 
 En la actualidad se considera que la gran mayoría de las cascadas con energía superior a $10^{16}$~eV son iniciadas por UHECR hadrónicos \cite{CONSEGUIR}. 
 En estas lluvias, el número de hadrones aumenta rápidamente durante las primeras etapas de la cascada, predominando la generaci\'on equiprobable de $\pi^{0}$, $\pi^{+}$ y $\pi^{-}$.
-Dado de que el decaimiento de los $\pi^{0}$ es el $(98.823\pm0.034)\%$ \cite{Agashe:2014kda} de las veces a $\gamma\gamma$ y el $(1.174\pm0.035)\%$ a $e^+e^-\gamma$, en cada generación alrededor del 30\% de la energía de la componente hadr\'onica es transferida a la componente electromagnética mediante este proceso.
+Dado de que el decaimiento de los $\pi^{0}$ es el $(98.823\pm0.034)\%$ \cite{Agashe:2014kda} de las veces a $\gamma\gamma$ y el $(1.174\pm0.035)\%$ a $e^+e^-\gamma$, en cada generación cierta fracci\'on de la energía de la componente hadr\'onica es transferida a la componente electromagnética.
 
 Por otro lado, la energ\'ia es entregada a la componente muónica de la lluvia crece más lentamente. 
-Si bien los muones son producidos principalmete a partir del decaimiento de piones cargados, que decaen el $(99.98770\pm0.00004)\%$ a $\mu^{\pm}\nu_\mu$~\cite{Agashe:2014kda}, debido a la dilatación temporal, los $\pi^{\pm}$ más energéticos tienen menor probabilidad de decaer antes de interactuar y asi tranferir parte de su energía a la componente electromagnética.
+Si bien los muones son producidos principalmete a partir del decaimiento de piones cargados, que decaen el $(99.98770\pm0.00004)\%$ a $\mu^{\pm}\nu_\mu$~\cite{Agashe:2014kda}, debido a la dilatación temporal los $\pi^{\pm}$ más energéticos tienen menor probabilidad de decaer antes de interactuar con alg\'un n\'ucleo atmosf\'erico y asi tranferir parte de su energía a la componente electromagnética.
 
 Por todo esto, en las etapas finales de la cascada alrededor del 90\% de la energía de la partícula primaria es disipada por la componente electromagnética mediante ionización.
 La restante es transportada por muones y neutrinos provenientes de $\pi^{\pm}$ que hayan decaído antes de interactuar.
@@ -43,7 +46,7 @@ La restante es transportada por muones y neutrinos provenientes de $\pi^{\pm}$ q
 En esta sección se comentará un modelo simplificado de lluvia desarrollado originalmente por Heitler \cite{hei54} a mediados de los años 50. Si bien el modelo es demasiado simple para obtener resultados cuantitativos precisos, ayuda a comprender cualitativamente la dinámica de las lluvias.
 
 \subsection{Componente electromagnética - Modelo de Heitler}
-En el cálculo de la evolución de la porción electromagnética de la lluvia se considera que cada electrón radía (bremsstrahlung) un único fotón después de viajar una distancia $d=\lambda \ln 2$, donde $\lambda\simeq38$~g~cm$^{-2}$ es la longitud de radiación propia del medio\footnote{$d$ es la distancia promedio para la cual un electrón habrá irradiado la mitad de su energía}. Simultáneamente se propone que cada fotón producirá un par $e^{-}$ $e^{+}$ después de recorrer esta misma distancia.
+En el cálculo de la evolución de la porción electromagnética de la lluvia se considera que cada electrón radía (bremsstrahlung) un único fotón después de viajar una distancia $d=\lambda \ln 2$, donde $\lambda\simeq38$~g~cm$^{-2}$ es la longitud de radiación propia del medio\footnote{Aqu\'i $d$ es la distancia promedio para la cual un electrón habrá irradiado la mitad de su energía.}. Simultáneamente se propone que cada fotón producirá un par $e^{-}$ $e^{+}$ después de recorrer esta misma distancia.
 Este proceso se esquematiza en la figura \ref{fig:heilter}.
 %
 \begin{figure}[ht]
@@ -54,7 +57,7 @@ Este proceso se esquematiza en la figura \ref{fig:heilter}.
 \end{center}
 \end{figure}
 %
-En ambos casos se toma que la energía se reparte equitativamente entre las partículas hijas. Después de $n$ pasos la lluvia contará con $2^{n}$ partículas entre electrones, positrones y fotones. El modelo considera que la generación de nuevas partículas se detiene cuando la energía perdida por colisiones\footnote{ionizacion y excitaci\'on de las mol\'eculas del aire, esencialmente $N_2$ y $O_2$} es mayor que la necesaria para los procesos de bremsstrahlung y producción de pares. En el aire esta energía de corte es de aproximadamente \cant{85}{MeV}. En este punto la cantidad de partículas es máxima y valen las siguientes ecuaciones:
+En ambos casos se toma que la energía se reparte equitativamente entre las partículas hijas. Después de $n$ pasos la lluvia contará con $2^{n}$ partículas entre electrones, positrones y fotones. El modelo considera que la generación de nuevas partículas se detiene cuando la energía perdida por colisiones\footnote{Es decir, ionizaci\'on y excitaci\'on de las mol\'eculas del aire, esencialmente $N_2$ y $O_2$.} es mayor que la necesaria para los procesos de bremsstrahlung y producción de pares. En el aire esta energía de corte es de aproximadamente \cant{85}{MeV}. En este punto la cantidad de partículas es máxima y valen las siguientes ecuaciones:
 %
 \begin{equation}
 \label{hi1}
@@ -67,14 +70,14 @@ X_{max}=n_{max} d
 \end{equation}
 %
 con $X_{max}$ la coordenada donde la lluvia alcanza la máxima cantidad de partículas $N_{max}$ luego de $n_{max}$ pasos y $E_p$ la energía del primario.
-Despejando $n_{max}$ de (\ref{hi1}) y reemplazando en (\ref{hi2}) se obtiene para Xmax
+Despejando $n_{max}$ de (\ref{hi1}) y reemplazando en (\ref{hi2}) se obtiene para $X_{max}$:
 %
 \begin{equation}
 \label{hi3}
 X_{max} = n_{max} \lambda \ln2=\lambda \ln\left(\frac{E_{0}}{E_{corte}}\right)
 \end{equation}
 %
-Las relaciones \ref{hi1} y \ref{hi3}, que pueden resumirse en \ref{hi4}, se recuperan mediante simulaciones a partir de primeros principios.
+Pese a la simplicidad del modelo, las relaciones \ref{hi1} y \ref{hi3}, que pueden resumirse en \ref{hi4}, se recuperan mediante simulaciones a partir de primeros principios.
 %
 \begin{equation}
 \label{hi4}
@@ -85,7 +88,8 @@ N_{max} \sim E_p
 %
 
 \subsection{Componente hadrónica y muónica}
-Para modelar la componente hadrónica de la lluvia se utiliza un esquema muy similar al utilizado para la electromagnética.
+
+Para modelar la componente hadrónica de la lluvia es posible utilizar un esquema similar al empleado para estudiar la electromagnética.
 Se considera que la totalidad de los hadrones son piones ($\pi^{\pm}$ y $\pi^{0}$). Los $\pi^{\pm}$ al interactuar con n\'ucleos de la atm\'osfera generan $N \pi^{\pm}$ y $\frac{1}{2}N \pi^{0}$ después de atravesar una feta de atmósfera de ancho $d=\lambda \ln2$ siendo $\lambda$ la longitud de interacción para partículas que interactúan fuertemente.
 Los $\pi^{0}$ decaen inmediatamente en dos fotones que pasan a formar parte de la componente electromagnética y los $\pi^{\pm}$ continúan la cascada hadrónica hasta que su energía no les permite generar nuevos piones.
 En este punto los $\pi^{\pm}$ s\'olo pueden decaer a muones.
@@ -95,7 +99,7 @@ El alto poder de penetración de los muones les permite atravesar la atmósfera 
 \subsection{Lluvias inclinadas}
 \label{sbsc:inclinadas}
 %
-El término ``lluvias inclinadas'' se refiere a lluvias cuyo ángulo zenital $\theta$ es mayor a $60^{\circ}$.
+El término ``lluvias inclinadas'' se refiere a lluvias cuyo ángulo cenital $\theta$ es mayor a $60^{\circ}$.
 Con el fin de motivar esta definición es interesante estudiar la cantidad de materia que la lluvia tiene que atravezar hasta alcanzar la Tierra como función de $\theta$.
 En la figura \ref{fig:slant_depth} se muestra como entre $0^{\circ}$ y $60^{\circ}$ el cambio en la profundidad es un factor $\sim 2$ respecto de su contraparte vertical, \cant{\sim1000}{g/cm^{2}}.
 A partir de este punto la profundidad crece rápidamente, alcanzando un factor $\sim 36$ a $\theta=90^{\circ}$.
@@ -108,7 +112,7 @@ $
  \raisebox{0.8\height}{\includegraphics[width=0.47\textwidth]{fig/EASAuger/slantCartoon_english.pdf}}
 \end{array}
 $
-\caption{\textit{Izquierda:} Profundidad atmosférica como función del ángulo zenital $\theta$.
+\caption{\textit{Izquierda:} Profundidad atmosférica como función del ángulo cenital $\theta$.
 La cantidad de materia crece rápidamente si $\theta>60^{\circ}$.
 \textit{Derecha:} Una lluvia completamente horizontal atravieza 36 veces más materia que una vertical.
 }
@@ -119,7 +123,7 @@ La cantidad de materia crece rápidamente si $\theta>60^{\circ}$.
 
 La mayor parte los rayos cósmicos con energías superiores a \cant{10^{16}}{eV} son protones o n\'ucleos.
 Dado que su longitud de interacción en la atmósfera es \cant{\sim50}{g/cm^{2}}, es correcto considerar que estas interact\'uan en el tope de la atmósfera.
-En consecuencia, para lluvias con $\theta>70^\circ$, tanto la componente hadrónica como la electromagnética son completamente absorbidas por la atmósfera\footnote{como puede deducirse de la figura \ref{fig:effDG_tr_id} del cap\'itulo \ref{ch:resAuger} de esta tesis, luego de \cant{2000}{g/cm^2} la componente electromagn\'etica es absorbida por la atm\'osfera.}, por lo que sólo la componente muónica alcanza el suelo, como se esquematiza en la figura \ref{fig:horizontalHad}.
+En consecuencia, para lluvias con $\theta>70^\circ$, tanto la componente hadrónica como la electromagnética son completamente absorbidas por la atmósfera\footnote{De la figura \ref{fig:effDG_tr_id} del cap\'itulo \ref{ch:resAuger} de esta tesis puede deducirse que luego de \cant{2000}{g/cm^2} la componente electromagn\'etica es completamente absorbida por la atm\'osfera.}, por lo que sólo la componente muónica alcanza el la superficie de la Tierra, lo que se esquematiza en la figura \ref{fig:horizontalHad}.
 Como resultado, a nivel del suelo las lluvias horizontales son fundamentalmente diferentes de las verticales.
 %
 \begin{figure}[h!]
@@ -135,23 +139,25 @@ Las componentes hadrónica y electromagnética se absorben rápidamente, por lo 
 \section{Lluvias atmosf\'ericas iniciadas por neutrinos}
 \label{sc:easNu}
 
-Existen dos mecanismos principales mediante los cuales los neutrinos pueden iniciar lluvias atmosféricas que puedan producir señales en detectores de superficie:
-\begin{itemize}
- \item Lluvias descendentes (DG, down going)
- %Un neutrino deposita algo de su energía en la atmósfera generando una lluvia descendente cuyas partículas alcanzan el suelo.
- \item Lluvias rasantes iniciadas por neutrinos tau (ES, earth-skimming)
- %Un neutrino ascendente interactúa con la corteza de la tierra y alguno de sus productos de decaimiento genera una cascada en la atmósfera muy cerca del suelo.
-\end{itemize}
+Existen dos mecanismos predominantes mediante los cuales los neutrinos ultra energ\'eticos pueden iniciar lluvias atmosféricas extendidas capaces de producir una se\~nal medible por un detector de superficie.
+Cada uno da lugar a un tipo diferente de evento, que ser\'an denominados a partir de aqu\'i como \emph{lluvias descendentes} o \emph{down going} (DG) y \emph{lluvias rasantes} o \emph{earth-skimming} (ES).
+% Estos dan lugar a dos tipos de lluvias atmosf\'ericas, a saber:
+% \begin{itemize}
+%  \item Lluvias descendentes (DG, down going)
+%  %Un neutrino deposita algo de su energía en la atmósfera generando una lluvia descendente cuyas partículas alcanzan el suelo.
+%  \item Lluvias rasantes iniciadas por neutrinos \tauon{} (ES, earth-skimming)
+%  %Un neutrino ascendente interactúa con la corteza de la tierra y alguno de sus productos de decaimiento genera una cascada en la atmósfera muy cerca del suelo.
+% \end{itemize}
 
 \subsection{Lluvias descendentes}
 \label{sbsc:easDG}
 
-De acuerdo con el modelo estandar (SM por sus siglas en inglés), los neutrinos interactúan mediante la gravedad y la fuerza débil, pero sólo esta última puede ser utilizada para detectar neutrinos individuales.
-Su principal mecanismo de interacción en la atmósfera es la dispersión inelástica profunda (DIS por sus siglas en inglés, \emph{Deep Inelastic Scattering}) con un n\'ucleo de la misma. Los posibles canales se esquematizan en la figura \ref{fig:SM_nu_int} para los diferentes sabores de neutrinos.
-En todos los casos, cerca del \cant{20}{\%} de la energía del neutrino primario se transfiere al jet hadrónico mediante los fragmentos del núcleo resultantes de la interacción.
-El resultado de este proceso es una cascada de características similares a las iniciadas por protones o núcleos.
-
-El \cant{80}{\%} restante de la energía se transfiere a un leptón ultra energético que según el caso puede contribuir o no a la EAS generada.
+% De acuerdo con el modelo estandar (SM por sus siglas en inglés), los neutrinos interactúan mediante la gravedad y la fuerza débil, pero sólo esta última puede ser utilizada para detectar neutrinos individuales.
+Un neutrino que ingresa a la atm\'osfera interactuar\'a mayormante debido a la dispersión inelástica profunda (DIS por sus siglas en inglés, \emph{Deep Inelastic Scattering}) con los n\'ucleos de la misma.
+Los posibles canales para esta interacci\'on discriminados por sabor de neutrino se esquematizan en la figura \ref{fig:SM_nu_int}.
+En todos los casos, cerca del \cant{20}{\%} de la energía del primario se transfiere al jet hadrónico que se genera al fragmentarse el n\'ucleo atmosf\'erico.
+Como resultado, se genera una cascada de características similares a las de una iniciada por protones o núcleos.
+Por otra parte, el \cant{80}{\%} de la energ\'ia restante se transfiere a un leptón ultra energético que según el caso puede contribuir o no a la EAS generada.
 %
 \begin{figure}[ht]
 \begin{center}
@@ -168,16 +174,15 @@ Finalmente, en el caso de tener un $\nu_{\mu}$ primario, el $\mu$ resultante en 
 \end{center}
 \end{figure}
 
-En el caso de interacción via corriente neutra (NC), luego de perder energía el neutrino escapa sin generar cascada alguna, quedando la cascada con sólo el \cant{20}{\%} de la energía del primario.
-
-Si la lluvia es iniciada por un $\nu_e$ via corriente cargada (CC), el electrón resultante inicia una cascada electromagnética que se superpone con la hadrónica producida por los fragmentos del núcleo.
+Cuando la interacci\'on se produce via corriente neutra (NC), luego de perder energía el neutrino escapa sin generar cascada alguna, transmiti\'endose a la lluvia sólo el \cant{20}{\%} de la energía del primario.
+En cambio, si el evento es iniciado por un $\nu_e$ via corriente cargada (CC), el electrón resultante tambi\'en iniciar\'a una cascada electromagnética que se superpone con la hadrónica, generada por los fragmentos del núcleo.
 En este caso, toda la energía del neutrino primario es transferida a la lluvia.
 
-Aunque el mecanismo fundamental mediante el que se inician, las lluvias generadas por $\nu_{\mu}$ via CC son muy similares a las generadas via NC ya que las probabilidades de que el $\mu$ resultante de la interacción decaiga o interactúe antes de llegar al suelo son pequeñas\footnote{La probabilidad de que un $\mu$ de \cant{10^{18}}{eV} decaiga antes de llegar al suelo es de $\sim10^{-6}$ mientras que la probabilidad de que sufra DIS o bremsstrahlung es del orden de $10^{-3}$ \cite{cite:tesisJavier}} 
+Aunque el mecanismo de interacci\'on primario difiere, los eventos iniciados por $\nu_{\mu}$ via CC son muy similares a las generados via NC, ya que las probabilidades de que el $\mu$ resultante de la interacción decaiga o interactúe antes de llegar al suelo son pequeñas\footnote{La probabilidad de que un $\mu$ de \cant{10^{18}}{eV} decaiga antes de llegar al suelo es de $\sim10^{-6}$ mientras que la probabilidad de que sufra DIS o bremsstrahlung es del orden de $10^{-3}$ \cite{cite:tesisJavier}}.
 
-En el caso de un $\nu_{\tau}$ que interactúa via CC al proceso se le agrega una particularidad.
+Por \'ultimo, en el caso de un $\nu_{\tau}$ que interactúa via CC al proceso se le agrega una particularidad.
 Al igual que el $\mu$, el $\tau$ resultante es una partícula muy penetrante pero en este caso su vida media es siete \'ordenes de magnitud menor.
-Debido a \'esto, luego de viajar una distancia apreciable\footnote{\cant{5}{km} para un $\tau$ de \cant{10^{17}}{eV}} y, como se discutir\'a en el cap\'itulo \ref{ch:simulacionAuger}, decaerá generando en el \cant{\sim80}{\%} de los casos una cascada detectable, que a su vez será el \cant{\sim25}{\%} de caracter electromagnético y el \cant{\sim75}{\%} restante hadrónico.
+As\'i, luego de viajar una distancia apreciable\footnote{\cant{5}{km} para un $\tau$ de \cant{10^{17}}{eV}.} decaerá generando en el \cant{\sim80}{\%} de los casos una cascada detectable, que a su vez será el \cant{\sim25}{\%} de caracter electromagnético y el \cant{\sim75}{\%} restante hadrónico (ver cap\'itulo \ref{ch:simulacionAuger}).
 Este tipo de cascadas, muy características, se conocen como ``Double--Bang'' (DB).
 %
 \begin{figure}[h!]
@@ -191,32 +196,37 @@ Comparar con la figura \ref{fig:horizontalHad}.
 \end{center}
 \end{figure}
 
-El camino libre medio para neutrinos de \cant{10^{18}}{eV} es de \cant{\sim10^8}{g/cm^{2}}\cite{cite:Gandhi}. 
-Dado que este valor es mucho mayor que el espesor m\'asico de la atmósfera, incluso para $\theta\sim90^\circ$, los neutrinos pueden interactuar básicamente en cualquier punto de la atmósfera con la misma probabilidad.
-En particular, tinen la capacidad de iniciar lluvias lo suficientemente profundas como para que tanto la componente electromagnética como la muónica alcancen el suelo (ver figura \ref{fig:horizontalNu}).
-Por otro lado, esto es pr\'acticamente imposible para lluvias iniciadas por hadrones o núcleos, ya que interactúan usualmente en el primer centenar de gramos.
-Por esto mismo, la estrategia utilizada para observar neutrinos con detectores de superficie se basa en la detección lluvias inclinadas en las que la componente electromagnética no haya sido absorbida por la atmósfera. Este canal de detección es llamado Down-going (DG).
+Por otra parte, para cada \'angulo cenital la ubicaci\'on de interacci\'on primaria se distribuye exponencialmente.
+El camino libre medio de esta distribuci\'on es por ejemplo, para neutrinos de \cant{10^{18}}{eV}, \cant{\sim10^8}{g/cm^{2}}\cite{cite:Gandhi}. 
+Dado que este valor es mucho mayor que el espesor m\'asico de la atmósfera, incluso para $\theta\sim90^\circ$, es posible aproximar el decaimiento exponencial como una constante, o visto de otra manera, es aceptable considerar que los neutrinos pueden interactuar básicamente en cualquier punto de la atmósfera con la misma probabilidad.
+Por este motivo, los neutrinos tienen la capacidad de iniciar lluvias lo suficientemente profundas como para que tanto la componente electromagnética como la muónica alcancen el suelo (ver figura \ref{fig:horizontalNu}).
+Esta caracter\'istica es la que permite distinguir los eventos iniciados por neutrinos de las lluvias hadr\'onicas regulares utilizando detectores de superficie.
+La estrategia utilizada se basa en la identificaci\'on de lluvias inclinadas en las que la componente electromagnética no haya sido absorbida por la atmósfera, lo que da lugar al canal de detección que denomina Down-going (DG).
 
 %
-\subsection{Lluvias rasantes iniciadas por neutrinos tau}
+\subsection{Lluvias rasantes}
 \label{sc:EStauInducedShowers}
 %
-Otro tipo de lluvias muy interesante son las que pueden ser iniciadas por neutrinos que interactúan en la corteza terrestre.
-En este caso, tanto el jet hadrónico producido en la interacción con el núcleo como el electrón producido en el caso de un $\nu_e$ incidente son rápidamente absorbidos por la materia, sin embargo, los leptones $\mu$ y $\tau$ producidos al incidir un $\nu_{\mu}$ o un $\nu_{\tau}$ pueden escapar de la Tierra debido a que son muy penetrantes.
-Una vez más, debido a su vida media larga, los $\mu$ que escapen de la Tierra iniciarán usualmente una luvia muy alto en la atmósfera, por lo que las partículas secundarias rara vez alcanzarán el suelo.
-Por otro lado, los leptones $\tau$ tienen baja sección eficaz, lo que les permite escapar de la Tierra hacia la atmósfera, pero a su vez poseen un tiempo de vida media que les permite decaer lo suficientemente cerca de la superficie\footnote{La longitud de decaimiento es $\lambda_{d}=c\tau_{\tau}\gamma_{\tau}=49\text{km}\frac{E_{\tau}}{\text{EeV}}$}, iniciando una cascada cuyas partículas secundarias pueden alcanzar el suelo. Este canal de detección es llamado Earth-Skimming (ES) y se esquematiza en la figura \ref{fig:esNu}.
+Al igual que en la atm\'osfera, un neutrino que atravieza la Tierra puede interactuar mediante DIS con alguno de sus n\'ucleos.
+En este proceso, tanto el jet hadrónico producido como el electrón producido, en el caso de un $\nu_e$ incidente, son rápidamente absorbidos por la materia.
+Sin embargo, los leptones $\mu$ y $\tau$ producidos al incidir un $\nu_{\mu}$ o un $\nu_{\tau}$ pueden escapar hacia la atm\'osfera gracias a su baja sección eficaz.
+Los $\mu$ que emerjan de la Tierra poseeran una vida media tal que en la mayor\'ia de los casos, la lluvia atmosf\'erica iniciada en su decaimiento se producir\'a muy alto en la atmósfera.
+Por este motivo, las partículas secundarias generadas rara vez alcanzarán el suelo.
+Como contraparte los leptones $\tau$ poseen un tiempo de vida media que les permite decaer cerca de la superficie\footnote{La longitud de decaimiento es $\lambda_{d}=c\tau_{\tau}\gamma_{\tau}=49\text{km}\frac{E_{\tau}}{\text{EeV}}$} e iniciar una cascada detectable.
+Si bien las part\'iculas se la misma se desplazar\'an en promedio hacia arriba, si el \'angulo cenital es lo suficientemente rasante ($\sim 90\circ - 95^\circ$) una cantidad suficiente alcanzar\'a el suelo pudiendo as\'i disparar un detector de superficie.
+Este canal de detección, que se esquematiza en la figura \ref{fig:esNu}, es utilizado por los experimentos de rayos c\'osmicos en la b\'usqueda de neutrinos ultra energ\'eticos y se denomina Earth-Skimming (ES).
 
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{fig/EASAuger/horizontal_es_english.pdf}
 \caption{Un $\nu_{\tau}$ puede interactuar en la Tierra via CC dando como resultado un $\tau$ que puede emerger a la atmósfera e iniciar una EAS muy cerca de la superficie.
-Aunque \'esta es ascendente, si el $\tau$ emergente posee un ángulo zenital entre $90^\circ$ y $95^\circ$ las partículas que llegan al suelo suelen ser suficientes para detectar la lluvia.}
+Aunque \'esta es ascendente, si el $\tau$ emergente posee un ángulo cenital entre $90^\circ$ y $95^\circ$ las partículas que llegan al suelo suelen ser suficientes para detectar la lluvia.}
 \label{fig:esNu}
 \end{center}
 \end{figure}
 
-Dado que la densidad de la corteza terrestre es $\sim1000$ veces mayor a la del aire, funciona como un blanco muchísimo mas masivo que la atmósfera para los neutrinos.
-Como ejemplo, el camino libre medio para un neutrino de \cant{10^{18}}{eV} en la Tierra\footnote{la densidad de la Tierra es \cant{\rho\sim2.65}{\frac{g}{cm^3}}} es de \cant{\sim620}{km}.
-Por otro lado, bajo la aproximación de Tierra esférica, la distancia que debe recorrer un neutrino para atravezarla es $d\sim2R\cos{\theta}$, donde $R$ es el radio de la Tierra. 
-En consecuencia, como para $91^{\circ}$ se obtiene \cant{d\sim220}{km}, se concluye que \cant{\sim30}{\%} de los neutrinos interactuarán en esas condiciones.
-Luego, es necesario considerar la probabilidad de que el $\tau$ escape de la Tierra sin perder demasiada energía y a su vez decaiga lo suficientemente cerca del suelo, pero esto se analizará en detalle en la sección \ref{sc:pesos}.
+% Dado que la densidad de la corteza terrestre es $\sim1000$ veces mayor a la del aire, funciona como un blanco muchísimo mas masivo que la atmósfera para los neutrinos.
+% Como ejemplo, el camino libre medio para un neutrino de \cant{10^{18}}{eV} en la Tierra\footnote{la densidad de la Tierra es \cant{\rho\sim2.65}{\frac{g}{cm^3}}} es de \cant{\sim620}{km}.
+% Por otro lado, bajo la aproximación de Tierra esférica, la distancia que debe recorrer un neutrino para atravezarla es $d\sim2R\cos{\theta}$, donde $R$ es el radio de la Tierra. 
+% En consecuencia, como para $91^{\circ}$ se obtiene \cant{d\sim220}{km}, se concluye que \cant{\sim30}{\%} de los neutrinos interactuarán en esas condiciones.
+% Luego, es necesario considerar la probabilidad de que el $\tau$ escape de la Tierra sin perder demasiada energía y a su vez decaiga lo suficientemente cerca del suelo, pero esto se analizará en detalle en la sección \ref{sc:pesos}.
