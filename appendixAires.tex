@@ -1,0 +1,19 @@
+\appendix{Aires}
+
+A continuación se describen los procesos probabilísticos más importantes tenidos en cuenta en \aires{}. Estos son:
+
+	\begin{itemize}
+	\item Procesos electrodin\'amicos: producci\'on de pares y aniquilaciones electr\'on-positr\'on, bremsstrahlung (electrones, positrones y muones), producci\'on de pares mu\'onicos, electrones sacados de \'orbitas at\'omicas (rayos $\delta$), efectos Compton y fotoel\'ectrico, efecto Landau-Pomeranchuk-Migdal (LPM) y supresi\'on diel\'ectrica.
+	\item Decaimientos de part\'iculas inestables.
+	\item Procesos Hadr\'onicos: colisiones inel\'asticas hadr\'on-n\'ucleo y fot\'on-n\'ucleo, muchas veces simulados utilizando paquetes externos que implementan un modelo de interacci\'on hadr\'onico, como SIBYLL, QGSJET o QGSJET2, reacciones fotonucleares, fragmentaciones nucleares, elásticas e inelásticas.
+	\item Propagaci\'on de part\'iculas cargadas: pérdidas de energ\'ia en el medio (ionizaci\'on), dispersiones múltiples de Coulomb y deflexiones geomagn\'eticas.
+	\end{itemize}    
+
+Tambi\'en, el sistema de simulación de {\sc aires} provee una plataforma que permite hacer uso del poder de c\'alculo de las computadoras actuales:
+	
+	\begin{itemize}
+	\item Implementa un lenguaje de comandos iniciales (IDL por {\em Input Directive Language}), que consiste en un conjunto simple de comandos que permiten un control eficiente de los par\'ametros de entrada para cada simulación. 
+	\item El sistema que lleva a cabo las simulaciones es una herramienta poderosa en plataformas UNIX, ya que permite al usuario coordinar muchas simulaciones en simultáneo, controlar la evolución de un dado trabajo mientras que se está llevando a cabo, etc.
+	\item El programa que administra la información de salida procesa archivos generados por el programa principal y permite obtener información relacionada con los observables físicos durante y al final de cada simulación.
+	\item Finalmente, hay una librería que provee una serie de rutinas auxiliares para procesar la información generada. En particular, la información m\'as relevante es contenida en archivos comprimidos. \'Esta consiste en informaci\'on detallada de cada part\'icula que llega al piso y de la lluvia en diferentes alturas, que se registra durante la evolución de la misma.
+	\end{itemize}

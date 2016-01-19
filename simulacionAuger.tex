@@ -1,24 +1,25 @@
-\chapter{Obtención de la muestra de señal: Cadena de simulaciones}
+\chapter{Obtención de la muestra de señal: cadena de simulaciones}
 \label{ch:simulacionAuger}
 
-Dada la complejidad del problema, la \'unica manera viable de obtener una muestra de señal en el detector es mediante simulaciones.
-Para ello, son necesarios una serie de programas que se encargan de simular las distintas etapas del proceso de detecci\'on:
+Debido a la complejidad del problema, la \'unica manera viable de obtener una muestra de señal en el detector es mediante simulaciones.
+Para ello, son necesarios una serie de programas que se encargan de procesar las distintas etapas del proceso de detecci\'on:
 \begin{description}
- \item[Interacción primaria:] esta incluye el procesamiento de la interacción neutrino nucleón y cuando corresponda el del decaimiento del \tauon{}. Para esto se utilizan respectivamente dos programas específicos llamados \herwig{} y \tauola{}.
- \item[Desarrollo de la EAS:] una vez obtenido los productos de la primera interacción se utiliza un programa llamado \aires{}, que simula la evolución de la cascada a través de la atmósfera.
- \item[Señal en el detector:] con la lista de partículas que llegan al suelo es posible simular la señal que estas generarían en el detector, utilizando el software oficial de la colaboración llamado \Offline{}.
+ \item[Interacción primaria:] esta incluye la simulaci\'on de la interacción neutrino nucleón y, cuando corresponda, del decaimiento del \tauon{}. 
+ Para esto se utilizan respectivamente dos programas específicos llamados \herwig{} y \tauola{}.
+ \item[Desarrollo de la EAS:] una vez obtenidos los productos de la primera interacción se utiliza un programa llamado \aires{}, que simula mediante t\'ecnicas de Monte Carlo la evolución de la cascada a través de la atmósfera.
+ \item[Señal en el detector:] con la lista de partículas que alcanzan al suelo es posible simular la señal que estas generarían en el detector, utilizando el software oficial de la colaboración llamado \Offline{}.
 \end{description}
 
 	\section{Interacción primaria: \herwig{} - \tauola{}}
 	
 	\aires{} no incluye herramientas para para procesar la interacción neutrino-nucleón ni el decaimiento \tauon{}'s.
-	Para salvar este inconveniente, fue necesario utilizar programas complementarios que devuelvan una lista de partículas y sus cuadrimomentos que luego puedan ser utilizadas para iniciar la EAS.
+	Para salvar este inconveniente fue necesario utilizar programas complementarios, que devuelven una lista de partículas y sus cuadrimomentos que pueden ser utilizadas para iniciar la EAS en \aires.
 	
 	\subsection{Interacción neutrino-nucleón: \herwig{}}
 	
-	La interacción neutrino-nucleón fue procesada utilizando el paquete \herwig{}~\cite{cite:herwig}.
-	\herwig{} es un generador de eventos de alta energía capaz de realizar una simulación detallada de los procesos QCD, incluidas las lluvias partónicas generadas y su hadronización posterior.
-	Para ello se tomaron en cuenta las interacciones via CN  y la de todos los sabores via CC.
+	La interacción neutrino-nucleón en la atm\'osfera fue procesada utilizando el paquete \herwig{}~\cite{cite:herwig}.
+	Este generador de eventos de alta energía es capaz de realizar una simulación detallada de los procesos QCD, incluidas las lluvias partónicas generadas y su hadronización posterior.
+% 	Para ello se tomaron en cuenta las interacciones via CN y la de todos los sabores via CC.
 
 	La fracción de energía transferida por el neutrino primario a la lluvia depende en gran medida del canal de interacción débil involucrado.
 	Si la lluvia es iniciada por un $\nu_e$ vía el canal de CC, el 100\% de la energía del neutrino primario es transferida.
@@ -26,12 +27,11 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 	Como la probabilidad de que este neutrino secundario escape sin interactuar es muy alta, solo una fracción de la energía del primario es transferida a la cascada. 
 
 	A las energías involucradas, las lluvias iniciadas por $\nu_e$, $\nu_{\mu}$ y $\nu_{\tau}$ vía CN son indistinguibles desde el punto de vista del jet hadrónico producido.
-	Es por ello que simular uno solo de los tres sabores es suficiente para describir los tres canales de CN.
+	Es por ello que simular uno solo de los tres sabores fue suficiente para describir los tres canales de CN.
 
-	Las lluvias iniciadas por $\nu_{\mu}$ vía CC son muy similares a las de NC pese a que la interacción fundamental involucrada es diferente.
-	Tal como se discute en la sección \ref{sc:easNu}, es muy poco probable que el muón de alta energía producido decaiga o interactúe antes de alcanzar la tierra.
+	Las lluvias iniciadas por $\nu_{\mu}$ vía CC son muy similares a las de NC pese a que la interacción fundamental involucrada es diferente ya que, tal como se discuti\'o en la sección \ref{sc:easNu}, es muy poco probable que el muón de alta energía producido decaiga o interactúe antes de alcanzar la tierra.
 	De esta manera, es indistinguible de un neutrino secundario que emerge de una interacción de CN. 
-	Además, debido a que la distribución de la fracción de enegía que se transmite al jet (inelasticidad) es muy similar en interacciones vía CN y CC  (ver Fig.~\ref{fig:inelast}), el conjunto de simulaciones producido para los canales de CN puede se utilizado para describir, con excelente aproximación, el canal $\nu_{\mu}$ vía CC.
+	Además, debido a que la distribución de la fracción de enegía que se transmite al jet (inelasticidad) es muy similar en interacciones vía CN y CC  (ver figura \ref{fig:inelast}), el conjunto de simulaciones producido para los canales de CN puede se utilizado para describir, con excelente aproximación, el canal $\nu_{\mu}$ vía CC.
 	%
 	\begin{figure}[ht]
 	\begin{center}
@@ -75,29 +75,28 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 		Canales mediante el \tauon{} decae el $\sim96\%$ de los casos. El canal numero 3 no se observa debido a que el $\mu$ generado en el decaimiento escapa sin generar una lluvia atmosférica.
 		}
 	\end{table}
-	Dado que el canal número 3 no genera EAS\footnote{ya que el muón escapa sin interactuar}, esos eventos no deben simularse, aunque si deben ser considerados como eventos que no disparan el detector.
+	Dado que el canal número 3 no genera EAS\footnote{El muón escapa sin interactuar.} no es necesario simularlo, ya que resulta una buena aproximaci\'on considerar que estos eventos no disparan el detector.
 	Por este motivo las eficiencias de trigger e identificación de eventos ES tienen un valor máximo de $\sim0.826$.
 	
-	\section{Desarrollo de las EAS: {\sc aires}}
+	\section{Desarrollo de las EAS: \aires{}}
 
-	En la actualidad existen varios programas para simular la formación de una EAS a partir de una partícula primaria a lo largo de la atmósfera terrestre.
-	Entre ellos están {\sc corsika} y {\sc aires}.
-	En este trabajo se utilizaron EAS simuladas mediante {\sc aires}.
+	En la actualidad existen varios programas para simular EAS a lo largo de la atmósfera.
+	Entre ellos, \aires{} y {\sc corsika} son los m\'as extendidos en la comunidad de rayos c\'osmicos.
+	En este trabajo se utilizaron EAS simuladas por \aires{}~\cite{cite:aires}.
 
-	{\sc Aires} es un conjunto de programas y subrutinas que simulan la lluvia de partículas luego de la incidencia de una rayo cósmico y permite administrar la información relacionada. 
-
+	\aires{} es un conjunto de programas y subrutinas escritas en Fortran que simulan la lluvia de partículas luego de la incidencia de una rayo cósmico primario.
 	Este simulador provee un ambiente realista donde la propagación de las partículas se da teniendo en cuanta las características de la atmósfera, el campo geomagnético y la curvatura de la tierra. 
 	
-	Debido a que la cantidad de part\'iculas generada en una EAS se vuelve rapidamente inmanejable\footnote{Por ejemplo, una EAS cuya part\'icula primaria posee \cant{10^{17}}{eV} puede llegar a tener del orden de $10^8$ part\'iculas de energ\'ia mayor a \cant{100}{MeV}. Esto requerir\'ia de orden de \cant{100}{GB} para almacenarlas y 15 d\'ias de tiempo de m\'aquina para seguirlas a todas. Recordar que por lo general es necesario simular del orden de $10^3\textit{-}10^4$ EAS para hacer cualquier comparaci\'on con datos experimentales.}, es com\'un en estos programas utilizar un procedimiento estadístico de muestreo llamado {\em thinning}.
-	Este consiste en tomar un conjunto representativo de part\'iculas que luego es propagado.
-	La elecci\'on de dicho set es tal que no se alteran los valores medios de los observables de la lluvia.
+	Debido a que la cantidad de part\'iculas generada en una EAS se vuelve rapidamente inmanejable\footnote{Por ejemplo, una EAS cuya part\'icula primaria posee \cant{10^{17}}{eV} puede llegar a tener del orden de $10^8$ part\'iculas de energ\'ia mayor a \cant{100}{MeV}. Esto requerir\'ia alrededor de \cant{100}{GB} para almacenarlas y 10 d\'ias de tiempo de m\'aquina para simular cada una. Por lo general es necesario simular del orden de $10^3\textit{-}10^4$ EAS para hacer una comparaci\'on razonable con datos experimentales.}, es com\'un en estos programas utilizar un procedimiento estadístico de muestreo llamado {\em thinning}.
+	Este consiste en propagar s\'olo un conjunto representativo de las part\'iculas de la lluvia.
+	La elecci\'on de dicho set se realiza de manera de no alterar los valores medios ni las dispersiones de los observables de la lluvia.
 	Una explicaci\'on del algoritmo puede encontrarse en \cite{thining}.
 
-	Las partículas que se tienen en cuenta en las simulaciones son: fotones, electrones, positrones, muones, piones, kaones, mesones eta, bariones lambda, nucleones, antinucleones y núcleos de hasta Z=36.
-	Los neutrinos electr\'onicos y mu\'onicos que son generados en ciertos decaimientos se tienen en cuenta en cuanto a la energía, pero no son propagados.
-	
-	La part\'icula que inicia la lluvia puede ser cualquiera de las mencionadas con energías que pueden variar en el rango de \cant{10^9{\it-}10^{21}}{eV}. 
-	Tambi\'en es posible simular lluvias iniciadas por partículas primarias ``especiales'' utilizando un módulo que debe escribir cada usuario, capaz de procesar la primer interacción del primario y devolver una lista de part\'iculas tradicional que {\sc aires} pueda aceptar. 
+	En la propagaci\'on as partículas que se tienen en cuenta son: fotones, electrones, positrones, muones, piones, kaones, mesones eta, bariones lambda, nucleones, antinucleones y núcleos de hasta Z=36.
+	Los neutrinos electr\'onicos y mu\'onicos que son generados en ciertos decaimientos no son propagados.
+	La part\'icula que inicia la lluvia puede ser cualquiera de las mencionadas y su energía que puede variar en el rango de \cant{10^9}{eV} a \cant{10^{21}}{eV}. 
+	Tambi\'en es posible simular lluvias iniciadas por partículas primarias ``especiales'' utilizando un módulo que debe escribir cada usuario, capaz de procesar la primer interacción del primario y devolver una lista de part\'iculas tradicional que \aires{} pueda aceptar.
+	De esta manera fue posible inyectar las salidas de \herwig{} y \tauola{} para iniciar la simulaci\'on de la EAS.
 
 	Los procesos físicos m\'as importantes (desde el punto de vista probabilístico) que las lluvias de part\'iculas pueden sufrir son tenidos en cuenta en las simulaciones. 
 	Estos son:
@@ -121,7 +120,7 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 	\section{Señal en el detector: \Offline{}}
 	\label{sc:offline}
 	
-	Una vez que la lluvia alcanza el nivel del suelo, es necesario simular la respuesta del detector.
+	Una vez que la lluvia alcanza el nivel del suelo es necesario simular la respuesta del detector.
 	Para ello se utiliza el programa \Offline{}, que fue desarrollado en C++, dise\~nado especialmente para cubrir los requerimentos del proyecto Auger. Por ejemplo:
 	\begin{itemize}
 	\item Contiene una intefaz intuitiva y f\'acil de comprender, que sigue la misma l\'ogica que el detector real.
@@ -137,17 +136,16 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 	
 		\subsubsection{Unthinning}
 		
-		Una vez que la EAS alcanza el nivel del suelo, las part\'iculas presentes se guardan, por lo general, en archivos binarios en diversos formatos, que dependen del simulador empleado.
-		Si se ha utilizado un algoritmo de thinning, cada part\'icula se guarda con un peso respectivo que hace referencia a la cantidad de part\'iculas que esta representa.
-		\Offline{} no s\'olo permite leer archivos provenientes de varios simuladores (entre los que se encuentra {\sc Aires}), sino que tambi\'en aplica un algoritmo de \textit{unthinning} de manera de regenerar las part\'iculas no simuladas y tenerlas en cuenta en la se\~nal sobre el detector.
-		
-		Dado que el \'area instrumentada a nivel del suelo es muy chica y s\'olo unas pocas de las part\'iculas que llegan a este nivel interactúan con el detector,
+		Una vez que la EAS alcanza el nivel del suelo, las part\'iculas presentes se guardan por lo general en archivos binarios en diversos formatos, que dependen del simulador empleado.
+		Si se ha utilizado un algoritmo de thinning, a cada part\'icula le un peso estad\'istico que hace referencia a la cantidad de part\'iculas que esta representa.
+		\Offline{} no s\'olo permite leer archivos provenientes de varios simuladores (entre los que se encuentra \aires{}), sino que tambi\'en aplica un algoritmo de \textit{unthinning} que regenera las part\'iculas no simuladas para incluirlas en la se\~nal sobre el detector.
+% 		Dado que el \'area instrumentada a nivel del suelo es muy chica y s\'olo unas pocas de las part\'iculas que llegan a este nivel interactúan con el detector,
 % 		Por este motivo, para realizar el \textit{unthinning}, 
-		\Offline{} realiza el unthinning utilizando un \textit{m\'etodo de muestreo local}.
-		Todas las part\'iculas dentro de cierta zona de muestreo (correspondiente a cada detector) son seleccionadas.
-		Luego, se las dispersa espacial y temporalmente utilizando un m\'etodo estad\'istico, que se describe en \cite{unthinning1}.
-		
-		Una vez que las part\'iculas, clones de la primaria, son dispersadas se las inyecta en posiciones aleatorias de la pared del detector, teniendo en cuenta la direcci\'on de incidencia. 
+		Para ello, \Offline{} realiza lo que se denomina un \textit{m\'etodo de muestreo local}.
+		Este consiste en seleccionar todas las part\'iculas dentro de ciertas zonas de muestreo, rodeando cada estaci\'on del SD e inyectar en el tanque la una fracci\'on de las mismas.
+		Esta fracci\'on tiene en cuenta el peso estad\'istico de cada una convolucionado con la probabilidad de ingreso en el detector.
+		Luego, se las dispersa espacial y temporalmente utilizando un m\'etodo estad\'istico, que se describe en \cite{unthinning1}, distribuy\'endolas sobre las paredes del tanque.
+% 		Una vez que las part\'iculas, clones de la primaria, son dispersadas se las inyecta en posiciones aleatorias de la pared del detector, teniendo en cuenta la direcci\'on de incidencia. 
 		Un ejemplo de esto \'ultimo se muestra en la figura \ref{fig:unthinning_tank}.
 		%
 		\begin{figure}[h!]
@@ -165,18 +163,16 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 		
 		\subsubsection{Simulaci\'on del tanque}
 		
-		Para simular la respuesta del detector de superficie se ha incorporado en \Offline{} un m\'odulo especializado en la simulaci\'on del tanque basado en el paquete {\sc geant 4}~\cite{geant4}.
-		
-		{\sc geant 4} consiste en una librer\'ia de C++ que provee las herramientas necesarias para simular tanto la f\'isica como la geometr\'ia del detector.
-		Algunas caracter\'isticas de dise\~no se exponen a continuaci\'on:
-		\begin{itemize}
-		\item Se procur\'o que todos los aspectos f\'isicos en esta etapa de la simulaci\'on sean lo m\'as precisos posible, mientras se trat\'o de tener buen entendimiento de su influencia en el resultado final.
-		\item Por ser {\sc geant 4} una versi\'on m\'as sofisticada de programas anteriores, algunas de las variables del tanque fueron ajustadas de tal forma que los resultados experimentales se reproduzcan\footnote{Una de las m\'as importantes es la cantidad de fotoelectrones detectados por mu\'on vertical incidente.}.
-% 		\item La velocidad de simulaci\'on es un factor importante.
-% 		La simulaci\'on de estaciones cercanas al centro de la lluvia puede ser muy costosa debido a la gran cantidad de part\'iculas que se generan en esa regi\'on. Para evitar este inconveniente, se aplican cortes espec\'ificos en la producci\'on de fotones en el seguimiento de muones.
-		\end{itemize}
-		
-		Por otro lado, a continuaci\'on se especifican algunos de los procesos f\'isicos tenidos en cuenta en la simulaci\'on del tanque:
+		Para simular la respuesta del detector de superficie se ha incorporado en \Offline{} un m\'odulo especializado en la simulaci\'on del tanque basado en el paquete {\sc geant 4}~\cite{geant4}. 
+		Este consiste en una librer\'ia de C++ que provee las herramientas necesarias para simular tanto la f\'isica como la geometr\'ia del detector.
+% 		Algunas caracter\'isticas de dise\~no se exponen a continuaci\'on:
+% 		\begin{itemize}
+% 		\item Se procur\'o que todos los aspectos f\'isicos en esta etapa de la simulaci\'on sean lo m\'as precisos posible, mientras se trat\'o de tener buen entendimiento de su influencia en el resultado final.
+% 		\item Por ser {\sc geant 4} una versi\'on m\'as sofisticada de programas anteriores, algunas de las variables del tanque fueron ajustadas de tal forma que los resultados experimentales se reproduzcan\footnote{Una de las m\'as importantes es la cantidad de fotoelectrones detectados por mu\'on vertical incidente.}.
+% % 		\item La velocidad de simulaci\'on es un factor importante.
+% % 		La simulaci\'on de estaciones cercanas al centro de la lluvia puede ser muy costosa debido a la gran cantidad de part\'iculas que se generan en esa regi\'on. Para evitar este inconveniente, se aplican cortes espec\'ificos en la producci\'on de fotones en el seguimiento de muones.
+% 		\end{itemize}
+		Algunos de los procesos f\'isicos tenidos en cuenta en la simulaci\'on del tanque son:
 		%
 		\begin{itemize}
 		\item La simulaci\'on de la propagaci\'on de una part\'icula cargada puede incluir efectos de ionizaci\'on, producci\'on de rayos delta, scattering de Coulomb múltiple, bremsstrahlung y radiaci\'on Cherenkov.
@@ -188,24 +184,21 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 		%
 		\begin{figure}[h!]
 			\begin{center}
-			\includegraphics[width=0.7\textwidth]{fig/simulacionAuger/cher_tank_sim}
+			\includegraphics[width=0.5\textwidth]{fig/simulacionAuger/cher_tank_sim}
 			\caption{Simulaci\'on de fotones Cherenkov generados en el pasaje de un electron de baja energ\'ia a trav\'es del tanque.}
 			\label{fig:cher_tank_sim}
 			\end{center}
 		\end{figure}
 		%
 		
-		Adem\'as de toda la f\'isica involucrada, la electr\'onica de la estaci\'on tambien es simulada.
-		Luego de esta etapa, cada tanque involucrado en un evento tiene sus trazas FADC calculadas listas para ser analizadas por los algoritmos de trigger.
-		
-		\subsubsection{Trigger}
-		
-		Una vez que las trazas FADC fueron calculadas, \Offline{} posee algoritmos que calculan cada nivel de trigger del detector, desde disparos locales T2 hasta CDAS T4 y T5, especificados en la secci\'on \ref{sbsc:trig_levels}.
+		Por \'ultimo tambi\'en se simula la electr\'onica de la estaci\'on, por lo que luego de esta etapa cada tanque involucrado en un evento tiene sus trazas FADC calculadas.
+		Con esta informaci\'on es posible calcular desde los niveles de disparo locales T2 hasta los CDAS T4 y T5, especificados en la secci\'on \ref{sbsc:trig_levels}.
 		
 	\section{Librería de eventos generada}
 	\label{sc:libGen}
 	
-	Para cada búsqueda se generó una librería de eventos que cubra todo el espacio de parámetros en el cual se esperan neutrinos que puedan generar lluvias que disparen el detector.
+	En cada búsqueda se generó una librería de eventos que cubra todo el espacio de parámetros tal que puedan iniciarse lluvias atmosf\'ericas con posibilidad de disparar el detector.
+	Sus detalles, junto con los criterios utilizados para definirlas se documentan en las siguientes secciones.
 	
 		\subsection{Eventos DGL}
 		
@@ -213,8 +206,8 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 		Dado que el canal NC sólo lleva el $20\%$ de la energía del neutrino, el rango energético fue acortado a \cant{10^{18}\ -\ 10^{20.5}}{eV}, evitando así simular eventos que no dispararían el detector.
 		En canal double bang no fue tenido en cuenta, por lo que las lluvias iniciadas por \nutau{} se simularon como NC, subestimando así su eficiencia.
 		En ambos canales, se simularon ángulos cenitales desde $60^\circ$ a $75^\circ$ con un paso de $3^\circ$, utilizando ángulos azimutales aleatorios entre $0^\circ$ y $360^\circ$.
-		Con el fin de maximizar la eficiancia a la hora de simular se forzó a los neutrinos a interactuar en puntos de inyección de profundidad $D$, uniformemente distribuidos entre un valor máximo y un mínimo (que dependen del ángulo cenital) con un paso fijo de \cant{100}{g cm^{-2}}.
-		Algunos puntos de inyección muy cercanos al suelo fueron omitidos debido a que la lluvia no llega a desarrollarse lo suficiente como para dar trigger.
+		Con el fin de maximizar la eficiacia a la hora de simular se forzó a los neutrinos a interactuar en puntos de inyección de profundidad $D$, uniformemente distribuidos entre un valor máximo y un mínimo (que dependen del ángulo cenital) con un paso fijo de \cant{100}{g cm^{-2}}.
+		Algunos puntos de inyección muy cercanos al suelo fueron omitidos debido a que la lluvia no llega a desarrollarse lo suficiente como para provocar un trigger.
 		Para cada punto ($E_{\nu}$, $\theta$, $D$) se generaron 50 cascadas atmosféricas independientes.
 		Cada una de estas se utilizó para producir cinco eventos con diferente punto de impacto en \Offline{}, dando un total de 250 eventos cuasi-independientes para cada punto de inyección.
 		Todo lo anterior se resume en la tabla \ref{tab:sim_table_dgl}, mientras que la figura \ref{fig:sim_fig_dgl} muestra las profundidades simuladas como función del ángulo cenital.
@@ -266,13 +259,14 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 		\label{tab:sim_table_dgh}
 		\end{table}
 		Para cada ángulo cenital se indica la profundidad de inyección máxima considerada (medida inclinada desde el detector) y la cantidad de puntos de inyección simulados en este rango. Las energías indicadas corresponden a la del neutrino primario.
+		A diferencia de en DGL, en este an\'alisis se arroj\'o cada lluvia 3 veces sobre el detector.
 		
 		\subsection{Eventos ES}
 		
-		En el caso de los eventos ES los parámetros que identifican una lluvia atmosférica son el ángulo cenital $\theta$, el ángulo azimutal $\Phi$, la energía del \tauon{} que escapa de la tierra \etau{} y la altura sobre el detector a la que el \tauon{} decae \xd{}.
-		La energía del \tauon{} cubrió valores entre \cant{10^{16.5}}{eV} hasta \cant{10^{19.5}}{eV}, con paso de 0.5 logarítmico salvo en la zona de baja energía cuyo paso fue de 0.25.
-		El ángulo cenital barrió valores desde $90.111^\circ$ hasta $95.884^\circ$ con paso de $0.573^\circ=0.1 \rm rad$ y en la zona de baja energía el ángulo máximo fue en algunos casos $93.549^\circ$.
-		El ángulo azimutal $\Phi$ se eligió al azar entre $0^\circ$ y $360^\circ$.
+		En el caso de los eventos ES los parámetros que identifican una lluvia atmosférica son el ángulo cenital $\theta$, el ángulo azimutal $\phi$, la energía del \tauon{} que escapa de la tierra \etau{} y la altura sobre el detector a la que el \tauon{} decae \xd{}.
+		La energía del \tauon{} tom\'o valores de \cant{10^{16.5}}{eV} a \cant{10^{19.5}}{eV}, con paso de 0.5 logarítmico salvo, en la zona de baja energía cuyo paso fue de 0.25.
+		El ángulo cenital barrió valores desde $90.111^\circ$ hasta $95.884^\circ$ con paso de $0.573^\circ\sim0.1 \rm rad$ y en la zona de baja energía el ángulo máximo fue en algunos casos $93.549^\circ$.
+		El ángulo azimutal $\phi$ se eligió al azar entre $0^\circ$ y $360^\circ$.
 		Con respecto a la altura de decaimiento \xd{} se utilizó un valor máximo que dependió de la energía del \tauon, y pasos de \cant{100}{m} o \cant{50}{m} para la zona de baja energía.
 		Al igual que para los eventos DGH, para generar la libreria de eventos ES se simularon 50 eventos para cada punto ($\theta$,\etau{},\xd{}) y se utilizó cada lluvia 3 veces sobre el detector, logrando 150 eventos cuasi-independientes en cada caso. 
 		La tabla \ref{tab:sim_table_es} condensa toda la información sobre las simulaciones ES, mientras que la figura \ref{fig:sim_fig_es} muestra los conjuntos de ($\theta$,\etau{},\xd{}) simulados.
@@ -325,7 +319,7 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 		%
 		\begin{figure}[h!]
 			\begin{center}
-			\includegraphics[width=0.85\textwidth]{fig/simulacionAuger/3D_completeParameterSpace5}
+			\includegraphics[width=0.65\textwidth]{fig/simulacionAuger/3D_completeParameterSpace5}
 			\caption{
 			Conjunto de ($\theta$,\etau{},\xd{}) utilizados para generar la librería de eventos ES.
 			}
@@ -336,37 +330,48 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 	\section{Pesos de los eventos simulados}
 	\label{sc:pesos}
 	
-	Si bien hasta el momento cada punto del espacio de parámetros, $(E_\nu,\theta,\phi,D)$ en DG y $(E_\tau,\theta,\phi,x_d)$ en ES, se encuentra bien representado, las frecuencia relativa con las que uno espera observarlos no suele ser la elegida a la hora de simular.
-	Por este motivo, a la hora de poner a punto el método de selección será necesario corregir el peso de nuestra muestra simulada de tal manera que represente lo que realmente uno espera observar.
+	Si bien hasta el momento cada punto del espacio de parámetros, $(E_\nu,\theta,\phi,D)$ en DG y $(E_\tau,\theta,\phi,x_d)$ en ES, se encuentra bien representado, la frecuencia relativa de ocurrencia de eventos con tales par\'ametros no es la elegida a la hora de simular.
+	Por este motivo, antes de entrenar el método de selección será necesario corregir el peso estad\'istico de la muestra.
 		
 		\subsection{Correción en DG}
 		
-		Tal como fue discutido en el cap\'itulo \ref{ch:intro}, se espera que el flujo difuso de neutrinos siga la forma $\Phi=k\cdot E^{-2}$. Por otro lado la, la sección eficaz $\nu$-nucleón crece, de manera aproximada, como $E^{1/3}$~\cite{cite:cooper_sarkar}.
-		La dependencia del peso con el ángulo cenital surge de la proyección del área del detector en la dirección del flujo incidente (ver sección \ref{sc:expoNu} más adelante para una explicación detallada) y de que el paso en los ángulos simulados no es constante.
-		Por último es necesario tener en cuenta que dado que la sección eficaz de los neutrinos es muy pequeña, su rango en la atmósfera es muy grande.
-		Por esto es una buena aproximación considerar que todos las profundidades $D$ son igual de probables.
+		Para aplicar esta correcci\'on es necesario identificar todos los factores que modifican la cantidad de eventos en funci\'on de $E_\nu$, $\theta$, $\phi$ y $D$.
+		En primer lugar, tal como se discuti\'o en el cap\'itulo \ref{ch:intro}, se espera que el flujo difuso de neutrinos tenga la forma $\frac{dN}{dE_\nu}=k\cdot E_\nu^{-2}$. 
+		Asimismo, la sección eficaz $\nu$-nucleón crece como $E_\nu^{1/3}$~\cite{cite:cooper_sarkar}, lo que hasta el momento da una dependencia de $E_\nu^{-5/3}$.
+		Sin embargo, dado que la energ\'ia se dividi\'o en bines logar\'itmicos, el volumen del espacio de par\'ametros representado por cada set de lluvias no es constante.
+		Esto se corrige agregando el jacobiano $E_\nu/\log{10}$ a la ecuaci\'on, lo que deja una dependencia de $\propto E_\nu^{-2/3}$.
+		Por otro lado, el peso var\'ia con el ángulo cenital seg\'un la proyección del área del detector en la dirección del flujo incidente (ver sección \ref{sc:expoNu} más adelante para una explicación detallada), del la fracci\'on de \'angulo s\'olido representada y de que el paso en los ángulos simulados no es constante, agregando un factor $\cos\theta \sin\theta\Delta\theta$ a la ecuaci\'on.
+		Despreciando la influencia del campo geomagn\'etico, los pesos no var\'ian con el \'angulo azimutal $\phi$.
+		Por último, dado que la sección eficaz de los neutrinos es pequeña, su rango en la atmósfera es varios \'ordenes de magnitud m\'as grande que su espesor.
+		Por este motivo resulta una buena aproximación considerar que todos las profundidades $D$ son igual de probables.
 		Uniendo los ingredientes anteriores se obtiene:
 		%
 		\begin{equation}
-		w(E_\nu,\theta) \propto \cos\theta \sin\theta \, E^{-2/3} \Delta\theta
+		w(E_\nu,\theta) \propto \cos\theta \sin\theta \, E_\nu^{-2/3} \Delta\theta
 		\end{equation}
 		%
-		que se utiliza para definir la importancia relativa entre los eventos simulados.
 		
 		\subsection{Corrección en ES}
 		\label{sbsc:corrES}
-		El caso de las lluvias ES es bastante más complicado dado que los parámetros que nos interesa corregir son $(E_\tau,\theta,\phi,x_d)$.
-		Por esto, además de la dependencia con el ángulo sólido, es necesario incluir la probabilidad de que el \tauon{} escape de la tierra con cierta energía y decaiga a cierta altura.
-		Entonces, para construir los pesos de los eventos ES puede escribirse:
+		En este caso los parámetros que nos interesa corregir son $(E_\tau,\theta,\phi,x_d)$.
+		Si bien la dependencia con el ángulo sólido se calcula de la misma manera que en eventos DG, la inclusi\'on de la probabilidad de que el \tauon{} escape de la tierra con cierta energía y decaiga a cierta altura complica significativamente el c\'alculo.
+		Esto puede verse en la ecuaci\'on \ref{eq:wi}, en la que se escribe la integral que hay que resolver para calcular los pesos $w(E_\tau,\theta,x_d)$.
 		%
 		\begin{equation}
-		 w(E_\tau,\theta,x_d) \propto \int_{E_\tau}^\infty \Phi(E_\nu)dE_\nu f(E_\tau|E_\nu,\theta) h(x_d,(E_\tau,\theta)) E_\tau \Delta\log E_\tau \Delta x_d
+		\begin{aligned}
+		 w(E_\tau,\theta,x_d) \propto  
+		 \left[
+		 \int_{E_\tau}^\infty \frac{dN}{dE_\tau}(E_\nu) f(E_\tau|E_\nu,\theta) dE_\nu
+		 \right]
+		 h(x_d,(E_\tau,\theta)) E_\tau 
+		 \cos\theta \sin\theta&\\
+		 \Delta\log E_\tau \Delta x_d \Delta\theta&
+		 \end{aligned}
 		 \label{eq:wi}
 		\end{equation}
 		%
-		donde la integral aparece porque deben tenerse en cuenta todos los \nutau{}'s que pueden generar un \tauon{} de energía \etau{}.
 		La aparición de los términos $E_\tau \Delta\log E_\tau \Delta x_d$ se debe nuevamente a que los bines simulados no se encuentran uniformemente distribuidos en las variables $(E_\tau,x_d)$.
-		Al igual que para las lluvias DG, el flujo difuso de neutrinos se supone $\Phi=k\cdot E^{-2}$.
+		Al igual que para las lluvias DG, el flujo difuso de neutrinos se supone $\frac{dN}{dE_\tau}(E_\nu)=k\cdot E_\nu^{-2}$ y la contribuci\'on del \'angulo s\'olido es $\cos\theta \sin\theta$.
 		La función $h({\rm x_d},(E_\tau,\theta))$ corresponde a la probabilidad de que un \tauon{} de parámetros $(E_\tau,\theta)$ decaiga a una altura \xd{} del detector, y tiene la forma (distribuci\'on exponencial):
 		%
 		\begin{equation}
@@ -387,16 +392,15 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 		 \label{eq:ptaudecay}
 		\end{equation}
 		%
-		
-		En la ecuación \ref{eq:wi} la parte complicada reside en $f(E_\tau|E_\nu,\theta)$, que corresponde a la probabilidad de que dado un neutrino de energía $E_\nu$ y ángulo $\theta$ emerja de la tierra un \tauon{} de energía \etau{}.
-		Para obtener estas probabilidades es necesario recurrir a simulaciones, lo que se detalla a continuación.
+		Por \'ultimo, en la ecuación \ref{eq:wi} la parte complicada reside en $f(E_\tau|E_\nu,\theta)$, que corresponde a la probabilidad de que dado un neutrino de energía $E_\nu$ y ángulo $\theta$ emerja de la tierra un \tauon{} de energía \etau{}.
+		Para obtener estas probabilidades es necesario simular todo el proceso, lo que se desarrolla en la siguiente secci\'on.
 		
 		\subsubsection{\label{sbsbsc:sim_prop_tierra}Propagaci\'on dentro de la tierra}
 	
 		Para simular la interacción del \nutau{} y propagaci\'on del \tauon{} en la tierra se utiliz\'o un programa que realiza el c\'alculo mediante m\'etodos de Monte Carlo. Este fue desarrollado por J. A. Mu\~niz y E. Zas, del grupo de altas energ\'ias de la Universidad de Santiago de Compostela.
 		Una explicaci\'on detallada del programa puede encontrarse en \cite{gap_tau_tierra}.
 		
-		Este c\'odigo permite propagar los \nutau{}s y \tauon{}s en la tierra y, dado el \'angulo cenital \tita{} y la energ\'ia del neutrino incidente \enu{}, calcular la probabilidad de que un \tauon{} alcance la superficie de la tierra con energ\'ia \etau{}.
+		Este c\'odigo permite propagar los \nutau{}'s y \tauon{}'s en la tierra y, dado el \'angulo cenital \tita{} y la energ\'ia del neutrino incidente \enu{}, calcular la probabilidad de que un \tauon{} alcance la superficie de la tierra con energ\'ia \etau{}.
 		Estos c\'alculos se realizan teniendo en cuenta la interacci\'on del \nutau{} via CC y CN, la p\'erdida de energ\'ia del \tauon{} (con $\beta$
 % 		\footnote{ver ecuaci\'on \ref{eq:tau_losses}}
 		dependiente o independiente de la energ\'ia) y la regeneraci\'on del flujo de \nutau{} debido a interacciones via CN y a decaimientos de leptones \tauon{}.
@@ -404,7 +408,7 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 		La simulaci\'on consta de dos etapas principales que se alternan hasta que se alcanza la superficie:
 		%
 		\begin{description}
-		\item[\textbf{Interacci\'on del \nutau{}:}] Se hace interactuar al neutrino siguiendo una distribuci\'on exponencial en $x$, donde $x$ es la variable que mide la cantidad de materia atravesada por el \nutau{}. Para ello, se tienen en cuenta interacciones via CC y CN. Si se diera una interacci\'on via CC, se produce un \tauon{} cuya energ\'ia proviene de muestrear la sección efic\'az diferencial de CC, $\frac{d\sigma^{cc}}{dy}$. En cambio, si la interacci\'on se produce via CN, es generado un nuevo \nutau{} de energ\'ia menor que se hace interactuar nuevamente.
+		\item[\textbf{Interacci\'on del \nutau{}:}] Se hace interactuar al neutrino siguiendo una distribuci\'on exponencial en $x$, la variable que mide la cantidad de materia atravesada por el \nutau{}. Para ello, se tienen en cuenta interacciones via CC y CN. Si se diera una interacci\'on via CC, se produce un \tauon{} cuya energ\'ia proviene de muestrear la sección efic\'az diferencial de CC, $\frac{d\sigma^{cc}}{dy}$. En cambio, si la interacci\'on se produce via CN, es generado un nuevo \nutau{} de energ\'ia menor que se hace interactuar nuevamente.
 		\item[\textbf{Propagaci\'on del \tauon{}:}] En caso de que un \tauon{} sea producido, se lo propaga de a peque\~nos pasos, calculando en cada uno de ellos la energ\'ia perdida debido a la interacci\'on con el medio y la probabilidad de decaimiento (como funci\'on de su energ\'ia). Si decayese produciendo un nuevo \nutau{}, se comienza el procedimiento nuevamente desde el punto del \'ultimo decaimiento.
 		\end{description}
 		%
@@ -416,7 +420,7 @@ Para ello, son necesarios una serie de programas que se encargan de simular las 
 			\end{center}
 		\end{figure}
 		
-		El programa fue validado utilizando programas mucho m\'as complejos, como ANIS \cite{anis}.
+		El programa fue validado utilizando otros m\'as complejos, como ANIS \cite{anis}.
 		Tambi\'en se realiz\'o una comparaci\'on del flujo de \tauon{} saliente obtenido mediante el calculo te\'orico que puede encontrarse en \cite{prop_tau} y el obtenido por este programa, para diferentes \'angulos cenitales.
 		Esta \'ultima comparaci\'on se muestra en la figura \ref{fig:comp_tau_mc_teo}, en la que se observa un muy buen acuerdo entre ambos resultados.
 		%
