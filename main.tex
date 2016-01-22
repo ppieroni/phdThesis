@@ -20,6 +20,8 @@
 \usepackage{diagbox}
 \usepackage{textcomp}
 \usepackage{booktabs}
+\usepackage[font=small]{caption}  % mas chico aun -> [font=footnotesize]
+\usepackage[toc]{appendix}
 
 \let\verbatiminput=\verbatimtabinput
 
@@ -136,8 +138,8 @@
 % \include{EASAuger}
 % \include{detectorAuger}
 % \include{estrategiaAuger}
-\include{simulacionAuger}
-% \include{seleccionAuger}
+% \include{simulacionAuger}
+\include{seleccionAuger}
 % \include{resultadosAuger}
 % % %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %   Deteccion con radio
@@ -151,11 +153,14 @@
 % %   Conclusiones, apendices y bbl
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \include{conclusiones}
-% \appendix
+\begin{appendices}
+
 % % \include{appendixAires}
+\include{appendixDoublePeak}
 % \include{appendixTierraCurva}
 % \include{appendixConeInt}
 % \include{appendixTopDown}
+\end{appendices}
 % \include{bbl}
 
 \end{document}

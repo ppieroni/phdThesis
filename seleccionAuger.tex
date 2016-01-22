@@ -3,7 +3,7 @@
 
 En este capítulo se describe la metodología aplicada para elegir el criterio de selección en las tres búsquedas.
 En primer lugar se definen cortes de calidad que eliminan estaciones o incluso eventos espúreos, con el fin de lograr una reconstrucción confiable.
-Una vez hecho ésto se utilizan variables topológicas y temporales para elegir eventos inclinados, y luego  se agrega información de las trazas para seleccionar las lluvias jóvenes.
+Una vez logrado, se utilizan variables topológicas y temporales para seleccionar eventos inclinados, y luego  se agrega información de las trazas para discriminar las lluvias jóvenes.
 
 \section{Criterios de calidad}
 
@@ -28,10 +28,9 @@ Una vez hecho ésto se utilizan variables topológicas y temporales para elegir 
 		\subsubsection{Criterios basados en la integral de la señal}
 		
 		Este conjunto de cortes es el resultado de estudios llevados a cabo por el grupo de monitoreo del observatorio~\cite{pmtsAuger}. 
-		A partir de estos estudios se provee una lista de PMT's inestables día a día.
-		Los parámetros que son estudiados para definir esta clasificación son las líneas de base del ánodo y del dínodo, y el llamado relación entre el dínodo y el ánodo.
-		
-		En el caso de las líneas de base se requiere que sus fluctuaciones sean pequeñas, mediante un corte en su RMS. Para la relación dínodo/ánodo además se utilizan dos cortes que limitan su valor máximo y mínimo.
+		A partir de ellos se provee una lista de PMT's inestables día a día.
+		Los parámetros que se utilizan para definir esta clasificación son las líneas de base del ánodo, del dínodo y la llamada relación dínodo-ánodo (RDA).
+		En el caso de las líneas de base se impone un l\'imite a las fluctuaciones, mediante un corte en su RMS de los valores diarios, mientras que para la RDA se limita adem\'as su valor máximo y mínimo.
 		
 		La figura \ref{fig:event1634332} muestra un ejemplo en el que el PMT número 3 es descartado debido a que posee una relación dínodo/ánodo mayor al permitido, mientras que las otras dos estaciones muestran valores normales.
 		
@@ -39,6 +38,7 @@ Una vez hecho ésto se utilizan variables topológicas y temporales para elegir 
 			\begin{center}
 			$
 			\begin{array}{cc}
+			\text{\'Anodo} &\text{D\'inodo} \\
 			\includegraphics[width=0.47\textwidth]{fig/seleccionAuger/ev1634332_pmt1_anode.pdf} & \includegraphics[width=0.47\textwidth]{fig/seleccionAuger/ev1634332_pmt1_dynode.pdf}\\
 			\includegraphics[width=0.47\textwidth]{fig/seleccionAuger/ev1634332_pmt2_anode.pdf} & \includegraphics[width=0.47\textwidth]{fig/seleccionAuger/ev1634332_pmt2_dynode.pdf}\\
 			\includegraphics[width=0.47\textwidth]{fig/seleccionAuger/ev1634332_pmt3_anode.pdf} & \includegraphics[width=0.47\textwidth]{fig/seleccionAuger/ev1634332_pmt3_dynode.pdf}\\
@@ -48,7 +48,7 @@ Una vez hecho ésto se utilizan variables topológicas y temporales para elegir 
 			Estación número 717 (Bobik) en el evento 1634332 detectado el 19 de Septiembre de 2005.
 			De arriba hacia abajo PMT's de 1 a 3.
 			En la columna izquierda (derecha) se muestra la traza FADC del ánodo (dínodo).
-			El PMT's 3 es rechazado por tener una relación dínodo/ánodo alta.
+			El PMT's 3 es rechazado por tener una valor de RDA alto.
 			}
 			\label{fig:event1634332}
 			\end{center}
@@ -57,15 +57,14 @@ Una vez hecho ésto se utilizan variables topológicas y temporales para elegir 
 		
 		\subsubsection{Criterios basados en la forma de la señal}
 		
-		Cuando además de la integral de la señal se presta atención a la forma de la misma, otro tipo de patologías salen a la luz, la mayoría de las veces dando lugar a un exceso de señal en la traza.
-		
-		Para detectar este tipo de PMT's problemáticos se diseñó un procedimiento especial, que se detalla a continuación:
+		Cuando además de la integral de la señal se presta atención a su salen a la luz otro tipo de patologías que, la mayoría de las veces, dan lugar a un exceso de señal en la traza.
+		Para detectar este tipo de PMT's problemáticos se implementa el procedimiento que se detalla a continuación:
 		\begin{enumerate}
 		 \item Se calculan las integrales de las señales en el dínodo correspondientes a la última mitad de la traza ($\Sigma_i$, con $i$ corriendo sobre los PMT's).
 		 \item Se descuenta a cada $\Sigma_i$ el bin de mayor señal y su entorno, para eliminar pulsos generados por muones accidentales.
 		 \item Se etiqueta un PMT como dudoso si se cumple:
 		 \begin{itemize}
-		  \item La estación posee al menos dos PMT's activos.
+		  \item La estación posee al menos dos PMT's activos\footnote{Las estaciones con 1 solo PMT se analizan m\'as adelante.}.
 		  \item El máximo $\Sigma_i$ es mayor a \cant{4}{VEM} y al menos 7 veces mayor que el resto.
 		 \end{itemize}
 		\end{enumerate}
@@ -95,16 +94,16 @@ Una vez hecho ésto se utilizan variables topológicas y temporales para elegir 
 
 	\subsection{Selección de estaciones}
 	
-	Hay varias razones para descartar estaciones. Por ejemplo algunas de ellas poseen un solo PMT activo durante algún período de tiempo, o si cierto evento fue registrado durante una tormenta eléctrica, puede ser que la señal de radio emitida por un relámpago haya interferido con la electrónica, o simplemente algún muon accidental disparó la estación que realmente no forma parte del evento.
-	A continuación se detallan los procedimientos para descartar este tipo de anomalias.
+	Hay varias razones para descartar estaciones. Por ejemplo, si algunas de ellas poseen un solo PMT activo durante algún período de tiempo, si cierto evento fue registrado durante una tormenta eléctrica, es posible que la señal de radio emitida por un relámpago haya interferido con la electrónica, o simplemente algún muon accidental disparó la estación que realmente no forma parte del evento.
+	A continuación se detallan los procedimientos para detectar este tipo de anomal\'ias.
 	
 		\subsubsection{Estaciones con un solo PMT activo}
 		
 		Aunque cada estación cuenta con 3 PMT's algunos pueden tener fallas temporales o permanentes, lo que hace necesario eliminarlos del análisis.
-		Dado que la superficie instrumentada es inmensa e incluso a veces de dificil acceso, reemplazar o arreglar un PMT que presenta fallas puede llevar meses.
-		Si un candidato a neutrinos apareciera, es necesario poder confirmar la señal en la estación con al menos dos PTM's. 
-		Si bien es raro, es posible que suceda que una estación siga funcionando con un PMT activo.
-		En este caso, no sería posible realizar la confirmación de la traza, por lo que esa estación se descartaría del evento.
+		Dado que la superficie instrumentada es inmensa e incluso a veces de dif\'icil acceso, reemplazar o arreglar un PMT que presenta fallas puede llevar meses.
+		Si un candidato a neutrinos apareciera, ser\'ia necesario poder confirmar la señal en la estación por al menos dos PTM's. 
+		Si bien no sucede con frecuencia, es posible que suceda que una estación siga funcionando con s\'olo un PMT activo.
+		En este caso no sería posible realizar tal confirmación y por ende, debe ser descartada del evento.
 		
 		\subsubsection{Estación con señales debidas a relámpagos}
 		
@@ -120,8 +119,7 @@ Una vez hecho ésto se utilizan variables topológicas y temporales para elegir 
 		\end{center}
 		\end{figure}
 		% 
-		La oscilación en la señal se usa para detectar este tipo de sucesos.
-		Si un evento contiene una estación de este tipo, se descarta.
+		La oscilación en la señal se usa para detectar este tipo de sucesos y si un evento contiene una estación de este tipo se lo descarta.
 		
 		\subsubsection{Estaciones accidentales: efecto de los muones atmosféricos}
 		
@@ -132,8 +130,8 @@ Una vez hecho ésto se utilizan variables topológicas y temporales para elegir 
 		\begin{enumerate}
 		\item \textbf{Producir un trigger T2 en una estación de superficie que no pertenece al evento:} como las partículas que disparan la estación no pertenecen a la lluvia, el tiempo del T2 adicional tendrá una distribución uniforme en la ventana de 60~$\mu$seg del T3. Como la selección de lluvias inclinadas depende fuertemente de las posiciones y tiempos de disparo de las estaciones, una estación extra puede dar como resultado una incorrecta estimación de la geometría de la lluvia, especialmente en los eventos más pequeños.
 
-		\item \textbf{Agregar señal espurea en alguna de las estaciones que sí pertenecen al evento:} si la señal accidental ocurre algunos $\mu$seg antes o despues de que las partículas de la cascada atmosférica alcancen la estación el resultado es que ambas señales se fusionan en una misma traza, modificando sus observables.
-		Como se discutirá más adelante en este capítulo, este efecto puede ser importante y será tenido en cuenta en la elaboración del criterio de identificación de neutrinos. 
+		\item \textbf{Agregar señal espurea en alguna de las estaciones que sí pertenecen al evento:} si la señal accidental ocurre algunos $\rm\mu$seg antes o despues de que las partículas de la cascada atmosférica alcancen la estación el resultado es que ambas señales se fusionan en una misma traza, modificando sus observables.
+		Como se discutirá más adelante en este capítulo, este fen\'omeno puede ser importante y será tenido en cuenta en la elaboración del criterio de identificación de neutrinos. 
 		Por otro lado, si la señal espurea es la que fija el tiempo de disparo del T2 (ver figura \ref{fig:trazaMalTiempo}), la reconstrucción geométrica del evento también se verá afectada.
 		\end{enumerate}
 		%
@@ -144,14 +142,12 @@ Una vez hecho ésto se utilizan variables topológicas y temporales para elegir 
 		\label{fig:trazaMalTiempo}
 		\end{center}
 		\end{figure}
+		%
+		Entonces, con el fin de minimizar el impacto de estas señales espureas se aplica el procedimiento que se describe a continuaci\'on.
 		
-		Con el fin de minimizar el impacto de estas señales espúreas que producen los muones accidentales se aplica el siguiente procedimiento.
-		
-		\titulo{Algoritmo de limpieza de traza} la idea del método es simple, la cantidad de energía que los muones depositan en el tanque es, a primer orden, proporcional a la longitud del camino que recorren dentro del tanque.
-		Dado que las estaciones son bastante más anchas que altas (\cant{1.2}{m} de alto por \cant{3.6}{m} de diámetro), los muones inclinados producen una señal que, en promedio, es mayor que la producida por los verticales.
-		
-		Los muones accidentales son mayormente verticales como se puede ver figura \ref{fig:atmo_mu_flux}.
-		Este hecho puede ser explotado para identificar qué fracción de la traza debe ser eliminada.
+		\titulo{Algoritmo de limpieza de traza} la cantidad de energía que los muones depositan en el tanque es, a primer orden, proporcional a la longitud del camino que recorren dentro del mismo.
+		Dado que las estaciones son bastante más anchas que altas (\cant{1.2}{m} de alto por \cant{3.6}{m} de diámetro), los muones inclinados producir\'an entonces una señal, en promedio, mayor que los verticales.
+		Si adem\'as se tiene en cuenta que los muones accidentales son mayormente verticales (como se puede ver figura \ref{fig:atmo_mu_flux}) y ocurren aleatoriamente, es posible definir un procedimiento que identifique qué fracción de la traza debe ser eliminada.
 		%
 		\begin{figure}[ht]
 		\begin{center}
@@ -161,18 +157,18 @@ Una vez hecho ésto se utilizan variables topológicas y temporales para elegir 
 		\end{center}
 		\end{figure}
 		
-		El algoritmo de limpieza utilizado fue desarrollado por el grupo de la UBA en el marco de este análisis~\cite{trace_cleaning}.
-		Este comienza al nivel de cada PMT dentro del tanque:
+		El algoritmo de limpieza utilizado fue desarrollado por el grupo de la UBA en el marco del an\'alisis de DGH y tomado por el de ES~\cite{trace_cleaning,cite:tesisJavier,cite:tesisYann}.
+		Este comienza al nivel de cada PMT dentro del tanque y se procede como se describe a continuaci\'on:
 		%
 		\begin{enumerate}
-		 \item Se extraen los segmentos de señal de cada PMT, definidos por al menos 2 bines consecutivos que presenten al menos 3 unidades de FADC por sobre la linea de base.
-		 Se guardan los índices de inicio y fin, y se calcula la carga $Q$ de cada segmento y su pico $P$.
-		 \item Se unen los segmentos si el gap entre ellos es de menos de 20 bines más la longitud del primer segmento, y si al menos una de las siguientes condiciones se cumple:
+		 \item Se extraen los segmentos de señal de cada PMT, definidos por al menos 2 bines consecutivos que presenten al menos 3 unidades de FADC sobre la linea de base.
+		 Se guardan los índices de inicio y fin, y se calcula su carga $Q$ y su pico $P$.
+		 \item Se unen segmentos contiguos si el gap entre ellos es de menos de 20 bines más la longitud del primero, y si al menos una de las siguientes condiciones se cumple:
 		 \begin{enumerate}
-		  \item El primer segmento posee una señal $Q_1>0.3Q_2$
+		  \item El primer segmento posee una señal $Q_n>0.3Q_{n+1}$
 		  \item El segundo segmento posee menos de 5 unidades FADC sobre la línea de base
 		 \end{enumerate}
-		El objetivo de estas condiciones es unir segmentos que hayan sido provocados por partículas de la lluvia.
+		El objetivo de estas condiciones es unir los que hayan sido provocados por partículas de la lluvia.
 		\item Se promedian las señales de los diferentes PMT's.
 		\item El start time de los segmentos combinandos se toma de la contribución que posea la mayor señal.
 		\end{enumerate}
@@ -180,7 +176,7 @@ Una vez hecho ésto se utilizan variables topológicas y temporales para elegir 
 		Como ejemplo, en la figure \ref{fig:trazaMalTiempo}, el algoritmo encuentra dos segmentos.
 		En principio, el segmento con la señal integrada más grande se conserva y el resto se descarta.
 		Sin embargo, tambien podría ocurrir que uno o más segmentos posean una señal similar, por lo que no sería claro cuál es el segmento que realmente interesa.
-		Para salvar estas situaciones, se aplica un algoritmo especial, comenzando por segmentar la señal promediada con un criterio similar al que se aplica para segmentar la de los PMT's:
+		Para salvar estas situaciones, se aplica un algoritmo especial, que comienza segmentando la señal promedio deos PMT\'s con un criterio similar al que se aplica para segmentar la de los individuales:
 		%
 		\begin{enumerate}
 		 \item El segmento comienza con el primer bin que presente una señal por encima de los \cant{0.2}{VEM}.
@@ -197,7 +193,7 @@ Una vez hecho ésto se utilizan variables topológicas y temporales para elegir 
 		Las trazas inducidas por muones atmosféricos tienden a tener valores de $s$ pequeños cuando se los compara con las inducidas por lluvias inclinadas.
 		Si hubiera más de un segmento que cumpla $s>0.5s_{max}$, con $s_{max}$ la máxima puntuación, la estación es rechazada debido a que el tiempo de inicio de la señal es ambiguo.
 		En caso contrario, el segmento con mayor puntuación se conserva y el resto se rechaza.
-		La figura \ref{fig:multipicos} muestra un ejemplo de una estación que muestra tres segmentos similares. Esta estación es removida del evento antes de aplicarle la reconstrucción.
+		La figura \ref{fig:multipicos} muestra un ejemplo de una estación que presenta tres segmentos similares. Esta estación es removida del evento antes de aplicarle la reconstrucción.
 		%
 		\begin{figure}[ht]
 			\begin{center}
@@ -211,52 +207,51 @@ Una vez hecho ésto se utilizan variables topológicas y temporales para elegir 
 		
 	\subsection{Reconstrucción preeliminar}
 	
-	Una vez aplicados los procedimientos hasta aquí descriptos, los eventos cuentan con una lista de estaciones cuyos tiempos de disparo T2 se encuentran bien definidos.
-	Sin embargo, los eventos todavia pueden contener estaciones disparadas por muones atmosféricos o incluso por una lluvias de baja energía.
-	Con el fin de identificar las estaciones que realmente pertenecen al evento que nos interesa, se pide que las estaciones pertenecientes a los eventos satisfagan una serie de requerimentos de compacticidad espacial y temporal.
+	Una vez aplicados los procedimientos hasta aquí descriptos, los eventos consisten en una lista de estaciones cuyos tiempos de disparo T2 se encuentran bien definidos.
+	Sin embargo, todav\'ia puede existir entre ellas algunas disparadas por muones atmosféricos o incluso por una lluvias de baja energía.
+	Con el fin de descartar estas estaciones espureas se impone una serie de requisitos de compacticidad espacial y temporal sobre los tiempos de disparo del evento.
 	
 	\subsubsection{Eliminación de estaciones aisladas} 
 	
 	El primer paso es remover las estaciones aisladas pidiendo las siguientes dos condiciones:
 	\begin{enumerate}
-	 \item Criterio estandar: Se elimina una estación como aislada si no cuple que:
+	 \item Criterio estandar: Se elimina una estación como aislada si no cumple que:
 	 \begin{enumerate}
-	  \item Existe una estación con T2 a menos de tres coronas, \cant{d_1=4700}{m}, y dentro de un rango temporal de compatible con un frente que se desplaza a la velocidad de la luz, \cant{t_1=\frac{d_1}{c}\sim15700}{ns}.
-	  \item Eciste una segunda estación con T2 en la cuarta corona, \cant{d_1=6200}{m}, y con el mismo criterio temporal, \cant{t_2=\frac{d_2}{c}\sim20700}{ns}.
+	  \item Existe una estación con T2 a menos de tres coronas, \cant{d_1\leq4700}{m}, y dentro de un rango temporal de compatible con un frente que se desplaza a la velocidad de la luz, $t_1=\frac{d_1}{c}$ (\cant{\sim15700}{ns} para el caso de 3 coronas).
+	  \item Existe adem\'as una segunda estación con T2 dentro de la cuarta corona, \cant{d_2\leq6200}{m}, y con el mismo criterio temporal, \cant{t_2=\frac{d_2}{c}\sim20700}{ns} cuando la separacion sea de 4 coronas.
 	 \end{enumerate}
-	 \item Eliminación de señales muónicas: Si la magnitud de la traza es compatible con la señal de un muon vertical, ${\rm AoP} \equiv \frac{S}{S_{peak}}<1.4$, el criterio es mas estricto, pidiendo al menos una señal con T2 en la primer corona o en las estaciones cercanas de la segunda, \cant{d=2700}{m}.
+% 	 \item Eliminación de señales muónicas: Si la magnitud de la traza es compatible con la señal de un mu\'on vertical, ${\rm AoP} \equiv \frac{S}{S_{peak}}<1.4$, el criterio es m\'as estricto, pidiendo al menos una señal con T2 en la primer corona o en las estaciones cercanas de la segunda, \cant{d\leq2700}{m}.
 	\end{enumerate}
 	
 	\subsubsection{Selección Top-Down} 
 	
-	El segundo paso consiste en la selección de estaciones compatibles con haber sido disparadas por el frente de partículas de una EAS.
+	El segundo paso consiste en seleccionar las estaciones cuyos tiempos de disparo son compatibles con el pasaje del frente de part\'iculas de una EAS.
 	El algoritmo utilizado para este propósito se conoce como \emph{selección Top-Down} \cite{topDownSel}.
-	
-	La idea general del método consiste en ir descartando estaciones hasta encontrar una configuración que cumpla las condiciones requeridas.
-	A continuación se expone el paso a paso del algorítmo:
+	La idea general del método se basa en ir descartando las estacionesmenos veros\'imiles hasta encontrar una configuración satisfactoria.
+	A continuación se expone paso a paso del algorítmo:
 	%
 	\begin{enumerate}
-	 \item Se realiza una reconstrucción del ángulo cenital del evento $\theta_{rec}$ asumiendo un frente plano y un tiempo de arrivo $t_0$, definido como el tiempo promedio de inicio de señales y pesado por las mimas. Este procedimiento se realiza analiticamente como se detalla en el apéndice \ref{ap:topDown}
-	 \item Se evalua la compatibilidad temporal para cada estación y para el evento completo evaluando:
+	 \item Se realiza una reconstrucción del ángulo cenital del evento, $\theta_{rec}$, asumiendo un frente plano y un tiempo de arribo $t_0$, definido como el tiempo promedio de inicio de señales pesado por las mismas. Este procedimiento se realiza anal\'iticamente como se detalla en el apéndice \ref{ap:topDown}
+	 \item Se determina la compatibilidad temporal de cada estación del evento requiriendo:
 	 \begin{itemize}
 	  \item $\Delta t_i < (N-2)\cdot 250{\rm ns} \cdot {\rm max}(\cos\theta_{rec},0.2)$
 	  \item $\sum_i\Delta t_i^2 < \left[(N-2)\cdot 200{\rm ns} \cdot {\rm max}(\cos\theta_{rec},0.2)\right]^2$
 	 \end{itemize}
-	 donde $\Delta t_i$ es la diferencia entre el tiempo de T2 de la estacion $i$ y el obtenido mediante el ajuste del frente plano.
+	 donde $\Delta t_i$ es la diferencia entre el tiempo de T2 de la estaci\'on $i$ y el obtenido mediante el ajuste del frente plano.
 	 
-	 Los cortes dependen de la multiplicidad del evento $N$ y de el ángulo reconstruido $\theta_{rec}$.
-	 Debido a la curvatura del frente de la lluvia, las estaciones perisféricas presentan una mayor diferencia temporal respecto del frente plano que las centrales (ver figura \ref{fig:planeFrontAprox}). 
-	 
-	 La dependencia con el ángulo cenital aparece por una razón similar: las lluvias inclinadas llegan al detector tras atravesar mayor cantidad de materia que las verticales. Por este motivo, la dependencia del radio del frente de la lluvia se considera típicamente $R\propto\sec\theta$ \cite{cite:ShowerFront}, $R$ el radio de curvatura.
-	 Consecuentemente, par ángulos cenitales grandes el frente de la lluvia presenta una curvatura pequeña ($R$ grande).
-	 Para $\cos\theta < 0.2$, lo que corresponde a $\theta>80^\circ$, se asume que el mismo ha alcanzado su curvatura mínima.
-	 Por esta razon, el mínimo tiempo de tolerancia para las estaciones respecto del frente plano será \cant{(N-2)50}{ns}.
+	 Estos cortes dependen de la multiplicidad del evento $N$ y del ángulo reconstruido $\theta_{rec}$.
+	 La dependencia en $N$ aparece debido a la curvatura del frente de la lluvia, las estaciones perisfericas suelen presentar una mayor diferencia temporal respecto del frente plano que las centrales (ver figura \ref{fig:planeFrontAprox}).
+	 Este efecto se vuelve m\'as notorio a medida que aumenta $N$.
+	 Por otra parte, la dependencia del radio de curvatura $R$ con el ángulo cenital aparece por una razón similar: las lluvias inclinadas llegan al detector tras atravesar mayor cantidad de materia que las verticales. Por este motivo, la dependencia del radio del frente de la lluvia se considera típicamente $R\propto\sec\theta$ \cite{cite:ShowerFront}.
+	 Consecuentemente, para ángulos cenitales grandes el frente de la lluvia presentar\'a una curvatura pequeña ($R$ grande).
+	 Adem\'as, para $\cos\theta < 0.2$, lo que corresponde a $\theta>80^\circ$, se asume que el mismo ha alcanzado su curvatura mínima.
+	 Por esta raz\'on, el mínimo tiempo de tolerancia utilizado para las estaciones respecto del frente plano será \cant{(N-2)50}{ns}.
 	 \item Tambien se pide compacticidad espacial.
 	 Todas las estaciones, proyectadas sobre el plano del frente de la lluvia, deben estar contenidas dentro de un círculo de radio $r_{max}$, con:
 	 \begin{equation}
 	  r_{max} = \sqrt{1300^2(N-2)}{\rm m}
 	 \end{equation}
-	 \item Se verifica la condición de T3.
+	 \item Se eval\'ua la condición de T3.
 	\end{enumerate}
 	%
 	\begin{figure}[ht]
@@ -269,10 +264,10 @@ Una vez hecho ésto se utilizan variables topológicas y temporales para elegir 
 	\end{figure}
 	%
 	Si alguna de las condiciones no se satisface se intenta con las configuraciones de $N-1$ estaciones, quitando primero las de menor señal. 
-	En cuanto todos los criterios se satisface, se acepta la configuración. Si no sucede, se quitan de a 2, 3 o hasta 4 estaciones.
-	Si luego de probar todas las configuraciones quitando hasta 4 estaciones no se encontró ninguna configuración que satisfaga los criterios, el evento se descarta debido a la alta probabilidad de tener una mala reconstrucción.
+	En cuanto todos los criterios se satisfacen, se acepta la configuración. Si esto no sucede, se quitan 2, 3 o hasta 4 estaciones.
+	Si luego de probar todas estas configuraciones, quitando hasta 4 estaciones, ninguna cumpli\'o los criterios, el evento se descarta debido a la alta probabilidad de tener una mala reconstrucción.
 	
-	En el caso de que todas las estaciones de un evento sean alineadas, no es posible realizar la reconstrucción antes mencionada.
+	En caso de que todos los tanques se encuentren alineadas, no es posible realizar la reconstrucción antes mencionada.
 	En su lugar, se calcula la velocidad aparente de la señal $v_{ij}$ para cada par de estaciones $(i,j)$ con trigger T2:
 	%
 	\begin{equation}
@@ -280,28 +275,29 @@ Una vez hecho ésto se utilizan variables topológicas y temporales para elegir 
 	\end{equation}
 	%
 	donde $d_{ij}$ es la distancia entre estaciones y $\Delta t_{ij}$ es la diferencia entre los tiempos de disparo.
-	A partir de los valores de $V_{ij}$ se calcula la velocidad promedio $\langle V\rangle$ y la compatibilidad temporal se evalua para cada estación con la siguiente condición:
+	Luego, a partir de los valores de $V_{ij}$ se calcula la velocidad promedio $\langle V\rangle$ y la compatibilidad temporal se eval\'ua para cada estación con la siguiente condición:
 	%
 	\begin{equation}
-	 \frac{V_{ij}-\langle V\rangle}{\langle V\rangle}
+	 \frac{V_{ij}-\langle V\rangle}{\langle V\rangle}\leq0.1
 	\end{equation}
 	
 	
 	\subsection{Criterios adicionales}
 	
-	Una vez todas las estaciones con señales espúreas han sido descartadas, se evaluan algunos criterios de compacticidad adicionales que aseguran una mejor reconstrucción del core de la lluvia.
+	Una vez que las estaciones con señales espureas han sido descartadas, se eval\'uan algunos criterios de compacticidad adicionales que aseguran una mejor reconstrucción de la lluvia.
 	
 	\begin{enumerate}
 	 \item \texttt{6T5}: es el criterio estandar del observatorio, que pide que la estación con mayor señal se encuentre rodeada por 6 estaciones activas. Sólo se aplica en la búsqueda de DGL.
-	 \item \texttt{isConteined}: una vez reconstruido el core de la lluvia se identifica la estación con mayor señal y se requiere que se encuentre rodeada por 5 estaciones activas. Este criterio se utiliza en las búsquedas de DGH y ES. Esta condición es algo más laxa que el 6T5 en el sentido que permite que el core de la lluvia caiga algo más afuera del detector. Esto es posible para las búsquedas de DGH y ES dado que la contaminación debido al fondo es menos probable que para el rango angular que observa DGL.
-	 \item \texttt{6T5 posterior}: igual que \texttt{isConteined} pero pidiendo que la estación se encuentre rodeada por 6 estaciones activas. Solo se aplica a DGL.
-	 \item \texttt{hottestHasNeighbour}: este pide que la estación de mayor señal tenga en su primer corona otra estación con T2. El objetivo de este corte es evitar eventos de baja multiplicidad con ``agujeros''. Esta condición solo se requiere en el análisis de ES, donde los eventos reales que presentan este problema son raros pero aparecen.
+	 \item \texttt{isContained}: una vez reconstruido el baricentro de la lluvia se selecciona la estación m\'as cercana y se requiere que se encuentre rodeada por 5 estaciones activas. Esta condici\'on es requisito en las búsquedas de DGH y ES, y es algo más laxa que el \texttt{6T5}\footnote{Esta permite que el baricentro de la lluvia caiga algo más afuera de los bordes del detector.}. 
+	 Dado que en estas búsquedas la contaminación debido al fondo es menos frecuente que para el rango angular que observa DGL, resulta posible relajar levemente el \texttt{6T5}.
+	 \item \texttt{6T5 posterior}: igual que \texttt{isConteined} pero pidiendo que la estación seleccionada se encuentre rodeada por 6 estaciones activas. Solo se aplica a DGL.
+	 \item \texttt{hottestHasNeighbour}: se pide que la estación de mayor señal tenga en su primer corona otra estación con T2. El objetivo de este corte es evitar eventos de baja multiplicidad con ``agujeros''. Esta condición s\'olo se eval\'ua en el análisis de ES.
 	\end{enumerate}
 	
 \section{Selecci\'on de lluvias inclinadas}
 
-Una vez generada la muestra de eventos de calidad, se encuentran dadas las condiciones para aplicar la selección de eventos inclinados.
-Existen dos tipos de variables que permiten seleccionarlos:
+Una vez obtenida la muestra de eventos de calidad, se encuentran dadas las condiciones para aplicar la selección de eventos inclinados.
+Para ello se consideraron variables de tipo directas e indirectas, a saber:
 \begin{enumerate}
  \item Directas: consisten en los distintos valores del parámetro $\theta$ obtenidos a partir de ajustar los tiempos de disparo de las estaciones con diferentes modelos de frente de onda (plano, cónico, esférico, parabólico, etc.)
  \item Indirectas: se refieren a otras variables sensibles a la inclinación, como por ejemplo la velocidad aparente de la señal o la elongación de la ``huella'' dejada por la lluvia sobre el detector.
@@ -334,16 +330,15 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	Esta es la razón de que se tome un intervalo asimétrico.
 	},
 	la estación con mayor $\Delta t_i$ es removida y se repite la reconstrucción.
-	Este procedimiento continua hasta que se encuentra una configuración aceptable.
-	Si tras alguna de las iteraciones quedan menos de 4 estaciones el evento es rechazado.
+	Este procedimiento continua hasta que se encuentra una configuración aceptable o, si tras alguna de las iteraciones quedasen menos de 4 estaciones, se lo rechaza.
 	
-	Si el evento está constituido por estaciones alineadas, el ángulo azimutal es fijado en la dirección de avance de la señal y se aplica el mismo procedimiento de reconstrucción antes menconado.
-	En el caso de eventos en linea el ángulo cenital obtenido es, en realidad, una cota mínima (ver Fig.~\ref{fig:conoLineEvent}).
+	Si el evento está constituido por estaciones alineadas, el ángulo azimutal es fijado en la dirección de avance de la señal y se aplica el mismo procedimiento de reconstrucción ya descripto.
+	En el caso de eventos en linea el ángulo cenital obtenido es, en realidad, una cota mínima (ver figura~\ref{fig:conoLineEvent}).
 	%
 	\begin{figure}[ht]
 	\begin{center}
 	\includegraphics[width=0.75\textwidth]{fig/seleccionAuger/conoLineEvent.pdf}
-	\caption{Esquema de reconstrucción geométrica de un evento en linea. Una cota mínima para el ángulo cenital se obtiene al considerar que el ángulo azimutal de la lluvia coincide con la linea que une las estaciones.}
+	\caption{Esquema de reconstrucción geométrica de un evento en l\'inea. Una cota mínima para el ángulo cenital se obtiene al considerar que el ángulo azimutal de la lluvia coincide con la l\'inea que une las estaciones.}
 	\label{fig:conoLineEvent}
 	\end{center}
 	\end{figure} 
@@ -358,11 +353,12 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	\end{center}
 	\end{figure}
 	%
-	En verde se resaltan los eventos iniciados alto en la atmósfera (\cant{D<300}{g cm^{-2}}), que presentan una mejor resolución. 
+	En verde se resaltan los eventos iniciados alto en la atmósfera (\cant{D<300}{g cm^{-2}}), que presentan mayor resolución. 
 	Esto se debe a que el método utilizado se encuentra optimizado para eventos hadrónicos, que se inician a una profundidad media de \cant{\sim100}{g cm^{-2}}.
 	
-	Dado que el problema esta mal condicionado para lluvias muy horizontales ($\sim90\deg$), no es posible utilizar esta clase de variables en la búsqueda de eventos ES.
+	Dado que el problema esta mal condicionado para lluvias muy horizontales ($\sim90\deg$), no es posible utilizar esta clase de variables en la búsqueda de neutrinos ES.
 	Para salvar este problema es necesario utilizar variables que no dependan de este tipo de ajuste, lo que se desarrolla en la sección \ref{sc:otrasVarIncl}.
+	Por otra parte, existe adem\'as cierto tipo de configuraci\'on espacial de los tanques particularmente propensa a producir una reconstrucci\'on angular erronea.
 	
 	\subsubsection{Eventos espacialmente mal condicionados}
 	\label{sub:illEvents}
@@ -378,10 +374,9 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	
 	
 	Además de obtener una estimación directa del ángulo cenital $\theta$ a partir de un ajuste, es posible utilizar otro tipo de variables sensibles a la inclinación, como la velocidad aparente de la señal o la elongación de la huella dejada sobre el detector.
-	Mediante este tipo de variables es posible salvar las situaciones en las que la reconstrucción angular no puede ser llevada a cabo.
-	Esta situación sucede muy frecuentemente para los neutrinos DGH casi horizontales y casi para la totalidad de los neutrinos ES.
+	Mediante este tipo de variables es posible salvar las situaciones en las que la reconstrucción angular no puede ser llevada a cabo, lo que sucede frecuentemente para los neutrinos DGH casi horizontales y casi para la totalidad de los neutrinos ES.
 	
-		\subsubsection{Huella del evento}
+		\subsubsection{Variables relacionadas a la huella del evento}
 		Los eventos inclinados tienden a producir una huella de señal elongada sobre el SD.
 		Con el fin de cuantificar esta característica se construye un ``tensor de señal'':
 		%
@@ -403,18 +398,18 @@ Existen dos tipos de variables que permiten seleccionarlos:
 
 		Como se discute en la sección \ref{sbsc:thetaRec}, es posible que una lluvia vertical junto con una estación accidental den como resultado un ángulo cenital reconstruido compatible con una cascada inclinada.
 		Sin embargo, estos eventos no suelen presentar una huella elongada.
-		De esta manera, el cociente $L/W$ puede usarse como criterio de calidad para eventos inclinados.
+		De esta manera, el cociente $L/W$ tambien puede utilizarse para seleccionar eventos inclinados.
 		
-		\subsubsection{Velocidad aparente de la señal}
-		En un evento inclinado genuino, el eje de la lluvia coincide con la dirección del semieje mayor de la elipse.
-		Así, la velocidad aparente de la señal $V$ en ésta dirección permite obtener una buena aproximación del ángulo cenital.
+		\subsubsection{Variables relacionadas a la velocidad aparente de la señal}
+		En un evento inclinado genuino el eje de la lluvia coincide frecuentemente con la dirección del semieje mayor de la elipse\footnote{Una tolerancia de $\pm3^\circ$ en la diferencia entre el $\phi$ ajustado y la direcci\'on del eje mayor selecciona m\'as del 95$\%$ de los eventos.}.
+		En estas condiciones la velocidad aparente de la señal, $V$, en ésta dirección permite obtener una buena aproximación del ángulo cenital seg\'un:
 		%
 		\begin{equation}
 		\sin\theta \simeq \frac{V}{c}
 		\end{equation}
 		%
-		Para estimar $V$ a partir de un evento, se promedian las velocidades $V_{ij}\equiv L_{ij}/\Delta T_{ij}$ entre pares de estaciones cuya distancia, proyectada en la dirección del semieje mayor, sea superior a los \cant{1000}{mts} (ver panel derecho en la figura \ref{fig:elipse}).
-		No se consideran los pares de estaciones con distancia $L_{ij}$ pequeñas ya que, producto de la propagación de la incerteza en el tiempo de disparo, presentan un error inaceptable en la velocidad de la señal estimada.
+		Para estimar $V$ a partir los tiempos de disparo de un evento, se promedia las velocidades $V_{ij}\equiv L_{ij}/\Delta T_{ij}$ entre pares de estaciones cuya distancia, proyectada en la dirección del semieje mayor, sea superior a los \cant{1000}{mts} (ver panel derecho en la figura \ref{fig:elipse}).
+		La razon para no considerar los pares de estaciones cuya distancia $L_{ij}$ resulta peque\~na es que la propagación de la incerteza en el tiempo de disparo presentan un error inaceptable en la velocidad de la señal estimada.
 		%
 		\begin{figure}[ht]
 		\begin{center}
@@ -428,14 +423,14 @@ Existen dos tipos de variables que permiten seleccionarlos:
 		\subsection{Eventos de 3 estaciones en ES}
 		\label{sbsc:3StIncl}
 		
-		Los eventos de 3 estaciones presentan una incerteza en su reconstrucción elevada si se la compara con la performance alcanzada por los eventos de más estaciones. 
-		Por ende, es más probable que sean clasificados como inclinados cuando no lo son, tanto es así, que en las búsquedas de DG no son utilizados.
-		En cambio, en la búsqueda de ES no pueden descartarse ya que representan al rededor del 30$\%$ de la muestra de señal. 
-		Por este motivo para incluirlos se debe tener especial cuidado en su selección, cuando se los clasifica como inclinados y como jóvenes.
+		Los eventos de 3 estaciones presentan una incerteza elevadae n la reconstrucción\footnote{Si se la compara con la performance alcanzada por los eventos de más estaciones.}, por lo que es más probable que sean clasificados como inclinados cuando no lo son.
+		Tanto es así, que en las búsquedas de DG se los descarta.
+		En cambio, dado que en la búsqueda de ES estos representan alrededor del 30$\%$ de la muestra de señal\footnote{Que como se ver\'a m\'as adelante, es alrededor de 5 veces la importancia del canal DGL.}, se decidi\'o incluirlos aunque aplic\'andoles un tratamiento diferencial.
+		Esto implica un criterio especial al clasificarlos como inclinados y como jóvenes.
 		
 		Hay sólo 7 configuraciones de 3 estaciones que satisfacen los requisitos de trigger T3, que se muestran en la figura \ref{fig:3stConf}.
 		Gracias a que este número es manejable, además de aplicar cortes en las variables presentadas hasta el momento, se agregará un requisito adicional sobre el tipo configuración de estos eventos.
-		La idea es conservar las configuraciones propensas a aparecer en la muestra de señal mientras se eliminan las que proclives a inducir candidatos falsos.
+		La idea es conservar las propensas a aparecer en la muestra de señal mientras se eliminan las que proclives a inducir candidatos falsos.
 		%
 		\begin{figure}[ht!]
 		\begin{center}
@@ -451,7 +446,7 @@ Existen dos tipos de variables que permiten seleccionarlos:
 		\centering
 		\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		Config. & MC Events & Porent. & Porcent Pesado & Datos                  \\
+		Config. & MC Events & $\%$ & $\%$ Pesado & Datos                  \\
 		\hline
 		Total & 3562 & 100\% & 100\%& 10329\\
 		\hline
@@ -467,26 +462,26 @@ Existen dos tipos de variables que permiten seleccionarlos:
 		\caption{
 		\label{tab:3stConf}
 		Frecuencia de aparición de las distintas configuraciones mostradas en la figura \ref{fig:3stConf} luego de aplicar los criterios de calidad.
-		Se muestran, de la columna 2 a 4 la cantidad de eventos MC en cada donfiguración, porcentage de aparición y su porcentaje pesado.
-		La última columna muestra el número de eventos en la muestra de fondo que presentan cada configuración.
+		Se muestran, de la columna 2 a 4 la cantidad de eventos MC en cada configuración, porcentaje de aparición y su porcentaje pesado.
+		La última columna presenta el número de eventos en la muestra de fondo para cada configuración.
 		}
 		\end{table}
 		%
-		En la muestra de señal, compuesta por eventos muy inclinados, las dos configuraciones dominntes son la 1 y la 5. Las razones por las que el resto de configuraciones no son frecuentes son las siguientes:
+		En la muestra de señal, compuesta por eventos muy inclinados, las dos configuraciones dominantes son la 1 y la 5. Las razones por las que el resto de configuraciones no son frecuentes son las siguientes:
 		\begin{itemize}
 		 \item Las configuraciones 2 y 3 son demasiado compactas y anchas. Los neutrinos ES típicamente dejan huellas muy alargadas. Si un evento ES tuviera el ancho suficiente para disparar esas tres estaciones, usualmente dispararía algunas más, generando un evento de mayor multiplicidad.
 		 \item Las configuraciones 6 y 7 son improbables dado que en el caso de haber una estacion dentro del triángulo formado por las tres estaciones disparadas, tambien sería disparada.
-		 \item La configuración 4 es la tercera en abundancia. Esto es rasonable debido a que es una configuración bastante alineada, típica de neutrinos ES. Sin embargo, se encuentra desfavorecida debido a que requiere una estación intermedia no disparada.
+		 \item La configuración 4 es la tercera en abundancia. Esto es rasonable debido a que es una configuración bastante alineada, típica de neutrinos ES. Sin embargo, se encuentra desfavorecida ya que requiere una estación intermedia no disparada.
 		\end{itemize}
 		
-		Claramente, desde el punto de vista de mantener alta eficiencia a neutrinos ES, no se gana mucho conservando las configuraciones 2, 3, 4, 6 y 7, por lo que, siendo conservador, son descartadas.
-		En cambio, la configuración 1 además de ser frecuente, es compacta, por lo que sin dudas deberá ser conservada.
-		Por otro lado, dado que hasta el momento Auger no ha detectado ningun neutrino, se consideró que un candidato a neutrino que presente la configuración 5 daría lugar a escepticismo departe de la comunidad. Por todo esto, en la búsqueda de neutrinos ES, sólo se aceptan eventos de 3 estaciones de configuración 1.
+		Si el objetivo de obtener una eficiencia alta a neutrinos ES, no se gana mucho conservando las configuraciones 2, 3, 4, 6 y 7. Por este motivo, siendo conservador, se las descarta.
+		En cambio, la configuración 1 además de ser frecuente es compacta, por lo que debe ser conservada.
+		Finalmente, dado que hasta el momento Auger no ha detectado ningun neutrino, se consideró que un evento candidato que presente la configuración 5 daría lugar a escepticismo de parte de la comunidad. Por todo esto, en la búsqueda de neutrinos ES, sólo se aceptan eventos de 3 estaciones de configuración 1.
 		
 		\subsection{Desempeño de la selección de eventos inclinados}
 		
-		La selección de eventos inclinados se realiza en cada análisis utilizando los cortes que aparecen en la tabla \ref{tab:inclSel}.
-		Estos cortes fueron definidos en base a un compromiso entre conseguir alta eficiencia de selección de eventos iniciados por neutrinos y evitar la aceptación de datos poco inclinados que posean alta componente electromagnética.
+		Finalmente, la selección de eventos inclinados se realiza en cada análisis utilizando los cortes que aparecen en la tabla \ref{tab:inclSel}.
+		Estos cortes fueron definidos en base a un compromiso entre conseguir alta eficiencia de selección de neutrinos y baja aceptación de eventos poco inclinados.
 		%
 		\begin{table}[ht!]
 		\begin{center}
@@ -513,14 +508,14 @@ Existen dos tipos de variables que permiten seleccionarlos:
 		\label{tab:inclSel}
 		\end{table}
 		%
-		Dado que la muestra de fondo consiste en una fracción de los datos del detector, también se tuvo en cuenta que esta selección admita una cantidad suficiente de eventos que luego serán necesarios para definir el criterio de selección de lluvias jóvenes.
+		Como factor extra se procur\'o que, dado que la muestra de fondo consiste en una fracción de los datos del detector, luego de la selección quede una cantidad suficiente de eventos en la muestra de entrenamiento que permita definir el criterio de selección de lluvias jóvenes.
 		
-		En los tres análisis la eficiencia de selección para la muestra de señal representó al rededor del $90\%$ de los eventos, pesados según lo que se expuso en la sección \ref{sc:pesos}.
+		En los tres análisis la eficiencia de selección de lluvias inclinadas para la muestra de señal alcanz\'o valores cercanos al $90\%$, pesados según lo que se expuso en la sección \ref{sc:pesos}.
 		
 \section{Selecci\'on de lluvias j\'ovenes}
 \label{sc:selNu}
 	
-	Una vez aplicadas a las muestras de fondo y señal las selecciones de eventos de calidad y de lluvias inclinadas, se definió la selección de lluvias jóvenes mediante el método iterativo que se esquematiza en la figura \ref{fig:entrenamiento}.
+	Una vez aplicadas a las muestras de fondo y señal las selecciones de eventos de calidad y de lluvias inclinadas, se definió la selección de lluvias jóvenes mediante el método iterativo que se esquematiza en la figura \ref{fig:entrenamiento},
 	%
 	\begin{figure}[ht!]
 		\begin{center}
@@ -530,20 +525,20 @@ Existen dos tipos de variables que permiten seleccionarlos:
 		\end{center}
 	\end{figure}
 	%
-	Este método tiene tres pasos claramente definidos:
+	que cuenta con tres pasos claramente definidos:
 	\begin{enumerate}
 	 \item \textbf{Definición de variables discriminantes}: consiste en definir mediante argumentos físicos variables que contengan información sobre si un evento pertenece a la muestra de señal o a la muestra de fondo.
 	 \item \textbf{Entrenamiento del método}: en esta etapa se extrae la información de las variables para definir un posible criterio de selección. 
-	 \item \textbf{Estimación de la eficiencia y la contaminación}: se evalua el criterio preeliminar definido en el punto anterior. Si la separación entre muestras es lo suficientemente buena, y la probabilidad de obtener eventos espúreos debidos al fondo es aceptable se aprueba el método. Caso contrario se vuelve al paso 1 y se modifica el conjunto de variables discriminantes.
+	 \item \textbf{Estimación de la eficiencia y la contaminación}: se eval\'ua el desempe\~no del criterio preeliminar definido en el punto anterior. Si la separación entre muestras es buena, y la probabilidad de obtener eventos espúreos debidos al fondo es aceptable se aprueba el método. Caso contrario se vuelve al paso 1 y se modifica el conjunto de variables discriminantes.
 	\end{enumerate}
 	%
 	\subsection{Variables discriminantes}
 	\label{sbsc:discVars}
 	
-	En el capitulo \ref{sc:easNu} se argumentó que las lluvias hadrónicas inclinadas se inician muy alto en la atmósfera y sólo su componente muónica alcanza el detector.
-	En cambio, las iniciadas por neutrinos tienen la posibilidad de interactuar de manera profunda, presentando una cantidad significativa de componente electromagnética (EM) a la hora de interactuar.
-	En el caso de los eventos DG, la componente EM se consentra en la región del detector sobre la que la lluvia interactúa primero, llamada zona temprana del evento.
-	Por otro lado, en los eventos iniciados por neutrinos ES, la evolución hacia arriba de la lluvia permite que la señal del tipo EM alcance la mayor parte de las estaciones del evento y no sólo su zona temprana.
+	En el capitulo \ref{sc:easNu} se argumentó que las lluvias hadrónicas inclinadas se inician en el tope de la atmósfera y sólo su componente muónica alcanza el detector.
+	En cambio, las provocadas por neutrinos tienen la posibilidad de interactuar cerca de la superficie, lo que permite una cantidad significativa de componente electromagnética (EM) a nivel del suelo.
+	En los eventos DG la componente EM se concentra en la región del detector sobre la que la lluvia interactúa primero, o regi\'on temprana del evento.
+	Sin embargo, en los eventos iniciados por neutrinos ES la evolución hacia arriba del evento permite que la componente EM alcance la mayor parte de las estaciones que se disparen y no sólo las de la zona temprana.
 	Esto se ilustra en la figura \ref{fig:compNus} en la que se representan las componentes muónica y electromagnética de una lluvia hadrónica típica, de un neutrino DG y de uno ES.
 	%
 	\begin{figure}[ht!]
@@ -555,10 +550,10 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	\end{figure}
 	%
 	
-	En consecuencia, el objetivo es conseguir variables del detector que sean sensibles a la precencia de componente electromagnética.
+	Entonces fue necesario conseguir variables del detector que sean sensibles a la precencia de componente electromagnética.
 	Esta, usualmente provoca señales en el SD cuya duración puede alcanzar algunos cientos de nano segundos, mientras que las señales generadas por la componente muónica no suele superar la centena.
 	Entonces, a partir de las trazas FADC es posible construir observables correlacionados con la estructura temporal de la señal y analizar su desempeño.
-	A continuación se definen algunos de los posibles observables:
+	A continuación se definen algunos que fueron evaluados como posibles:
 	\begin{itemize}
 	 \item \textbf{Numero de estaciones con trigger ToT:} como se discutió en la sección \ref{sbsc:trig_levels}, el triger ToT fue ideado para detectar señales extendidas en el tiempo.
 	 Por ello, un observable sensible a la señal electromagnética en un dado evento podría ser la cantidad de estaciones con este nivel de trigger.
@@ -637,10 +632,8 @@ Existen dos tipos de variables que permiten seleccionarlos:
 		\end{center}
 	\end{figure}
 	%
-	De esta se deduce claramente que los eventos DG presentan mayor separación en las estaciones más tempranas de los eventos, mientras que en las lluvias ES esta se mantiene a lo largo de todos los tanques.
-	Este comportamiento se mantiene para eventos de todas las multiplicidades.
-	
-	Teniendo esto en cuenta, se consideraron tres tipos de variables:
+	Como se hab\'ia adelantado, se observa que los eventos DG presentan mayor separación en las estaciones más tempranas de los eventos, mientras que en las lluvias ES esta se mantiene a lo largo de todos los tanques\footnote{Este comportamiento se observa en eventos de todas las multiplicidades.}. 	
+	Teniendo todo esto en cuenta se consideraron tres tipos de variables:
 	\begin{enumerate}
 	 \item \textbf{Producto de AoPs:} por las razones ya expuestas, se espera que las lluvias inclinadas presenten valores de AoP elevados. Así, su producto es una medida de esta característica global del evento. Una de las ventajas de esta variable discriminante es que es muy estable frente a fluctuaciones que puedan sufrir las estaciones individuales (ver panel superior izquierdo en la figura \ref{fig:observablesGlobales}). 
 	 \item \textbf{Promedio de AoPs:} del mismo modo, el AoP promediado sobre todas las estaciones es otra variable prometedora que posee las mismas bondades que la anterior (ver panel superior derecho en la figura \ref{fig:observablesGlobales}).
@@ -757,11 +750,9 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	
 	\subsection{Identificación de neutrinos DGL}
 	
-	Para definir el criterio de identificación de neutrinos DGL, se tomó el 20$\%$ de la muestra de datos del 01 Ene 2004 al 31 Dic 2011 como muestra de entrenamiento, o de fondo.
-	Esa fracción se eligió de manera aleatoria, seleccionando eventos cuyo número de identificación termine en 0 y 5.
-	El resto de los datos de ese período y la totalidad medida entre el 1 Ene 2012 y el 20 Jun de 2013 (fecha del cambio de trigger 
-% 	\textbf{XXX HAY QUE INCLUIR LA FECHA LÏMITE EN ESTRATEGIA})
-	se utilizaron para búsqueda.
+	Para definir el criterio de identificación de neutrinos DGL se tomó como muestra de entrenamiento, o de fondo, el 20$\%$ de los datos colectados entre el 1 enero de 2004 y el 31 de diciembre de 2011.
+	Esa fracción se eligió de manera aleatoria, seleccionando los eventos cuyo número de identificación termine en 0 y 5.
+	El resto de los datos de ese período, y la totalidad medida entre el 1 de enero de 2012 y el 20 de junio de 2013 se utilizaron para búsqueda.
 	Todo esto se esquematiza en la figura \ref{fig:periodosDGL}.
 	%
 	\begin{figure}[ht]
@@ -773,10 +764,10 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	\end{figure}
 	%
 	
-	La elección de estas fechas, si bien parece rebuscada, se debe simplemente a que el 31 Dic 2011 fue el momento en el que se realizó el primer unblinding para este análisis.
-	Como finalizado ese periodo el análisis se mantuvo invariable, todos los datos se utilizaron en la búsqueda.
+	La elección de estas fechas, si bien parece rebuscada, se debe simplemente a que el 31 de diciembre de 2011 fue la fecha l\'imite del primer escrutinio de datos en DGL.
+	Como finalizado ese periodo el análisis se mantuvo invariable, todos los datos registrados se utilizaron en la búsqueda.
 	
-	Con el fin de entrenar el método de Fisher para que separe neutrinos de los eventos más profundos que puedan aparecer en el detector, se aplicó un requisito adicional a los eventos clasificados como inclinados entre $60^\circ$ y $75^\circ$.
+	Con el fin de entrenar el método de Fisher para que discrimine los neutrinos de los eventos hadr\'onicos más profundos, se aplicó un requisito adicional sobre los eventos clasificados como inclinados en DGL.
 	Dado que el trigger local ToT es un buen indicador de señales extendidas en el tiempo, se entrenó el método con solo con los eventos que presentaron más del $75\%$ de estaciones ToT.
 	Una vez hecho esto, para definir el criterio de selección se dividió la muestra de eventos inclinados en 5 regiones según el ángulo reconstruido y en cada una de ellas se entrenó un observable de Fisher diferente.
 	El conjunto de variables utilizadas en cada región se describe en la tabla \ref{tab:fisherDGL}. 
@@ -803,20 +794,20 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	\end{table}
 	%
 	
-	Las Regiones 1 a 3, las menos inclinadas, requieren al menos 5 estaciones disparadas mientras que en las regiones 4 y 5 se consideró suficiente contar con 4.
+	Las regiones 1 a 3, las menos inclinadas, requieren al menos 5 estaciones disparadas mientras que en las regiones 4 y 5 se consideró suficiente contar con 4.
 	Las distribución de la variable de Fisher para cada una de estas regiones puede observarse en la figura \ref{fig:fisherDGL}.
 	%
 	\begin{figure}[ht]
 	\begin{center}
 	\includegraphics[width=\textwidth]{fig/seleccionAuger/fisherDGL}
-	\caption{Variable de Fisher para cada una de las regiones. Cabe destacar que la separación entre muestras crece con el ángulo reconstruido.}
+	\caption{Distribuci\'on de la variable de Fisher de fondo y se\~nal para cada una de las regiones definidas en el an\'alisis DGL. Cabe destacar que la separación entre muestras crece con el ángulo reconstruido.}
 	\label{fig:fisherDGL}
 	\end{center}
 	\end{figure}
 	%
 	Una vez obtenidas las variables de Fisher se ajustó la cola de las muestras de fondo, en la region de  $[1\sigma, 3\sigma]$ con el modelo exponencial, según se describió en la sección \ref{sbsc:fondo}.
 	Luego se utilizaron las regiones de $[3\sigma, 6\sigma]$ para validar el modelo.
-	La tabla \ref{tab:predDGL} muestra la cantidad de eventos observados y predichos por el modelo en cada una de las reciones.
+	La tabla \ref{tab:predDGL} muestra la cantidad de eventos observados y predichos por el modelo en cada una de las regiones.
 	%
 	\begin{table}[h!]
 	\begin{center}
@@ -851,10 +842,11 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	\end{center}
 	\end{figure}
 	%
+	\clearpage
 	
 	\subsection{Identificación de neutrinos DGH}
 	
-	En el caso de la busqueda de neutrinos DGH se utilizó como muestra de entrenamiento datos que ya habian sido utilizados en la primer búsqueda de neutrinos ES, que incluyó hasta el 31 Oct 2007.
+	En el caso de la busqueda de neutrinos DGH se utilizó como muestra de entrenamiento datos que ya habian sido utilizados en la primer búsqueda de neutrinos ES, que incluyó hasta el 31 de octubre de 2007\footnote{La muestra de eventos inclinados seleccionada por ES esta contenida casi completamente en la de DGH, lo que invalida realizar una nueva b\'usqueda sobre la misma.}.
 	%
 	\begin{figure}[ht]
 	\begin{center}
@@ -865,7 +857,7 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	\end{figure}
 	%
 	Dado que la selección de eventos inclinados de los análisis DGH y ES comparte una gran fracción de los datos, no habría sido lícito utilizar una muestra ya analizada para una nueva búsqueda.
-	Por ende, el escrutinio de candidatos se realizó sobre los eventos registrados desde el 1 Nov 2007 hasta el 20 Jun 2013.
+	Por ende, el escrutinio de candidatos se realizó sobre los eventos registrados desde el 1 de noviembre 2007 hasta el 20 de junio de 2013.
 	Este período corresponde aproximadamente a 4 años de detector completo.
 	
 	A diferencia del análisis de DGL, en DGH se dividió las muestras de entrenamiento no por el ángulo reconstruido sino según el tamaño de los eventos.
@@ -903,7 +895,7 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	\includegraphics [width=0.47\textwidth]{fig/seleccionAuger/fishDist_altos_3.pdf}
 	\end{center}
 	\caption{
-	Distribuciones del discriminante de Fisher~($\cal{F}$) de las muestras background (datos del 1 Ene 2004 al 31 Oct 2007) y señal (MC de neutrinos) para los tres grupos de multiplicidad: eventos pequeños (\textit{arriba}), medianos (\textit{medio}) y grandes (\textit{abajo}). Se muestra sombreado la distribución de los eventos MC cuyo punto de primera interacción ocurre alto en la atmósfera (aunque, en general, a mayor profundidad que la que se espera para lluvias hadrónicas).
+	Distribuciones del discriminante de Fisher~($\cal{F}$) de las muestras background (datos del 1 de enero de 2004 al 31 de octubre de 2007) y señal (MC de neutrinos) para los tres grupos de multiplicidad: eventos pequeños (\textit{arriba}), medianos (\textit{medio}) y grandes (\textit{abajo}). Se muestra sombreado la distribución de los eventos MC cuyo punto de primera interacción ocurre alto en la atmósfera (aunque, en general, a mayor profundidad que la que se espera para lluvias hadrónicas).
 	}
 	\label{fig:fisherDGH}
 	\end{figure*}
@@ -941,9 +933,9 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	Hasta la fecha, en Auger hubo dos criterios de identificación de neutrinos ES que estuvieron vigentes en períodos de tiempo diferentes. 
 	La fecha de inflexión entre los dos análisis fue el 31 May 2010.
 	A partir de aquí se identificará al primer análisis como el \emph{original}, mientras que el segundo será el análisis \emph{nuevo}.
-	El análisis original utilizó como muestra de entrenamiento los primeros dos meses de datos de 2004 y el resto del período de vigencia como muestra de búsqueda, hasta el 31 May 2010.
-	Por las mismas razones que en DGH, los datos que ya habian sido utilizados en esta búsqueda se utilizaron como muestra de entrenamiento del nuevo análisis, que busco candidatos hasta el 20 Jun 2013.
-	Esta situación se esquematiza en la figura \ref{fig:periodosES}.
+	El primero utilizó como muestra de entrenamiento los primeros dos meses de datos de 2004 y el resto del período de vigencia como muestra de búsqueda, hasta el 31 de mayo de 2010.
+	Por las mismas razones que en DGH, los datos que ya hab\'ian sido utilizados en esta búsqueda sirvieron de muestra de entrenamiento para el nuevo análisis, que busc\'o candidatos hasta el 20 de junio de 2013.
+	Esta situación se describe en la figura \ref{fig:periodosES}.
 	%
 	\begin{figure}[ht]
 	\begin{center}
@@ -985,14 +977,12 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	
 	\subsubsection{Análisis nuevo}
 	
-	La razón principal para implementar un nuevo análisis para detectar neutrinos ES lograr una estimación de la contaminación en la selección.
-	El objetivo es entonces buscar variables que permitan realizar el procedimiento descripto en la sección \ref{sbsc:fondo}, manteniendo un valor en la eficiencia de identificación similar al alcanzado en el análisis original.
+	La razón principal para implementar un nuevo análisis para detectar neutrinos ES fue lograr una estimación de la contaminación en la selección.
+	El objetivo fue buscar variables que permitan realizar el procedimiento descripto en la sección \ref{sbsc:fondo}, manteniendo un valor en la eficiencia de identificación similar al alcanzado en el análisis original.
 	
-	Como se mostró en la figura \ref{fig:aop_vs_NStation} el valor de AoP es en promedio mayor para la muestra de MC ES que para datos en todas sus estaciones.
-	A diferencia de los eventos DG no estos no presentan ninguna asimetría considerable entre la parte temprana y tardía de la lluvia.
-	Las razones de este comportamiento ya fueron discutidas en la sección \ref{sbsc:discVars}.
-	
-	Luego de varias iteraciones del método esquematizado en la figura \ref{fig:entrenamiento}, aplicando el método de Fisher a un gran conjunto de variables, ninguna resultó en una gran mejora al desempeño alcanzado por la variable AoP promedio (\aop{}).
+	Como se mostró en la figura \ref{fig:aop_vs_NStation} el valor de AoP en la muestra de MC ES es en promedio mayor que para los datos.
+	Adem\'as, a diferencia de los eventos DG los ES no presentan ninguna asimetría considerable entre la parte temprana y tardía de la lluvia.
+	Luego de varias iteraciones del método esquematizado en la figura \ref{fig:entrenamiento}, aplicando el método de Fisher a decenas de variables, ninguna mostr\'o un desempe\~no sustancialmente mayor al alcanzado por la variable AoP promedio (\aop{}), por lo que se la utiliz\'o como \'unica variable discriminante.
 	
 	Para evitar falsos candidatos se decidió excluir del promedio ciertas estaciones propensas a presentar valores de \aop{} artificialmente elevado\footnote{Estas estaciones sí fueron utilizadas en el cálculo de las variables sensibles a la inclinación debido a que los tiempos de inicio de la señal usualmente son correctos.}, a saber:
 	\begin{itemize}
@@ -1001,9 +991,9 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	 \item Estaciones con dobles picos no descartadas en por el algoritmo de limpieza de traza.
 	\end{itemize}
 	
-	El algoritmo de limpieza de traza tiene como objetivo eliminar trazas en las que el tiempo de disparo de la señal no sea claro. 
-	Cuando existe una sección de la traza espúrea pero que no se encuentra lo suficientemente separada de la traza real como para inducir un valor de tiempo de disparo artifical, no se descarta.
-	La precencia de estos picos múltiples provocan un aumento espúreo del valor de \aop{}, por lo que se debe descartar estas estaciones, especialmente si el evento tiene pocas estaciones.
+	El algoritmo de limpieza de traza tiene como objetivo eliminar las estaciones en las que el tiempo de disparo no sea claro. 
+	Cuando en la FADC existe una sección espúrea que no se encuentra lo suficientemente separada de la traza real como para inducir un valor de tiempo de disparo artifical, usualmente no es descartada.
+	Como la precencia de estos picos múltiples provocan un aumento espúreo del valor de \aop{} es clave descartar estas estaciones, especialmente si el evento tiene multiplicidad baja.
 	
 	Un ejemplo de este tipo de eventos se muestra en la figura \ref{fig:doublePeakEvent}.
 	De las 4 estaciones con trigger T2, la 882 presenta un valor de AoP=1.92, por encima del promedio para este tipo de eventos ($\sim1.4$). 
@@ -1020,28 +1010,7 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	\end{figure}
 	%
 	
-% 	Para salvar este inconveniente se aplicó el algoritmo que se detalla a continuación: (\textbf{XXX LO PASO A UN APENDICE ESTO?}):
-	\begin{enumerate}
-	 \item \textbf{Encontrar picos sobre \cant{0.6}{VEM_{peak}}:} para cada PMT activo se divide la traza en ventanas de 8 bines. Dentro de cada ventana se busca el bin cuya señal máxima y se define como un pico si su señal se encuentra por encima de los \cant{0.6}{VEM_{peak}}.
-	 \item \textbf{Encontrar bloques de señal:} si en el paso 1 se etiqueta más de más de un bin como pico se busca en sus bines intermedios.
-	 Se cuenta el número de bines que tienen señales por debajo del $30\%$ del mínimo pico encontrado. 
-	 Si existen entre picos más de 6 bines consecutivos o más que cumplan la condición anterior, se divide la señal en el primer bin de ese grupo.
-	 La figura \ref{fig:doublePeakEvent2} esquematiza esta etapa del algoritmo para el PMT número 1 de la estación 882 del evento 2629688.
-	 %
-	 \begin{figure}[ht]
-	 \begin{center}
-	 \includegraphics[width=0.7\textwidth]{fig/seleccionAuger/ev2629688_pmt1_anode}
-	\caption{PMT 1 de la estación 882 del evento 2629688. La traza presenta dos picos con 6 bines contiguos por debajod el umbral establecido.}
-	\label{fig:doublePeakEvent2}
-	\end{center}
-	\end{figure}
-	 %
-	 \item \textbf{Cálculo del AoP de los bloques:} si existe más de un bloque, se calcula la variable AoP integrando la señal hasta 8 bines despues del pico o hasta que la señal caiga por debajo de los \cant{0.2}{VEM_{peak}}.
-	 \item \textbf{Etiquetar trazas dominadas por picos:} si la suma de la señal integrada de los bloques se encuentra por debajo del $90\%$ de la señal interada total del PMT, no se lo etiqueta.
-	 \item \textbf{Contar bloques con AoP$<1.5$:} Sin importar el numero de partículas que atraviecen el tanque, si el desfasaje es pequeño (típico de los frentes muónicos en eventos pequeños) se cumple que ${\rm AoP}\sim 1$. Si se encuentran varios picos que cumplan AoP$<1.5$ se etiqueta el PMT.
-	 \item \textbf{Etiquetar la estación:} si una estación cuenta con más de un PMT etiquetado se rechaza y no se utiliza para calcular \aop{}.
-	\end{enumerate}
-
+	Para salvar este inconveniente se aplicó el algoritmo que se detalla en el ap\'endice \ref{ap:doublePeakDet}.
 	Es importante destacar que las trazas de las simulaciones de neutrinos ES no presentan este tipo de estructura de doble pico, sino señales con picos pequeños y de corta duración (típica señal electromagnética como la de la figura \ref{fig:t2_tot}).
 	Tal es así que este algoritmo sólo rechaza al rededor del $1\%$ de las estaciones de los eventos ES, aunque el AoP promedio por estación es aproximadamente 3.3.
 	La pérdida pesada de eventos MC debida a este requerimento es de al rededor de $1.2\%$ ($\sim 0.7\%$ sin peso).
@@ -1059,7 +1028,7 @@ Existen dos tipos de variables que permiten seleccionarlos:
 	Al igual que en los análisis de DG, lo predicho por el modelo se encuentra por encima de lo observado, siendo el corte seguro.
 	
 	Como se expuso en la sección \ref{sbsc:3StIncl}, se debe tener especial cuidado con los eventos de 3 estaciones, por ende requieren un trato diferencial.
-	Estos, son mas propensos a ser clasificados como candidatos a neutrinos debido a que una fluctuación en el AoP en solo una de sus estaciones puede inducir un cambio en \aop{} lo suficientemente grande como para pasar el corte de selección.
+	Estos, son m\'as propensos a ser clasificados como candidatos a neutrinos debido a que una fluctuación en el AoP en solo una de sus estaciones puede inducir un cambio en \aop{} lo suficientemente grande como para pasar el corte de selección.
 	Para asegurarse de que un valor elevado en \aop{} no proviene de una fluctuación en una de sus estaciones, se exige que el mínimo AoP de los eventos de 3 estaciones (\aopmin{}) sea al menos 1.4.
 	Este valor esta basado en el elegido en el análisis original para seleccionar estaciones con trazas extendidas en el tiempo.
 	La figura \ref{fig:minAoP} muestra la distribución de esta variable para los eventos de 3 estaciones de las muestras de señal y fondo, antes de aplicar el corte en \aop{}.
