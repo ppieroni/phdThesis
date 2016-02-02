@@ -1,13 +1,10 @@
-\chapter{Observatorio Pierre Auger}
+\chapter{El Observatorio Pierre Auger}
 \label{ch:detectorAuger}
 
-El objetivo del Observatorio Pierre Auger es colectar eventos de rayos c\'osmicos con energ\'ias mayores a $10^{18}\ eV$, con el fin de comprender su naturaleza. Entre otras cosas, se busca reconstruir el espectro energ\'etico con precisi\'on sin precedentes, medir las direcciones de arribo y estudiar la composici\'on de los mismos.
-Para alcanzar esta meta, se decidi\'o construir dos detectores h\'ibridos, uno en el hemisferio Sur y otro en el Norte.
+El objetivo del Observatorio Pierre Auger es colectar eventos de rayos c\'osmicos con energ\'ias mayores a $10^{18}\ eV$, con el fin de comprender su naturaleza. En particular, se busca reconstruir el espectro energ\'etico con precisi\'on sin precedentes, medir las direcciones de arribo y estudiar la composici\'on de los mismos. El Observatorio se encuentra en Pampa Amarilla a una altitud promedio de $\sim 1400\ m$, cerca de Malarg\"ue, en la provincia de Mendoza, Argentina.
+\'Este lugar fue elegido debido a que el terreno es relativamente plano, variando menos de $200\ m$ en toda la extensi\'on del observatorio, y el clima \'arido con cielos despejados. 
 
-El Observatorio Sur se encuentra en Pampa Amarilla a una altitud promedio de $\sim 1400\ m$, cerca de Malarg\"ue, en la provincia de Mendoza, Argentina.
-\'Este lugar fue elegido debido a que el terreno es relativamente plano, variando menos de $200\ m$ en toda la extensi\'on del observatorio, y el clima \'arido con cielos despejados, condiciones ideales para un detector h\'ibrido de este tipo.
-
-	\section{Detector H\'ibrido}
+	\section{Descripción general}
 	Este detector combina las fortalezas de dos t\'ecnicas de detecci\'on: una grilla triangular de 1600 detectores Cherenkov (detector de superficie o SD) y 4 detectores de fluorescencia (detector de fluorecencia o FD).
 	El detector h\'ibrido tiene importantes ventajas sobre cada una de las t\'ecnicas operando por separado, ya que observar lluvias en simult\'aneo permite identificar las fuentes de incertezas sistem\'aticas de cada t\'ecnica y medir independientemente propiedades de la lluvia.
 	Las ventajas principales del detector de superficie son que puede operar el $100 \%$ del tiempo, su respuesta es poco dependiente del clima, su apertura se encuentra bien definida y es independiente de la energ\'ia por encima de $10^{19}\ eV$, su se\~nal puede autocalibrarse usando muones de rayos c\'osmicos  y tiene una alta sensitividad a lluvias que lleguen con grandes \'angulos cenitales. 
@@ -68,7 +65,7 @@ El Observatorio Sur se encuentra en Pampa Amarilla a una altitud promedio de $\s
 		\end{center}
 	\end{figure}
 
-		\subsection{Calibraci\'on del detector de superficie}
+		\section{Calibraci\'on del detector de superficie}
 		
 		La Colaboraci\'on Auger ha adoptado al VEM (Vertical Equivalent Muon) como unidad de medida para las señales adquiridas por el SD.
 		El VEM se define como la señal promedio producida en un tanque del SD al ser atravesado por su eje por un mu\'on vertical.
@@ -77,7 +74,7 @@ El Observatorio Sur se encuentra en Pampa Amarilla a una altitud promedio de $\s
 		Los muones atmosf\'ericos tienen una frecuencia de arribo uniforme sobre todo el detector lo que los hace ideales para lograr una buena calibraci\'on relativa entre los tanques. 
 		Es por ello que el algoritmo de calibraci\'on implementado se basa en la medici\'on de su espectro. 
 		La figura \ref{Calibracion_Muones} muestra un espectro t\'ipico adquirido por uno de los tanques. 
-		A partir de experiencias realizadas utilizando un tanque en conjunci\'on con un telescopio de muones se ha determinado que el segundo\footnote{El primero es un artefacto} pico corresponde a \cant{1.05}{VEM}. 
+		A partir de experiencias realizadas utilizando un tanque en conjunci\'on con un telescopio de muones se ha determinado que el segundo\footnote{El primero es consecuencia del diseño de la electrónica.} pico corresponde a \cant{1.05}{VEM}. 
 		Utilizando esta referencia cada tanque ajusta su ganancia de manera tal que coincida con la de los dem\'as.
 		
 		\begin{figure}[ht]
@@ -89,7 +86,7 @@ El Observatorio Sur se encuentra en Pampa Amarilla a una altitud promedio de $\s
 		\end{figure}
 		
 		
-		\subsection{Niveles de trigger}
+		\section{Disparo del detector de superficie}
 		\label{sbsc:trig_levels}
 		
 		Con el fin de limitar la cantidad de eventos almacenados y minimizar la contaminaci\'on, el Proyecto Auger ha adoptado una estructura jer\'arquica de disparos para el detector de superficie, que puede clasificarse b\'asicamente en dos niveles \cite{icrctri}:
@@ -99,7 +96,7 @@ El Observatorio Sur se encuentra en Pampa Amarilla a una altitud promedio de $\s
 		\item Trigger de alto nivel
 		\end{shortitemize}
 		
-			\subsubsection{Trigger de bajo nivel}
+			\subsection*{Trigger de bajo nivel}
 			
 			Este nivel de trigger se aplica en tiempo real en cada estaci\'on con dos fines, disminuir la frecuencia de detecci\'on de muones atmosf\'ericos y distinguir entre las componentes mu\'onicas y electromagn\'eticas de la lluvia.
 			Aqu\'i la nomenclatura utilizada \cite{nimtrig}:
@@ -128,7 +125,7 @@ El Observatorio Sur se encuentra en Pampa Amarilla a una altitud promedio de $\s
 			
 			Todas las estaciones con T1 o T2 se guardan durante \cant{10}{s} esperando un posible trigger de m\'as alto nivel, T3.
 			
-			\subsubsection*{Trigger de alto nivel}
+			\subsection*{Trigger de alto nivel}
 			
 			\titulo{Trigger del detector T3} El siguiente nivel de trigger es T3, que es iniciado desde el CDAS seg\'un cierta combinaci\'on espacial y temporal de estaciones con T2.
 			Una vez detectado un T3, son guardadas las trazas de todas las estaciones con T1 o T2 dentro de una ventana temporal de \cant{30}{\mu s}.

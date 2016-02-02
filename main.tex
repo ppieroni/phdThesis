@@ -1,4 +1,5 @@
-\documentclass[a4paper,12pt]{book}
+\documentclass[a4paper,11pt]{book}
+\usepackage[top=1in, bottom=1.25in, inner=1.7in, outer=1.2in]{geometry}
 \usepackage[spanish,activeacute]{babel}
 \usepackage{ucs}
 \usepackage[utf8x]{inputenc}
@@ -103,10 +104,12 @@
 
 
 %opening
-\title{Medición del flujo de neutrinos cósmicos ultra energéticos mediante detectores de superficie}
-\author{Pablo Pieroni}
+%\title{Medición del flujo de neutrinos cósmicos ultra energéticos mediante detectores de superficie}
+%\author{Pablo Pieroni}
 
 \begin{document}
+\frontmatter
+
 \renewcommand{\listtablename}{Índice de tablas}
 \renewcommand{\tablename}{Tabla} 
 
@@ -125,24 +128,27 @@
 % \thispagestyle{empty}
 % \mbox{}
 
-\maketitle
+%\maketitle
 \tableofcontents
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Introduccion
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \include{introduccion}
+\include{introduccion}
+
+\mainmatter
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %   Deteccion con Auger
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \part{Detecci\'on de neutrinos ultra energ\'eticos con el observatorio Pierre Auger}
-% \include{EASAuger}
-% \include{detectorAuger}
-% \include{estrategiaAuger}
-% \include{simulacionAuger}
-% \include{seleccionAuger}
-% \include{resultadosAuger}
+\include{NeutrinosUHE}
+\part{Detecci\'on de neutrinos ultra energ\'eticos con el observatorio Pierre Auger}
+\include{detectorAuger}
+\include{EASAuger}
+%\include{estrategiaAuger}
+\include{simulacionAuger}
+\include{seleccionAuger}
+\include{resultadosAuger}
 % % %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %   Deteccion con radio
 % % %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -150,20 +156,19 @@
 % \include{motivacionRadio}
 % \include{EASRadio}
 % \include{simulacionRadio}
-\include{caracterizacionRadio}
 % \include{resultadosRadio}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %   Conclusiones, apendices y bbl
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \include{conclusiones}
 % \begin{appendices}
-
-% % \include{appendixAires}
+% 
+% \include{appendixAires}
 % \include{appendixDoublePeak}
 % \include{appendixTierraCurva}
 % \include{appendixConeInt}
 % \include{appendixTopDown}
 % \end{appendices}
-% \include{bbl}
+%\include{bbl}
 
 \end{document}
