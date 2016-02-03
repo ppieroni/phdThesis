@@ -4,31 +4,31 @@
 En este cap\'itulo se realiza un recuento de las caracter\'isticas principales de la se\~nal de radio generada por lluvias ES.
 Esto permitir\'a determinar el espacio de par\'ametros (energ\'ia, \'angulo cenital, etc) en el que este tipo de eventos prodr\'an ser detectados, y que por ende deber\'an ser simulados.
 
-Para que un evento ES sea detectado, es necesario que se cumplan dos condiciones:
+Para que un evento ES sea identificado como tal, es necesario que se cumplan dos condiciones:
 \begin{enumerate}
  \item La se\~nal de radio a nivel del suelo deber\'a ser lo suficientemente intensa y extensa para disparar varias antenas del detector, es decir, debe ser capaz de satisfacer ciertos criterios de disparo locales y globales.
- \item Las caracter\'isticas globales del evento deben permitir distinguirlo de los eventos de fondo, que al igual que en Auger son los generados por lluvias hadr\'onicas iniciadas cerca del tope de la atm\'osfera.
+ \item Las caracter\'isticas globales del evento deben permitir distinguirlo de los eventos de fondo, que al igual que en Auger ser\'an los generados por lluvias hadr\'onicas iniciadas cerca del tope de la atm\'osfera.
 \end{enumerate}
-por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en qu\'e regi\'on del espacio de par\'ametros las condiciones 1 y 2 se cumplen.
+Por este motivo en la subsiguiente caracterizaci\'on, adem\'as de presentar las caracter\'isticas principales de la se\~nal generada por eventos ES, se har\'a incapi\'e en determinar en qu\'e regi\'on del espacio de par\'ametros las condiciones 1 y 2 se cumplen.
 
 	\section{Caracter\'isticas generales: evento típico}
 	
-	En esta direcci\'on, el primer paso en la caracterizaci\'on de la emisión de radio de un evento ES ser\'a estudiar lo que denominaremos un \emph{evento típico} o \emph{de referencia}, cuyas caracter\'isticas ser\'an utilizadas como punto de comparaci\'on al variar los parametros de la simulaci\'on. 
+	El primer paso en la caracterizaci\'on de la emisión de radio de eventos ES ser\'a estudiar lo que denominaremos un \emph{evento típico} o \emph{de referencia}, cuyas caracter\'isticas ser\'an utilizadas como punto de comparaci\'on al variar los parametros de la simulaci\'on. 
 	A saber, las cualidades que definen la emisi\'on de radio de una lluvia ES en este an\'alisis son: 
 	\begin{itemize}
 	 \item el canal de decaimiento del \tauon{};
-	 \item la energía transferida a la lluvia $E_v$, o energ\'ia visible\footnote{Se denomina energ\'ia visible de la lluvia a la acarreada por las part\'iculas interactuantes en del decaimiento del \tauon{}, es decir, la acarreada por electrones, positrones, fotones y hadrones, y que ser\'a transmitida r\'apidamente a las nuevas generaciones de part\'iculas. Por otro lado, la energ\'ia transferida a part\'iculas penetrantes, neutrinos y muones, se perder\'a debido a su baja frecuencia de interacci\'on.};
+	 \item la energía transferida a la lluvia $E_v$, o energ\'ia visible\footnote{Se denomina energ\'ia visible de la lluvia a la acarreada por las part\'iculas interactuantes en del decaimiento del \tauon{}, es decir, la que portan electrones, positrones, fotones y hadrones cargados.};
+% 	 ue ser\'a transmitida r\'apidamente a las nuevas generaciones de part\'iculas. Por otro lado, la energ\'ia transferida a part\'iculas penetrantes, neutrinos y muones, se perder\'a debido a su baja frecuencia de interacci\'on.};
 	 \item sus parámetros geométricos $(\theta,{\rm x_d},\phi)$;
 	 \item la disposici\'on de las antenas;
 	 \item la ubicaci\'on geogr\'afica del detector, que determina el campo geomagn\'etico.
 	 
 	\end{itemize}
 
-	Es interesante destacar que a diferencia del calculo realizado para Auger, en este análisis las lluvias ES se caracterizarán por su energía visible $E_v$ y no por la energía del \tauon{} emergente.
-	Esta elección minimiza la cantidad de simulaciones que deben realizarse si se cumplen ciertas hip\'otesis (ver secci\'on \ref{sbsc:decayChRadio}) y deberá ser tenida en cuenta a la hora de calcular la exposición del detector.
+	Es interesante destacar que a diferencia del calculo realizado en la primer parte de esta tesis, aqu\'i las lluvias ES se caracterizarán por su energía visible $E_v$ y no por la energía del \tauon{} emergente.
+	Esto es una elecci\'on que en ciertas condiciones disminuye la cantidad de simulaciones que deben realizarse (ver secci\'on \ref{sbsc:decayChRadio}), aunque debe ser incluida correctamente al calcular la exposición del detector.
 	
-	Por otra parte, los par\'ametros que definen el evento t\'ipico se eligieron de manera que alcance un $100\%$ de eficiencia de disparo, como podr\'a corroborarse en el cap\'itulo \ref{ch:resultadosRadio}.
-	Estos se muestran en la tabla \ref{tab:paramTestShower}.
+	Los par\'ametros del evento elegido como referencia se muestran en la tabla \ref{tab:paramTestShower}.
 	%
 	\begin{table}[ht!]
 	 \begin{center}
@@ -46,12 +46,12 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 	\end{table}
 	%
 	
-	Para estudiar el evento t\'ipico se simular\'a la se\~nal sobre un arreglo de antenas cuyo paso es \cant{1000}{m} en la dirección de propagación y \cant{100}{m} en la dirección transversal, en un arreglo de \cant{2\times80}{km}.
-	Estos par\'ametros, que no tendr\'an nada que ver con la disposici\'on de las antenas del detector real, representan una buena relaci\'on de compromiso entre la granularidad con la que se mide la se\~nal y el tiempo de c\'omputo.
+	Para estudiar este evento se simular\'a su se\~nal sobre un arreglo de antenas cuyo paso es \cant{1000}{m} en la dirección de propagación y \cant{100}{m} en la dirección transversal, y cuyo tama\~no es \cant{2\times80}{km}.
+	Estos par\'ametros, que no tendr\'an nada que ver con la disposici\'on de las antenas del detector real, representan una buena relaci\'on de compromiso entre la granularidad con la que se mide la se\~nal y los recursos de c\'omputo utilizados en cada evento.
 	
-	Por \'ultimo es necesario elegir una ubicaci\'on para el detector. 
-	Como se ha mencionado, el c\'alculo descripto en esta parte de la tesis no esta ligado a ning\'un experimento en particular, sin embargo, para elegir el sitio en el que se simular\'a el detector, se decidi\'o considerar s\'olo como ubicaciones en las que ya se encuentre funcionando algun detector de rayos c\'osmicos que utilize la t\'ecnica de radio.
-	Entonces, las locaciones tenidas en cuenta se detallan en la tabla \ref{tab:possibleLoc} junto con las caracter\'isticas del campo geomagn\'etico promedio en sus inmediaciones (tomado de \cite{noaa}).
+	Dado que el campo geomagn\'etico afecta significativamente la se\~nal, es necesario definir tambi\'en la ubicaci\'on del detector. 
+	Como ya se ha mencionado, el c\'alculo descripto en esta parte de la tesis no esta ligado a ning\'un experimento en particular, sin embargo, para elegir el sitio en el que se simular\'a el detector se consideraron s\'olo ubicaciones en las que ya se encuentre funcionando alg\'un experimento de rayos c\'osmicos que utilice la t\'ecnica de radio.
+	Entonces, las locaciones tenidas en cuenta se detallan en la tabla \ref{tab:possibleLoc} junto con las caracter\'isticas del campo geomagn\'etico promedio en sus inmediaciones (datos tomados de \cite{noaa}).
 	%
 	\begin{table}[ht!]
 	\centering
@@ -72,17 +72,17 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 		& $(3.76\pm0.37)^\circ$ & $(60.0\pm0.22)^\circ$ & $0.5391\pm0.0015$ \\
 		\bottomrule
 		\end{tabular}
-		\caption{\label{tab:possibleLoc} Ubicaciones consideradas para el detector de radio junto a las caracter\'isticas del campo geomagn\'etico, tomadas de \cite{noaa}. Por su intensidad e inclinaci\'on, Tunka presenta el campo m\'as favorable para la detecci\'on de lluvias atmosf\'ericas inclinadas mediante t\'ecnicas de radio.}
+		\caption{\label{tab:possibleLoc} Ubicaciones consideradas para simular el detector, junto a las caracter\'isticas del campo geomagn\'etico~\cite{noaa}. Por su intensidad e inclinaci\'on, Tunka presenta el campo m\'as favorable para la detecci\'on de lluvias atmosf\'ericas inclinadas mediante t\'ecnicas de radio.}
 	\end{table}
 	
 	De las tres posibles ubicaciones, Tunka posee el campo geomagn\'etico m\'as intenso y vertical\footnote{La inclinaci\'on presentada en la tabla \ref{tab:possibleLoc} es medida respecto del plano del suelo.}. 
-	Dado que la contribuci\'on del efecto geomagn\'etico a la se\~nal generada depende del producto $\vec{\beta}\times\vec{B}$, ambas cualidades favorecen la detecci\'on de eventos inclinados.
-	Por este motivo el sitio elegido para todas las sumulaciones fue Tunka.
+	Dado que el impacto del efecto geomagn\'etico depende del producto $\vec{\beta}\times\vec{B}$, ambas cualidades favorecen la detecci\'on de eventos inclinados.
+	Por este motivo el sitio elegido para simular el evento de referencia y el resto de la librer\'ia fue Tunka.
 	
 	\subsection{Huella sobre el detector - Cono \cher}
 	
 	La primer caracter\'istica imporante de este tipo de eventos es la geometr\'ia de la huella dejada sobre el detector.
-	La figura \ref{fig:testFootprint_Cone} muestra el módulo del máximo campo eléctrico registrado a nivel del suelo, luego de aplicarle a la se\~nal el tratamiento descripto en la secci\'on \ref{sbsc:sig_treat}.
+	La figura \ref{fig:testFootprint_Cone} muestra lo que se denominar\'a la \emph{huella} del evento, que no es m\'as que la distribuci\'on de máximos de campo eléctrico registrados a nivel del suelo, luego de aplicarle a la se\~nal el tratamiento descripto en la secci\'on \ref{sbsc:sig_treat}.
 	%
 	\begin{figure}[ht!]
 		\centering
@@ -95,29 +95,31 @@ por este motivo, en la subsiguiente caracterizaci\'on ser\'a clave determinar en
 	
 	Hay tres aspectos muy importantes a destacar de esta figura.
 	El primero es que, como se observa en línea roja, la zona de impacto del cono \cher{} predicha por la ecuación \ref{eq:conewidth} coincide con la huella de radio de manera notable.
-	Para obtener la predicción se utilizaron los parámetros de la simulación para la altura de decaimiento y el ángulo cenital, mientras que la posición del máximo de la lluvia se obtuvo mediante prueba y error, pero utilizando valores razonables\footnote{El m\'aximo de una lluvia de \cant{10^{18}}{eV} se produce aproximadamente a \cant{10}{km} de la primera interacci\'on.}.
+	Para obtener esta predicción se utilizaron la altura de decaimiento y el ángulo cenital de la simulación, mientras que la posición del máximo de la lluvia se obtuvo mediante prueba y error, pero utilizando valores razonables\footnote{El m\'aximo de una lluvia de \cant{10^{18}}{eV} se produce aproximadamente a \cant{10}{km} de la primera interacci\'on.}.
 	Si bien \zhs{} realiza la simulación microscópicamente, es decir, sin realizar ninguna suposición sobre los mecanismos macrosc\'opicos, este resultado permite corroborar que la geometr\'ia emisi\'on de radio en eventos ES se explica a primer orden mediante razonamientos delineados en la sección \ref{sbsc:geom_emision}.
 	
-	La segunda observación es que en la dirección transversal a la de propagación el tamaño de la huella es de al rededor de \cant{2}{km}, es decir, las lluvias ES generan huellas muy alargadas sobre el detector, lo que se esperaba debido a que el \'angulo \cher{} es $\theta_{Cher}\sim1.4^\circ$.
-	Si bien la poca apertura de la se\~nal en esta direcci\'on desfavorece su detecci\'on, es la característica fundamental a partir de la cual se pueden distinguír neutrinos ES de los eventos de fondo. 
-	Esto es as\'i ya que los eventos inclinados que generan el background (eventos hadr\'onicos) se inician y desarrollan muy alto en la atmósfera y por ende generarán huellas de largo similar al de las lluvias ES, pero su ancho ser\'a mucho mayor debido a la apertura del cono \cher{}, cuyo v\'ertice se encuentra cerca del tope de la atm\'osfera.
+	La segunda observación es que en la dirección transversal a la de propagación el tamaño de la huella es de al rededor de \cant{2}{km}, es decir, las lluvias ES generan huellas muy angostas sobre el detector, lo que se esperaba debido a que el \'angulo \cher{} es $\theta_{cher}\sim1.4^\circ$.
+	Si bien la poca apertura de la se\~nal en esta direcci\'on desfavorece su detecci\'on, es la característica fundamental a partir de la cual se pueden distinguír neutrinos ES de los eventos de fondo.
+	% (que producen huellas m\'as anchas \ref{sc:identificacionRadio}). 
+	Los eventos inclinados que generan el background (hadr\'onicos) se inician y desarrollan alto en la atmósfera, por lo que imprimen huellas m\'as anchas sobre la superficie\footnote{Esto se entiende si se tiene en cuenta que el v\'ertice del cono \cher{} se encuentra cerca del tope de la atm\'osfera. En lluvias inclinadas este punto se encuentra muy lejos del detector, lo que permite la apertura de la se\~nal respecto del eje de la lluvia.}.
 	Este tema se volverá a abordar con mayor detalle en la sección \ref{sbsc:identificacionRadio}.
 	 
 	Por último, y en contraposición a lo anterior, en al dirección de propagación de la lluvia la huella alcanza niveles detectables (\cant{\gtrsim50}{\mu V/m}) en una zona de aproximadamente \cant{50}{km} de largo.
-	Esta es una cualidad muy favorable a la hora detectar este tipo de eventos, ya que aumenta la probabilidad de disparar antenas, incluso donde las part\'iculas de la lluvia no alcanzan el suelo.
+	Esta cualidad resulta favorable para detectar este tipo de eventos, ya que aumenta la probabilidad de disparar antenas del detector incluso donde las part\'iculas de la lluvia no alcanzan el suelo.
 	Esto queda de manifiesto en la figura \ref{fig:sim_foot_y_part}, en la que se grafican las part\'iculas de la lluvia sobre la distribuci\'on del campo el\'ectrico de la lluvia.
 	%
 	\begin{figure}[ht!]
 		\centering
 		\includegraphics[width=\textwidth]{./fig/simulacionRadio/foorPrint_Test_18_89-5_90_25_1238_E_particles}
 		\caption{\label{fig:sim_foot_y_part}
-		Comparaci\'on entre la distribuci\'on de part\'iculas de la lluvia que alcanzan el suelo y la huella de campo el\'ectrico dejada en el detector.
+		Comparaci\'on entre la distribuci\'on de part\'iculas de la lluvia que alcanzan el suelo y la huella de campo el\'ectrico.
 		}
 	\end{figure}
 	
 	\subsection{Polarización de la señal - Influencia del campo magn\'etico terrestre}
-	
-	Otra car\'acter\'istica de la se\~nal sobre el detector que vale la pena estudiar es la polarizaci\'on del campo el\'ectrico en cada una de las antenas, que podr\'a ser explicada a trav\'es de los modelos macrosc\'opicos delineados en el cap\'itulo \ref{easRadio}.
+	\textbf{======================}
+	Otra car\'acter\'istica de la se\~nal que vale la pena estudiar es la polarizaci\'on del campo el\'ectrico en cada una de las antenas.
+	Esta, que podr\'a ser explicada a trav\'es de los modelos macrosc\'opicos delineados en el cap\'itulo \ref{easRadio}.
 	Para ello se considerar\'a al evento de referencia como una lluvia completamente horizontal ($\theta=90^\circ$) y que se desplaza de Oeste a Este ($\phi=90^\circ$) a alguna altura respecto del suelo.
 	Bajo estas condiciones, y suponiendo que el campo magn\'etico terrestre es el de Tunka, es posible determinar la polarizaci\'on de la se\~nal en diferentes regiones del suelo, lo que se muestra en la figura \ref{fig:malField}.
 	%
