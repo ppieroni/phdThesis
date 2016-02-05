@@ -86,7 +86,7 @@ Por este motivo en la subsiguiente caracterizaci\'on, adem\'as de presentar las 
 	%
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_Cone_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0}.png}
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_Cone_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0_u}.png}
 		\caption{\label{fig:testFootprint_Cone}
 		Huella de campo eléctrico generada por la lluvia ES típica. En rojo se muestra la zona de impacto del cono \cher{} si el máximo de la lluvia se encuentra a \cant{11}{km} del punto de decaimiento. Esta curva se obtuvo a partir de la ecuación \ref{eq:conewidth}, a la que se llegó mediante hipótesis geométricas.
 		}
@@ -117,75 +117,83 @@ Por este motivo en la subsiguiente caracterizaci\'on, adem\'as de presentar las 
 	\end{figure}
 	
 	\subsection{Polarización de la señal - Influencia del campo magn\'etico terrestre}
-	\textbf{======================}
+	
 	Otra car\'acter\'istica de la se\~nal que vale la pena estudiar es la polarizaci\'on del campo el\'ectrico en cada una de las antenas.
-	Esta, que podr\'a ser explicada a trav\'es de los modelos macrosc\'opicos delineados en el cap\'itulo \ref{easRadio}.
-	Para ello se considerar\'a al evento de referencia como una lluvia completamente horizontal ($\theta=90^\circ$) y que se desplaza de Oeste a Este ($\phi=90^\circ$) a alguna altura respecto del suelo.
-	Bajo estas condiciones, y suponiendo que el campo magn\'etico terrestre es el de Tunka, es posible determinar la polarizaci\'on de la se\~nal en diferentes regiones del suelo, lo que se muestra en la figura \ref{fig:malField}.
+	Como primer paso, es posible utilizar los modelos macrosc\'opicos delineados en el cap\'itulo \ref{easRadio} para ganar intuici\'on al respecto. 
+	Para ello, consideremos una lluvia completamente horizontal ($\theta=90^\circ$) que se desplaza de Oeste a Este ($\phi=90^\circ$) a alguna altura respecto del suelo.
+	Bajo estas condiciones, y suponiendo que el campo magn\'etico terrestre es el de Tunka, es posible determinar la polarizaci\'on de la se\~nal en diferentes regiones del suelo.
+	Para ello, basta con superponer en cada regi\'on las componentes geomagn\'eticas y Askaryan del campo generado, como se muestra en la figura \ref{fig:malField}.
 	%
 	\begin{figure}[ht!]
 		\centering
 		\includegraphics[width=0.8\textwidth]{./fig/simulacionRadio/malField}
 		\caption{\label{fig:malField}
-		Esquema de las componentes del campo elctrico para una lluvia que se desplaza de Oeste a Este en Tunka. Se considerarán los campos hacia arriba, o la componente $z$, y el campo transversal a la dirección de propagación de la lluvia sobre el suelo, componente ${\rm TR}$. Se desprecia por el momento la componente ${\rm FW}$, tambien sobre el suelo pero en la dirección de propagación. La contribución geomagnética conserva su dirección (transversal y hacia arriba) en todo el suelo. Por otro lado, el aporte del efecto Askaryan tiene una componentes transversales opuestas en el sector norte y el sur, mientras que la componente $z$ siempre es positiva.
+		Esquema de las componentes del campo elctrico para una lluvia que se desplaza de Oeste a Este en Tunka. Se considerarán los campos en el sistema de referencia definido por la lluvia, esto es, hacia arriba (componente $z$), y en las direcciones transversal (${\rm TR}$) y paralala (${\rm FW}$) a la dirección de propagación de la lluvia.
+		El campo total es la suma de la contribución geomagnética, que conserva su dirección (transversal y hacia arriba) en todo el suelo y del aporte del efecto Askaryan, que tiene componentes transversales opuestas en el sector norte y el sur de la lluvia, mientras que su componente $z$ siempre es positiva.
 		}
 	\end{figure}
 	%
-	
 	Por simplicidad es conveniente pensar en el campo en el sistema de referencia definido por la coordenada $z$ y las direcciónes paralela (${\rm FW}$) y transversal (${\rm TR}$) a la dirección de propagación sobre el suelo.
-	Desde esta persectiva, a primer orden la contribución geomagnética al campo eléctrico tiene dirección $({\rm TR},z)$ ya que por construcción es perpendicular a la dirección de propagación.
+	Desde esta persectiva, a primer orden la contribución geomagnética al campo eléctrico tiene dirección $({\rm TR},z)$, ya que por construcción es perpendicular a la dirección de propagación.
 	Por otro lado, a cada lado del eje de la lluvia la componente Askaryan tiene direcciones opuestas pero sobre el suelo siempre posee componente en $z>0$.
 	
-	En las figuras \ref{fig:testFootprint_E0tr} y \ref{fig:testFootprint_E0z} se grafican el campo en dirección ${\rm TR}$ y en dirección $z$ de la huella de la lluvia.
+	Con esto en mente es posible estudiar la huella dejada por el evento de referencia, que posee caracter\'isticas muy similares al del ejemplo que se acaba de exponer~\footnote{Sus par\'ametros son los de la tabla \ref{tab:paramTestShower}.}.
+	En las figuras \ref{fig:testFootprint_E0tr} y \ref{fig:testFootprint_E0z} se grafican el campo en dirección ${\rm TR}$ y en dirección $z$ de su huella.
 	%
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0x}.png}
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0x_u}.png}
 		\caption{\label{fig:testFootprint_E0tr}
 		Huella de campo eléctrico en la dirección ${\rm TR}$. La intensidad del cono \cher{} es distinta a ambos lados del eje de la lluvia.
 		Cuando la coordenada transversal es positiva el efecto Askaryan y el geomagnético se suprimen mientras que cuando es negativa se favorecen.
 		}
 	\end{figure}
 	%
-	Como puede observarse en la figura \ref{fig:testFootprint_E0tr}, la intensidad del cono \cher{} no es simétrica respecto del eje de la lluvia.
-	Esto se debe a que, como se esquematizó en la figura \ref{fig:malField}, en la parte norte de la lluvia las contribuciones Askaryan y geomagnética en la dirección ${\rm TR}$ se suprimen mientras que en la parte sur se favorecen.
+	Como puede observarse en \ref{fig:testFootprint_E0tr}, la intensidad del cono \cher{} en direcci\'on ${\rm TR}$ no es simétrica respecto del eje de la lluvia.
+	Esto es consistente con lo que se esquematizó en la figura \ref{fig:malField}, que muestra que en la parte norte de la huella las contribuciones Askaryan y geomagnética en dirección ${\rm TR}$ se suprimen mientras que en la parte sur se favorecen.
+
 	%
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0z}.png}
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0z_u}.png}
 		\caption{\label{fig:testFootprint_E0z}
 		Huella de campo eléctrico en la dirección $z$. En esta dirección las contribuciones geomagnética y Askaryan se suman en cualquier punto del suelo.
 		}
 	\end{figure}
 	%
-	Por otro lado, la componente $z$ del campo de ambas contribuciones no presenta ningun cambio de signo en el plano del suelo, lo que explica que la figura \ref{fig:testFootprint_E0z} muestre una huella mucho más simétrica respecto del eje generado por la direcci\'on de propagaci\'on.
+	Por otro lado, en \ref{fig:testFootprint_E0z} la componente $z$ del campo muestra una huella mucho más simétrica respecto del eje generado por la direcci\'on de propagaci\'on, consistente con que ambas contribuciones (geoagn\'etica y Askaryan) predicen una componente $z>0$ en toda la superficie.
 	
-	Por ultimo, hasta el momento se despreció la componente ${\rm FW}$. 
-	Dado que las lluvias ES son casi horizontales la aparición de esta componente a nivel del suelo se vuelve despreciable, como se observa en la figura \ref{fig:testFootprint_E0fw} si se compara la intensidad de campo de la huella con la de las figuras \ref{fig:testFootprint_E0tr} y \ref{fig:testFootprint_E0z}.
+	Por \'ultimo, en el ejemplo se despreció la componente ${\rm FW}$ del campo el\'ectrico.
+	Dado que las lluvias ES son casi horizontales la aparición de esta componente a nivel del suelo se ve s\'umamente desfavorecida, como se observa en la figura \ref{fig:testFootprint_E0fw}.
 	%
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0y}.png}
+		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{foorPrint_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0y_u}.png}
 		\caption{\label{fig:testFootprint_E0fw}
 		Campo eléctrico en la dirección ${\rm FW}$. Su intensidad es dos \'ordenes de magnitud menor que en las direcciones ${\rm TR}$ y $z$.
 		}
 	\end{figure}
+	%
+	Si se compara su intensidad con la de las huellas de las figuras \ref{fig:testFootprint_E0tr} y \ref{fig:testFootprint_E0z}, \'esta es dos \'ordenes de magnitud menor.
+	Si bien en el ejemplo simplificado de la figura \ref{fig:malField} esta componente es nula, la leve inclinacion del evento de referencia ($\theta=90.5^\circ$) y posiblemente efectos de segundo \'orden generan su aparici\'on.
 	
-	Dada la regularidad que presenta la polarizaci\'on a lo largo de toda la huella, puede ser explotada para eliminar de los eventos antenas con se\~nal esp\'urea.
-	En la figura \ref{fig:footprintPolariz} se observa la distribuci\'on de \'angulo azimutal ($0^\circ$ hacia el norte) y cenital para las antenas cuya se\~nal supera el nivel de disparo.
+	\subsubsection{Polarizaci\'on del campo como filtro de antenas esp\'ureas}
+
+	La regularidad que presenta la polarizaci\'on a lo largo de la huella puede ser explotada para eliminar de los eventos antenas con se\~nal esp\'urea.
+	En la figura \ref{fig:footprintPolariz} se muestra la distribuci\'on de \'angulo azimutal ($0^\circ$ hacia el norte) y cenital del campo para las antenas cuya se\~nal supera los \cant{50}{\mu V/m}.
 	%
 	\begin{figure}[ht!]
 		\centering
 		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{phiDist2DColz_Test_18_89.5_90_25_1238}.png}
 		\includegraphics[width=\textwidth]{./fig/simulacionRadio/{thDist2DColz_Test_18_89.5_90_25_1238}.png}
 		\caption{\label{fig:footprintPolariz}
-		Distribuci\'on de \'angulo azimutal y cenital a lo largo de la huella de la lluvia. Se observa que el \'angulo azimutal se mantiene en valores \emph{cercanos} a cero mientras que el cenital no presenta var\'ia entre $0^\circ$ y $90^\circ$.
+		Distribuci\'on de \'angulo azimutal y cenital del campo el\'ectrico a lo largo de la huella de la lluvia. Se observa que el \'angulo azimutal se mantiene en valores \emph{cercanos} a cero mientras que el cenital no presenta var\'ia entre $0^\circ$ y $90^\circ$.
 		}
 	\end{figure}
 	%
-	Se observa que el los valores de \'angulo azimutal se mantienen en valores cercanos a cero mientras que el \'angulo cenital var\'ia entre $0^\circ$ y $90^\circ$. 
-	De aqu\'i, resulta natural imponer una restricci\'on a los valores de \'angulo azimutal que puede tomar la se\~nal de cada antena de un evento. 
-	Para definirlo es resulta \'util la figura \ref{fig:phiDist}, que muestra la distribuci\'on de $\phi$ en forma de histograma. 
+	Se observa que el \'angulo azimutal se mantienen en valores cercanos a cero mientras que el cenital var\'ia entre $0^\circ$ y $90^\circ$. 
+	Entonces, si se quieren descartar antenas disparadas al azar resulta natural imponer una restricci\'on sobre el \'angulo azimutal del campo de cada antena de un evento. 
+	Para definir esta restricci\'on es resulta \'util la figura \ref{fig:phiDist}, que muestra la distribuci\'on de $\phi$ en forma de histograma. 
 	%
 	\begin{figure}[ht!]
 		\centering
@@ -196,11 +204,11 @@ Por este motivo en la subsiguiente caracterizaci\'on, adem\'as de presentar las 
 	\end{figure}
 	%
 	
-	Si bien se observa que en la zona norte y sur de la huella presentan valores en promedio distintos, el valor absoluto se mantiene por debajo de $2.5^\circ$ en la mayor\'ia de los casos, lo que define una zona de aceptaci\'on de alrededor de $5^\circ$.
-	Este valor permite entonces obtener una idea del orden de la reducci\'on en el numero de antenas con se\~nal esp\'urea. 
-	Entonces, bajo la hip\'otesis de que la polarizaci\'on del ruido es aleatoria, la probabilidad de que una se\~nal esp\'urea aparezca en el rango definido por un evento sera $\sim 5/360\sim 1/60$.
+	Si bien se observa que en la zona norte y sur de la huella presentan valores en promedio distintos, el valor absoluto se mantiene por debajo de $2.5^\circ$ en la mayor\'ia de los casos, lo que define una zona de aceptaci\'on de alrededor de $\sim5^\circ$.
+	Este valor permite entonces obtener una idea del orden de la reducci\'on en el numero de antenas con se\~nal al azar. 
+	Bajo la hip\'otesis de que la polarizaci\'on del ruido es completamente aleatoria, la probabilidad de que una se\~nal esp\'urea aparezca en el rango definido por un evento sera $\sim 5/360\sim 1/60$.
 	En resumen, un corte de selecci\'on en el \'angulo azimutal permitir\'ia rechazar alrededor del $98.5\%$ de las antenas disparadas por azar.
-	
+	Como consecuenta esta ganancia permitir\'ia bajar el nivel de disparo local de las antenas, aumentando la eficiencia a baja energ\'ia (ver secci\'on \ref{sbsc:depEvRadio}).
 	
 % 	\textbf{XXX ACA PODRIA AGREGAR lo de Bon y Boff y alguna evolucion del espectro o el espectro mismo}
 	
@@ -300,22 +308,22 @@ Por este motivo en la subsiguiente caracterizaci\'on, adem\'as de presentar las 
 % 	
 	\section{Dependencia en los par\'ametros la lluvia}
 	
-	A fin de cuentas la exposici\'on a neutrinos depende de dos factores, las probabilidades de que se inicie una lluvia de par\'ametros dados y la eficiencia de detecci\'on e identificaci\'on de tales lluvias.
-	Mientras que modificar las probabilidades de interacci\'on se encuentra fuera de alcance\footnote{Estas probabilidades dependen en gran medida del blanco con el que interact\'uan los neutrinos, que en eventos ES es la corteza de La Tierra.}, las eficiencias de detecci\'on pueden ser controladas en gran medida mediante el dise\~no del detector. 
-	Es por esto que resulta clave entender c\'omo var\'ia la huella de radio de los eventos al variar los distintos par\'ametros de la lluvia.
-	As\'i, a partir de este conocimiento y del estudio de las probabilidades de interacci\'on ser\'a posible optimizar el dise\~no del detector.
+	A fin de cuentas la exposici\'on a neutrinos depende de dos factores, las probabilidades de que se de inicio a una lluvia de par\'ametros $\Gamma$ y la eficiencia con la que estas son detectadas.
+	Mientras que en este tipo de experimentos la modificaci\'on de las probabilidades de interacci\'on suele ser una tarea fuera del alcance\footnote{Estas dependen b\'asicamente del blanco con el que interact\'uan los neutrinos, que para detectores de superficie que observan eventos ES es la corteza de La Tierra. Un cambio en estas probabilidades implicar\'ia cambiar la locaci\'on del detector.}, las eficiencias de detecci\'on pueden ser controladas con cierta libertad variando el dise\~no del detector. 
+	Por este motivo resulta clave entender c\'omo cambia la huella de radio de los eventos ES al variar los distintos par\'ametros de la lluvia que la genera.
+	As\'i, a partir de este conocimiento y del estudio de las probabilidades de interacci\'on ser\'a posible por un lado optimizar el dise\~no del detector y por otro definir el espacio de par\'ametros sobre el que es necesario simular eventos.
 	
-	Como se expuso en la secci\'on \ref{sbsc:localTriggerRadio}, la eficiencia de disparo de cada antena depende de del campo el\'ectrico m\'aximo registrado sobre la misma.
-	Asimismo, el \'area sobre la cu\'al la huella de la radio supera el umbral de detecci\'on resulta ser una variable altamente relacionada con el disparo global de los eventos.
-	En la misma l\'inea, el campo el\'ectrico m\'aximo registrado a lo largo de la huella permite inferir si un la lluvia tiene o no la capacidad de producir disparos locales.
-	Por \'ultimo, como se ver\'a en la secci\'on \ref{sc:identificacionRadio}, medidas del ancho de la huella se encuentran relacionadas con la posibilidad de distinguir eventos ES de las lluvias de fondo.
-	Con todo esto en mente, en las siguientes secciones se estudiar\'a el comportamiento de algunas de estas variables al variar los par\'ametros del evento de referencia.
+	En la secci\'on \ref{sbsc:localTriggerRadio} se decidi\'o que la condici\'on de disparo de cada antena dependa de del campo el\'ectrico m\'aximo registrado sobre la misma.
+	Por este motivo el \'area sobre la cu\'al la huella de la radio supera el umbral de detecci\'on resulta ser una variable altamente relacionada con el disparo global de los eventos.
+	En la misma l\'inea el campo el\'ectrico m\'aximo registrado a lo largo de la huella permite inferir si un la lluvia tiene o no la capacidad de producir disparos locales.
+	Por \'ultimo, como se discutir\'a en la secci\'on \ref{sc:identificacionRadio}, medidas del ancho de la huella se encuentran relacionadas con la posibilidad de distinguir eventos ES de las lluvias de fondo.
+	Con todo esto en mente, en las siguientes secciones se estudiar\'a el comportamiento de algunas de estas variables al cambiar los par\'ametros del evento de referencia.
 	
 	\subsection{Efecto del \'angulo cenital $\theta$}
 	\label{sbsc:depThetaRadio}
 	
-	En primer lugar se estudiar\'a c\'omo cambia la huella al variar el \'angulo cenital del evento.
-	Debido a la geometr\'ia del cono \cher{} existir\'a un \'angulo m\'aximo a partir del cu\'al la emisi\'on de radio de la lluvia no interactuar\'a con el detector.
+% 	En primer lugar se estudiar\'a c\'omo cambia la huella al variar el \'angulo cenital del evento.
+	Debido a la geometr\'ia del cono \cher{} existir\'a un \'angulo m\'aximo a partir del cu\'al la emisi\'on de radio de la lluvia no interactuar\'a con el detector~\footnote{Esto significa que la compresi\'on temporal no ser\'a suficiente para imprimir una se\~nal apreciable en las antenas.}.
 	Seg\'un el modelo simplificado presentado en la secci\'on \ref{sc:toymodelES} \'este \'angulo de corte deber\'ia ser cercano a $1.4^\circ$, como lo indica la figura \ref{fig:chConeWidth}.
 	
 	\begin{figure}[ht!]
@@ -340,10 +348,10 @@ Por este motivo en la subsiguiente caracterizaci\'on, adem\'as de presentar las 
 		}
 	\end{figure}
 	
-	La figura \ref{fig:theta_dependence} muestra la huella dejada sobre el detector por el evento de referencia con distintos \'angulos ceintales.
-	Dado que en todos los casos la lluvia se inici\'o en $(x,y)=(0,0)$, el punto de impacto del cono \cher{} se desplaza hacia valores positivos de $x$ a medida que $\theta$ crece.
+	Para estudiar la situaci\'on la figura \ref{fig:theta_dependence} muestra la huella dejada sobre el detector por el evento de referencia con distintos \'angulos ceintales.
+	Dado que en todos los casos el \tauon{} decay\'o en $(x,y)=(0,0)$, el punto de impacto del cono \cher{} se desplaza hacia valores positivos de $x$ a medida que $\theta$ crece.
 	Sumado a este efecto, la amplitud de la huella en general disminuye, lo que puede deberse tanto al factor $1/R$ como a un efecto de compresi\'on de la se\~nal.
-	A fin de cuentas este hecho sugiere que existir\'a un \'angulo m\'aximo a partir del cu\'al los eventos ES no poseen la capacidad de dsparar el detector.
+	A fin de cuentas este hecho sugiere que existir\'a un \'angulo m\'aximo a partir del cu\'al los eventos ES no poseen la capacidad de disparar el detector.
 % 	En particular, para valores superiores a $\sim91.3^\circ$ el m\'aximo de se\~nal coherente no alcanza el detector, lo que genera un corte en la eficiencia de detecci\'on.
 	
 	Para apoyar este punto en la figura \ref{fig:theta_dependence2} se muestra el campo el\'ectrico m\'aximo de la lluvia para diferentes \'angulos cenitales y energ\'ias.
@@ -357,14 +365,15 @@ Por este motivo en la subsiguiente caracterizaci\'on, adem\'as de presentar las 
 	\end{figure}
 	%
 	Dicha variable presenta un decaimiento aproximadamente exponencial hasta cerca de $92.5^\circ$ donde el comportamiento cambia.
-	Para este \'angulo, incluso a \cant{E_v=10^{18.5}}{eV} el m\'aximo de la huella no alcanza niveles detectables.
-	Este comportamiento tambien se observa para diferentes alturas de decaimiento del \tauon{} por lo que no se simular\'an eventos cuyo \'angulo cenital supere los $\sim92.5^\circ$.
+	Para este \'angulo incluso a \cant{E_v=10^{18.5}}{eV} el m\'aximo de la huella no alcanza niveles detectables (\cant{\sim25}{\mu V/m}),
+% 	, lo que .
+% 	Este comportamiento tambien se observa para diferentes alturas de decaimiento del \tauon{}
+	por lo que se lo considerar\'a como valor de corte y no se simular\'an eventos cuyo \'angulo cenital supere los $\sim92.5^\circ$.
 	
 	\subsection{Efecto de altura de decaimiento del tauon \xd{}}
 	\label{sbsc:depXdRadio}
 	
-	Tambien resulta interesante estudiar como cambia la huella del campo el\'ectrico al variar la altura de decaimiento del \tauon{} en el evento de referencia.
-	Esto se muestra en la figura \ref{fig:xd_dependence} para \cant{xd = \left\{25,75,150,300\right\}}{m}, donde nuevamente la cascada se inici\'o en $(x,y)=(0,0)$.
+	Tambien resulta interesante estudiar como cambia la huella del campo el\'ectrico al variar la altura de decaimiento del \tauon{} en el evento de referencia, lo que se muestra en la figura \ref{fig:xd_dependence} para \cant{{\rm x_d} = \left\{25,75,150,300\right\}}{m}. 
 	%
 	\begin{figure}[ht!]
 		\centering
@@ -381,11 +390,12 @@ Por este motivo en la subsiguiente caracterizaci\'on, adem\'as de presentar las 
 		Huella sobre el detector del evento de referencia para distintas alturas de decaimiento. Se observa como a medida que aumenta la altura de decaimiento del \tauon{} la intensidad del campo el\'ectrico decrece.
 		}
 	\end{figure}
-	Se observa como a medida que \xd{} aumenta la huella se traslada hacia valores positivos de $x$, lo que resulta nuevamente compatible con el modelo del cono \cher{}, en el que el plano de corte (la superficie de la tierra) se aleja paralelamente de su inicio.
+	%
+	Una vez m\'as la huella se traslada hacia valores positivos de $x$ al aumentar el valor del par\'ametro \xd{}.
+	Dado que la cascada se inici\'o en $(x,y)=(0,0)$ este corrimiento resulta compatible con el modelo del cono \cher{}~\footnote{Esto se entiende si se piensa que al variar \xd{} el plano del suelo corta el eje de la lluvia en diferentes posiciones, modificando el punto de impacto de la se\~nal.}.
 	Cabe destacar que adem\'as de desplazarse, la intensidad de la huella disminuye a medida que aumenta \xd{}, lo que nuevamente puede deberse al decaimiento de $1/R$ del campo o a efectos de compresi\'on temporal de la se\~nal. 
-	
-	Una vez m\'as esto sugiere la existencia de una altura de decaimiento a partir de la cual la se\~nal en el detector no es suficiente para dispararlo.
-	Entonces resulta \'util estudiar como var\'ia el m\'aximo campo el\'ectrico registrado en la lluvia para diferentes valores de altura de decaimiento y energ\'ia visible, lo que se muestra en la figura \ref{fig:xd_dependence2}.
+	De manera an\'aloga a lo que ocure para el \'angulo cenital, esto sugiere la existencia de una altura de decaimiento a partir de la cual el campo sobre el detector no es suficiente para dispararlo.
+	Entonces resulta \'util entonces estudiar c\'omo var\'ia el m\'aximo campo el\'ectrico de la huella para diferentes valores de altura de decaimiento y energ\'ia visible, lo que se muestra en la figura \ref{fig:xd_dependence2}.
 	%
 	\begin{figure}[ht!]
 		\centering
@@ -396,7 +406,7 @@ Por este motivo en la subsiguiente caracterizaci\'on, adem\'as de presentar las 
 		}
 	\end{figure}
 	
-	Se observa como a medida que \xd{} aumenta esta variable decae de manera aproximadamente exponencial, por lo que a partir de cierto valor de \xd{} ningun sector de la huella ser\'a capaz de dar trigger.
+	Se observa como a medida que \xd{} aumenta esta variable decae, por lo que dado un valor de energ\'ia visible a partir de cierto valor de \xd{} ning\'un sector de la huella ser\'a capaz de dar trigger.
 	A diferencia de lo que sucede con el \'angulo cenital, en el que el corte en $92.5^\circ$ es com\'un a todas las energ\'ias y alturas de decaimiento, el corte en \xd{} depende tanto de \ev{} como de $\theta$.
 	Adem\'as, como se ver\'a mas adelante, este efecto tendr\'a importancia s\'olo a baja energ\'ia, mientras que para energ\'ias superioras a \cant{\sim10^{18}}{eV} la eficiencia a altos \xd{} se ver\'a suprimida por el efecto de la curvatura de la tierra (ver ap\'endice \ref{ap:tierraCurva} y cap\'itulo \ref{ch:resultadosRadio}).
 	Por estos motivos, para cada bin de energ\'ia y \'angulo cenital se decidir\'a el m\'aximo \xd{} a simular basados en las posibilidades de disparar el detector.
@@ -416,10 +426,10 @@ Por este motivo en la subsiguiente caracterizaci\'on, adem\'as de presentar las 
 		}
 	\end{figure}
 	%
-	Debido a que el campo geomagn\'etico en Tunka es casi vertical, si bien las componentes $E_x$ y $E_y$ var\'ian significativamente con $\phi$, la componente transversal $E_{TR}$ del campo se mantiene practicamente constante, lo que se observa en l\'inea de trazos verde. 
+	Debido a que el campo geomagn\'etico en Tunka es casi vertical, si bien las componentes $E_x$ y $E_y$ var\'ian significativamente con $\phi$, la componente transversal $E_{TR}$ del campo se mantiene practicamente constante (l\'inea de trazos verde en \ref{fig:geomComps_Tunka}). 
 	Esto se debe a que esta componente depende b\'asicamente de la proyecci\'on vertical del campo geomagn\'etico.
 	La peque\~na variaci\'on que se aprecia aparece debido a que el c\'alculo se realiz\'o suponiendo una lluvia no horizontal.
-	Por otro lado, esta verticalidad en $\vec B$ provoca que para lluvias cuasi-horizontales, la coponente $E_z$ sea 0 para $\phi=0^\circ$ y $\phi=180^\circ$, y tome un valor m\'aximo para $\phi=90^\circ$, lo que se dibuja en l\'inea de trazos roja. 
+	Por otro lado, debido a que $\vec B$ define el norte magn\'etico ($\phi=0^\circ$) la coponente $E_z$ vale 0 para $\phi=0^\circ$ y $\phi=180^\circ$ ($\vec\beta$, $\vec B$ y $\hat z$ son coplanares), y dado que su declinaci\'on es menor a $90^\circ$, esta componente tomar\'a un valor m\'aximo para $\phi=90^\circ$ (l\'inea de trazos roja en la figura). 
 	Como resultado de estas dos constribuciones, el m\'odulo total del campo el\'ectrico $|E|$ muestra una variaci\'on de aproximadamente $10\%$ entre 0 y 180 grados. 
 	
 	Con esto en mente resulta interesante entonces observar como se modifica la huella de $|E|$ del evento de referencia al cambiar el \'angulo azimutal entre $\phi=0^\circ$ y $\phi=90^\circ$, lo que se muestra para el evento de referencia en la figura \ref{fig:phi_dependence}. 
@@ -436,7 +446,7 @@ Por este motivo en la subsiguiente caracterizaci\'on, adem\'as de presentar las 
 		}
 	\end{figure}
 	En acuerdo con la figura \ref{fig:geomComps_Tunka} la huella para $\phi=0^\circ$ en promedio valores de campo el\'ectrico menores que para $\phi=90^\circ$, sin embargo, la variaci\'on a lo largo de la huella resulta mayor a $10\%$.
-	Esta diferencia puede deberse a que el cambio de direcci\'on de la contribuci\'on del efecto geomagn\'etico provoque una cancelaci\'on con la contribuci\'on Askaryan.
+	Esta diferencia puede deberse a que el cambio de direcci\'on de la contribuci\'on del efecto geomagn\'etico provoque una cancelaci\'on diferente con la contribuci\'on Askaryan en cada caso.
 	
 	\subsection{Efecto de la eneg\'ia visible $E_v$}
 	\label{sbsc:depEvRadio}
@@ -475,7 +485,7 @@ Por este motivo en la subsiguiente caracterizaci\'on, adem\'as de presentar las 
 	\end{figure}
 	%
 	En todos los casos la dependencia de con la energ\'ia es pr\'acticamente lineal.
-	Este comportamiento creciente sugiere, como era natural suponer, que a medida que aumente la energ\'ia visible de la lluvia la eficiencia de detecci\'on crecer\'a.
+	Este comportamiento creciente sugiere, que a medida que aumente la energ\'ia visible de la lluvia la eficiencia de detecci\'on crecer\'a.
 	
 	
 	\subsection{Dependencia con el canal de decaimiento del \tauon{}}
@@ -483,7 +493,7 @@ Por este motivo en la subsiguiente caracterizaci\'on, adem\'as de presentar las 
 	
 	Finalmente es necesario estudiar como afecta el canal de decaimiento del \tauon{} a la huella de radio sobre el detector.
 	Dado que el par\'ametro de control de energ\'ia elegido en esta parte de la tesis es la energ\'ia visible, es decir, la que portan las part\'iculas poco penetrantes al inicio de la lluvia, el canal de decaimiento queda determinado por las part\'iculas la inician y por como se distribuye la energ\'ia entre ellas\footnote{Como contraparte, en el an\'alisis para Auger lo que determinaba el decaimiento del \tauon{}, ademas de las part\'iculas y la distribuci\'on de energ\'ia, es qu\'e fracci\'on de la energ\'ia del tau\'on se transmitia a las part\'iculas interactuantes.}.
-	Por otro lado, ya se ha expuesto que la emisi\'on de radio en lluvias atmosf\'ericas extendidas depende fuertemente de el n\'umero de part\'iculas de la lluvia, lo que, dada la universalidad de las EAS, se encuentra estrechamente relacionado con la energ\'ia del primario.
+	Por otro lado, ya se ha expuesto que la emisi\'on de radio en lluvias atmosf\'ericas extendidas depende fuertemente de el n\'umero de part\'iculas que se generan durante su evoluci\'on que a su vez, dada la universalidad de las EAS, se encuentra estrechamente relacionado con la energ\'ia del primario.
 	Entonces, a la luz de estos dos hechos se espera que a misma energ\'ia visible y par\'ametros geom\'etricos, el canal de decaimiento del \tauon{} no afecte las caracter\'isticas fundamentales de la huella de radio sobre el detector.
 	Para poner a prueba esta hip\'otesis, en la figura \ref{fig:tdec_dependence} se muestra la se\~nal a nivel del suelo para cuatro de los canales de decaimiento m\'as representativos. Se observa que las caracter\'isticas generales de la huella se conserva en todos los casos, aunque var\'ia levemente en forma e intensidad.
 	%
@@ -491,12 +501,12 @@ Por este motivo en la subsiguiente caracterizaci\'on, adem\'as de presentar las 
 		\centering
 		\begin{tabular}{cc}
 		$\tau\rightarrow\nu_\tau\pi^-$ - BR=10.9$\%$ & $\tau\rightarrow\nu_\tau\pi^-\pi^-\pi^+$ - BR=9.3$\%$ \\
-		\includegraphics[width=0.5\textwidth]{./fig/simulacionRadio/decay/{foorPrint_Cone_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1005_E0}.png} &
-		\includegraphics[width=0.5\textwidth]{./fig/simulacionRadio/decay/{foorPrint_Cone_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1023_E0}.png}\\
+		\includegraphics[width=0.5\textwidth]{./fig/simulacionRadio/decay/{foorPrint_Cone_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1005_E0_u}.png} &
+		\includegraphics[width=0.5\textwidth]{./fig/simulacionRadio/decay/{foorPrint_Cone_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1023_E0_u}.png}\\
 		
 		$\tau\rightarrow\nu_\tau e^-\nu_e$ - BR=17.9$\%$ & $\tau\rightarrow\nu_\tau\pi^-\pi^0$ - BR=25.5$\%$ \\
-		\includegraphics[width=0.5\textwidth]{./fig/simulacionRadio/decay/{foorPrint_Cone_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0}.png} &
-		\includegraphics[width=0.5\textwidth]{./fig/simulacionRadio/decay/{foorPrint_Cone_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1618_E0}.png}\\
+		\includegraphics[width=0.5\textwidth]{./fig/simulacionRadio/decay/{foorPrint_Cone_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1238_E0_u}.png} &
+		\includegraphics[width=0.5\textwidth]{./fig/simulacionRadio/decay/{foorPrint_Cone_ZWv1.22_ntuples_v1.21_ChTest_phi_90_18_89.5_90_25_1618_E0_u}.png}\\
 		\end{tabular}
 		\caption{\label{fig:tdec_dependence}
 		Huella de campo el\'ectrico sobre el detector para distintos canales de decaimiento del \tauon{}. Se observa que las caracter\'isticas fundamentales de la misma se mantienen en todos los casos.
@@ -516,16 +526,16 @@ Por este motivo en la subsiguiente caracterizaci\'on, adem\'as de presentar las 
 		}
 	\end{figure}
 	%
-	Para construir estas distribuciones se tomaron 30 decaimientos del \tauon{} al azar, respetando los \emph{branching ratios} de la tabla \ref{tab:tauDecay}, y se simul\'o la se\~nal sobre el detector.
+	Para construir estas distribuciones se tomaron 30 decaimientos del \tauon{} al azar, respetando los \emph{branching ratios} de la tabla \ref{tab:tauDecay}, y se simul\'o su se\~nal.
 % 	El m\'aximo de la huella se obtuvo simplemente como la m\'axima se\~nal registrada por las antenas simuladas.
-	Para calcular el \'area sobre el $80\%$ del m\'aximo se sum\'o la superficie representada por cada observador (antena) cuya se\~nal super\'o el umbral.
-	Dado que la distancia entre antenas en la direcci\'on de propagaci\'on es \cant{1}{km} y en la direcci\'on transversal es \cant{100}{m}, cada antena contribuy\'o al \'area total con \cant{0.1}{km^2}.
-	Por otro lado, el c\'alculo del ancho promedio de la huella requieri\'o tres pasos.
+	Para calcular el \'area sobre el $80\%$ del m\'aximo se sum\'o la superficie representada por cada observador (antena) cuya se\~nal haya superado el umbral.
+	Dado que la distancia entre antenas en la direcci\'on de propagaci\'on es \cant{1}{km} y en la direcci\'on transversal es \cant{100}{m}, cada antena disparada contribuy\'o al \'area total con \cant{0.1}{km^2}.
+	Por otro lado el c\'alculo del ancho promedio de la huella requieri\'o tres pasos.
 	Primero se calcul\'o la direcci\'on de propagaci\'on de la se\~nal ($\phi_{rec}$) mediante el ajuste de un frente plano a los tiempos en los que cada antena alcanz\'o su m\'aximo. 
 	Segundo, se obtuvo el baricentro de la huella. Tercero, se comput\'o la distancia promedio a la recta, determinada por la direcci\'on de propagaci\'on de la se\~nal y por dicho baricentro.
 	
 	Las variaciones debido al canal de decaimiento observadas en la figura \ref{fig:showerVars} resultan del orden del $10-15\%$ en el m\'aximo campo de la lluvia, de alrededor de $30\%$ en el \'area sobre el umbral y $3\%$ en el ancho promedio.
 	Por otro lado, en todos los histogramas se encuentra marcado el bin en el que se ubica el evento de referencia.
-	Es interesante notar que su variaci\'on de distribuci\'on a distribuci\'on parece ser menor que la dispersi\'on de cada variable en s\'i, lo que implica correlaci\'on entre las variables.
+	Es interesante notar que su variaci\'on de distribuci\'on a distribuci\'on parece ser menor que la dispersi\'on de cada variable en s\'i misma, lo que implica correlaci\'on entre ellas.
 	Esta correlaci\'on podr\'ia indicar que a fin de cuentas, m\'as que el canal de decaimiento, las variab les relevantes resulten ser $X_{max}$ y $N_{max}$, aunque esta afirmaci\'on requiere m\'as estudios.
 	De cualquier forma, este evento se encuentra en todos los casos cerca del promedio de la distribuci\'on y podr\'ia ser un buen representante de las mismas.
