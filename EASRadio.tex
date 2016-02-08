@@ -392,9 +392,9 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	
 	La segunda consecuencia importante de que la emisi\'on de las lluvias atmosf\'ericas presenten efecto \cher{} se manifiesta en la frecuencia hasta la que se mantiene la coherencia de la se\~nal en diferentes regiones del suelo, alcanzando su m\'aximo sobre el anillo \cher{}.
 	
-	Este fen\'omeno puede comprenderse si se analiza una situaci\'on simplificada.
-	Para ello se considera una antena ubicada a un \'angulo $\theta$ del eje de la lluvia, y un dado momento de su evoluci\'on determinado por la posici\'on de su frente, $l$, y por la densidad de part\'iculas $\rho(l)=dN(l)/dl$ (ver figura \ref{fig:coherencia_1}).
-	En ese dado instante, si se supone que hay un exceso de nuevas part\'iculas generadas entre $l$ y $l+dl$, s\'olo para fijar ideas se puede considerar que se emitir\'an $dN_e$ pulsos  (una fracci\'on de las $dN$) que alcanzar\'an la antena entre los tiempos $0$ y $dt'=(1-n\cos\theta)\,dt$~\footnote{Esta expresi\'on se obtiene a partir de considerar los tiempos de llegada a la antena de dos pulsos emitidos desde $l$ y $l+dl$ a tiempos $0$ y $dt$ respectivamente, y de tener en cuenta su propagaci\'on en el medio de indice de refracci\'on $n$.}, donde $dt=dl/c$ y $c$ es la velocidad de propagaci\'on del frente de la lluvia.
+	Este fen\'omeno es tambi\'en conocido como compresi\'on temporal y puede comprenderse si se analiza la siguiente situaci\'on simplificada.
+	Se considera una antena ubicada a un \'angulo $\theta$ del eje de la lluvia, y un dado momento de su evoluci\'on, determinado por la posici\'on de su frente $l$ y por la densidad de part\'iculas $\rho(l)=dN(l)/dl$ (ver figura \ref{fig:coherencia_1}).
+	En ese dado instante, si se supone que hay un exceso de nuevas part\'iculas generadas entre $l$ y $l+dl$, s\'olo para fijar ideas puede considerarse que se emitir\'an $dN_e$ pulsos  (una fracci\'on de las $dN$) que alcanzar\'an la antena entre los tiempos $0$ y $dt'=(1-n\cos\theta)\,dt$~\footnote{Esta expresi\'on se obtiene a partir de considerar los tiempos de llegada a la antena de dos pulsos emitidos desde $l$ y $l+dl$ a tiempos $0$ y $dt$ respectivamente, de tener en cuenta su propagaci\'on en el medio de indice de refracci\'on $n$ y haciendo la suposici\'on de que la distancia a la antena es mucho mayor que $dl$.}, donde $dt=dl/c$ y $c$ es la velocidad de propagaci\'on del frente de la lluvia.
 	Esta situaci\'on se esquematiza en la figura \ref{fig:coherencia_1}.
 	%
 	\begin{figure}[ht!]
@@ -404,19 +404,19 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	\end{figure}
 	%
 	
-	Si adem\'as se supone que la densidad lineal de emisores $\rho_e(l) = dN_e/dl$ es proporcional a la densidad de part\'iculas presentes en ese lugar de la lluvia $\rho(l)$, la ecuaci\'on para $dt'$ puede reescribirse como:
+	Si adem\'as se supone que la densidad lineal de emisores $\rho_e(l) = dN_e(l)/dl$ es proporcional a la densidad de part\'iculas presentes en ese lugar de la lluvia, $\rho(l)$, la ecuaci\'on para $dt'$ puede reescribirse como:
 	%
 	\begin{equation}
 	 dt' = \frac{dl}{c}(1-n\cos\theta) = \frac{dN_e}{\rho_e(l) c}(1-n\cos\theta)\propto \frac{dN_e}{\rho(l) c}(1-n\cos\theta)
 	 \label{eq:dt1}
 	\end{equation}
 	%
-	o lo que resulta equivalente, dado que la se\~nal $dS$ integrada en el intervalo $dt'$ es proporcional a $dN_e$:
-	%
-	\begin{equation}
-	 dS\propto\frac{\rho(l)c\ dt'}{(1-n\cos\theta)}
-	 \label{eq:dS1}
-	\end{equation}
+% 	o lo que resulta equivalente, dado que la se\~nal $dS$ integrada en el intervalo $dt'$ es proporcional a $dN_e$:
+% 	%
+% 	\begin{equation}
+% 	 dS\propto\frac{\rho(l)c\ dt'}{(1-n\cos\theta)}
+% 	 \label{eq:dS1}
+% 	\end{equation}
 	%
 	
 % 	Entonces, hasta aqu\'i vale la pena resaltar dos resultados interesantes:
@@ -425,13 +425,13 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 % 	 \item La amplitud acumulada en $dt'$ se vuelve m\'axima si 
 % 	\end{enumerate}
 
-	Si se supone ahora que para que la se\~nal pueda ser medida es necesario recibir al menos $dN_{min}$ pulsos dentro de cada intervalo de duraci\'on $dt'$, queda definido un intervalo de tiempo m\'inimo $dt'_{min}$ sobre el que habr\'ia que integrar las se\~nales individuales para poder obtener alg\'un registro. A partir de \ref{eq:dt1} se tiene:
+	A $\theta$ fijo y despreciando toda se\~nal que no provenga de $dl$, si se supone que para que la se\~nal pueda ser medida es necesario recibir al menos $dN_e^{min}$ pulsos dentro de cada intervalo $dt'$~\footnote{Esto puede lograrse agrandando $dl$ lo suficiente, hasta $dl_{min}$.}, queda definido un intervalo de tiempo m\'inimo $dt'_{min}$ sobre el que habr\'ia que integrar las se\~nales individuales para poder obtener alg\'un registro. A partir de \ref{eq:dt1} se tiene entonces:
 	%
 	\begin{equation}
-	 dt'_{min} \propto \frac{dN_{min}}{\rho(l) c}(1-n\cos\theta)
+	 dt'_{min} \propto \frac{dN_e^{min}}{\rho(l) c}(1-n\cos\theta)
 	\end{equation}
 	%
-	Entonces, bajo estas suposiciones la componente de m\'axima frecuencia de la se\~nal $f_{max}$  ser\'a aproximadamente:
+	Bajo estas suposiciones la componente de m\'axima frecuencia de la se\~nal $f_{max}$  ser\'a aproximadamente:
 	%
 	\begin{equation}
 	 f_{max}\equiv \frac{1}{dt'_{min}} \propto \frac{\rho(l) c}{dN_{min}(1-n\cos\theta)}

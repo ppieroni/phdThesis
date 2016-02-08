@@ -2,10 +2,10 @@
 \label{ch:resultadosRadio}
 
 El objetivo de este cap\'itulo (y de la segunda parte de esta tesis) es estimar el desempe\~no  de un detector de antenas de radio a la hora de detectar neutrinos ES.
-Para ello, al igual que en Auger se calcular\'a la exposici\'on del detector en un caso gen\'erico.
-Se utilizar\'a lo aprendido en el capitulo \ref{ch:caracterizacionRadio} para definir un criterio de disparo y se estimar\'an las eficiencias de detecci\'on.
+Para ello al igual que en Auger se calcular\'a la exposici\'on del detector, pero esta vez en una situaci\'on gen\'erica.
+Se utilizar\'a lo estudiado en el capitulo \ref{ch:caracterizacionRadio} para definir el criterio de disparo global del detector hipot\'etico y se estimar\'an sus eficiencias de detecci\'on.
 Todo lo anterior se realizar\'a utilizando distintas disposiciones espaciales de las antenas (topograf\'ias del detector), para encontrar una disposici\'on \'optima.
-Finalmente, teniendo en cuenta todo lo anterior se comparar\'a el desempe\~no que puede alcanzar un detector de radio frente a la pr\'oxima generaci\'on de detectores de neutrinos ultra energ\'eticos.
+Finalmente, teniendo en cuenta todo lo anterior se comparar\'a su desempe\~no en relaci\'on a Auger y frente a la pr\'oxima generaci\'on de detectores de neutrinos ultra energ\'eticos.
 
 \section{C\'alculo de la exposici\'on}
 	
@@ -47,11 +47,11 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a el desempe\~no qu
 	Como consecuencia el c\'alculo se ve afectdo de dos maneras:
 	\begin{enumerate}
 	 \item Se modifican las probabilidades de decaimiento del \tauon{} en la atm\'osfera.
-	 \item Para cada valor de \xd{} existe una zona de \'angulos cenitales prohibidos.
+	 \item Para cada valor de \xd{} existe una zona de \'angulos cenitales sobre el detector prohibidos.
 	\end{enumerate}
 	
 	\subsubsection{Cambio en las probabilidades de decaimiento en la atm\'osfera}
-	Tal como se discuti\'o en la secci\'on \ref{sbsc:corrES}, el decaimiento del \tauon{} en la atm\'osfera se puede modelar como una distribuci\'on exponencial, de forma:
+	Tal como se discuti\'o en la secci\'on \ref{sbsc:corrES}, el decaimiento del \tauon{} en la atm\'osfera se modela con una distribuci\'on exponencial, de forma:
 	%
 	\begin{equation}
 		h({\rm x_d},(E_\tau,\theta_D))=
@@ -113,9 +113,13 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a el desempe\~no qu
 	%
 	La derivaci\'on de estas ecuaciones puede encontrarse en el ap\'endice \ref{ap:tierraCurva} junto con un peque\~no an\'alisis de su impacto.
 	
-	\subsubsection{\'Angulos cenitales prohibidos}
+	\subsubsection{Regi\'on de \'angulos cenitales prohibidos}
 	Por simple geometr\'ia, para cada valor de \xd{} aparecer\'a un \'angulo observado m\'inimo sobre el detector, $\theta_D^{cut}$, correspondiente al m\'inimo valor con el que los neutrinos pueden incidir sobre la tierra, $\theta_E=90^\circ$.
-	Esta situaci\'on se bosqueja en la figura \ref{fig:curveEarthSketch_thCut0}.
+	Esta situaci\'on se bosqueja en la figura \ref{fig:curveEarthSketch_thCut0} y su valor puede calcularse anal\'iticamente (ver ap\'endice \ref{ap:tierraCurva}), mediante:
+	\begin{equation}
+	\cos \theta_D^{cut} = \left[ \frac{2 R_E {\rm x_d}+{\rm x_d}^2}{(R_E+{\rm x_d})^2} \right]^{\frac{1}{2}}
+	\label{eq:tdc0}
+	\end{equation}
 	%
 	\begin{figure}[ht!]
 		\centering
@@ -126,13 +130,8 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a el desempe\~no qu
 		}
 	\end{figure}
 	%
-	Este valor l\'imite puede calcularse anal\'iticamente (ver ap\'endice \ref{ap:tierraCurva}), y su expresi\'on es:
-	\begin{equation}
-	\cos \theta_D^{cut} = \left[ \frac{2 R_E {\rm x_d}+{\rm x_d}^2}{(R_E+{\rm x_d})^2} \right]^{\frac{1}{2}}
-	\label{eq:tdc0}
-	\end{equation}
-	%
-	Entonces, para cada \xd{} pueden calcularse los valores permitidos para \td{}, que se grafican en la figura \ref{fig:dx_thcut0}.
+	
+	Entonces para cada \xd{} pueden calcularse los valores permitidos para \td{}, lo que se grafica en la figura \ref{fig:dx_thcut0}.
 	\begin{figure}[ht!]
 		\centering
 		\includegraphics[width=0.95\textwidth]{./fig/appendix/thetaDCut_mod}
@@ -142,11 +141,11 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a el desempe\~no qu
 		}
 	\end{figure}
 	%
-	Si bien este efecto no tiene mucha relevancia en la exposici\'on de Auger\footnote{Esto se debe a que el rango angular en el que Auger es eficiente es de alrededor de $5^\circ$. Entonces, los eventos cuyo \'angulo se ve modificado siguen siendo detectados (ver figura \ref{fig:te_td} del apendice \ref{ap:tierraCurva}).}, tiene un impacto considerable en detectores de radio, cuyo rango angular es cercano a los $2.5^\circ$.
+	Si bien este efecto no tiene mucha relevancia en la exposici\'on de Auger\footnote{Esto se debe a que el rango angular en el que Auger es eficiente es de alrededor de $5^\circ$. Entonces, los eventos cuyo \'angulo se ve modificado siguen siendo detectados (ver figura \ref{fig:te_td} del apendice \ref{ap:tierraCurva}).}, tiene un impacto considerable en detectores de radio, cuyo rango angular de observaci\'on es cercano a los $2.5^\circ$.
 	
 	\subsection{Manejo de la energ\'ia visible}
 	Las eficiencias de detecci\'on ser\'an calculadas en funci\'on de la energ\'ia visible de la lluvia, \ev{}, por lo que es necesario modificar el c\'alculo de la exposici\'on.
-	Recordando las ecuaci\'ones \ref{eq:exp5ES} y \ref{eq:exp5.2ES} del cap\'itulo \ref{ch:resAuger}, en este caso el t\'ermino de probabilidad puede ser escrito de la siguiente manera:
+	Tomando como punto de partida las ecuaci\'ones \ref{eq:exp5ES} y \ref{eq:exp5.2ES} del cap\'itulo \ref{ch:resAuger}, el t\'ermino de probabilidad en este caso puede escribirse de la siguiente manera:
 	%
 	\begin{equation}
 		\begin{aligned}
@@ -160,10 +159,10 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a el desempe\~no qu
 		\end{aligned}
 	\end{equation}
 	%
-	donde la funci\'on $f(E_\tau|E_\nu,\theta_E(\theta_D,{\rm x_d}))$ nuevamente describe la probabilidad de obtener un \tauon{} emergente de energ\'ia \etau{}, dado que incidi\'o un neutrino sobre la tierra de par\'ametros $E_\nu,\theta_E(\theta_D,{\rm x_d})$ y al igual que en Auger se calcularon mediante simulaciones de Monte Carlo.
-	Por otro lado, $h({\rm x_d},(E_\tau,\theta_D))$ es la de la ecuaci\'on \ref{eq:decayTayRadio} y $g(E_v|E_\tau)$ representa la probabilidad de que un evento tenga energ\'ia \ev{} dado que fue iniciado por el dacimiento de un \tauon{} de energ\'ia \etau{}.
+	donde la funci\'on $f(E_\tau|E_\nu,\theta_E(\theta_D,{\rm x_d}))$ nuevamente describe la probabilidad de obtener un \tauon{} emergente de energ\'ia \etau{}, dado que incidi\'o un neutrino sobre la tierra de par\'ametros $E_\nu$ y $\theta_E(\theta_D,{\rm x_d})$, y al igual que en Auger se calcularon mediante simulaciones de Monte Carlo.
+	Por otro lado $h({\rm x_d},(E_\tau,\theta_D))$ representa la probabilidad de decaimienta del \tauon{} en la atm\'osfera, descripta en la ecuaci\'on \ref{eq:decayTayRadio}, y $g(E_v|E_\tau)$ la probabilidad de que en ese decaimiento la lluvia se inicie energ\'ia \ev{} dado que el \tauon{} ten\'ia energ\'ia \etau{}.
 	En lugar de $g(E_v|E_\tau)$, para realizar la integral se calcul\'o $\tilde{g}(\log E_v-\log E_\tau)$ a partir de la librer\'ia de \tauola{} utilizada para simular los decaimientos del \tauon{} en Auger.
-	Esta funci\'on se muestra entre $-3$ y $0$ en la figura \ref{fig:ev_etau} en la que se observa que aproximadamente el $95\%$ de los casos obtienen una energ\'ia visible en el mismo orden de magnitud que la del \tauon{}.
+	Esta funci\'on se muestra entre $-3$ y $0$ en la figura \ref{fig:ev_etau}, en la que se observa que aproximadamente el $95\%$ de los casos obtienen una energ\'ia visible a lo sumo un orden de magnitud menor que la del \tauon{}.
 	%
 	 \begin{figure}[h!]
 		\begin{center}
@@ -175,7 +174,7 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a el desempe\~no qu
 	\end{figure}
 	 
 	\subsection{Integraci\'on temporal y espacial}
-	Finalmente, dado que esta parte de la tesis se enfoca en un detector gen\'erico, no ser\'a necesario realizar la integral por unidad de tiempo y \'area y simplemente se multiplicar\'a por un factor \cant{T\ A=1}{s cm^2} o en caso de que se pretenda comparar con un detector, se utilizar\'a el factor correspondiente.
+	Finalmente, dado que esta parte de la tesis se enfoca en un detector gen\'erico, no ser\'a necesario realizar la integral por unidad de tiempo y \'area y simplemente se multiplicar\'a por un factor \cant{T\ A=1}{s\,cm^2} o en caso de que se pretenda comparar con un detector, se utilizar\'a el factor correspondiente.
 	
 	Teniendo en cuenta todo lo anterior, la ecuaci\'on para calcular la exposici\'on resulta:
 	%
@@ -196,14 +195,14 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a el desempe\~no qu
 		\label{eq:exp2ESRadio}
 	\end{equation}
 
-	Una vez obtenidas las eficiencias (ver secci\'on \ref{sc:effRadio}) esta integral se computa numericamente.
+	Una vez obtenidas las eficiencias (ver secci\'on \ref{sc:effRadio}) esta integral se computa num\'ericamente.
 	
 	
-\section{Detector ideal - Rendimiento de la corteza terrestre como blanco}
+\section{Detector ideal - corteza terrestre como blanco}
 	Antes de pasar al c\'alculo de las eficiencias de detecci\'on, es interesante estudiar las capacidades que tendria un detector ideal, es decir, que detecte todos los eventos iniciados por neutrinos ES que emerjan de la tierra.
-	Para ello, se calcul\'o la integral de la ecuaci\'on \ref{eq:exp2ESRadio} bajo la condici\'on $\epsilon ({\rm x_d},\theta_D,E_v) = 1$ y $TA=1$, para diferentes valores de $\theta_D^{max}$.
+	Para ello se calcul\'o la integral de la ecuaci\'on \ref{eq:exp2ESRadio} bajo la condici\'on $\epsilon ({\rm x_d},\theta_D,E_v) = 1$ y \cant{T\ A=1}{s\,cm^2}, para diferentes valores de $\theta_D^{max}$.
 % 	Recordando la ecuaci\'on \ref{eq:exp0} del cap\'itulo \ref{ch:resAuger}, 
-	En la figura \ref{fig:exposuresFluxThetas} se grafica esta cantidad multiplicada por $E_\nu^{-2}$, lo que, recordando la ecuaci\'on \ref{eq:exp0} del cap\'itulo \ref{ch:resAuger}, se debe integrar en $E_\nu$ para obtener la cantidad de eventos por unidad de \'area y tiempo bajo la condici\'on de \cant{k=1}{GeV\ s^{-1}\ sr^{-1}\ cm^{-2}}.
+	En la figura \ref{fig:exposuresFluxThetas} se grafica esta cantidad multiplicada por $E_\nu^{-2}$, lo que, recordando la ecuaci\'on \ref{eq:exp0} del cap\'itulo \ref{ch:resAuger}, se debe integrar en $E_\nu$ para obtener la cantidad de eventos por unidad de \'area y tiempo~\footnote{Bajo la condici\'on de flujo unitario, es decir, $\Phi(E_{\nu})=k\,E_\nu^{-2}$ con \cant{k=1}{GeV\ s^{-1}\ sr^{-1}\ cm^{-2}}.}.
 %
 	\begin{figure}[h!]
 		\begin{center}
@@ -214,12 +213,11 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a el desempe\~no qu
 		\end{center}
 	\end{figure}
 	%
-	Como era de suponerse, a medida que aumenta el rango angular de detecci\'on la cantidad de eventos esperados por unidad de energ\'ia aumenta.
-	Por otro lado, dado el rango angular, estas curvas representan la sensibilidad en energ\'ia del blanco.
-	Puede notarse como a medida que aumenta $\theta_D^{max}$ el m\'aximo de la curva se desplaza hacia energ\'ias m\'as bajas.
-	Este fen\'omeno se debe a que mientras mayor es el \'angulo de incidencia, los neutrinos m\'as energ\'eticos interactuar\'an en promedio m\'as lejos del lugar de escape hacia la atm\'osfera que los menos energ\'eticos, lo que le quita probabilidad de escapar al \tauon{} resultante.
 	
-	Ademas de la forma, para comparar la normalizaci\'on de las curvas, que es proporcional a la cantidad de eventos esperados, se puede realizar la integral en $E_\nu$ de cada una, lo que se muestra en la figura \ref{fig:gainThetas} en unidades de la integral obtenida para el rango angular del detector de radio ($N_{92.5}$). 
+	Estas curvas representan la sensibilidad en energ\'ia del blanco, que como puede notarse, a medida que aumenta $\theta_D^{max}$ se desplaza hacia energ\'ias m\'as bajas.
+	Este fen\'omeno se debe a que mientras mayor es el \'angulo de incidencia, los neutrinos m\'as energ\'eticos interactuar\'an en promedio m\'as lejos del lugar de escape hacia la atm\'osfera que los menos energ\'eticos\footnote{A medida que aumenta la energ\'ia del \nutau{} incidente la tierra se vuelve m\'as opaca.}, lo que le quita probabilidad de escapar al \tauon{} resultante.
+	Por otro lado a medida que el rango angular de detecci\'on aumenta lo hace la cantidad de eventos esperados\footnote{El \'area bajo la curva aumenta con $\theta_D^{max}$.}.
+	Para estudiar esta cantidad es posible realizar la integral en $E_\nu$ de cada curva, lo que se muestra en la figura \ref{fig:gainThetas} en unidades de la integral obtenida para el rango angular del detector de radio ($N_{92.5}$). 
 	%
 	\begin{figure}[h!]
 		\begin{center}
@@ -236,7 +234,7 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a el desempe\~no qu
 	Esta desventaja debe ser compensada por un aumento significativo en el \'area instrumentada.
 	
 	Adem\'as, en la figura se muestra una recta de pendiente 0.908 obtenida mediante un ajuste lineal para los valores de $\theta_{MAX}>94$.
-	Esto quiere decir que cada grado por encima de $94^\circ$ aporta una cantidad constante eventos sobre el detector (un $90\%$ de lo esperado para $\theta_{MAX}=92.5^\circ$).
+	Esto quiere decir que cada grado por encima de $94^\circ$ aporta una cantidad constante eventos sobre el detector (un $90\%$ de lo esperado para $\theta_D^{max}=92.5^\circ$).
 	
 \section{Obtenci\'on de las eficiencias}
 \label{sc:effRadio}
@@ -245,8 +243,8 @@ Con el fin de calcular la integral de la ecuaci\'on \ref{eq:exp2ESRadio} es nece
 Para ello, el enfoque elegido fue similar al desarrollado en el c\'alculo de Auger, que consisti\'o de los siguientes pasos:
 %
 \begin{enumerate}
-	\item Simular la se\~nal a nivel del suelo.
-	\item \emph{Lanzar} la huella a nivel del suelo sobre el detector repetidas veces y en posiciones al azar.
+	\item Simular la se\~nal a nivel del suelo para diferentes valores de $E_v$, $\theta_D$ y ${\rm x_d}$.
+	\item \emph{Lanzar} la huella de radio sobre el detector varias veces en posiciones al azar.
 	\item Calcular la fracci\'on de veces que la condici\'on de disparo global es alcanzada y as\'i obtener una eficiencia de disparo.
 	\item Aplicar un criterio de selecci\'on a variables globales de cada evento y as\'i calcular una eficiencia de identificaci\'on.
 \end{enumerate}
@@ -257,18 +255,18 @@ Esto es consecuencia de que para que la se\~nal se encuentre bien representada e
 Asimismo, la granularidad no debe ser inferior a \cant{1000}{m} y \cant{100}{m} respectivamente, lo que implica que cada evento considerado necesita de la simulaci\'on de alrededor de 2000 antenas.
 El tiempo que lleva realizar tal c\'alculo en las energ\'ias de inter\'es es cercano a los 10 dias de CPU por evento\footnote{Esta estimaci\'on corresponde a una CPU \texttt{Intel(R) Xeon(R) E5410 @ 2.33GHz}}, lo que puede volverlo r\'apidamente inviable.
 En estas condiciones, se fue necesario utilizar todo el conocimiento obtenido hasta el momento para minimizar la cantidad de simulaciones realizadas.
-En esta direcci\'on, es posible estudiar la probabilidad relativa de ocurrencia de los eventos como funci\'on de $E_v$, $\theta_D$ y ${\rm x_d}$, lo que se desarrolla a continuaci\'on.
+En esta direcci\'on, el primer paso fue estudiar la probabilidad relativa de ocurrencia de los eventos como funci\'on de $E_v$, $\theta_D$ y ${\rm x_d}$, lo que se desarrolla a continuaci\'on.
 	
 	\subsubsection{Pesos de las lluvias}
-	Para determinar qu\'e bines (conjunto de valores $E_v$, $\theta_D$ y ${\rm x_d}$) es importante simular es posible calcular la probabilidad relativa de ocurrencia, o lo que resulta equivalente, el peso relativo que tendr\'ia cada uno en la integral \ref{eq:exp2ESRadio} dado un flujo $\Phi(E_\nu)\propto E_\nu^{-2}$.
-	Esta cantidad viene dada por la integral de la ecuaci\'on \ref{eq:weightsRadio}.
+	Para determinar qu\'e bines (conjunto de valores $E_v$, $\theta_D$ y ${\rm x_d}$) es importante simular se calcul\'o su probabilidad relativa de ocurrencia, o lo que resulta equivalente, el peso relativo que tendr\'ia cada uno en la integral \ref{eq:exp2ESRadio} en un escenario de $\Phi(E_\nu)\propto E_\nu^{-2}$.
+	Esta cantidad viene dada por:
 	%
 	\begin{equation}
 		\begin{aligned}
-			P_\nu(E_v,\theta_D,{\rm x_d})
+			P_{sh}(E_v,\theta_D,{\rm x_d})
 			\propto
 			\sin{\theta_D}|\cos{\theta_D}|
-			\iint_{E_\tau,E_\nu}&
+			\iint\limits_{\mathbf{E_\tau}\mathbf{E_\nu}}&
 			\frac{e^{\frac{l({\rm x_d})}{\lambda(E_\tau)}}}{\lambda(E_\tau)}\frac{dl({\rm x_d})}{d{\rm x_d}}
 			%P({\rm x_d}|E_\tau;\theta_D)
 			\tilde{g}(\log E_v-\log E_\tau)\\
@@ -281,13 +279,15 @@ En esta direcci\'on, es posible estudiar la probabilidad relativa de ocurrencia 
 		\label{eq:weightsRadio}
 	\end{equation}
 	%
-	Recordando el significado probabil\'istico de cada uno de los factores, resulta evidente que el valor de dicha integral, para cierto conjunto de par\'ametros $(E_v^*,\theta_D^*,{\rm x_d}^*)$, es proporcional a la cantidad de eventos que se espera en las cercanias de ese punto del espacio de fases\footnote{Las integrales en $E_\nu$ y $E\tau$ dan cuenta de la suma sobre todos los neutrinos y taus que dan lugar a eventos de par\'ametros $(E_v^*,\theta_D^*,{\rm x_d}^*)$.}.
+	donde esta expresi\'on resulta de tener en cuenta todos los neutrinos y taus que dan lugar a lluvias de par\'ametros $(E_v,\theta_D,{\rm x_d})$.
+	Recordando el significado probabil\'istico de cada uno de los factores, resulta evidente que el valor de dicha integral es proporcional a la cantidad de eventos que se espera en las cercanias de cada punto del espacio de fases.
+	%\footnote{Las integrales en $E_\nu$ y $E\tau$ dan cuenta de la suma sobre todos los neutrinos y taus que dan lugar a eventos de par\'ametros $(E_v^*,\theta_D^*,{\rm x_d}^*)$.}.
 	Luego, con esta medida es posible establecer la importancia relativa entre diferentes bines.
 	
-	La figura \ref{fig:radioShWeights} muestra el resultado de esta integral para diferentes varios valores de $E_v$, $\theta_D$ y ${\rm x_d})$.
-	Se observa un decaimiento a medida que aumenta \xd{}, lo que es compatible con la probabilidad exponencial en la atm\'osfera. 
-	Sin embargo a medida que aumenta la energ\'ia este se atenua, lo que es compatible con el hecho de que la longitud de decaimiento es proporcional a \etau{}.
-	Por otro lado, comprender el comportamiento en funci\'on de \td{} y \ev{} resulta complicado ya que mezcla la dependencia de las pdf (funci\'on $f(E_\tau|E_\nu,\theta_E(\theta_D,{\rm x_d}))$), el efecto de la tierra curva y la forma funcionarl del flujo de neutrninos, supuesto $\propto E^{-2}$.
+	La figura \ref{fig:radioShWeights} muestra el resultado de esta integral para diferentes valores de $E_v$, $\theta_D$ y ${\rm x_d}$.
+	Se observa un decaimiento en la variable \xd{}, lo que es compatible con la probabilidad de decaimiento del \tauon{} en la atm\'osfera. 
+	Sin embargo, a medida que aumenta la energ\'ia \'este se atenua, lo que es compatible con el hecho de que la longitud de decaimiento es proporcional a \etau{}.
+	Por otro lado, comprender el comportamiento en funci\'on de \td{} y \ev{} resulta complicado ya que mezcla la dependencia de las pdf (funci\'on $f(E_\tau|E_\nu,\theta_E(\theta_D,{\rm x_d}))$), el efecto de la tierra curva y la forma funcional del flujo de neutrninos, supuesto $\propto E^{-2}$.
 	No obstante, este \'ultimo factor parece ser relevante ya que entre \cant{10^{16.25}}{eV} y \cant{10^{18.25}}{eV} los pesos caen en dos \'ordenes de magnitud.
 	Por este motivo no se utilizar\'an recursos para calcular con detalle las eficiencias por encima de \cant{10^{18}}{eV} y se las aproximar\'a por las obtenidas para esta energ\'ia, lo que constituye un enfoque conservador. 
 	%
@@ -311,26 +311,27 @@ En esta direcci\'on, es posible estudiar la probabilidad relativa de ocurrencia 
 	
 	\subsection{Espacio de par\'ametros simulado}
 	
-	Teniendo en cuenta lo anterior y lo expuesto en el cap\'itulo de caracterizaci\'on, se siguieron las siguientes consideraciones para determinar el espacio de par\'ametros para los que se calcular\'an las eficiencias:
+	En base a lo expuesto hasta el momento y en el cap\'itulo \ref{ch:caracterizacionRadio}, se tuvieron en cuenta las siguientes consideraciones para determinar el espacio de par\'ametros sobre el que calcular las eficiencias de disparo:
 	%
 	\begin{enumerate}
-		\item La simulaci\'on de cada evento ES sobre un detector que permita representar adecuadamente la huella a nivel del suelo es extremadamente costosa, de al rededor de 
+		\item La simulaci\'on de cada evento ES sobre un detector que permita representar de manera fidedigna la huella a nivel del suelo es extremadamente costosa computacionalmente, de alrededor de 200 horas de CPU por evento.
+		Por esta raz\'on se intent\'o minimizar la cantidad de eventos simulados.
 		\item El \'angulo sobre el detector se simular\'a entre el \'angulo m\'inimo admitido para cada valor de \xd{} (seg\'un figura \ref{fig:dx_thcut0}) y $92.5^\circ$, de acuerdo con lo discutido en la secci\'on \ref{sbsc:depThetaRadio}.
 		\item Si bien la probabilidad de disparo de la lluvia aumenta a medida que lo hace la energ\'ia visible (ver secci\'on \ref{sbsc:depEvRadio}), de acuerdo con la figura \ref{fig:radioShWeights} la importancia de un evento de \cant{E_v=10^{18}}{eV} resulta ser aproximadamente dos \'ordenes de magnitud menor que uno tal que \cant{E_v=10^{16}}{eV}. Por este motivo no se simular\'an eventos cuya energ\'ia visible supere los \cant{10^{18}}{eV}. 
-		\item Para encontrar las alturas de decaimiento a ser simuladas, se analiz\'o en para cada valor de \ev{} el campo el\'ectrico m\'aximo de la huella (de acuerdo con lo expuesto en la secci\'on \ref{sbsc:depXdRadio}) en combinaci\'on con la probabilidad de ocurrencia de acuerdo con la figura \ref{fig:radioShWeights}.
+		\item Para determinar las alturas de decaimiento a simular se analiz\'o para cada valor de \ev{} el campo el\'ectrico m\'aximo de la huella (de acuerdo con lo expuesto en la secci\'on \ref{sbsc:depXdRadio}) en combinaci\'on con la probabilidad de ocurrencia de la figura \ref{fig:radioShWeights}.
 	\end{enumerate}
 	
-	En Auger, la eficiencia era promediada en $\phi$ y en el canal de decaimiento del \tauon{} al simular varias lluvias para cada bin de $\theta$, \xd{} y \etau{}.
+	En Auger, la eficiencia en el \'angulo azimutal $\phi$ y en el canal de decaimiento del \tauon{} se obtuvo en promedio al simular varias lluvias para cada bin de $\theta$, \xd{} y \etau{}.
 	Dado que aqu\'i se requiere minimizar la cantidad de eventos simulados, se utiliz\'o para todos $\phi=0^\circ$ como \'angulo azimutal y $\tau\rightarrow\nu_\tau e^-\nu_e$ canal de decaimiento del \tauon{}.
-	La primer elecci\'on resulta conservadora seg\'un lo expuesto en la secci\'on \ref{sbsc:depPhiRadio}, mientras que la segunda parece ser una buena estimaci\'on del promedio en esa variable (secci\'on \ref{sbsc:decayChRadio}).
+	La primer elecci\'on resulta conservadora seg\'un lo expuesto en la secci\'on \ref{sbsc:depPhiRadio}, mientras que la segunda parece ser una buena estimaci\'on del promedio en esa variable seg\'un la secci\'on \ref{sbsc:decayChRadio}.
 	
 	Tendiendo todo esto en cuenta se simul\'o un evento para cada bin de $E_v$, $\theta_D$ y ${\rm x_d}$ que se grafica en la figura \ref{fig:binesRadio}.
-	En total la simulaci\'on requiri\'o alrededor de 7500 dias de CPU, lo que tom\'o un mes en el cluster de la Universidad de Santiago de Compostela, que cuenta con 500 nodos compartidos entre varios grupos de investigaci\'on. 
+	En total la simulaci\'on requiri\'o alrededor de 7500 dias de CPU, lo que tom\'o un mes de calendario en el cluster de la Universidad de Santiago de Compostela, que cuenta con 500 nodos compartidos entre varios grupos de investigaci\'on. 
 	%
 	\begin{figure}[h!]
 		\begin{center}
-			\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/binesRadio}
-			\caption{\label{fig:binesRadio} Espacio de par\'ametros cubierto para calcular las eficiencias de disparo. Cada punto indica una lluvia simulada.
+			\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/binesRadio_2}
+			\caption{\label{fig:binesRadio} Espacio de par\'ametros cubierto donde se calcularon las eficiencias de disparo. Cada punto indica una lluvia simulada.
 			}
 		\end{center}
 	\end{figure}
@@ -348,7 +349,7 @@ En esta direcci\'on, es posible estudiar la probabilidad relativa de ocurrencia 
 	%
 	\begin{figure}[h!]
 		\begin{center}
-			\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/topografia}
+			\includegraphics[width=0.75\textwidth]{fig/resultadosRadio/topografia}
 			\caption{\label{fig:topoRadio} Topograf\'ias estudiadas al calcular las eficiencias. Tanto el arreglo regular como el tipo panal de abeja se parametrizan mediante los pasos $a_1$ y $a_2$, y el \'angulo $\alpha$. Por otro lado, el arreglo de bordes densos queda determinado por los pasos mayor y menor, $D$ y $d$ respectivamente.
 			}
 		\end{center}
@@ -462,7 +463,7 @@ En esta direcci\'on, es posible estudiar la probabilidad relativa de ocurrencia 
 	 Panal de abeja &&$\frac{2}{3}$&$90000\frac{3}{2}$\\
 	 Bordes densos &$D^2$&$\frac{2D}{d}-1$& $\dfrac{90000}{\frac{2D}{d}-1}$
 	\end{tabular}
-	\caption{\label{tab:conv2Auger} Factores necesarios para comparar detectores con diferentes topograf\'ias. En el arreglo de bordes densos se utiliz\'o como v\'inculo que $\frac{D}{d}\,\epsilon\,\mathbb{N}$.
+	\caption{\label{tab:conv2Auger} Factores necesarios para comparar detectores con diferentes topograf\'ias. En el arreglo de bordes densos se utiliz\'o como restricci\'on que $\frac{D}{d}\,\epsilon\,\mathbb{N}$.
 	}
 	\end{table}
 	%
