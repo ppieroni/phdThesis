@@ -1,0 +1,50 @@
+#!/usr/bin/python
+
+import matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
+import sys
+
+figsize = plt.figaspect(0.5)*1.2
+
+def main(argv):
+    
+    ds = np.linspace(10,1000,101)
+    Ds = np.linspace(1000,10000,19)
+    nAnt = 9e4
+    
+    # choose a colormap
+    c_m = matplotlib.cm.gist_rainbow_r
+    #c_m = matplotlib.cm.jet
+    
+    norm = matplotlib.colors.Normalize(
+                                       vmin=np.min(Ds),
+                                       vmax=np.max(Ds))
+
+    # create a ScalarMappable and initialize a data structure
+    s_m = matplotlib.cm.ScalarMappable(cmap=c_m, norm=norm)
+    s_m.set_array([])
+    
+    plt.figure(figsize=figsize)
+    
+    for i,D in enumerate(Ds):
+        nCells = [nAnt / (2*D/d-1) for d in ds]
+        area = [D**2 / 1e6 * nC for nC in nCells]
+        edge = [np.sqrt(a) for a in area]
+        plt.plot(ds,edge,color=s_m.to_rgba(D),lw=2)
+    
+    plt.axhline(250,color='k',lw=1,ls='--',label='GRAND')
+    plt.axhline(500,color='k',lw=3,ls='--',label='Max')
+    
+    cb = plt.colorbar(s_m)
+    cb.set_label(r'$D\,{\rm [m]}$',fontsize=18)
+    plt.xlabel(r'$d\,{\rm [m]}$',fontsize=18)
+    plt.ylabel(r'$L\,{\rm [km]}$',fontsize=18)
+    plt.title('Lado equivalente de un SD cuadrado',fontsize=20)
+    plt.legend(loc=2,fontsize=18)
+#    plt.yscale('log')
+    plt.savefig('Area_de.pdf',format='pdf')
+    
+if __name__ == '__main__':
+    main(sys.argv[1:])

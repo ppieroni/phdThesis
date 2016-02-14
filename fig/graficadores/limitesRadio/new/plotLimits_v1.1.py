@@ -103,77 +103,28 @@ def main(argv):
     plots.append(aux)
     lgnds.append(names[11])
     
-    #Radio Re Grand
-    time = 9.46708e7 #3yr in s
-    area = 160000*160000*np.sin(15*kdeg2rad)* 1. * 9e4 # area de la celda primitiva * hclattice (1.5) * 1e4 celdas
-    #area = 80000*80000*np.sin(60*kdeg2rad) * 9e4 # area de la celda primitiva * hclattice (1.5) * 1e4 celdas
-    factor = 0.5*10**(9-data[12][:,0]) #E in GeV
-    NRadio = np.multiply(data[12][:,1]*time*area,factor)
-    #~ intLimit = integrate(data[12][:,0],NRadio)
-    diffRadio = map(lambda x: 2.4/x,NRadio)
-    aux, = plt.plot(10**data[12][:,0],diffRadio,color="g",ls='-',lw=5)
-    plots.append(aux)
-    lgnds.append(names[12])
-    
-    #Radio Hc Grand
-    time = 9.46708e7 #3yr in s
-    area = 140000*140000*np.sin(15*kdeg2rad)* 1.5 * 9e4 # area de la celda primitiva * hclattice (1.5) * 1e4 celdas
-    #area = 80000*80000*np.sin(60*kdeg2rad) * 9e4 # area de la celda primitiva * hclattice (1.5) * 1e4 celdas
-    factor = 0.5*10**(9-data[13][:,0]) #E in GeV
-    NRadio = np.multiply(data[13][:,1]*time*area,factor)
-    #~ intLimit = integrate(data[12][:,0],NRadio)
-    diffRadio = map(lambda x: 2.4/x,NRadio)
-    aux, = plt.plot(10**data[13][:,0],diffRadio,color="b",ls='-',lw=5)
-    plots.append(aux)
-    lgnds.append(names[13])
-    
     #Radio De Grand
     time = 9.46708e7 #3yr in s
     area = 600000**2 * 9e4 / (2* 6000 / 250. - 1) # bordes densos: D^2 * nCells
-    #area = 750000**2 * 9e4 / (2* 7500 / 750. - 1) # bordes densos: D^2 * nCells
-    factor = 0.5*10**(9-data[14][:,0]) #E in GeV
-    NRadio = np.multiply(data[14][:,1]*time*area,factor)
+    factor = 0.5*10**(9-data[12][:,0]) #E in GeV
+    NRadio = np.multiply(data[12][:,1]*time*area,factor)
     #~ intLimit = integrate(data[12][:,0],NRadio)
-    diffRadio = map(lambda x: 2.4/x,NRadio)
-    aux, = plt.plot(10**data[14][:,0],diffRadio,color="r",ls='--',lw=5)
-    plots.append(aux)
-    lgnds.append(names[14])
-
-
-    #Radio Re Max
-    time = 9.46708e7 #3yr in s
-    area = 200000*200000*np.sin(45*kdeg2rad)* 1. * 9e4 # area de la celda primitiva * hclattice (1.5) * 1e4 celdas
-    #area = 80000*80000*np.sin(60*kdeg2rad) * 9e4 # area de la celda primitiva * hclattice (1.5) * 1e4 celdas
-    factor = 0.5*10**(9-data[15][:,0]) #E in GeV
-    NRadio = np.multiply(data[15][:,1]*time*area,factor)
-    #~ intLimit = integrate(data[12][:,0],NRadio)
-    diffRadio = map(lambda x: 2.4/x,NRadio)
-    aux, = plt.plot(10**data[15][:,0],diffRadio,color="g",ls='--',lw=3)
-    plots.append(aux)
-    lgnds.append(names[15])
+    diffRadio1 = map(lambda x: 2.4/x,NRadio)
+#    aux, = plt.plot(10**data[12][:,0],diffRadio,color="r",ls='--',lw=5)
+#    plots.append(aux)
+#    lgnds.append(names[12])
     
-    #Radio Hc Max
-    time = 9.46708e7 #3yr in s
-    area = 200000*200000*np.sin(30*kdeg2rad)* 1.5 * 9e4 # area de la celda primitiva * hclattice (1.5) * 1e4 celdas
-    #area = 80000*80000*np.sin(60*kdeg2rad) * 9e4 # area de la celda primitiva * hclattice (1.5) * 1e4 celdas
-    factor = 0.5*10**(9-data[16][:,0]) #E in GeV
-    NRadio = np.multiply(data[16][:,1]*time*area,factor)
-    #~ intLimit = integrate(data[12][:,0],NRadio)
-    diffRadio = map(lambda x: 2.4/x,NRadio)
-    aux, = plt.plot(10**data[16][:,0],diffRadio,color="b",ls='--',lw=3)
-    plots.append(aux)
-    lgnds.append(names[16])
-    
-    #Radio Hc Max
-    time = 9.46708e7 #3yr in s
     area = 750000**2 * 9e4 / (2* 7500 / 750. - 1) # bordes densos: D^2 * nCells
-    factor = 0.5*10**(9-data[17][:,0]) #E in GeV
-    NRadio = np.multiply(data[17][:,1]*time*area,factor)
+    factor = 0.5*10**(9-data[13][:,0]) #E in GeV
+    NRadio = np.multiply(data[13][:,1]*time*area,factor)
     #~ intLimit = integrate(data[12][:,0],NRadio)
-    diffRadio = map(lambda x: 2.4/x,NRadio)
-    aux, = plt.plot(10**data[17][:,0],diffRadio,color="r",ls='--',lw=3)
+    diffRadio2 = map(lambda x: 2.4/x,NRadio)
+    diffRadio = list(diffRadio2) + list(diffRadio1)[::-1] + [list(diffRadio2)[0]]
+    plt.plot(list(10**data[12][:,0]) + list(10**data[13][:,0])[::-1] + [list(10**data[12][:,0])[0]] ,diffRadio,color="r",ls='-',lw=3)
+    plt.fill_between(list(10**data[12][:,0]) + list(10**data[13][:,0])[::-1] + [list(10**data[12][:,0])[0]],diffRadio,color="r",alpha=0.4)
+    aux = plt.Rectangle((0,0),1,1,color="r",alpha=0.4,lw=3)
     plots.append(aux)
-    lgnds.append(names[17])
+    lgnds.append(names[12])
     
     plt.title("Single flavor",fontsize=24)
     plt.xlabel(r'$E_\nu \rm[eV]$',fontsize=24)
@@ -182,8 +133,8 @@ def main(argv):
     plt.loglog()
     plt.xlim([1e16,1e21])
     plt.ylim([2e-10,1e-5])
-    plt.legend(plots,lgnds,loc=2,fontsize=16, ncol=3)
-    plt.savefig("limits_future_2.pdf",format="pdf")
+    plt.legend(plots,lgnds,loc=2,fontsize=16, ncol=2)
+    plt.savefig("limits_future_v1.1.pdf",format="pdf")
     
     
     

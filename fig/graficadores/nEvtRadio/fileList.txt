@@ -1,0 +1,9 @@
+Ahlers_GZK_nu_FERMI_Emin1e19_all_flavour.dat
+Kampert_Fe-band_upper_line_all_flavour.dat
+Kampert_p-band_lower_line_all_flavour.dat
+Kampert_p-band_upper_line_all_flavour.dat
+Kotera_Fig9_gray-band_lower_line_all_flavour.dat
+Kotera_Fig9_gray-band_upper_line_all_flavour.dat
+IceCube_Fermi.dat
+IceCube_BestFit.dat
+#Lunardini_cosmic_strings_Fig2_model_a.dat

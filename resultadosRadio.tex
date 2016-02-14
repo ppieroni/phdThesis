@@ -567,9 +567,23 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	
 \section{Desempe\~no de un detector de 90000 antenas}
 	
-	Una vez estimadas las eficiencias de detecci\'on, mediante integrano la ecuaci\'on \ref{eq:exp2ESRadio}, pueden obtenerse los l\'imites diferenciales al 90$\%$ de nivel de confianza para diferentes experimentos.
+	El objetivo de la segunda parte de esta tesis es estimar el desempe\~no de un detector de superficie de 90000 antenas de radio, y es a lo que se dedica esta secci\'on.
+	Una vez definidos los criterios y m\'etodos que permiten calcular las eficiencias de detecci\'on es posible estudiar qu\'e aspectos del dise\~no del detector son relevantes y en qu\'e medida impactan sobre la medici\'on.
+	Al mismo tiempo es posible utilizar toda la informaci\'on recolectada, junto con la ecuaci\'on \ref{eq:exp2ESRadio}, para obtener l\'imites diferenciales al 90$\%$ de nivel de confianza que podr\'ia imponer el detector y as\'i compararlo con la proxima generaci\'on de detectores de neutrinos.
 	
-	\subsection{Selecci\'on de la configuraci\'on \'optima}
+	\subsection{Aspectos del dise\~no}
+	
+	En los cap\'itulos \ref{ch:simulacionRadio} y \ref{ch:caracterizacionRadio} se utiliz\'o informaci\'on recavada sobre la emisi\'on de radio de cascadas atmosf\'ericas para acotar las caracter\'isticas de dise\~no del detector, sin embargo, quedan varios grados de libertad por determinar:
+	\begin{enumerate}
+	 \item La topograf\'ia del detector;
+	 \item Su extensi\'on;
+	 \item El nivel de disparo local;
+	 \item Las caracter\'isticas del disparo global.
+	\end{enumerate}
+	
+	
+	
+	\subsubsection{Topograf\'ia}
 	
 	Una vez obtenidas las eficiencias fue posible comparar cada detector\footnote{Definido seg\'un la topograf\'ia y criterios de disparlo local y global.} analizado con el desempe\~no alcanzado por Auger para neutrinos ES.
 	Para ello, se calcul\'o la integral de la ecuaci\'on \ref{eq:exp2ESRadio} utilizando las eficiencias de Auger y se agreg\'o un factor de correcci\'on para incorporar la diferencia de superficie cubierta por cada celda primitiva y la diferencia en la cantidad de celdas en el detector.
@@ -593,20 +607,92 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	%
 	\begin{figure}[h!]
 		\begin{center}
-		\begin{tabular}{cc}
-			\includegraphics[width=0.5\textwidth]{fig/resultadosRadio/CompRadioAuger_10_0_4_0_0_9_hc_modo1.pdf} &
-			\includegraphics[width=0.5\textwidth]{fig/resultadosRadio/CompRadioAuger_25_0_4_0_0_9_hc_modo1.pdf} \\
-			\includegraphics[width=0.5\textwidth]{fig/resultadosRadio/CompRadioAuger_75_0_4_0_0_9_hc_modo1.pdf} &
-			\includegraphics[width=0.5\textwidth]{fig/resultadosRadio/CompRadioAuger_100_0_4_0_0_9_hc_modo1.pdf}
-		\end{tabular}
-			\caption{Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
-			\label{fig:compRadioAuger}
+			\textbf{\footnotesize Arreglo regular}\\
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/param/{CompRadioAuger_50.0_5.0_1.0_re_modo1}.pdf}
+			\caption{\label{fig:compRadioAuger_re} Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
 		\end{center}
 	\end{figure}
 	%
 	
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\textbf{\footnotesize Arreglo tipo panal de abeja}\\
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/param/{CompRadioAuger_50.0_5.0_1.0_hc_modo1}.pdf}
+			\caption{\label{fig:compRadioAuger_hc} Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
+		\end{center}
+	\end{figure}
+	%
 	
-	\subsection{L\'imite diferencial}
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\textbf{\footnotesize Arreglo de bordes densos}\\
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/param/{CompRadioAuger_50.0_5.0_1.0_de_modo2}.pdf}
+			\caption{\label{fig:compRadioAuger_de} Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
+		\end{center}
+	\end{figure}
+	%
+	
+	\subsubsection{Limitaci\'on en extensi\'on}
+	
+	
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\textbf{\footnotesize Arreglo de bordes densos}\\
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/area/{Area_re}.pdf}
+			\caption{\label{fig:compRadioAuger_area1} Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
+		\end{center}
+	\end{figure}
+	%
+	
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/area/{CompRadioAuger_50.0_5.0_1.0_re_modo1}.pdf}
+			\caption{\label{fig:compRadioAuger_area1} asd}
+		\end{center}
+	\end{figure}
+	%
+	
+	\subsubsection{Nivel de disparo local}
+	
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\textbf{\footnotesize Arreglo de bordes densos}\\
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/thresh/{CompRadioAuger_1000.0_5.0_1.0_de_modo3}.pdf}
+			\caption{\label{fig:compRadioAuger_th} Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
+		\end{center}
+	\end{figure}
+	%
+	
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\textbf{\footnotesize Arreglo de bordes densos}\\
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/sat/{CompRadioAuger_100.0_9.0_1.0_hc_modo2}.pdf}
+			\caption{\label{fig:compRadioAuger_th2} Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
+		\end{center}
+	\end{figure}
+	%
+	
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\textbf{\footnotesize Arreglo de bordes densos}\\
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/ener/{CompRadioAuger_1000.0_5.0_1.0_de_modo4}.pdf}
+			\caption{\label{fig:compRadioAuger_th2} Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
+		\end{center}
+	\end{figure}
+	%
+	
+	\subsubsection{Disparo global}
+	
+	FALTA
+	
+	\subsection{Perspectivas de la t\'ecnica}
 	
 	
 	En l\'ineas verde, naranja y rosa se muestran los l\'imites publicados por IceCube, Auger y Anita-II. 
@@ -614,7 +700,7 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	
 	\begin{figure}[h!]
 		\begin{center}
-			\includegraphics[width=\textwidth]{fig/resultadosRadio/limits_future}
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/{limits_future_v1.1}.pdf}
 			\caption{\label{fig:limitesRadio}
 			L\'imite diferencial al 90$\%$ de nivel de confianza para diferentes experimentos.
 			En l\'ineas verde, naranja y rosa se muestran los l\'imites publicados por IceCube, Auger y Anita-II. 
@@ -622,4 +708,28 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 		\end{center}
 	\end{figure}
 	
+	\begin{table}[ht!]
+	\begin{center}
+	\renewcommand{\arraystretch}{1.3}
+	\small
+		\begin{tabular}{lccc}
+			\hline
+			\multirow{2}{*}{Modelo} & \multicolumn{3}{c}{Topograf\'ia} \\
+			&   Regular &   Panal de abeja &   Bordes densos \\
+			\hline
+		Cosmogénico - proton, FRII \cite{Kampert_GZK}        &     248.0   &            323.7 &           282.6 \\
+		Cosmogénico - proton, Fermi-LAT \cite{Ahlers_GZK}     &     188.4 &            248.7 &           217.5 \\
+		Cosmogénico - proton, SFR \cite{Kampert_GZK}        &      56.4 &             73.8 &            64.5 \\
+		Cosmogénico - Hibrido \cite{Kotera_GZK} &      31.9 - 82.1 &             41.9 - 107.5 &            36.6 - 96.1 \\
+		Cosmogénico - iron, FRII \cite{Kampert_GZK}       &      17.2 &             22.2 &            19.4 \\
+		IceCube extrapolado $E^{-2}$ \cite{IceCubeMonterelli} &      70.7 &             89.8 &            78.7 \\
+		IceCube extrapolado \emph{Best fit} \cite{cite:IceCubeFlux}  &      67.3 &             80.4 &            71   \\
+			\hline
+		\end{tabular}
+		\caption{\label{tab:nRadio} N\'umero de eventos esperados $N_{esp}$ seg\'un la ecuaci\'on \ref{eq:XXX} para varios modelos de producci\'on de neutrinos y utilizando la exposici\'on elegida en cada tipo de topolog\'ia.}
+	\end{center}
+	\end{table}
+
+	
+
 	
