@@ -9,6 +9,7 @@ import sys
 import os
 import re
 import matplotlib.cm as cm
+import matplotlib.patches as patches
 
 kdeg2rad = np.arccos(-1)/180.
 krad2deg = 1./kdeg2rad
@@ -126,6 +127,21 @@ def main(argv):
     plots.append(aux)
     lgnds.append(names[12])
     
+    #Full 2.5deg
+    time = 9.46708e7 #3yr in s
+    area1 = 50000000**2
+    area2 = 25000000**2
+    factor = 0.5*10**(9-data[14][:,0]) #E in GeV
+    NRadio1 = np.multiply(data[14][:,1]*time*area1,factor)
+    NRadio2 = np.multiply(data[14][:,1]*time*area2,factor)
+    diffRadio = list(map(lambda x: 2.4/x,NRadio1)) + list(map(lambda x: 2.4/x,NRadio2))[::-1] + [list(map(lambda x: 2.4/x,NRadio1))[0]]
+    aux, = plt.plot(list(10**data[14][:,0]) + list(10**data[14][:,0])[::-1] + [list(10**data[14][:,0])[0]],diffRadio,color="b",ls='-',lw=2)
+    aux = patches.Rectangle((0,0),1,1,color="b",alpha=1.,lw=2,fill=False)
+    plots.append(aux)
+    lgnds.append(names[14])
+    
+    
+    
     plt.title("Single flavor",fontsize=24)
     plt.xlabel(r'$E_\nu \rm[eV]$',fontsize=24)
     plt.ylabel(r'$E^{2} dN/dE\  \rm [GeV^2 cm^{-2} s^{-1} sr^{-1}]$',fontsize=24)
@@ -133,7 +149,8 @@ def main(argv):
     plt.loglog()
     plt.xlim([1e16,1e21])
     plt.ylim([2e-10,1e-5])
-    plt.legend(plots,lgnds,loc=2,fontsize=16, ncol=2)
+    plt.legend(plots,lgnds,loc=9,fontsize=17, ncol=3)
+    plt.tick_params(labelsize=20)
     plt.savefig("limits_future_v1.1.pdf",format="pdf")
     
     

@@ -568,12 +568,14 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 \section{Desempe\~no de un detector de 90000 antenas}
 	
 	El objetivo de la segunda parte de esta tesis es estimar el desempe\~no de un detector de superficie de 90000 antenas de radio, y es a lo que se dedica esta secci\'on.
-	Una vez definidos los criterios y m\'etodos que permiten calcular las eficiencias de detecci\'on es posible estudiar qu\'e aspectos del dise\~no del detector son relevantes y en qu\'e medida impactan sobre la medici\'on.
-	Al mismo tiempo es posible utilizar toda la informaci\'on recolectada, junto con la ecuaci\'on \ref{eq:exp2ESRadio}, para obtener l\'imites diferenciales al 90$\%$ de nivel de confianza que podr\'ia imponer el detector y as\'i compararlo con la proxima generaci\'on de detectores de neutrinos.
+	En esta l\'inea una vez definidos los criterios y m\'etodos que permiten calcular las eficiencias de detecci\'on ser\'a posible en primer lugar estudiar qu\'e aspectos del dise\~no del detector son relevantes y en qu\'e medida impactan sobre la medici\'on.
+	Al mismo tiempo se utilizar\'a toda la informaci\'on recolectada, junto con la ecuaci\'on \ref{eq:exp2ESRadio}, para obtener l\'imites diferenciales al 90$\%$ de nivel de confianza que podr\'ia imponer el detector y se lo comparar\'a con la proxima generaci\'on de detectores de neutrinos.
 	
 	\subsection{Aspectos del dise\~no}
 	
-	En los cap\'itulos \ref{ch:simulacionRadio} y \ref{ch:caracterizacionRadio} se utiliz\'o informaci\'on recavada sobre la emisi\'on de radio de cascadas atmosf\'ericas para acotar las caracter\'isticas de dise\~no del detector, sin embargo, quedan varios grados de libertad por determinar:
+	En los cap\'itulos \ref{ch:simulacionRadio} y \ref{ch:caracterizacionRadio} se utiliz\'o informaci\'on recavada sobre la emisi\'on de radio de cascadas atmosf\'ericas para, entre otras cosas, acotar las caracter\'isticas de dise\~no del detector.
+	Sin embargo, existen caracter\'isticas a ls que les quedan grados de libertad, a saber:
+	%
 	\begin{enumerate}
 	 \item La topograf\'ia del detector;
 	 \item Su extensi\'on;
@@ -581,71 +583,137 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	 \item Las caracter\'isticas del disparo global.
 	\end{enumerate}
 	
+	Dado que el objetivo es detectar neutrinos, la variable natural para evaluar la bondad de cada configuraci\'on es el n\'umero de eventos esperado durante una medici\'on, hipot\'etica a este nivel.
+	Recordando la ecuaci\'on \ref{eq:exp1} del cap\'itulo \ref{ch:expAuger}, esta cantidad puede obtenerse mediante:
+	%
+	\begin{equation}
+		N_{Radio} = \int\limits_{\mathbf{E_\nu}}~\Phi(E_{\nu})~\mathcal{E}(E_\nu)~dE_{\nu}
+		\label{eq:nesp_radio}
+	\end{equation}
+	%
+	Para llevar a cabo las comparaciones salvo que se indique lo contrario se utilizar\'a un escenario $\Phi(E_{\nu})\sim E_{\nu}^{-2}$ y $\mathcal{E}(E_\nu)$ ser\'a calculada mediante la ecuaci\'on \ref{eq:exp2ESRadio}.
+	Adem\'as, con el fin de enmarcar el resultado se informar\'a esta cantidad en unidades de $N_{Auger}$ (o sea $N_{Radio}/N_{Auger}$), que representa los eventos ES que detectar\'ia el SD Auger en una medici\'on equivalente\footnote{Mismo flujo y misma duraci\'on.}.
 	
+	Por otro lado ser\'a interesante estudiar el comportamiento del argumento de la integral \ref{eq:nesp_radio}, que contiene informaci\'on sobre la sensitividad del detector a diferentes energ\'ias.
+	Para simplificar la comparaci\'on entre la abultada cantidad de configuraciones estudiadas, se decidi\'o utilizar como medida de la sensibilidad la energ\'ia media esperada en los neutrinos detectados, dada por:
+	%
+	\begin{equation}
+		\langle E_{\nu}\rangle = \int\limits_{\mathbf{E_\nu}}~E_\nu~\Phi(E_{\nu})~\mathcal{E}(E_\nu)~dE_{\nu}
+		\label{eq:emean_radio}
+	\end{equation}
+	
+	A partir de aqu\'i entonces se estudiar\'an estas cantidades como funci\'on de los distintos par\'ametros todav\'ia libres en el dise\~no del detector.
 	
 	\subsubsection{Topograf\'ia}
 	
-	Una vez obtenidas las eficiencias fue posible comparar cada detector\footnote{Definido seg\'un la topograf\'ia y criterios de disparlo local y global.} analizado con el desempe\~no alcanzado por Auger para neutrinos ES.
-	Para ello, se calcul\'o la integral de la ecuaci\'on \ref{eq:exp2ESRadio} utilizando las eficiencias de Auger y se agreg\'o un factor de correcci\'on para incorporar la diferencia de superficie cubierta por cada celda primitiva y la diferencia en la cantidad de celdas en el detector.
-	La informaci\'on necesaria para realizar dicha conversi\'on se resume en la tabla  \ref{tab:conv2Auger}, en la que se detalla para cada familia de topograf\'ias el \'area de la celda primitiva, cu\'antas antenas se requieren para conformar una celda el n\'umero de celdas que conformar\'ian al detector.
+	La topograf\'ia del detector de tipo regular (RE) y panal de abeja (HC) queda definida por los par\'ametros $\left\{a_1,a_2,\alpha\right\}$ mientras que en la de bordes densos (DE) por el conjunto $\left\{d,D\right\}$.
+	Sin embargo, debido a que en topograf\'ias RE y HC las configuraciones con $a_1$ muy distinto de $a_2$ (dentro de valores razonables) pueden lograrse aproximadamente imponiendo $a_1=a_2$ y un valor adecuado para $\alpha$, para acotar el n\'umero de configuraciones consideradas s\'olo se estudiaron casos en los que se cumple la condici\'on $a_1=a_2$.
+	Por todo esto en todos los casos (RE, HC y DE) bast\'o dar 2 n\'umeros para determinar completamente la disposici\'on de antenas sobre la superficie del detector.
+% 	
+% 	
+% 	Una vez obtenidas las eficiencias fue posible comparar cada detector\footnote{Definido seg\'un la topograf\'ia y criterios de disparlo local y global.} analizado con el desempe\~no alcanzado por Auger para neutrinos ES.
+% 	Para ello, se calcul\'o la integral de la ecuaci\'on \ref{eq:exp2ESRadio} utilizando las eficiencias de Auger y se agreg\'o un factor de correcci\'on para incorporar la diferencia de superficie cubierta por cada celda primitiva y la diferencia en la cantidad de celdas en el detector.
+	
+	Adem\'as de los par\'ametros que determinan la configuraci\'on, para poder comparar las cantidades $N_{Radio}$ y $N_{Auger}$ de manera justa fue necesario calcular sus valores en tiempos de medici\'on equivalentes y aplicar un factor de correcci\'on que tenga en cuenta la diferencia de tama\~no de los detectores.
+	Para conciliar en primer lugar el tiempo de medici\'on se calcul\'o $N_{Radio}$ imponiendo \cant{T=1}{s} en la ecuaci\'on \ref{eq:exp2ESRadio} mientras que $N_{Auger}$ fue calculado utilzando la exposici\'on \emph{Full Auger} a neutrinos ES para \cant{6.5}{yr} y se la dividi\'o por \cant{2.05\times10^8}{s}, obteniendo de esa manera la exposici\'on promedio por segundo del observatorio.
+	Luego, para incluir la diferencia de tama\~no de los detectores en cada configuraci\'on se determin\'o la celda primitiva correspondiente, se calcu\'o su \'area y el n\'umero de celdas que lo conforman para al fin calcular la superficie cubierta por el detector.
+	Para el SD de Auger por ejemplo la superficie de la celda primitiva se puede calcular como \cant{1500^2\sin60^\circ}{m^2}=\cant{1.94\times10^6}{m^2}, donde cada una contiene una sola estaci\'on.
+	Entonces, dado que el detector completo esta conformado por 1600 de estas celdas la superficie total cubierta es de \cant{1600\times1.94\times10^6}{m^2}$\sim$\cant{3100}{km^2}.
+	Por otra parte, un detector de radio con la misma configuraci\'on, \cant{a_1=a_2=1500}{m} y $\alpha=60^\circ$, y 90000 celdas primitivas posee una superficie cubierta de \cant{90000\times1.94\times10^6}{m^2}$\sim$\cant{174000}{km^2}.
+	Por ende, en este caso el n\'umero de eventos extra debido a la diferencia de superficie instrumentada es alrededor de $56.25$ m\'as a favor del detector de radio.
+	Por otro lado, si en vez de un areglo regular se considera uno tipo panal de abeja, con \cant{a_1=a_2=1500}{m} y $\alpha=60^\circ$, la cuenta es levemente diferente. 
+	En este caso en lugar de utilizar la celda de Wigner-Seitz, como en la figura \ref{fig:corePos2}, es posible explotar el hecho de que un arrego HC es uno RE en el que se quita un nodo cada tres.
+	Entonces es posible pensar que cada celda primitiva, de \'area \cant{1.94\times10^6}{m^2}, utiliza s\'olo $2/3$ de antena, o lo que es lo mismo, que el \'area total cubierta ser\'a $3/2$ la de un arreglo regular equivalente.
+	Finalmente, para calcular la celda primitiva de un arreglo de bordes densos, dado que s\'olo se consideraron configuraciones en las que $D/d\epsilon\mathbb{N}$, se tiene que el \'area de la celda es $D^2$, mientras que la cantidad de antenas necesarias para construir cada una es $2\frac{D}{d}-1$. 
+	Por este motivo la superficie total cubierta por un detector de 90000 antenas ser\'a $\frac{90000}{2\frac{D}{d}-1}\times D^2$.
+	Todo esto se resume en la tabla \ref{tab:conv2Auger}, que detalla para cada familia de topograf\'ias y para el SD de Auger el \'area de la celda primitiva, cu\'antas antenas se requieren para conformarla y el n\'umero de celdas que forman al detector.
 	\begin{table}
 	\centering
-	\renewcommand{\arraystretch}{2}
+	\renewcommand{\arraystretch}{2.5}
 	\footnotesize
-	\begin{tabular}{cccc}
+	\begin{tabular}{lccc}
+	\hline
 	 Topograf\'ia & \'Area cubierta por celda  & Antenas por celda & N\'umero de celdas \\
+	\hline
 	 Auger &\cant{1.94\ 10^6}{m^2}&1&1600\\
 	 Regular &\multirow{2}{*}{$a_1a_2\sin\alpha$}&1&90000\\
 	 Panal de abeja &&$\frac{2}{3}$&$90000\frac{3}{2}$\\
-	 Bordes densos &$D^2$&$\frac{2D}{d}-1$& $\dfrac{90000}{\frac{2D}{d}-1}$
+	 Bordes densos &$D^2$&$\frac{2D}{d}-1$& $\dfrac{90000}{\frac{2D}{d}-1}$\\[0.3cm] \hline
 	\end{tabular}
-	\caption{\label{tab:conv2Auger} Factores necesarios para comparar detectores con diferentes topograf\'ias. En el arreglo de bordes densos se utiliz\'o como restricci\'on que $\frac{D}{d}\,\epsilon\,\mathbb{N}$.
+	\caption{\label{tab:conv2Auger} Factores necesarios para calcular la superficie cubierta por un detector con una dada topograf\'ia. En el arreglo de bordes densos se utiliz\'o como restricci\'on que $\frac{D}{d}\,\epsilon\,\mathbb{N}$. Finalmente la superficie se calcula multiplicando el \'area por celda por el n\'umero total de celdas dadas 90000 antenas.
 	}
 	\end{table}
 	%
-	Luego, se realizaron gr\'aficos como los de la figura \ref{fig:compRadioAuger}, en la que se muestra para diferentes combinaciones de juegos de par\'ametros el n\'umero de eventos esperados en unidades de los esperados en Auger.
+	
+	En estas condiciones las figuras \ref{fig:compRadioAuger_re}, \ref{fig:compRadioAuger_hc} y \ref{fig:compRadioAuger_de}, muestan $N_{Radio}/N_{Auger}$ para diferentes combinaciones de par\'ametros para las topograf\'ias RE, HC y DE respectivamente. 
+	Como nivel de disparo local se utiliz\'o \cant{50}{\mu V/m}, como disparo global 5 antenas disparadas (AoT) y un nivel de identificaci\'on hipot\'etico de 0.9.
 	%
 	\begin{figure}[h!]
 		\begin{center}
 			\textbf{\footnotesize Arreglo regular}\\
 			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/param/{CompRadioAuger_50.0_5.0_1.0_re_modo1}.pdf}
-			\caption{\label{fig:compRadioAuger_re} Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
+			\caption{\label{fig:compRadioAuger_re} Relaci\'on entre los eventos esperados en un detector regular de par\'ametros $a_1=a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Como nivel de disparo local se utiliz\'o \cant{50}{\mu V/m}, se pidieron al menos 5 antenas disparadas por evento y un nivel de identificaci\'on hipot\'etico de $90\%$.}
 		\end{center}
 	\end{figure}
-	%
-	
 	%
 	\begin{figure}[h!]
 		\begin{center}
 			\textbf{\footnotesize Arreglo tipo panal de abeja}\\
 			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/param/{CompRadioAuger_50.0_5.0_1.0_hc_modo1}.pdf}
-			\caption{\label{fig:compRadioAuger_hc} Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
+			\caption{\label{fig:compRadioAuger_hc} Relaci\'on entre los eventos esperados en un detector tipo panal de abeja de par\'ametros $a_1=a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Como nivel de disparo local se utiliz\'o \cant{50}{\mu V/m}, se pidieron al menos 5 antenas disparadas por evento y un nivel de identificaci\'on hipot\'etico de $90\%$.}
 		\end{center}
 	\end{figure}
-	%
-	
 	%
 	\begin{figure}[h!]
 		\begin{center}
 			\textbf{\footnotesize Arreglo de bordes densos}\\
 			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/param/{CompRadioAuger_50.0_5.0_1.0_de_modo2}.pdf}
-			\caption{\label{fig:compRadioAuger_de} Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
+			\caption{\label{fig:compRadioAuger_de} Relaci\'on entre los eventos esperados en un detector de bordes densos de par\'ametros $d$ y $D$ para algunos de las combinaciones estudiadas. Como nivel de disparo local se utiliz\'o \cant{50}{\mu V/m}, se pidieron al menos 5 antenas disparadas por evento y un nivel de identificaci\'on hipot\'etico de $90\%$.}
 		\end{center}
 	\end{figure}
 	%
 	
-	\subsubsection{Limitaci\'on en extensi\'on}
+	Para analizar el impacto de cada uno de los par\'ametros en el cociente de eventos es fundamental comprender c\'omo afecta un cambio en la topograf\'ia al c\'alculo de la exposici\'on. En esta l\'inea es posible aislar dos efectos que compiten entre s\'i:
+	%
+	\begin{enumerate}
+	 \item Una disminuci\'on en la granularidad provocar\'a un aumento en la superficie total instrumentada, lo que aumenta la exposici\'on.
+	 \item Un aumento en la granularidad elevar\'a las eficiencias a baja energ\'ia, lo que en un escenario $E_\nu^{-2}$ Elevar\'a la exposici\'on.
+	\end{enumerate}
+	%
+	Sin embargo el detalle de la topograf\'ia podr\'ia en principio compensar o profundizar cualquiera de los dos efectos.
 	
+	- analizar cada uno de los casos, contar como cambia el ratio N/N para cada tipo de topografia en funcion de los parametros.
+	
+	- notar que siempre que aumenta el area aumenta la cantidad de eventos.
+	
+	- mostrar que si el threshold es mas alto puede ser que esto no pase, osea, la perdida de granularidad puede pasar a ser impotante. POr ahi esto puede ir mas adelante, en la seccion de threshold.
 	
 	%
 	\begin{figure}[h!]
 		\begin{center}
 			\textbf{\footnotesize Arreglo de bordes densos}\\
-			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/area/{Area_re}.pdf}
-			\caption{\label{fig:compRadioAuger_area1} Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/sat/{CompRadioAuger_100.0_9.0_1.0_hc_modo2}.pdf}
+			\caption{\label{fig:compRadioAuger_th2} Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
 		\end{center}
 	\end{figure}
 	%
+	
+	-justificar que a thresholds bajos lo que importa es el area, notar que el \'area cubierta termina siendo el factor determinante lo que lleva a la siguiente subseccion
+	
+	\subsubsection{Limitaci\'on en extensi\'on}
+	
+	- dado que el factor importante es el area hay que fijarla en un valor razonable.
+	- entonces miramos el L=sqrt(area) donde sabemos que grand es 250km y como maximo puede ser 500km.
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/area/{Area_re}.pdf}
+			\caption{\label{fig:compRadioAuger_area1} Lado equivalente de un SD cuadrado de topograf\'ia regular de par\'ametros $a_1=a_2$ y $\alpha$. En l\'ineas negras se marca el valor de $L$ correspondiente a GRAND, \cant{250}{km}, y el considerado como m\'aximo razonable en esta tesis, \cant{500}{km}.}
+		\end{center}
+	\end{figure}
+	%
+	
+	- Entonces, usamos la informacion de esta figura para determinar cuales de las confguraciones simuladas son viables, y se muestran en la figura que sigue
 	
 	%
 	\begin{figure}[h!]
@@ -658,6 +726,10 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	
 	\subsubsection{Nivel de disparo local}
 	
+	- Ademas de la topografia del detectro otro aspecto clave de la detecci\'on es el nivel de disparo local
+	- en la figura tal se muestra como cambia el ratio N/N para un arreglo regular y para diferentes valores de a1 a2 a tita fijo
+	- se observa como a medida que aumenta el threshold la cantidad de eventos esperados baja, lo que se debe funamentalmente a la perdida de eventos de baja energia, comparar con la figura del capitulo de caracterizacion que muestra como es el maximo de campo electrico en funcion de la energia.
+	
 	%
 	\begin{figure}[h!]
 		\begin{center}
@@ -668,15 +740,8 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	\end{figure}
 	%
 	
-	%
-	\begin{figure}[h!]
-		\begin{center}
-			\textbf{\footnotesize Arreglo de bordes densos}\\
-			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/sat/{CompRadioAuger_100.0_9.0_1.0_hc_modo2}.pdf}
-			\caption{\label{fig:compRadioAuger_th2} Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
-		\end{center}
-	\end{figure}
-	%
+	- Para sustentar que la perdida de eventos de baja energia es lo que impacta al variar el threshold se muestra la siguiente figura que marca como a medida que aumenta el threshold local la energia media de la ecuacion tal sube.
+	- dado que las energia altas son full efficient, la perdida no puede venir de otro lado que no sea la perdida de las bajas energias.
 	
 	%
 	\begin{figure}[h!]
@@ -690,13 +755,18 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	
 	\subsubsection{Disparo global}
 	
-	FALTA
+	- Mostrar como a medida que la cantidad de antenas sube, la energia media sube y como la cantidad de eventos esperados baja, y justificar de nuevo que la perdida es por los de baja energia qu etienen footprints mas chicos. referir a alguna figura del capitulod e caracteriszacion.
 	
 	\subsection{Perspectivas de la t\'ecnica}
 	
 	
 	En l\'ineas verde, naranja y rosa se muestran los l\'imites publicados por IceCube, Auger y Anita-II. 
 	Las bandas azul y verde muestran las predicciones para ARA y Ariana en tres a\~nos de medici\'on. Por otro lado la banda roja muestra el desempe\~no que puede alcanzar un detector de 90000 antenas de radio en el mismo per\'iodo.
+	
+	- separar los limites de full efficient y no full efficient? 
+	- posibles 4 tablas, para 250 y para 500 km, para este calculo y para full efficient las tablas de eventos esperados para lso distintos modelos.
+	- agregar todo esto en las conclusiones! mirar el mail de jaime para justificar que grand esta empezando a tocar hierro.
+	- posible grafico de limites integrados.
 	
 	\begin{figure}[h!]
 		\begin{center}
