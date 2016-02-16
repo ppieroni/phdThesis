@@ -42,8 +42,8 @@ def main():
     plt.legend(title=r'{\rm $\log{E_v}$}')
     plt.yscale("log", nonposy='clip')
     plt.xlabel(r'$\theta\ [deg]$')
-    plt.ylabel(r'$E_{max}\ [\mu V/m]$')
-    plt.savefig('eMaxTh.png')
+    plt.ylabel(r'$E_{max}\ [V/m]$')
+    plt.savefig('eMaxTh.pdf')
     
     ##########
     
@@ -59,8 +59,8 @@ def main():
     plt.legend(title=r'{\rm $\theta\ [deg]$}',loc=2,ncol=4,fontsize=14)
     plt.yscale("log", nonposy='clip')
     plt.xlabel(r'$\log{E_v}$')
-    plt.ylabel(r'$E_{max}\ [\mu V/m]$')
-    plt.savefig('eMaxThEv.png')
+    plt.ylabel(r'$E_{max}\ [V/m]$')
+    plt.savefig('eMaxThEv.pdf')
     
     
     ##########
@@ -89,8 +89,8 @@ def main():
     plt.legend(title=r'{\rm $\log{E_v}$}')
     plt.yscale("log", nonposy='clip')
     plt.xlabel(r'$x_d\ [m]$')
-    plt.ylabel(r'$E_{max}\ [\mu V/m]$')
-    plt.savefig('eMaxXd.png')
+    plt.ylabel(r'$E_{max}\ [V/m]$')
+    plt.savefig('eMaxXd.pdf')
     
     ##########
     
@@ -106,8 +106,8 @@ def main():
     plt.legend(title=r'{\rm $x_d [m]$}',loc=2,ncol=2,fontsize=16)
     plt.yscale("log", nonposy='clip')
     plt.xlabel(r'$\log{E_v}$')
-    plt.ylabel(r'$E_{max}\ [\mu V/m]$')
-    plt.savefig('eMaxXdEv.png')
+    plt.ylabel(r'$E_{max}\ [V/m]$')
+    plt.savefig('eMaxXdEv.pdf')
     
     
     plt.show()

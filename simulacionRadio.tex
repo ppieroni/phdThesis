@@ -29,8 +29,8 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 % 	\subsection{ZHAireS}
 % 	\label{sbsc:zhaires}
 
-	\zhs{} es una implementaci\'on del las rutinas de ZHS \cite{1_halzen_zas_stanev_1991,2_zas_halzen_stanev_1992} sobre \aires{} desarrollada por Jaime Alvarez-Muñiz, Washington Rodriguez-Carvhalo Jr. y Matias Tueros en el Departamento de Física de Partículas Universidad de Santiago de Compostela, España.
-	\zhs{}, conserva todas las capacidades de \aires{} y agrega la posibilidad de simular el la emisi\'on de radio de la EAS, incluyendo nuevas directivas de entrada que permiten controlar con buen detalle la simulación.
+	\zhs{} es una implementaci\'on de las rutinas de ZHS \cite{1_halzen_zas_stanev_1991,2_zas_halzen_stanev_1992} sobre \aires{} desarrollada por Jaime Alvarez-Muñiz, Washington Rodriguez-Carvalho Jr. y Matias Tueros en el Departamento de Física de Partículas Universidad de Santiago de Compostela, España.
+	\zhs{}, conserva todas las capacidades de \aires{} y agrega la posibilidad de simular la emisi\'on de radio de la EAS, incluyendo nuevas directivas de entrada que permiten controlar con buen detalle la simulación.
 	
 		\subsection{M\'etodo de c\'alculo}
 		
@@ -42,8 +42,8 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 		\item El observador se encuentra en la zona de campo lejano.
 		\end{enumerate}
 		%
-		Por ende, si el tama\~no de los tracks obtenidos a partir del algoritmo de \aires{} no siatisface alguna de las condiciones 1 o 2, una rutina se encarga de partirlo en trozos lo suficientemente chicos como para que suceda.
-		Por otro lado, si no se llegara a cumplir la condici\'on n\'umero 3, ser\'ia necesario utilizar la soluci\'on exacta del problema, lo que no se encuentra implementado en \zhs{} hasta el momento.
+		Por ende si el tama\~no de los tracks obtenidos a partir del algoritmo de \aires{} no satisface alguna de las condiciones 1 o 2, una rutina se encarga de partirlo en trozos lo suficientemente chicos como para que suceda.
+		Por otro lado si no se llegara a cumplir la condici\'on n\'umero 3, ser\'ia necesario utilizar la soluci\'on exacta del problema, lo que no se encuentra implementado en \zhs{} hasta el momento.
 		Esta es una limitaci\'on conocida del c\'odigo, que genera se\~nales artificiales cuando las part\'iculas propagadas se encuentran muy cerca de las antenas.
 		Afortunadamente, debido a que la mayor parte de la se\~nal proviene de regiones cercanas al eje de la lluvia, su contribuci\'on resulta poco importante incluso en EAS que se desarrollan muy cerca del detector (como las iniciadas por neutrinos ES).
 		Una vez que los tracks cumplen las condiciones necesarias el campo el\'ectrico se calcula mediante la ecuaci\'on \ref{eq:efield_0}, descripta en la secci\'on \ref{sbsc:zhs_approx}.
@@ -68,7 +68,7 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 % 		\end{equation}
 % 		En estas, como en la figura \ref{fig:trackSch}, $\hat{u}$ es el versor que indica la direcci\'on entre la mitad del track y el observador, $\vec\beta=\vec v/c$, $\vec\beta_{\bot}=-[\hat{u}\times(\hat{u}\times\vec\beta)]$ es la proyecci\'on de $\vec\beta$ sobre el plano perpendicular a $\hat u$ y $t_{1,2}^{det}=t_{1,2}+nR/c-n\vec\beta \cdot \hat u (t_{1,2}-t_0)$ son los tiempos de detecci\'on del principio y final del track respectivamente, con $t_0=(t_1+t_2)/2$. Por otro lado, $\Theta(x)$ y $\delta(x)$ son las funciones escalón de Heaviside y delta de Dirac respectivamente.
 		
-		Por otro aldo, para calcular correctamente el tiempo de arribo de la se\~nal a la antena, es necesario tener un modelo que describa el \'indice de refracci\'on de la atm\'osfera, que var\'ia con la altura.
+		Por otro lado, para calcular correctamente el tiempo de arribo de la se\~nal a la antena, es necesario tener un modelo que describa el \'indice de refracci\'on de la atm\'osfera $n$, que var\'ia con la altura $h$.
 		Dado que el camino \'optico puede ser escrito como una integral de linea, dada una trayectoria, y haciendo uso del teorema del valor medio integral, se puede definir un \'indice de refracci\'on efectivo seg\'un:
 		%
 		\begin{equation}
@@ -87,7 +87,7 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 		\end{equation}
 		%
 		donde, ${\mathcal R}(h) = \left[ n(h)-1 \right] \times 10^6$.
-		Para ${\mathcal R}(h)$, \zhs{} ofrece la posibilidad de utilizar un valor constante, o un modelo exponencial como el de la ecuaci\'on \ref{eq:refIndexExp}, en el que es posible fijar su valor a nivel del suelo.
+		Para la llamada refractividad ${\mathcal R}(h)$, \zhs{} ofrece la posibilidad de utilizar un valor constante, o un modelo exponencial como el de la ecuaci\'on \ref{eq:refIndexExp}, en el que es posible fijar su valor a nivel del suelo.
 		\begin{equation}
 		{\mathcal R}(h)
 		=
@@ -97,12 +97,12 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 		\end{equation}
 		Los valores por default son ${\mathcal R}_o={\mathcal R}(h=0)\equiv 325$ y $K_r=0.1218{\rm\, km^{-1}}$.
 		Con estos valores es posible reproducir los valores calculados en \cite{gerson1948polar} con un $1\%$ precisi\'on hasta una altura de \cant{20}{km}.
-		A mayor altitud la lluvia, que recien ha comenzado a desarrollarse, no contribuye significativamente a la se\~nal.
+		A mayor altitud la lluvia, que reci\'en ha comenzado a desarrollarse, no contribuye significativamente a la se\~nal.
 % % 		la aproximaci\'on exponencial para ${\mathcal R}$ sobreestima el \'indice de refracci\'on, pero m\'as all\'a de los \cant{20}{km} 
 % 		la lluvia recien ha comenzado a desarrollarse  la cantidad de part\'iculas presentes en esa etapa de la lluvia es relativamente peque\~na y por ende su contribuci\'on a la se\~nal total.
 		En esta tesis se utiliz\'o el modelo exponencial para el \'indice de refracci\'on con ${\mathcal R}_o=325$ y $K_r=0.1218{\rm\, km^{-1}}$ en todas las simulaciones.
 		
-		Otro factor a tener en cuenta aparece cuando las lluvia a simular es muy inclinada.
+		Otro factor a tener en cuenta aparece cuando la lluvia a simular es muy inclinada, t\'ipicamente cuando el \'angulo cenital es $\theta>80^\circ$ lo que incluye las lluvias ES.
 		Dado que la cascada puede iniciarse a cientos de kilometros del detector, la aproximaci\'on de tierra plana no es v\'alida.
 		Por ende, la altura que se utiliza en la ecuaci\'on \ref{eq:refIndexExp} debe ser medida cuidadosamente, incluyendo la curvatura de la tierra, como se muestra en la figura \ref{fig:refIndex}.
 		%
@@ -112,9 +112,9 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 			\caption{\label{fig:refIndex} Esquema del m\'etodo mediante el que se tiene en cuenta la curvatura de la tierra al momento de calcular el \'indice de refracci\'on de la atm\'osfera para diferentes alturas.}
 		\end{figure}
 		%
-		Dado que realizar la integral descripta en la ecuaci\'on \ref{eq:refIndexEff} en estas condiciones resulta computacionalmente muy costoso, en \zhs{} se discretiza la distancia $R$ en un n\'umero finito de tramos y se supone el \'indice de refracci\'on constrante en cada uno de ellos.
+		Dado que realizar la integral descripta en la ecuaci\'on \ref{eq:refIndexEff} en estas condiciones resulta computacionalmente muy costoso, ya que habr\'ia que resolver la integral para cada una de los cientos de millones de tracks, en \zhs{} se discretiza la distancia $R$ en un n\'umero finito de tramos y se supone el \'indice de refracci\'on constante en cada uno de ellos.
 		
-		Una vez calculadas las amplitudes de los campos y los tiempos de arribo de las se\~nales de cada track, el campo total en cada observador se guarda utilizando bines temporales prefijados, como la ecuaci\'on \ref{eq:eAntField}, donde el \'indice $j$ recorre las part\'iculas simuladas y $\omega_j$ representa el peso estad\'istico de la part\'icula\footnote{Este peso es el peso asignado por el algoritmo de thinning durante la simulaci\'on.} que emiti\'o el campo $\vec{E}_j$.
+		Una vez calculadas las amplitudes de los campos y los tiempos de arribo de las se\~nales de cada track, el campo total en cada observador se guarda utilizando bines temporales prefijados, como la ecuaci\'on \ref{eq:eAntField}, donde el \'indice $j$ recorre tracks simulados y $\omega_j$ representa el peso estad\'istico de la part\'icula\footnote{Este peso es el peso asignado por el algoritmo de thinning durante la simulaci\'on.} que emiti\'o el campo $\vec{E}_j$.
 		\begin{equation}
 		\vec{E}(t_i)=\sum_{j:t_j\varepsilon[t_i,t_{i+1}]}\vec{E}_j(t_j)\omega_j
 		\label{eq:eAntField}
@@ -122,22 +122,22 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 		%
 		De esta ecuaci\'on es posible notar que la se\~nal simulada en una dada antena depende fuertemente del algoritmo de thinning utilizado. 
 		Dado que la mayor contribuci\'on al campo el\'ectrico proviene de las part\'iculas de media y baja energ\'ia, es poco deseable la aparici\'on de partículas con peso extremadamente alto.
-		En consecuencia y como disminuir el nivel de thinning es poco eficiente, en la simulación se utiliza un \emph{weight factor} peque\~no\footnote{Ante la aparici\'on de una part\'icula de peso grande el algoritmo de \aires{} la divide en clones de peso m\'as peque\~no que se desarrollas independientemente. Un weight factor peque\~no aumenta la frecuencia con la que se realiza esta divisi\'on.}.
+		En consecuencia y como disminuir el nivel de thinning es poco eficiente, en la simulación se utiliza un \emph{weight factor} peque\~no\footnote{Ante la aparici\'on de una part\'icula de peso grande el algoritmo de \aires{} la divide en clones de peso m\'as peque\~no que se desarrollan independientemente. Un weight factor peque\~no aumenta la frecuencia con la que se realiza esta divisi\'on.}.
 		
 		
 		\subsection{Dificultades técnicas}
 
-		Con el fin de no volver tediosa esta sección a continuaci\'on se describe brevemente una serie de dificultades técnicas presentes a la hora de simular la señal de radio en eventos ES utilizando \zhs{}.
+		Con el fin de no volver tediosa esta sección a continuaci\'on se describen brevemente una serie de dificultades técnicas presentes a la hora de simular la señal de radio en eventos ES utilizando \zhs{}.
 
 		En primer lugar, al igual que en las simulaciones realizadas con \aires{} para calcular la exposici\'on de Auger, es necesario utilizar los productos de decaimiento del \tauon{} generados con \tauola{} como condici\'on inicial en \zhs{}.
 		La dificultad en este paso yace simplemente en conciliar los sistemas de coordenadas en los que se describen las posiciones y velocidades en \tauola{} y \zhs{}.
 
 		Luego, la mayor dificultad técnica resulta de la gran cantidad de tiempo de máquina que requiere realizar la simulación de la emisión de radio.
-		Para contextualizar la situación, una simulación típica puede implicar el c\'alculo de la señal en alrededor de 2000 observadores.
-		Dado que cada vez que se avanza una partícula es necesario calcular la señal en cada uno de ellos, luego de la primer decena de antenas el tiempo de simulación depende casi linealmente de su numero, es decir, el tiempo que toma simular la evolución de la lluvia se torna despreciable.
-		Con todo esto, como la simulación de una lluvia de \cant{10^{18}}{eV} puede tomar del orden de algunas horas por decena de anteas\footnote{Este número depende fuertemente del nivel de thinning elegido}, la simulación completa de cada lluvia puede requerir del orden de algunos centenares de horas de tiempo de CPU.
+		Para contextualizar la situación, una simulación típica puede implicar el c\'alculo de la señal en alrededor de 2000 observadores (antenas).
+		Dado que cada vez que se avanza una partícula es necesario calcular la señal en cada uno de ellos, luego de la primer decena de antenas el tiempo de simulación depende casi linealmente de su n\'umero, es decir, el tiempo que toma simular la evolución de la lluvia se torna despreciable.
+		Con todo esto, como la simulación de una lluvia de \cant{10^{18}}{eV} puede tomar del orden de algunas horas por decena de antneas\footnote{Este número depende fuertemente del nivel de thinning elegido}, la simulación completa de cada lluvia puede requerir del orden de algunos centenares de horas de tiempo de CPU.
 		La única manera de salvar este inconveniente es partiendo el detector en grupos mas pequeños de antenas, de entre 10 y 40, donde es necesario tener la precaución de que la evolución de la lluvia se simule con la misma semilla en cada vez.
-		Una vez finalizado el grupo de simulaciones, se utilizaron una serie de programas en c++ para compaginar los eventos y luego analizarlos.
+		Una vez finalizado el grupo de simulaciones, se utilizaron una serie de programas en C++ para combinar los resultados de la simulaci\'on de cada grupo de antenas para luego analizarlos.
 		
 		\subsection{Desempe\~no de \zhs{}}
 		
@@ -162,9 +162,9 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 	
 	Una vez obtenido el campo el\'ectrico como funci\'on del tiempo, calculado por \zhs{}, es necesario aplicar un tratamiento a dicha se\~nal que aproxime el comportamiento que tendr\'ia un detector real.
 	
-	Dado que en el c\'alculo realizado en esta parte de la tesis no esta ligado a ning\'un experimento en particular\footnote{Se utiliza a GRAND como referencia del tama\~no del detector con el fin de fundamentar la factibilidad del detector aqu\'i propuesto.}, se utilizar\'an algunas t\'ecnicas comunes en los experimentos actuales de radio, aunque guardando libertad para optimizar la detecci\'on de neutrinos ES.
+	Dado que en el c\'alculo realizado en esta parte de la tesis no est\'a ligado a ning\'un experimento en particular\footnote{Se utiliza a GRAND como referencia del tama\~no del detector con el fin de fundamentar la factibilidad del detector aqu\'i propuesto.}, se utilizar\'an algunas t\'ecnicas comunes en los experimentos actuales de radio, aunque guardando libertad para optimizar la detecci\'on de neutrinos ES.
 	
-	El primer paso en esta direcci\'on ser\'a entonces estudiar las componentes de un arreglo de antenas gen\'erico y c\'omo afect\'ia \'este la se\~nal recibida.
+% 	El primer paso en esta direcci\'on ser\'a entonces estudiar las componentes de un arreglo de antenas gen\'erico y c\'omo afect\'ia \'este la se\~nal recibida.
 	
 	\subsection{Detector gen\'erico de antenas de radio}
 	
@@ -174,13 +174,13 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 			\centering
 			\includegraphics[width=\textwidth]{./fig/simulacionRadio/antennaSch}
 			\caption{\label{fig:detectorSch} Esquema de un arreglo de antenas de radio gen\'erico.
-			Cada estaci\'on de detecci\'on (RDS por \emph{Radio Detection Station}) es un elemento aut\'onomo del detector. Las componentes de su fase anal\'ogica son, la antena y un amplificador de bajo ruido (LNA por \emph{Low Noise Amplifier}) seguidos una serie de filtros y amplificadores. Luego, adem\'as de digitalizar la se\~nal se evaluan algoritmos de trigger locales y se agrega una etiqueta temporal mediante GPS.
+			Cada estaci\'on de detecci\'on (RDS por \emph{Radio Detection Station}) es un elemento aut\'onomo del detector. Las componentes de su fase anal\'ogica son, la antena y un amplificador de bajo ruido (LNA por \emph{Low Noise Amplifier}) seguidos por una serie de filtros y amplificadores. Luego, adem\'as de digitalizar la se\~nal se evaluan algoritmos de trigger locales y se agrega una etiqueta temporal mediante GPS.
 			Finalmente, cada RDS se conecta a un sistema de adquisici\'on central (DAQ Central) que se encarga de discriminar eventos globales. M\'as informaci\'on en el texto.
 			}
 			
 		\end{figure}
 	%
-	Si bien cada las componentes de cada RDS var\'ian de detector a detector, usualmente constan de una fase de detecci\'on anal\'ogica y una etapa de digitalizaci\'on y an\'alisis.
+	Si bien las componentes de cada RDS var\'ian de detector a detector, usualmente constan de una fase de detecci\'on anal\'ogica y una etapa de digitalizaci\'on y an\'alisis.
 	\begin{enumerate}
 		\item \textbf{Fase anal\'ogica:} esta etapa comienza en las antenas, una por cada direcci\'on de detecci\'on. Una vez que el campo el\'ectrico genera un exceso de carga entre sus brazos, la corriente generada es amplificada usualmente por un amplificador de bajo ruido (LNA por \emph{Low Noise Amplifier}), que suele ubicarse a su pie con el fin de evitar p\'erdidas. Luego, la se\~nal pasa por una segunda etapa de amplificaci\'on y filtrado, y es finalmente transmitida hacia la fase digital.
 		\item \textbf{Fase digital:} en este tramo la se\~nal es digitalizada, usualmente por un dispositivo ADC y analizada por un FPGA o un CPU. Este an\'alisis puede incluir la evaluaci\'on de niveles de disparo, el filtrado de frecuencias de ruido conocidas o incluso alguna transformaci\'on conveniente, necesaria para el an\'alisis posterior. Una vez finalizada la etapa de tratamiento, la se\~nal es almacenada junto a una etiqueta temporal normalmente obtenida mediante GPS. 
@@ -188,21 +188,21 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 		Si estos se cumplen el DAQ Central indica a cada RDS del evento que envie la se\~nal almacenada para que sea guardada en disco.
 	\end{enumerate}
 	
-	Como consecuencia de este proceso, la se\~nal alcanza la antena es diferente a la que finalmente es almacenada en el disco, donde el mayor impacto proviene del filtrado que se produce en la fase anal\'ogica a consecuencia de las respuestas en frecuencia de la antena y los amplificadores.
+	Como consecuencia de este proceso, la se\~nal que alcanza la antena es diferente a la que finalmente es almacenada en el disco, donde el mayor impacto proviene del filtrado que se produce en la fase anal\'ogica a consecuencia de las respuestas en frecuencia de la antena y los amplificadores.
 	Dado que estas respuestas pueden ser manejadas para satisfacer las necesidades del detector, en este trabajo se supondr\'a que cada RDS presenta una respuesta plana en frecuencia y adem\'as se seleccionar\'a una banda particular, determinada por los siguientes factores:
 	\begin{itemize}
-	 \item La contaminaci\'on proveniente de la onda media predomina en la regi\'on \cant{0.2\text{-}30}{MHz}
-	 \item La observaci\'on en frecuencias entre \cant{30\text{-}80}{MHz} es factible y actualmente utilizada por la mayor\'ia de los experimentos de radio actuales.
+	 \item La contaminaci\'on (ruido) proveniente de la onda media predomina en la regi\'on \cant{0.2\text{-}30}{MHz}
+	 \item La observaci\'on en frecuencias entre \cant{30\text{-}80}{MHz} es factible y utilizada por la mayor\'ia de los experimentos de radio actuales.
 	 \item Las emisoras de FM ocupan la banda \cant{80\text{-}120}{MHz}
 	 \item La se\~nal simulada de cascadas atmosf\'ericas en eventos ES muestra coherencia hasta el GHz.
 	\end{itemize}
 	
-	Con todo esto, a la se\~nal simulada con \zhs{} se le aplicar\'a un filtro pasa banda \cant{30\text{-}80\text{/}120\text{-}900}{MHz} a las tres componentes del campo.
+	Teniendo todo esto en cuenta a la se\~nal simulada con \zhs{} se le aplicar\'a dos filtros pasa banda, de \cant{30\text{-}80\text{ y }120\text{-}900}{MHz} a las tres componentes del campo el\'ectrico y luego se agregar\'an sus se\~nales de salida.
 	
-	Vale destacar que conservar las tres componentes del campo el\'ectrico es un hecho no menor\footnote{Para ahorrar una antena en cada estaci\'on algunos experimentos solo miden las componentes paralelas a la superficie de la tierra. Esta configuraci\~non es favorable en eventos verticales.}.
-	Dado que su polarizaci\'on es paralela al frente de la lluvia (ver secci\'on \ref{sc:macroscopico}), su componente $z$ puede llegar a ser importante en lluvias inclinadas, al contrario de lo que sucede en eventos verticales.
+	Vale destacar que conservar las tres componentes del campo el\'ectrico es un hecho no menor\footnote{Para ahorrar una antena en cada estaci\'on algunos experimentos solo miden las componentes paralelas a la superficie de la tierra. Esta configuraci\'on es favorable en eventos verticales.}.
+	Dado que su polarizaci\'on es aproximadamente paralela al frente de la lluvia (ver secci\'on \ref{sc:macroscopico}), su componente $z$ puede llegar a ser importante en lluvias inclinadas, al contrario de lo que sucede en eventos verticales.
 	La figura \ref{fig:antSig} muestra el campo el\'ectrico obtenido mediante \zhs{}, medido en una antena ubicada sobre el anillo \cher{} para un evento ES que se dirige de Este a Oeste.
-	Se grafican las componentes $z$, FW y TR del campo eléctrico, donde FW y TR son en la direcci\'on y transversal al movimiento del frente de la lluvia sobre el plano del suelo, respectivamente.
+	Se grafican las componentes $z$, FW y TR del campo eléctrico, donde FW y TR son en la direcci\'on de movimiento del frente de la lluvia sobre el plano del suelo y en su direcci\'on transversal, respectivamente.
 	
 	%
 	\begin{figure}[ht!]
@@ -238,11 +238,11 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 	 \item \textbf{Ionosf\'erico:} la densidad de carga libre presente en la ion\'osfera provoca que act\'ue como un reflector para las ondas electromagn\'eticas en el rango \cant{100}{kHz}-\cant{30}{MHz}. De esta manera, es posible captar se\~nales originadas ya sea por emisoras de onda media o por tormentas a miles de kil\'ometros del lugar de observaci\'on.
 	 \item \textbf{Proveniente de la ciudad:} el ruido electromagn\'etico presente en las ciudades, que proviene usualmente de aparatos industriales, suele ser el dominante en la mayor parte del ancho de banda si el receptor se encuentra dentro o cerca de la misma.
 	 \item \textbf{Gal\'actico:} el ruido gal\'actico es todo aquel que proviene de fuentes extra terrestres (solar, c\'osmico o proveniente del plano gal\'actico). Este domina la regi\'on \cant{30\text{-}80}{MHz}, en ausencia de ruido humano.
-	 \item \textbf{Intr\'inseco:} tambi\'en conocido como \emph{ruido de Johnson-Nyquist}, aparece en los terminales de la antena debido a fluctuaciones termodin\'amicas de los portadores de carga. Esta fuente depende de la temperatura de trabajo de la antena y se vuelve la fuente dominante por encima de de los \cant{100}{MHz}.
+	 \item \textbf{Intr\'inseco:} tambi\'en conocido como \emph{ruido de Johnson-Nyquist}, aparece en los terminales de la antena debido a fluctuaciones termodin\'amicas de los portadores de carga. Esta fuente depende de la temperatura de trabajo de la antena y se vuelve la fuente dominante por encima de los \cant{100}{MHz}.
 	\end{itemize}
 	
 	Entonces, idealmente el experimento deber\'a encontrarse lejos de las zonas pobladas para evitar el ruido proveniente de la ciudad.
-	En estas condiciones el nivel de disparo local en la banda \cant{30\text{-}80\text{/}120\text{-}900}{MHz} depender\'a s\'olo del ruido gal\'actico y del intr\'inseco de la antena, donde ser\'a necesario llevar los valores de campo m\'inimo de la figura \ref{fig:allanNoise} al ancho de banda elegido.
+	En estas condiciones el nivel de disparo local en la banda \cant{30\text{-}80\text{/}120\text{-}900}{MHz} depender\'a s\'olo del ruido gal\'actico y del intr\'inseco de la antena, donde ser\'a necesario convertir los valores de campo m\'inimo de la figura \ref{fig:allanNoise} al ancho de banda elegido.
 	Para ello, es necesario tener en cuenta que la potencia del ruido es aditiva, es decir, $|E_\nu|^2\propto d\nu$, donde $E_\nu$ es campo el\'ectrico que genera la se\~nal en un ancho de banda $d\nu$.
 	Por lo tanto el campo m\'inimo necesario en el ancho de banda seleccionado ser\'a:
 	%
@@ -265,7 +265,7 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 	\end{equation}
 	%
 	
-	Con todo esto en mente, el disparo local de cada RDS, que se evaluar\'a sobre el m\'aximo de la se\~nal simulada, y deber\'a ser elegido en el rango de \cant{40}{\frac{\mu V}{m}} a \cant{250}{\frac{\mu V}{m}}.
+	Con todo esto en mente, el disparo local de cada RDS, que se evaluar\'a sobre el m\'aximo de la se\~nal simulada luego de la aplicaci\'on de los filtros pasa banda (ver figura \ref{fig:antSig}), y deber\'a ser elegido en el rango de \cant{40}{\frac{\mu V}{m}} a \cant{250}{\frac{\mu V}{m}}.
 	Entonces, con el fin de no perder generalidad en el c\'alculo, se reportar\'a el resultado para diferentes niveles de trigger, entre \cant{25}{\frac{\mu V}{m}} y \cant{250}{\frac{\mu V}{m}}.
 	En el cap\'itulo \ref{ch:resultadosRadio} se mostrar\'a que el nivel de disparo local elegido es uno de los factores que tienen m\'as impacto en la sensitividad del detector.
 	

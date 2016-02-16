@@ -3,7 +3,7 @@
 
 El objetivo de este cap\'itulo (y de la segunda parte de esta tesis) es estimar el desempe\~no  de un detector de antenas de radio a la hora de detectar neutrinos ES.
 Para ello al igual que en Auger se calcular\'a la exposici\'on del detector, pero esta vez en una situaci\'on gen\'erica.
-Se utilizar\'a lo estudiado en el capitulo \ref{ch:caracterizacionRadio} para definir el criterio de disparo global del detector hipot\'etico y se estimar\'an sus eficiencias de detecci\'on.
+Se utilizar\'a lo estudiado en el cap\'itulo \ref{ch:caracterizacionRadio} para definir el criterio de disparo global del detector hipot\'etico y se estimar\'an sus eficiencias de detecci\'on.
 Todo lo anterior se realizar\'a utilizando distintas disposiciones espaciales de las antenas (topograf\'ias del detector), para encontrar una disposici\'on \'optima.
 Finalmente, teniendo en cuenta todo lo anterior se comparar\'a su desempe\~no en relaci\'on a Auger y frente a la pr\'oxima generaci\'on de detectores de neutrinos ultra energ\'eticos.
 
@@ -13,7 +13,7 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a su desempe\~no en
 	Tales modificaciones fueron necesarias debido a que:
 	\begin{enumerate}
 	 \item Se incluy\'o la curvatura de la tierra en el c\'alculo de la exposici\'on.
-	 \item Las eficiencias se calcularon en funci\'on de la energ\'ia visible.
+	 \item Las eficiencias se calcularon en funci\'on de la energ\'ia visible de la lluvia.
 	 \item Se considera un detector ideal, que no var\'ia a trav\'es del tiempo ni en su forma.
 	\end{enumerate}
 	%
@@ -32,9 +32,9 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a su desempe\~no en
 % 	\end{equation}
 % 	%
 
-	\subsection{Inclusi\'on de la curvatura de la tierra}
+	\subsection{Inclusi\'on de la curvatura de la Tierra}
 	El primer cambio en el c\'alculo es inducido por la inclusi\'on de la curvatura de la tierra en el modelo. 
-	Esto resulta en que el \'angulo cenital con el que los neutrinos atraviezan la tierra, \te{}, difiere del observado sobre el detector \td{}, tal como se esquematiza en la figura \ref{fig:curveEarthSketch0}.
+	Esto resulta en que el \'angulo cenital con el que los neutrinos atraviesan la Tierra, \te{}, difiere del observado sobre el detector \td{}, tal como se esquematiza en la figura \ref{fig:curveEarthSketch0}.
 	%
 	 \begin{figure}[ht!]
 		\centering
@@ -44,7 +44,7 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a su desempe\~no en
 		}
 	\end{figure}
 	%
-	Como consecuencia el c\'alculo se ve afectdo de dos maneras:
+	Como consecuencia el c\'alculo se ve afectado de dos maneras:
 	\begin{enumerate}
 	 \item Se modifican las probabilidades de decaimiento del \tauon{} en la atm\'osfera.
 	 \item Para cada valor de \xd{} existe una zona de \'angulos cenitales sobre el detector prohibidos.
@@ -63,6 +63,7 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a su desempe\~no en
 		\label{eq:decayTayRadio}
 	\end{equation}
 	%
+	donde $l$ es la distancia que recorrer\'ia el \tauon{} antes de decaer y $\lambda(E_\tau)$ su longitud de decaimiento.
 	Entonces, si se tiene en cuenta la curvatura de la tierra, la expresi\'on de $l({\rm x_d},\theta_D)$ queda:
 	%
 	\begin{equation}
@@ -137,11 +138,11 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a su desempe\~no en
 		\includegraphics[width=0.95\textwidth]{./fig/appendix/thetaDCut_mod}
 		% curveEarthSketch.png: 2404x1199 pixel, 150dpi, 40.70x20.30 cm, bb=0 0 1154 575
 		\caption{\label{fig:dx_thcut0}
-		Conjunto de par\'ametros geom\'etricamente admitidos.
+		Conjunto de par\'ametros $(\theta_D,{\rm x_d})$ geom\'etricamente admitidos (ver figura \ref{fig:curveEarthSketch_thCut0}).
 		}
 	\end{figure}
 	%
-	Si bien este efecto no tiene mucha relevancia en la exposici\'on de Auger\footnote{Esto se debe a que el rango angular en el que Auger es eficiente es de alrededor de $5^\circ$. Entonces, los eventos cuyo \'angulo se ve modificado siguen siendo detectados (ver figura \ref{fig:te_td} del apendice \ref{ap:tierraCurva}).}, tiene un impacto considerable en detectores de radio, cuyo rango angular de observaci\'on es cercano a los $2.5^\circ$.
+	Si bien este efecto no tiene mucha relevancia en la exposici\'on de Auger\footnote{Esto se debe a que el rango angular en el que Auger es eficiente es de alrededor de $5^\circ$. Entonces, los eventos cuyo \'angulo se ve modificado siguen siendo detectados (ver figura \ref{fig:te_td} del apendice \ref{ap:tierraCurva}).}, tiene un impacto considerable en detectores de radio, cuyo rango angular de observaci\'on es cercano a los $2.5^\circ$ por debajo del horizonte.
 	
 	\subsection{Manejo de la energ\'ia visible}
 	Las eficiencias de detecci\'on ser\'an calculadas en funci\'on de la energ\'ia visible de la lluvia, \ev{}, por lo que es necesario modificar el c\'alculo de la exposici\'on.
@@ -160,21 +161,21 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a su desempe\~no en
 	\end{equation}
 	%
 	donde la funci\'on $f(E_\tau|E_\nu,\theta_E(\theta_D,{\rm x_d}))$ nuevamente describe la probabilidad de obtener un \tauon{} emergente de energ\'ia \etau{}, dado que incidi\'o un neutrino sobre la tierra de par\'ametros $E_\nu$ y $\theta_E(\theta_D,{\rm x_d})$, y al igual que en Auger se calcularon mediante simulaciones de Monte Carlo.
-	Por otro lado $h({\rm x_d},(E_\tau,\theta_D))$ representa la probabilidad de decaimienta del \tauon{} en la atm\'osfera, descripta en la ecuaci\'on \ref{eq:decayTayRadio}, y $g(E_v|E_\tau)$ la probabilidad de que en ese decaimiento la lluvia se inicie energ\'ia \ev{} dado que el \tauon{} ten\'ia energ\'ia \etau{}.
+	Por otro lado $h({\rm x_d},(E_\tau,\theta_D))$ representa la probabilidad de decaimiento del \tauon{} en la atm\'osfera, descripta en la ecuaci\'on \ref{eq:decayTayRadio}, y $g(E_v|E_\tau)$ la probabilidad de que en ese decaimiento la lluvia se inicie con energ\'ia \ev{} dado que el \tauon{} ten\'ia energ\'ia \etau{}.
 	En lugar de $g(E_v|E_\tau)$, para realizar la integral se calcul\'o $\tilde{g}(\log E_v-\log E_\tau)$ a partir de la librer\'ia de \tauola{} utilizada para simular los decaimientos del \tauon{} en Auger.
-	Esta funci\'on se muestra entre $-3$ y $0$ en la figura \ref{fig:ev_etau}, en la que se observa que aproximadamente el $95\%$ de los casos obtienen una energ\'ia visible a lo sumo un orden de magnitud menor que la del \tauon{}.
+	Esta funci\'on se muestra en la figura \ref{fig:ev_etau}, en la que se observa que en aproximadamente en el $95\%$ de los casos la energ\'ia visible es $E_v\geq\frac{E_\tau}{10}$
 	%
 	 \begin{figure}[h!]
 		\begin{center}
-			\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/ev_etau}
+			\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/ev_etau.pdf}
 			\caption{\label{fig:ev_etau} 
-			Distribuci\'on de \ev{} dado \etau{} obtenida a partir de los decaimientos simulados con \tauola{}. 
+			Distribuci\'on de $\tilde{g}(\log E_v-\log E_\tau)$ obtenida a partir de los decaimientos simulados con \tauola{}. 
 			}
 		\end{center}
 	\end{figure}
 	 
 	\subsection{Integraci\'on temporal y espacial}
-	Finalmente, dado que esta parte de la tesis se enfoca en un detector gen\'erico, no ser\'a necesario realizar la integral por unidad de tiempo y \'area y simplemente se multiplicar\'a por un factor \cant{T\ A=1}{s\,cm^2} o en caso de que se pretenda comparar con un detector, se utilizar\'a el factor correspondiente.
+	Finalmente, dado que esta parte de la tesis se enfoca en un detector gen\'erico, no ser\'a necesario realizar la integral por unidad de tiempo y \'area y simplemente se multiplicar\'a por un factor \cant{T\times A}{}donde $A$ es el \'area del detector y $T$ el tiempo total de funionamientod el mismo.
 	
 	Teniendo en cuenta todo lo anterior, la ecuaci\'on para calcular la exposici\'on resulta:
 	%
@@ -200,7 +201,7 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a su desempe\~no en
 	
 \section{Detector ideal - corteza terrestre como blanco}
 \label{sc:idealRadio}
-	Antes de pasar al c\'alculo de las eficiencias de detecci\'on, es interesante estudiar las capacidades que tendria un detector ideal, es decir, que detecte todos los eventos iniciados por neutrinos ES que emerjan de la tierra.
+	Antes de pasar al c\'alculo de las eficiencias de detecci\'on, es interesante estudiar las capacidades que tendr\'ia un detector ideal, es decir, que detecte todos los eventos iniciados por neutrinos ES que emerjan de la tierra.
 	Para ello se calcul\'o la integral de la ecuaci\'on \ref{eq:exp2ESRadio} bajo la condici\'on $\epsilon ({\rm x_d},\theta_D,E_v) = 1$ y \cant{T\ A=1}{s\,cm^2}, para diferentes valores de $\theta_D^{max}$.
 % 	Recordando la ecuaci\'on \ref{eq:exp0} del cap\'itulo \ref{ch:resAuger}, 
 	En la figura \ref{fig:exposuresFluxThetas} se grafica esta cantidad multiplicada por $E_\nu^{-2}$, lo que, recordando la ecuaci\'on \ref{eq:exp0} del cap\'itulo \ref{ch:resAuger}, se debe integrar en $E_\nu$ para obtener la cantidad de eventos por unidad de \'area y tiempo~\footnote{Bajo la condici\'on de flujo unitario, es decir, $\Phi(E_{\nu})=k\,E_\nu^{-2}$ con \cant{k=1}{GeV\ s^{-1}\ sr^{-1}\ cm^{-2}}.}.
@@ -208,23 +209,25 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a su desempe\~no en
 	\begin{figure}[h!]
 		\begin{center}
 			\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/exposureFullEff_thetas}
-			\caption{\label{fig:exposuresFluxThetas} Eventos esperados sobre el detector por unidad de \'area y tiempo para un flujo $\phi(E_\nu)= E^{-2}{\rm GeV\ s^{-1}\ sr^{-1}\ cm^{-2}}$, en funci\'on de la energ\'ia y suponiendo eficiencia m\'axima en el rango angular indicado.
-			Naturalmente, la cantidad esperados aumenta a medida que lo hace el rango angular del \emph{detector ideal}.
+			\caption{\label{fig:exposuresFluxThetas} Eventos esperados sobre el detector por unidad de \'area y tiempo para un flujo $\phi(E_\nu)= k E^{-2}$ con $k=1{\rm GeV\ s^{-1}\ sr^{-1}\ cm^{-2}}$, en funci\'on de la energ\'ia y suponiendo eficiencia m\'axima en el rango angular indicado.
+			Naturalmente, la cantidad de eventos esperados aumenta a medida que lo hace el rango angular (entre $90^\circ$ y $\theta_D^{max}=90.5^\circ,91.5^\circ,\cdots,99.5^\circ$) del \emph{detector ideal}.
 			}
 		\end{center}
 	\end{figure}
 	%
 	
 	Estas curvas representan la sensibilidad en energ\'ia del blanco, que como puede notarse, a medida que aumenta $\theta_D^{max}$ se desplaza hacia energ\'ias m\'as bajas.
-	Este fen\'omeno se debe a que mientras mayor es el \'angulo de incidencia, los neutrinos m\'as energ\'eticos interactuar\'an en promedio m\'as lejos del lugar de escape hacia la atm\'osfera que los menos energ\'eticos\footnote{A medida que aumenta la energ\'ia del \nutau{} incidente la tierra se vuelve m\'as opaca.}, lo que le quita probabilidad de escapar al \tauon{} resultante.
+	Este fen\'omeno se debe a que la Tierra act\'ua como un espectr\'ometro de \tauon{}'s, de tal manera que como cuanto mayor sea el \'angulo de incidencia m\'as materia tienen que atravesar los \nutau{}, menor debe ser su energ\'ia para que puedan interaccionar cerca de la superficie y producir un \tauon{} emergente\footnote{Esto se debe a que a medida que aumenta la energ\'ia del \nutau{} incidente la tierra se vuelve m\'as opaca, lo que provoca que al aumentar el \'angulo el escape de \tauon{}'s de energ\'ias detectables se vea desfavorecido.}.
+	% 	mientras mayor es el \'angulo de incidencia, los neutrinos m\'as energ\'eticos interactuar\'an en promedio m\'as lejos del lugar de escape hacia la atm\'osfera que los menos energ\'eticos\footnote{A medida que aumenta la energ\'ia del \nutau{} incidente la tierra se vuelve m\'as opaca.}, lo que le quita probabilidad de escapar al \tauon{} resultante.
+	%
 	Por otro lado a medida que el rango angular de detecci\'on aumenta lo hace la cantidad de eventos esperados\footnote{El \'area bajo la curva aumenta con $\theta_D^{max}$.}.
-	Para estudiar esta cantidad es posible realizar la integral en $E_\nu$ de cada curva, lo que se muestra en la figura \ref{fig:gainThetas} en unidades de la integral obtenida para el rango angular del detector de radio ($N_{92.5}$). 
+	Para estudiar esta cantidad es posible realizar la integral en $E_\nu$ de cada curva, lo que se muestra en la figura \ref{fig:gainThetas} en unidades de la integral obtenida $N_{92.5}$ para el rango angular del detector de radio $\theta\epsilon(90^\circ,92.5^\circ)$. 
 	%
 	\begin{figure}[h!]
 		\begin{center}
 			\includegraphics[width=0.9\textwidth]{fig/resultadosRadio/eventGain_thetas}
 			\caption{\label{fig:gainThetas} Cantidad de eventos esperados como funci\'on del m\'aximo del rango angular, en relaci\'on al calculado para el del detector de radio ($N_{92.5}$).
-			En rojo se grafica un ajuste lineal de pendiente 0.908, que aproxima la curva para valores de $\theta_{MAX}>94$.
+			En rojo se grafica un ajuste lineal de pendiente 0.908, que aproxima bien la curva azul para valores de $\theta_D^{max}>94$.
 			Esto quiere decir que cada grado por encima de $94^\circ$ aporta una cantidad constante eventos sobre el detector.
 			}
 		\end{center}
@@ -232,9 +235,9 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a su desempe\~no en
 	%
 	La primer observaci\'on interesante sobre la figura es que la relaci\'on entre $N(95^\circ)$ y $N(92.5^\circ)$ es aproximadamente 3.
 	Esto quiere decir que en principio el detector de superficie de Auger tiene la capacidad de detectar el triple de eventos que uno equivalente basado en la t\'ecnica de radio.
-	Esta desventaja debe ser compensada por un aumento significativo en el \'area instrumentada.
+	Esta desventaja debe ser por tanto compensada con un aumento significativo en el \'area instrumentada en el detector de radio o desplegando detectores m\'as sensibles.
 	
-	Adem\'as, en la figura se muestra una recta de pendiente 0.908 obtenida mediante un ajuste lineal para los valores de $\theta_{MAX}>94$.
+	Adem\'as, en la figura se muestra una recta de pendiente 0.908 obtenida mediante un ajuste lineal para los valores de $\theta_D^{max}>94$.
 	Esto quiere decir que cada grado por encima de $94^\circ$ aporta una cantidad constante eventos sobre el detector (un $90\%$ de lo esperado para $\theta_D^{max}=92.5^\circ$).
 	
 \section{Obtenci\'on de las eficiencias}
@@ -852,6 +855,7 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	Lo mismo sucede con las extrapolaciones de los flujos medidos por IceCube.
 	Por otra parte, los modelos h\'ibridos menos optimistas podr\'ian ser rechazados con una significancia de $10^{-3}$ o menor.
 	Por \'ultimo, los modelos m\'as optimistas que utilizan hierro como primario predicen del orden de un evento por a\~no en este tama\~no de detector, lo corresponde al m\'inimo de eventos necesarios para desfavorecer este tipo de modelos, con una significancia de $0.05$ si se observasen 0 eventos.
+	Es interesante destacar que \cant{L\sim250}{km} fijar\'ia una escala m\'inima en este tipo de detectores para observar este tipo de modelos.
 	%
 	\begin{table}[ht!] %%% fig/graficadores/nEvtRadio$ ./plotNEvtRadio_Max.py
 	\begin{center}
