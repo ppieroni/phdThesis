@@ -119,28 +119,35 @@ def main(argv):
     area = 750000**2 * 9e4 / (2* 7500 / 750. - 1) # bordes densos: D^2 * nCells
     factor = 0.5*10**(9-data[13][:,0]) #E in GeV
     NRadio = np.multiply(data[13][:,1]*time*area,factor)
-    #~ intLimit = integrate(data[12][:,0],NRadio)
     diffRadio2 = map(lambda x: 2.4/x,NRadio)
     diffRadio = list(diffRadio2) + list(diffRadio1)[::-1] + [list(diffRadio2)[0]]
-    plt.plot(list(10**data[12][:,0]) + list(10**data[13][:,0])[::-1] + [list(10**data[12][:,0])[0]] ,diffRadio,color="r",ls='.',lw=0.1)
-    plt.fill_between(list(10**data[12][:,0]) + list(10**data[13][:,0])[::-1] + [list(10**data[12][:,0])[0]],diffRadio,color="r",alpha=0.1)
-    aux = plt.Rectangle((0,0),1,1,color="r",alpha=0.1,lw=0.)
+    plt.plot(list(10**data[12][:,0]) + list(10**data[13][:,0])[::-1] + [list(10**data[12][:,0])[0]] ,diffRadio,color="r",ls='-',lw=3)
+    plt.fill_between(list(10**data[12][:,0]) + list(10**data[13][:,0])[::-1] + [list(10**data[12][:,0])[0]],diffRadio,color="r",alpha=0.4)
+    aux = plt.Rectangle((0,0),1,1,color="r",alpha=0.4,lw=3)
     plots.append(aux)
     lgnds.append(names[12])
     
-    #Full 2.5deg
-    time = 9.46708e7 #3yr in s
-    area1 = 50000000**2
-    area2 = 25000000**2
-    factor = 0.5*10**(9-data[14][:,0]) #E in GeV
-    NRadio1 = np.multiply(data[14][:,1]*time*area1,factor)
-    NRadio2 = np.multiply(data[14][:,1]*time*area2,factor)
-    diffRadio = list(map(lambda x: 2.4/x,NRadio1)) + list(map(lambda x: 2.4/x,NRadio2))[::-1] + [list(map(lambda x: 2.4/x,NRadio1))[0]]
-    aux, = plt.plot(list(10**data[14][:,0]) + list(10**data[14][:,0])[::-1] + [list(10**data[14][:,0])[0]],diffRadio,color='darkviolet',ls='-',lw=3)
-    plt.fill_between(list(10**data[14][:,0]) + list(10**data[14][:,0])[::-1] + [list(10**data[14][:,0])[0]],diffRadio,color='darkviolet',alpha=0.3)
-    aux = patches.Rectangle((0,0),1,1,color='darkviolet',alpha=0.3,lw=3,fill=True)
+    
+    #integral limit
+    intLimit = 2.4/np.trapz(np.multiply(data[13][:,1]*time*area,10**(2*(9-data[13][:,0]))),x=10**(9-data[13][:,0]))
+    print intLimit
+    aux = plt.plot([10**16.5 , 10**19.3],[-intLimit,-intLimit],color="r",ls='-',lw=3)
     plots.append(aux)
-    lgnds.append(names[14])
+    lgnds.append('Integral limit 500km')
+    
+    
+#    #Full 2.5deg
+#    time = 9.46708e7 #3yr in s
+#    area1 = 50000000**2
+#    area2 = 25000000**2
+#    factor = 0.5*10**(9-data[14][:,0]) #E in GeV
+#    NRadio1 = np.multiply(data[14][:,1]*time*area1,factor)
+#    NRadio2 = np.multiply(data[14][:,1]*time*area2,factor)
+#    diffRadio = list(map(lambda x: 2.4/x,NRadio1)) + list(map(lambda x: 2.4/x,NRadio2))[::-1] + [list(map(lambda x: 2.4/x,NRadio1))[0]]
+#    aux, = plt.plot(list(10**data[14][:,0]) + list(10**data[14][:,0])[::-1] + [list(10**data[14][:,0])[0]],diffRadio,color='darkviolet',ls='--',lw=2)
+#    aux = patches.Rectangle((0,0),1,1,color='darkviolet',alpha=1.,lw=2,fill=False)
+#    plots.append(aux)
+#    lgnds.append(names[14])
     
     
     
@@ -153,7 +160,7 @@ def main(argv):
     plt.ylim([2e-10,1e-5])
     plt.legend(plots,lgnds,loc=9,fontsize=17, ncol=3)
     plt.tick_params(labelsize=20)
-    plt.savefig("limits_future_v1.1.pdf",format="pdf")
+    plt.savefig("limits_future_v1.2.pdf",format="pdf")
     
     
     

@@ -8,12 +8,10 @@ import sys
 
 figsize = plt.figaspect(0.5)*1.2
 
-kDeg2Rad = np.arccos(-1)/180
-
 def main(argv):
     
-    als = np.linspace(15,90,101)
-    As = np.linspace(200,2000,19)
+    ds = np.linspace(10,1000,101)
+    Ds = np.linspace(1000,10000,19)
     nAnt = 9e4
     
     # choose a colormap
@@ -21,8 +19,8 @@ def main(argv):
     #c_m = matplotlib.cm.jet
     
     norm = matplotlib.colors.Normalize(
-                                       vmin=np.min(As),
-                                       vmax=np.max(As))
+                                       vmin=np.min(Ds),
+                                       vmax=np.max(Ds))
 
     # create a ScalarMappable and initialize a data structure
     s_m = matplotlib.cm.ScalarMappable(cmap=c_m, norm=norm)
@@ -30,22 +28,23 @@ def main(argv):
     
     plt.figure(figsize=figsize)
     
-    for i,A in enumerate(As):
-        area = [nAnt * (A**2 * np.sin(al * kDeg2Rad)) / 1e6 for al in als]
+    for i,D in enumerate(Ds):
+        nCells = [nAnt / (2*D/d-1) for d in ds]
+        area = [D**2 / 1e6 * nC for nC in nCells]
         edge = [np.sqrt(a) for a in area]
-        plt.plot(als,edge,color=s_m.to_rgba(A),lw=2)
+        plt.plot(ds,edge,color=s_m.to_rgba(D),lw=2)
     
     plt.axhline(500,color='k',lw=3,ls='--',label='Max')
     plt.axhline(250,color='k',lw=1,ls='--',label='GRAND')
     
     cb = plt.colorbar(s_m)
-    cb.set_label(r'$a_1,a_2\,{\rm [m]}$',fontsize=18)
-    plt.xlabel(r'$\alpha\,{\rm [deg]}$',fontsize=18)
+    cb.set_label(r'$D\,{\rm [m]}$',fontsize=18)
+    plt.xlabel(r'$d\,{\rm [m]}$',fontsize=18)
     plt.ylabel(r'$L\,{\rm [km]}$',fontsize=18)
-    plt.title('Arreglo regular',fontsize=20)
+    plt.title('Lado equivalente de un SD cuadrado - Arreglo de bordes densos',fontsize=20)
     plt.legend(loc=2,fontsize=18)
 #    plt.yscale('log')
-    plt.savefig('Area_re.pdf',format='pdf')
+    plt.savefig('Area_de.pdf',format='pdf')
     
 if __name__ == '__main__':
     main(sys.argv[1:])

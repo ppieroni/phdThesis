@@ -199,6 +199,7 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a su desempe\~no en
 	
 	
 \section{Detector ideal - corteza terrestre como blanco}
+\label{sc:idealRadio}
 	Antes de pasar al c\'alculo de las eficiencias de detecci\'on, es interesante estudiar las capacidades que tendria un detector ideal, es decir, que detecte todos los eventos iniciados por neutrinos ES que emerjan de la tierra.
 	Para ello se calcul\'o la integral de la ecuaci\'on \ref{eq:exp2ESRadio} bajo la condici\'on $\epsilon ({\rm x_d},\theta_D,E_v) = 1$ y \cant{T\ A=1}{s\,cm^2}, para diferentes valores de $\theta_D^{max}$.
 % 	Recordando la ecuaci\'on \ref{eq:exp0} del cap\'itulo \ref{ch:resAuger}, 
@@ -568,13 +569,14 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 \section{Desempe\~no de un detector de 90000 antenas}
 	
 	El objetivo de la segunda parte de esta tesis es estimar el desempe\~no de un detector de superficie de 90000 antenas de radio, y es a lo que se dedica esta secci\'on.
-	En esta l\'inea una vez definidos los criterios y m\'etodos que permiten calcular las eficiencias de detecci\'on ser\'a posible en primer lugar estudiar qu\'e aspectos del dise\~no del detector son relevantes y en qu\'e medida impactan sobre la medici\'on.
-	Al mismo tiempo se utilizar\'a toda la informaci\'on recolectada, junto con la ecuaci\'on \ref{eq:exp2ESRadio}, para obtener l\'imites diferenciales al 90$\%$ de nivel de confianza que podr\'ia imponer el detector y se lo comparar\'a con la proxima generaci\'on de detectores de neutrinos.
+	En esta l\'inea una vez definidos los criterios y m\'etodos que permiten calcular las eficiencias de detecci\'on es posible en primer lugar estudiar qu\'e aspectos del dise\~no son relevantes, determinando cu\'anto impacta cada uno sobre la medici\'on.
+	Al mismo tiempo se utiliz\'o toda la informaci\'on recolectada haste el momento, junto con la ecuaci\'on \ref{eq:exp2ESRadio}, para obtener l\'imites diferenciales al 90$\%$ de nivel de confianza que podr\'ia imponer el detector y se lo comparar\'a con la proxima generaci\'on de detectores de neutrinos.
+	Por \'ultimo se analiza en el marco de los modelos vigentes en la actualidad, cu\'antos eventos se esperan medir con este tipo de detectores en un per\'iodo de 3 a\~nos.
 	
 	\subsection{Aspectos del dise\~no}
 	
 	En los cap\'itulos \ref{ch:simulacionRadio} y \ref{ch:caracterizacionRadio} se utiliz\'o informaci\'on recavada sobre la emisi\'on de radio de cascadas atmosf\'ericas para, entre otras cosas, acotar las caracter\'isticas de dise\~no del detector.
-	Sin embargo, existen caracter\'isticas a ls que les quedan grados de libertad, a saber:
+	Sin embargo, existen ciertas caracter\'isticas que no se encuentran completamente determinadas, a saber:
 	%
 	\begin{enumerate}
 	 \item La topograf\'ia del detector;
@@ -592,7 +594,7 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	\end{equation}
 	%
 	Para llevar a cabo las comparaciones salvo que se indique lo contrario se utilizar\'a un escenario $\Phi(E_{\nu})\sim E_{\nu}^{-2}$ y $\mathcal{E}(E_\nu)$ ser\'a calculada mediante la ecuaci\'on \ref{eq:exp2ESRadio}.
-	Adem\'as, con el fin de enmarcar el resultado se informar\'a esta cantidad en unidades de $N_{Auger}$ (o sea $N_{Radio}/N_{Auger}$), que representa los eventos ES que detectar\'ia el SD Auger en una medici\'on equivalente\footnote{Mismo flujo y misma duraci\'on.}.
+	Adem\'as, con el fin de enmarcar el resultado se informar\'a esta cantidad en unidades de $N_{Auger}$ (o sea $N_{Radio}/N_{Auger}$), que representa los eventos ES que detectar\'ia el SD Auger en una medici\'on equivalente\footnote{Mismo flujo y misma duraci\'on. No mismo tama\~no.}.
 	
 	Por otro lado ser\'a interesante estudiar el comportamiento del argumento de la integral \ref{eq:nesp_radio}, que contiene informaci\'on sobre la sensitividad del detector a diferentes energ\'ias.
 	Para simplificar la comparaci\'on entre la abultada cantidad de configuraciones estudiadas, se decidi\'o utilizar como medida de la sensibilidad la energ\'ia media esperada en los neutrinos detectados, dada por:
@@ -604,25 +606,23 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	
 	A partir de aqu\'i entonces se estudiar\'an estas cantidades como funci\'on de los distintos par\'ametros todav\'ia libres en el dise\~no del detector.
 	
-	\subsubsection{Topograf\'ia}
+	\subsubsection{Topograf\'ias y niveles de disparo}
 	
-	La topograf\'ia del detector de tipo regular (RE) y panal de abeja (HC) queda definida por los par\'ametros $\left\{a_1,a_2,\alpha\right\}$ mientras que en la de bordes densos (DE) por el conjunto $\left\{d,D\right\}$.
-	Sin embargo, debido a que en topograf\'ias RE y HC las configuraciones con $a_1$ muy distinto de $a_2$ (dentro de valores razonables) pueden lograrse aproximadamente imponiendo $a_1=a_2$ y un valor adecuado para $\alpha$, para acotar el n\'umero de configuraciones consideradas s\'olo se estudiaron casos en los que se cumple la condici\'on $a_1=a_2$.
-	Por todo esto en todos los casos (RE, HC y DE) bast\'o dar 2 n\'umeros para determinar completamente la disposici\'on de antenas sobre la superficie del detector.
-% 	
-% 	
-% 	Una vez obtenidas las eficiencias fue posible comparar cada detector\footnote{Definido seg\'un la topograf\'ia y criterios de disparlo local y global.} analizado con el desempe\~no alcanzado por Auger para neutrinos ES.
-% 	Para ello, se calcul\'o la integral de la ecuaci\'on \ref{eq:exp2ESRadio} utilizando las eficiencias de Auger y se agreg\'o un factor de correcci\'on para incorporar la diferencia de superficie cubierta por cada celda primitiva y la diferencia en la cantidad de celdas en el detector.
+	La topograf\'ia del detector de tipo regular (RE) y panal de abeja (HC, por \emph{honeycomb}) queda definida por los par\'ametros $\left\{a_1,a_2,\alpha\right\}$ mientras que en la de bordes densos (DE, por \emph{dense edge}) por el conjunto $\left\{d,D\right\}$.
+	Sin embargo, debido a que en topograf\'ias RE y HC las configuraciones con $a_1$ muy distinto de $a_2$ (dentro de valores razonables) pueden lograrse aproximadamente imponiendo $a_1=a_2$ y un valor adecuado para $\alpha$, con el fin de acotar el n\'umero de configuraciones consideradas s\'olo se estudiaron casos en los que se cumple la condici\'on $a_1=a_2$.
+	Entonces en todas las topograf\'ias (RE, HC y DE) bast\'o dar 2 n\'umeros para determinar completamente la disposici\'on de antenas sobre la superficie del detector.
 	
-	Adem\'as de los par\'ametros que determinan la configuraci\'on, para poder comparar las cantidades $N_{Radio}$ y $N_{Auger}$ de manera justa fue necesario calcular sus valores en tiempos de medici\'on equivalentes y aplicar un factor de correcci\'on que tenga en cuenta la diferencia de tama\~no de los detectores.
-	Para conciliar en primer lugar el tiempo de medici\'on se calcul\'o $N_{Radio}$ imponiendo \cant{T=1}{s} en la ecuaci\'on \ref{eq:exp2ESRadio} mientras que $N_{Auger}$ fue calculado utilzando la exposici\'on \emph{Full Auger} a neutrinos ES para \cant{6.5}{yr} y se la dividi\'o por \cant{2.05\times10^8}{s}, obteniendo de esa manera la exposici\'on promedio por segundo del observatorio.
-	Luego, para incluir la diferencia de tama\~no de los detectores en cada configuraci\'on se determin\'o la celda primitiva correspondiente, se calcu\'o su \'area y el n\'umero de celdas que lo conforman para al fin calcular la superficie cubierta por el detector.
-	Para el SD de Auger por ejemplo la superficie de la celda primitiva se puede calcular como \cant{1500^2\sin60^\circ}{m^2}=\cant{1.94\times10^6}{m^2}, donde cada una contiene una sola estaci\'on.
+	Adem\'as de los par\'ametros que determinan la configuraci\'on, para poder comparar las cantidades $N_{Radio}$ y $N_{Auger}$ de manera justa fue necesario calcular sus valores en tiempos de medici\'on equivalentes e incluir la diferencia de tama\~no relativa entre los detectores.
+	Para conciliar en primer lugar el tiempo de medici\'on se calcul\'o $N_{Radio}$ imponiendo \cant{T=1}{s} en la ecuaci\'on \ref{eq:exp2ESRadio} mientras que $N_{Auger}$ fue calculado utilzando la exposici\'on \emph{Full Auger} a neutrinos ES para \cant{6.5}{yr} y se la dividi\'o por \cant{2.05\times10^8}{s}~\footnote{Este n\'umero corresponde a 6.5 a\~nos en segundos.}, obteniendo de esa manera la exposici\'on promedio por segundo del observatorio.
+	Luego, para incluir la diferencia de tama\~no de los detectores en cada configuraci\'on se determin\'o la celda primitiva correspondiente, se calcu\'o su \'area y el n\'umero de celdas que completan el arreglo, para al fin calcular la superficie cubierta en cada caso.
+	
+	Para el SD de Auger por ejemplo la superficie de la celda primitiva se puede calcular como \cant{1500^2\sin60^\circ}{m^2}=\cant{1.94\times10^6}{m^2}, y cada una contiene una sola estaci\'on.
 	Entonces, dado que el detector completo esta conformado por 1600 de estas celdas la superficie total cubierta es de \cant{1600\times1.94\times10^6}{m^2}$\sim$\cant{3100}{km^2}.
 	Por otra parte, un detector de radio con la misma configuraci\'on, \cant{a_1=a_2=1500}{m} y $\alpha=60^\circ$, y 90000 celdas primitivas posee una superficie cubierta de \cant{90000\times1.94\times10^6}{m^2}$\sim$\cant{174000}{km^2}.
-	Por ende, en este caso el n\'umero de eventos extra debido a la diferencia de superficie instrumentada es alrededor de $56.25$ m\'as a favor del detector de radio.
-	Por otro lado, si en vez de un areglo regular se considera uno tipo panal de abeja, con \cant{a_1=a_2=1500}{m} y $\alpha=60^\circ$, la cuenta es levemente diferente. 
-	En este caso en lugar de utilizar la celda de Wigner-Seitz, como en la figura \ref{fig:corePos2}, es posible explotar el hecho de que un arrego HC es uno RE en el que se quita un nodo cada tres.
+	Por ende, en este caso particular el n\'umero de eventos extra debido a la diferencia de superficie instrumentada es de alrededor de $56.25$ m\'as a favor del detector de radio.
+	
+	Si en vez de un areglo regular se considera uno tipo panal de abeja, con \cant{a_1=a_2=1500}{m} y $\alpha=60^\circ$, la cuenta es levemente diferente. 
+	En este caso en lugar de utilizar la celda de Wigner-Seitz, que se grafica en la figura \ref{fig:corePos2} y cuya expresi\'on en es poco intuitiva, es posible explotar el hecho de que un arrego HC es uno RE en el que se quita un nodo cada tres.
 	Entonces es posible pensar que cada celda primitiva, de \'area \cant{1.94\times10^6}{m^2}, utiliza s\'olo $2/3$ de antena, o lo que es lo mismo, que el \'area total cubierta ser\'a $3/2$ la de un arreglo regular equivalente.
 	Finalmente, para calcular la celda primitiva de un arreglo de bordes densos, dado que s\'olo se consideraron configuraciones en las que $D/d\epsilon\mathbb{N}$, se tiene que el \'area de la celda es $D^2$, mientras que la cantidad de antenas necesarias para construir cada una es $2\frac{D}{d}-1$. 
 	Por este motivo la superficie total cubierta por un detector de 90000 antenas ser\'a $\frac{90000}{2\frac{D}{d}-1}\times D^2$.
@@ -645,8 +645,8 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	\end{table}
 	%
 	
-	En estas condiciones las figuras \ref{fig:compRadioAuger_re}, \ref{fig:compRadioAuger_hc} y \ref{fig:compRadioAuger_de}, muestan $N_{Radio}/N_{Auger}$ para diferentes combinaciones de par\'ametros para las topograf\'ias RE, HC y DE respectivamente. 
-	Como nivel de disparo local se utiliz\'o \cant{50}{\mu V/m}, como disparo global 5 antenas disparadas (AoT) y un nivel de identificaci\'on hipot\'etico de 0.9.
+	En estas condiciones las figuras \ref{fig:compRadioAuger_re}, \ref{fig:compRadioAuger_hc} y \ref{fig:compRadioAuger_de}, muestan $N_{Radio}/N_{Auger}$ para diferentes combinaciones de par\'ametros simuladas, para las topograf\'ias RE, HC y DE respectivamente. 
+	En los tres casos como nivel de disparo local se utiliz\'o \cant{50}{\mu V/m}, como disparo global 5 antenas disparadas (aOT) y un nivel de identificaci\'on hipot\'etico de $90\%$.
 	%
 	\begin{figure}[h!]
 		\begin{center}
@@ -673,132 +673,289 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	\end{figure}
 	%
 	
-	Para analizar el impacto de cada uno de los par\'ametros en el cociente de eventos es fundamental comprender c\'omo afecta un cambio en la topograf\'ia al c\'alculo de la exposici\'on. En esta l\'inea es posible aislar dos efectos que compiten entre s\'i:
+	La primer observaci\'on en la figura \ref{fig:compRadioAuger_re} es que para un arreglo de radio de las caracter\'isticas de Auger (\cant{a_1=a_2=1500}{m} y $\alpha=60^\circ$) se esperaba en principio, una ganancia de $56.25$ debido al incremento de superficie y una p\'erdida del \'orden de un factor $3$ debido a la diferencia de rango angular observado (ver figura \ref{fig:gainThetas}), con lo que se esperar\'ia que el detector de radio detecte del orden de $56.25/3\sim19$ veces m\'as eventos que Auger. 
+	Sin embargo para estos valores de threshold local y global la relaci\'on observada es un factor $\sim100$~\footnote{El valor debe ser estimado interpolando, para $60^\circ$, los puntos amarillo y el naranja.}.
+	Esto quiere decir que en estas condiciones el arreglo de radio es m\'as eficiente a baja energ\'ia, el \'unico lugar del que puede provenir el exceso de eventos observado.
+	
+	Para analizar ahora el impacto de cada uno de los par\'ametros en el cociente de eventos es fundamental comprender c\'omo puede afectar un cambio en la topograf\'ia a la exposici\'on del detector. En esta l\'inea a grandes rasgos es posible aislar dos efectos que compiten entre s\'i:
 	%
 	\begin{enumerate}
 	 \item Una disminuci\'on en la granularidad provocar\'a un aumento en la superficie total instrumentada, lo que aumenta la exposici\'on.
-	 \item Un aumento en la granularidad elevar\'a las eficiencias a baja energ\'ia, lo que en un escenario $E_\nu^{-2}$ Elevar\'a la exposici\'on.
+	 \item Un aumento en la granularidad elevar\'a las eficiencias a baja energ\'ia, lo que en un escenario $E_\nu^{-2}$ elevar\'a la exposici\'on.
 	\end{enumerate}
 	%
-	Sin embargo el detalle de la topograf\'ia podr\'ia en principio compensar o profundizar cualquiera de los dos efectos.
+	Sin embargo el detalle de la topograf\'ia, es decir c\'omo es la distribuci\'on particular de antenas dentro de cada celda primitiva, podr\'ia en principio compensar o profundizar cualquiera de los dos efectos\footnote{Supongamos una celda primitiva de 10 antenas y \cant{10}{km^2} de superficie efectiva. Si bien el \'area total cubierta de un detector conformado por estas celdas ser\'ia siempre la misma (\cant{90000}{km^2} en nuestro detector), la eficiencia se ver\'a modificada si todas las antenas estan aglomeradas en un punto o si se encuentran equidistribuidas a trav\'es de los \cant{10}{km^2}.}.
 	
-	- analizar cada uno de los casos, contar como cambia el ratio N/N para cada tipo de topografia en funcion de los parametros.
-	
-	- notar que siempre que aumenta el area aumenta la cantidad de eventos.
-	
-	- mostrar que si el threshold es mas alto puede ser que esto no pase, osea, la perdida de granularidad puede pasar a ser impotante. POr ahi esto puede ir mas adelante, en la seccion de threshold.
-	
+	Entonces, con esto en mente es posible analizar los resultados mostrados en las figuras, donde pueden ser aisladas algunas caracter\'isticas interesantes.
+	En las topograf\'ias RE y HC (figuras \ref{fig:compRadioAuger_re} y \ref{fig:compRadioAuger_hc}) la cantidad de eventos esperados aumenta con el \'angulo $\alpha$ y al aumentar los pasos $a_1$ y $a_2$.
+	Esto quiere decir que al menos en estas condiciones de disparo local y global los t\'erminos $a_1 \times a_2$ y $\sin \alpha$ en el c\'alculo de la superficie cubierta por el detector se imponen por sobre la p\'erdida de eficiencia que podr\'ia provocar la separaci\'on de las antenas.
+	De igual forma, en la topograf\'ia DE (figura \ref{fig:compRadioAuger_de}) los par\'ametros el n\'umero de eventos esperados aumenta con $d$ y $D$, lo que indica nuevamente que el incremento en el \'area termina imponiendose por sobre la p\'erdida de eficiciencia.
+	En ambos casos lo que sucede es que el nivel de disparo local de las antenas elegido es lo suficientemente bajo como para que incluso a baja energ\'ia la huella de los eventos por encima de ese nivel sea lo suficientemente extensa para disparar al menos 5 antenas.
+	Esto no es siempre de esta manera, por ejemplo en la figura \label{fig:compRadioAuger_th2} se muestra la cantidad de eventos como funci\'on de los pasos $a_1$ y $a_2$ para varios valores de $\alpha$ en un arreglo regular, para un threshold local de \cant{100}{\mu V/m} y uno global de 9 antenas.
 	%
 	\begin{figure}[h!]
 		\begin{center}
-			\textbf{\footnotesize Arreglo de bordes densos}\\
+			\textbf{\footnotesize Arreglo regular}\\
 			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/sat/{CompRadioAuger_100.0_9.0_1.0_hc_modo2}.pdf}
-			\caption{\label{fig:compRadioAuger_th2} Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
+			\caption{\label{fig:compRadioAuger_th2} Eventos esperados como funci\'on del paso $a_1,a_2$ en un detector tipo regular, para varios valores de $\alpha$. Como nivel de disparo local se utiliz\'o \cant{100}{\mu V/m}, se pidieron al menos 9 antenas disparadas por evento y un nivel de identificaci\'on hipot\'etico de $90\%$. Para $\alpha=90^\circ$ y $\alpha=60^\circ$ existe un valor de $a_1,a_2$ en el que la p\'erdida de eficiencia a baja energ\'ia supera la ganancia de superficie.}
 		\end{center}
 	\end{figure}
 	%
+	Este aumento en el nivel de umbral de disparo local implica que el tama\~no de la huella por encima del mismo disminuya~\footnote{Esto puede corroborarse a simple vista en cualquiera de las figuras de la huella del detector del cap\'itulo \ref{ch:caracterizacionRadio}.}, lo que dificulta que se cumpla la condicion de disparo global ($n$ cantidad de antenas disparadas).
+	Entonces si se considera en la figura por ejemplo la curva marr\'on, que corresponde a $\alpha=90^\circ$, puede notarse c\'omo a partir de \cant{a_1,a_2 = 1400}{m} la p\'erdida de eventos de baja energ\'ia supera el aumento del \'area que implica el incremento del paso del detector.
+	Lo mismo sucede para $\alpha=60^\circ$ (curva verde) y \cant{a_1,a_2 = 1600}{m}.
 	
-	-justificar que a thresholds bajos lo que importa es el area, notar que el \'area cubierta termina siendo el factor determinante lo que lleva a la siguiente subseccion
-	
-	\subsubsection{Limitaci\'on en extensi\'on}
-	
-	- dado que el factor importante es el area hay que fijarla en un valor razonable.
-	- entonces miramos el L=sqrt(area) donde sabemos que grand es 250km y como maximo puede ser 500km.
-	%
-	\begin{figure}[h!]
-		\begin{center}
-			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/area/{Area_re}.pdf}
-			\caption{\label{fig:compRadioAuger_area1} Lado equivalente de un SD cuadrado de topograf\'ia regular de par\'ametros $a_1=a_2$ y $\alpha$. En l\'ineas negras se marca el valor de $L$ correspondiente a GRAND, \cant{250}{km}, y el considerado como m\'aximo razonable en esta tesis, \cant{500}{km}.}
-		\end{center}
-	\end{figure}
-	%
-	
-	- Entonces, usamos la informacion de esta figura para determinar cuales de las confguraciones simuladas son viables, y se muestran en la figura que sigue
-	
-	%
-	\begin{figure}[h!]
-		\begin{center}
-			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/area/{CompRadioAuger_50.0_5.0_1.0_re_modo1}.pdf}
-			\caption{\label{fig:compRadioAuger_area1} asd}
-		\end{center}
-	\end{figure}
-	%
-	
-	\subsubsection{Nivel de disparo local}
-	
-	- Ademas de la topografia del detectro otro aspecto clave de la detecci\'on es el nivel de disparo local
-	- en la figura tal se muestra como cambia el ratio N/N para un arreglo regular y para diferentes valores de a1 a2 a tita fijo
-	- se observa como a medida que aumenta el threshold la cantidad de eventos esperados baja, lo que se debe funamentalmente a la perdida de eventos de baja energia, comparar con la figura del capitulo de caracterizacion que muestra como es el maximo de campo electrico en funcion de la energia.
-	
+	Para generalizar esta idea las figuras \ref{fig:compRadioAuger_th} y \ref{fig:compRadioAuger_th2} muestran c\'omo cambia la cantidad de eventos esperados y el valor medio de la energ\'ia (calculado con la ecuaci\'on \ref{eq:emean_radio}) en funci\'on del threshold local, para varios valores de $D$ en un arreglo tipo DE.
 	%
 	\begin{figure}[h!]
 		\begin{center}
 			\textbf{\footnotesize Arreglo de bordes densos}\\
 			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/thresh/{CompRadioAuger_1000.0_5.0_1.0_de_modo3}.pdf}
-			\caption{\label{fig:compRadioAuger_th} Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
+			\caption{\label{fig:compRadioAuger_th} Numero de eventos esperados como funci\'on del nivel de disparo local y para distintos valores de $D$ en un arreglod e bordes densos. Se observa un decaimiento a medida que aumenta el threshold.}
 		\end{center}
 	\end{figure}
-	%
-	
-	- Para sustentar que la perdida de eventos de baja energia es lo que impacta al variar el threshold se muestra la siguiente figura que marca como a medida que aumenta el threshold local la energia media de la ecuacion tal sube.
-	- dado que las energia altas son full efficient, la perdida no puede venir de otro lado que no sea la perdida de las bajas energias.
-	
 	%
 	\begin{figure}[h!]
 		\begin{center}
 			\textbf{\footnotesize Arreglo de bordes densos}\\
 			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/ener/{CompRadioAuger_1000.0_5.0_1.0_de_modo4}.pdf}
-			\caption{\label{fig:compRadioAuger_th2} Relaci\'on entre los eventos esperados en un detector de par\'ametros $a_1$, $a_2$ y $\alpha$ para algunos de las combinaciones estudiadas. Se observa que existen ciertas combinaciones de par\'ametros que predicen hasta 200 veces m\'as eventos.}
+			\caption{\label{fig:compRadioAuger_th3} Valor medio de la energ\'ia seg\'un la ecuaci\'on \ref{eq:emean_radio} como funci\'on del threshold local para varios valores de $D$ en un arreglo de bordes densos. Se observa que la energ\'ia media aumenta con el valor del treshold para todos los valores de $D$. Esto es consistente con la p\'erdida de eventos de baja energ\'ia.}
+		\end{center}
+	\end{figure}
+	%
+	Se observa en la figura \ref{fig:compRadioAuger_th} como para cada valor de $D$ un aumento de threshold disminuye la cantidad de eventos esperados mientras que al mismo tiempo, en la figura \ref{fig:compRadioAuger_th3} el valor medio de la energ\'ia aumenta.
+	Este comportamiento implica una p\'erdida relativa de eventos de baja energ\'ia.
+	
+	Para estudiar entonces el comportamiento del detector cerca de sus l\'imites de nivel de ruido (ver secci\'on \ref{sbsc:localTriggerRadio}) a partir de aqu\'i se fijar\'a el nivel de disparo local en \cant{50}{\mu V/m} y se exigir\'a una condici\'on de disparo global de al menos 5 detectores disparados, lo m\'inimo razonable para realizar una reconstrucci\'on geom\'etrica confiable.
+	Bajo estas condiciones la premisa para aumentar la exposici\'on del detector es aumentar el \'area al m\'aximo posible, lo que introduce la siguiente secci\'on.
+	
+	\subsubsection{Limitaci\'on en extensi\'on}
+	
+	En la actualidad el SD m\'as extenso es el del Observatorio Pierre Auger, cubriendo una superficie de \cant{\sim3000}{km^2} se encuentra desplegado en una regi\'on de aproximadamente \cant{50}{km} $\times$ \cant{50}{km}. 
+	Por otra parte, el proyecto GRAND propone instalar las 90000 antenas en un arreglo cuadrado de \cant{800}{m} de paso, lo que supone un \'area instrumentada de \cant{\sim60000}{km^2} en una regi\'on de \cant{\sim250}{km} de lado~\footnote{El tama\~no de la provincia de Jujuy!}. 
+	A esta escala la dimensi\'on del detector pasa a ser un factor limitante debido a factores como por ejemplo el costo de operaci\'on, de mantenimiento o simplemente no es posible encontrar un lugar donde ubicarlo. 
+	Esto implica que, dado un n\'umero fijo de antenas, no cualquier combinaci\'on de par\'ametros del conjunto simulado es viable como un experimento real.
+	Entonces para encarar esta cuestion se calcul\'o para las tres topograf\'ias la superficie cubierta $S$ por cada detector simulado y la \emph{dimensi\'on equivalente} $L=\sqrt{S}$, que corresponde al lado de un detector cuadrado que cubre tal superficie.
+	En la figura \ref{fig:compRadioAuger_area0} se muestra a modo de ejemplo $L$ como funci\'on de los par\'ametros $a_1=a_2$ y $\alpha$ par aun arreglo regular.
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/area/{Area_re}.pdf}
+			\caption{\label{fig:compRadioAuger_area0} Lado equivalente de un SD cuadrado de topograf\'ia regular como funci\'on de los par\'ametros $a_1=a_2$ y $\alpha$. En l\'ineas negras se marca el valor de $L$ correspondiente a GRAND, \cant{250}{km}, y el considerado como m\'aximo razonable en esta tesis, \cant{500}{km}.}
+		\end{center}
+	\end{figure}
+	%
+	En l\'ineas negras se resalta la dimensi\'on equivalente de GRAND, y lo que aqu\'i se considerar\'o como la m\'axima extensi\'on viable para la t\'ecnica, \cant{500}{km}.
+	Luego con esta informaci\'on fue posible determinar cuales de las topograf\'ias simuladas pueden ser consideradas viables en este sentido o no.
+	Entonces en las figuras \ref{fig:compRadioAuger_area_re}, \ref{fig:compRadioAuger_area_hc} y \ref{fig:compRadioAuger_area_de} se resaltan las configuraciones v\'alidas en las tres topograf\'ias, es decir, los casos que cumplen \cant{L<500}{km} y \cant{L<250}{km}.
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\textbf{\footnotesize Arreglo regular}\\
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/area/{CompRadioAuger_50.0_5.0_1.0_re_modo1}.pdf}
+			\caption{\label{fig:compRadioAuger_area_re} Se resalta en la figura \ref{fig:compRadioAuger_re} las configuraciones que poseen un valor de \cant{L<500}{km} y \cant{L<250}{km}.}
+		\end{center}
+	\end{figure}
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\textbf{\footnotesize Arreglo tipo panal de abeja}\\
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/area/{CompRadioAuger_50.0_5.0_1.0_hc_modo1}.pdf}
+			\caption{\label{fig:compRadioAuger_area_hc} Se resalta en la figura \ref{fig:compRadioAuger_hc} las configuraciones que poseen un valor de \cant{L<500}{km} y \cant{L<250}{km}.}
+		\end{center}
+	\end{figure}
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\textbf{\footnotesize Arreglo de bordes densos}\\
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/area/{CompRadioAuger_50.0_5.0_1.0_de_modo2}.pdf}
+			\caption{\label{fig:compRadioAuger_area_de} Se resalta en la figura \ref{fig:compRadioAuger_re} las configuraciones que poseen un valor de \cant{L<500}{km} y \cant{L<250}{km}.}
+		\end{center}
+	\end{figure}
+	%
+	Se observa que el m\'aximo desempe\~no alcanzado por el detector cuando \cant{L<250}{km} se encuentra cercano a 40 en las tres topograf\'ias, mientras que el logrado cuando \cant{L<500}{km} ronda los 150.
+	Si bien en el arreglo RE estos valores m\'aximos parecen ser levemente menores que en los casos HC y DE, a primer orden y para estos niveles de disparo la topograf\'ia no es un factor determinante del desempe\~no del detector.
+	Todo lo expuesto hasta el momento indica que la cantidad esperada de eventos crece significativamente con la superficie cubierta por el detector.
+	Por otra parte es muy probable que la calidad de los eventos detectados por arreglos RE, HC y DE presenten s\'i diferencias significativas, pero este tema no fue abordado en esta tesis~\footnote{En particular la topograf\'ia DE fue ideada con el fin de mejorar la calidad de los eventos detectados, bajo la premisa de aprovechar las dos dimensiones que muestran este tipo de lluvias. Ante un evento sobre cada borde de las celdas se disparar\'ian peque\~nos clusters de antenas, lo que permitir\'ia en principio mejorar significativamente la reconstrucci\'on de las variables geom\'etricas.}.
+	
+	Entonces para analizar el desempe\~no del detector, que es a lo que se dedica la siguiente secci\'on, se utiliz\'o en el c\'alculo de la exposici\'on de cada topograf\'ia la combinaci\'on de par\'ametros simulada que arroj\'o la mayor cantidad de eventos esperados luego de aplicar las condiciones \cant{L<500}{km} y \cant{L<250}{km}, lo que se detalla en la tabla \ref{tab:bestConf}.
+	
+	\begin{table}[ht!]
+	\begin{center}
+	\renewcommand{\arraystretch}{2}
+	\small
+		\begin{tabular}{|l|cc|cc|cc|}
+			\hline
+			\multirow{3}{*}{Condici\'on} & \multicolumn{6}{c|}{Topograf\'ia} \\
+			&  \multicolumn{2}{c}{Regular} & \multicolumn{2}{c}{Panal de abeja} &   \multicolumn{2}{c|}{Bordes densos} \\ \cline{2-7}
+			& $a_1,a_2$ & $\alpha$& $a_1,a_2$ & $\alpha$& $d$ & $D$\\
+			\hline
+			\cant{L<500}{km} &\cant{2000}{m}&$90^\circ$&\cant{2000}{m}&$30^\circ$&\cant{750}{m}&\cant{7500}{m} \\
+			\cant{L<250}{km}  &\cant{1600}{m}&$15^\circ$&\cant{1400}{m}&$15^\circ$&\cant{250}{m}&\cant{6000}{m}  \\
+			\hline
+		\end{tabular}
+		\caption{\label{tab:bestConf} Configuraciones simuladas que arrojan mayor cantidad de eventos esperados bajo las condiciones \cant{L<500}{km} y \cant{L<250}{km} para cada una de las topograf\'ias.}
+	\end{center}
+	\end{table}
+	
+	\subsection{Perspectivas de la t\'ecnica}
+	
+	Una vez definido los detectores representativos de cada topograf\'ia y calculadas sus exposiciones, es necesario estudiar c\'omo se posiciona cada uno de ellos en la proxima generaci\'on de detectores de neutrinos ultra energ\'eticos.
+	Para ello, siguiendo el procedimiento descripto en la secci\'on \ref{sc:limiteAuger} del cap\'itulo \ref{ch:resAuger}, se calcul\'o el limite diferencial en un escenario de $\Phi(E_\nu)= k\cdot E_\nu^{-2}$, bajo una relaci\'on entre sabores $\nu_e:\nu_\mu:\nu_\tau=1:1:1$ y utilizando $N_{up} = 2.4$ en la ecuaci\'on \ref{eq:kup}, que corresponde a \textbf{a que corresponde esto jaime? es suponiendo sistematicos similares a Auger? o es un caso tipico de FC?}.
+	La figura \ref{fig:limitesRadio} muestra el resultado al \cant{90\%}{C.L.} para un bin energ\'etico de media d\'ecada y para un tiempo de exposici\'on de tres a\~nos.
+% 	\clearpage
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/{limits_future_v1.2}.pdf}
+			\caption{\label{fig:limitesRadio}
+			L\'imite diferencial al 90$\%$ de nivel de confianza para diferentes experimentos.
+ 			En l\'ineas verde, naranja y rosa se muestran los l\'imites publicados por IceCube, Auger y Anita-II. 
+ 			Las bandas azul y verde muestran las predicciones para ARA y Ariana en tres a\~nos de medici\'on. 
+			La banda roja muestra el desempe\~no que puede alcanzar un detector de 90000 antenas de radio de entre \cant{250}{km} y \cant{500}{km} de lado en el mismo per\'iodo de tiempo.}
+% 			No se discrimina los resultados por topograf\'ia debido a que no se alcanzan a distinguir en la escala del gr\'afico.}
 		\end{center}
 	\end{figure}
 	%
 	
-	\subsubsection{Disparo global}
-	
-	- Mostrar como a medida que la cantidad de antenas sube, la energia media sube y como la cantidad de eventos esperados baja, y justificar de nuevo que la perdida es por los de baja energia qu etienen footprints mas chicos. referir a alguna figura del capitulod e caracteriszacion.
-	
-	\subsection{Perspectivas de la t\'ecnica}
-	
-	
+	El l\'imite superior de la banda roja corresponde a los detectores con \cant{L=250}{km} y el inferior a \cant{L=500}{km}. 
+	En la escala del dibujo las curvas correspondientes a las tres topograf\'ias eran casi indistinguibles, por lo que no se las discrimin\'o.
 	En l\'ineas verde, naranja y rosa se muestran los l\'imites publicados por IceCube, Auger y Anita-II. 
-	Las bandas azul y verde muestran las predicciones para ARA y Ariana en tres a\~nos de medici\'on. Por otro lado la banda roja muestra el desempe\~no que puede alcanzar un detector de 90000 antenas de radio en el mismo per\'iodo.
+	Las bandas azul y verde muestran las predicciones para ARA y ARIANNA en tres a\~nos de medici\'on.
+	Se observa que mientras qu\'e un detector con \cant{L=250}{km} presenta un desempe\~no algo inferior al predicho para los detectores ARA y ARIANNA, el SD de \cant{L=500}{km} los supera sobre todo a baja energ\'ia.
+	Esto demuestra que la t\'ecnica es competitiva con la pr\'oxima generaci\'on de detectores de neutrinos c\'osmicos de ultra-energ\'eticos que se encuentran en construcci\'on.
 	
-	- separar los limites de full efficient y no full efficient? 
-	- posibles 4 tablas, para 250 y para 500 km, para este calculo y para full efficient las tablas de eventos esperados para lso distintos modelos.
-	- agregar todo esto en las conclusiones! mirar el mail de jaime para justificar que grand esta empezando a tocar hierro.
-	- posible grafico de limites integrados.
-	
-	\begin{figure}[h!]
-		\begin{center}
-			\includegraphics[width=\textwidth]{fig/resultadosRadio/{limits_future_v1.1}.pdf}
-			\caption{\label{fig:limitesRadio}
-			L\'imite diferencial al 90$\%$ de nivel de confianza para diferentes experimentos.
-			En l\'ineas verde, naranja y rosa se muestran los l\'imites publicados por IceCube, Auger y Anita-II. 
-			Las bandas azul y verde muestran las predicciones para ARA y Ariana en tres a\~nos de medici\'on. Por otro lado la banda roja muestra el desempe\~no que puede alcanzar un detector de 90000 antenas de radio en el mismo per\'iodo.}
-		\end{center}
-	\end{figure}
-	
-	\begin{table}[ht!]
+	Por otro lado, las tablas \ref{tab:nRadio250} y \ref{tab:nRadio500} muestran la cantidad de eventos esperados para cada topograf\'ia para varios modelos de producci\'on de neutrinos comsmog\'enicos y para las extrapolaciones de los neutrinos observados por IceCube.
+	\begin{table}[ht!] %%% fig/graficadores/nEvtRadio$ ./plotNEvtRadio_GRAND.py
 	\begin{center}
 	\renewcommand{\arraystretch}{1.3}
 	\small
 		\begin{tabular}{lccc}
 			\hline
-			\multirow{2}{*}{Modelo} & \multicolumn{3}{c}{Topograf\'ia} \\
+			\multirow{2}{*}{Modelo} & \multicolumn{3}{c}{Topograf\'ia - \cant{L=250}{km}} \\
 			&   Regular &   Panal de abeja &   Bordes densos \\
 			\hline
-		Cosmogénico - proton, FRII \cite{Kampert_GZK}        &     248.0   &            323.7 &           282.6 \\
-		Cosmogénico - proton, Fermi-LAT \cite{Ahlers_GZK}     &     188.4 &            248.7 &           217.5 \\
-		Cosmogénico - proton, SFR \cite{Kampert_GZK}        &      56.4 &             73.8 &            64.5 \\
-		Cosmogénico - Hibrido \cite{Kotera_GZK} &      31.9 - 82.1 &             41.9 - 107.5 &            36.6 - 96.1 \\
-		Cosmogénico - iron, FRII \cite{Kampert_GZK}       &      17.2 &             22.2 &            19.4 \\
-		IceCube extrapolado $E^{-2}$ \cite{IceCubeMonterelli} &      70.7 &             89.8 &            78.7 \\
-		IceCube extrapolado \emph{Best fit} \cite{cite:IceCubeFlux}  &      67.3 &             80.4 &            71   \\
+		Cosmogénico - proton, FRII \cite{Kampert_GZK}        &    45.3 &             52.2 &            52.5 \\
+		Cosmogénico - proton, Fermi-LAT \cite{Ahlers_GZK}     &     34.1 &             39.4 &            39.5 \\
+		Cosmogénico - proton, SFR \cite{Kampert_GZK}        &     10.3 &             11.8 &            11.9 \\
+		Cosmogénico - H\'ibrido \cite{Kotera_GZK} &      5.8 - 14.9 &      6.7 - 17.2 &       6.7 - 17.3 \\
+		Cosmogénico - iron, FRII \cite{Kampert_GZK}       &     3.2 &              3.6 &             3.7 \\
+		IceCube extrapolado $E^{-2}$ \cite{IceCubeMonterelli} &      13.1 &             15.1 &            15.2 \\
+		IceCube extrapolado \emph{Best fit} \cite{cite:IceCubeFlux}  &      12.9 &             14.9 &            15   \\
 			\hline
 		\end{tabular}
-		\caption{\label{tab:nRadio} N\'umero de eventos esperados $N_{esp}$ seg\'un la ecuaci\'on \ref{eq:XXX} para varios modelos de producci\'on de neutrinos y utilizando la exposici\'on elegida en cada tipo de topolog\'ia.}
+		\caption{\label{tab:nRadio250} N\'umero de eventos esperados $N_{esp}$ seg\'un la ecuaci\'on \ref{eq:nesp_radio} para varios modelos de producci\'on de neutrinos y utilizando la exposici\'on elegida en cada tipo de topolog\'ia para un detector con \cant{L\sim250}{km}.}
 	\end{center}
 	\end{table}
+	%
+	Se observa que para las tres topograf\'ias el detector de \cant{L\sim250}{km} espera una cantidad de eventos sustancial en la mayor\'ia de los modelos.
+	En caso de observar cero eventos, los modelos cosmog\'enicos que utilizan protones como primarios pueden ser rechazados con una significancia de $10^{-5}$~\footnote{Correspondiente a un valor predicho de 10 eventos durante la medici\'on.} o menor.
+	Lo mismo sucede con las extrapolaciones de los flujos medidos por IceCube.
+	Por otra parte, los modelos h\'ibridos menos optimistas podr\'ian ser rechazados con una significancia de $10^{-3}$ o menor.
+	Por \'ultimo, los modelos m\'as optimistas que utilizan hierro como primario predicen del orden de un evento por a\~no en este tama\~no de detector, lo corresponde al m\'inimo de eventos necesarios para desfavorecer este tipo de modelos, con una significancia de $0.05$ si se observasen 0 eventos.
+	%
+	\begin{table}[ht!] %%% fig/graficadores/nEvtRadio$ ./plotNEvtRadio_Max.py
+	\begin{center}
+	\renewcommand{\arraystretch}{1.3}
+	\small
+		\begin{tabular}{lccc}
+			\hline
+			\multirow{2}{*}{Modelo} & \multicolumn{3}{c}{Topograf\'ia - \cant{L=500}{km}} \\
+			&   Regular &   Panal de abeja &   Bordes densos \\
+			\hline
+		Cosmogénico - proton, FRII \cite{Kampert_GZK}        &    185.8 &            193   &           191.3 \\
+		Cosmogénico - proton, Fermi-LAT \cite{Ahlers_GZK}     &     140.3 &             146.0 &           144.8 \\
+		Cosmogénico - proton, SFR \cite{Kampert_GZK}        &     42.1 &             43.8   &            43.4 \\
+		Cosmogénico - H\'ibrido \cite{Kotera_GZK} &  23.9 - 61.3 &   24.8 - 63.7 &  24.6 - 63.2 \\
+		Cosmogénico - iron, FRII \cite{Kampert_GZK}       &     13.0   &        13.4 &            13.3 \\
+		IceCube extrapolado $E^{-2}$ \cite{IceCubeMonterelli} &      53.6 &         55.5   &            55   \\
+		IceCube extrapolado \emph{Best fit} \cite{cite:IceCubeFlux}  &    52.4 &  53.8  &   53.3 \\
+			\hline
+		\end{tabular}
+		\caption{\label{tab:nRadio500} N\'umero de eventos esperados $N_{esp}$ seg\'un la ecuaci\'on \ref{eq:nesp_radio} para varios modelos de producci\'on de neutrinos y utilizando la exposici\'on elegida en cada tipo de topolog\'ia para un detector con \cant{L\sim500}{km}.}
+	\end{center}
+	\end{table}
+	%
+	Cuando se considera el detector de tama\~no \cant{L=500}{km} la cantidad de eventos esperada se incrementa en un factor cercano a 4, lo que corresponde aproximadamente al incremento en la superficie cubierta.
+	Este aumento en la cantidad de eventos esperada permitir\'ia rechazar todos los modelos considerados en caso de observar cero candidatos, incluso para los cosmog\'enicos que utilizan hierro como primario.
+	
+	Por \'ultimo se consider\'o interesante estudiar los l\'imites de la t\'ecnica para detectores del tama\~no de los considerados hasta el momento.
+	Para ello se utiliz\'o la exposici\'on calculada para un detector ideal que observa un rango angular entre $90^\circ$ y $92.5^\circ$ (ver secci\'on \ref{sc:idealRadio}) y se supuso el tama\~no del detector entre \cant{L=250}{km} y \cant{L=500}{km}, y el tiempo de medici\'on 3 a\~nos.
+	Luego se calcul\'o en ambos casos el l\'imite diferencial, de la misma manera que los presentados en la figura \ref{fig:limitesRadio}.
+	Esto se muestra en la figura \ref{fig:limitesRadio} junto a los l\'imites vigentes de IceCube, Auger y Anita-II y a las predicciones calculadas para ARA y ARIANNA.
+	%
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=\textwidth]{fig/resultadosRadio/{limits_future_v1.1}.pdf}
+			\caption{\label{fig:limitesRadio_Full}
+			Se agrega como banda violeta a la figura \ref{fig:limitesRadio} el l\'imite diferencial al \cant{90\%}{C.L.} que presentar\'ia un detector $100\%$ eficiente entre $90^\circ$ y $92.5^\circ$, con un tama\~no de entre \cant{250}{km} y \cant{500}{km} de lado y para 3 a\~nos de medici\'on. Esta banda permite formar una idea los l\'imites que tiene la detecci\'on de neutrinos con SD de antenas de radio.}
+		\end{center}
+	\end{figure}
+	%
+	En esta figura el borde superior de la fraja violeta en esta figura corresponde a un detector de \cant{L=250}{km} y el l\'imite inferior a \cant{L=500}{km}.
+	Si se comparan los bordes de la franja violeta con los de la rosa se observa a simple vista que el detector de radio tiene baja eficiencia para eventos de baja energ\'ia~\footnote{Esto puede inferirse debido a que hacia bajas energ\'ias la franja roja resulta mucho m\'as empinada que la violeta. Si a una dada energ\'ia el limite impuesto es alto, quiere decir que el detector no tiene buen desempe\~no detectando neutrinos de esa energ\'ia.}. 
+	
+	Por otro lado si tiene en cuenta en que detectores m\'as alla de los tama\~nos considerados se vuelven inviables, y que la eficiencia de disparo con los niveles de disparo local utilizados se suprime m\'as alla de los $92.5^\circ$, esta banda representa los m\'aximos l\'imites diferenciales a neutrinos que pueden ser impuestos mediante arreglos de superficie de antenas de radio.
+	
+	Por \'ultimo, otro resultado que puede obtenerse con estas exposiciones es la cantidad de eventos esperados para los diferentes modelos de producci\'on de neutrinos. 
+	En la tabla \ref{tab:nRadio_Full} se muestra esta variable pra detectores de \cant{L=250}{km} y \cant{L=500}{km}.
+	%
+	\begin{table}[ht!] %%% fig/graficadores/nEvtRadio$ ./plotNEvtRadio_Max.py
+	\begin{center}
+	\renewcommand{\arraystretch}{1.3}
+	\small
+		\begin{tabular}{lcc}
+			\hline
+			\multirow{2}{*}{Modelo} & \multicolumn{2}{c}{Dimensi\'on del detector} \\
+			&   \cant{500}{km} &   \cant{250}{km} \\
+			\hline
+		Cosmogénico - proton, FRII \cite{Kampert_GZK}        &    696.7 &    174.2 \\
+		Cosmogénico - proton, Fermi-LAT \cite{Ahlers_GZK}     &     496.5 &    124.1 \\
+		Cosmogénico - proton, SFR \cite{Kampert_GZK}        &      156.3 &     39.1 \\
+		Cosmogénico - H\'ibrido \cite{Kotera_GZK}       &     87.7 -  234.3 &   21.9 - 58.6 \\
+		Cosmogénico - iron, FRII \cite{Kampert_GZK}       &   50.7 &     12.7 \\
+		IceCube extrapolado $E^{-2}$ \cite{IceCubeMonterelli} &       252.1 &     63   \\
+		IceCube extrapolado \emph{Best fit} \cite{cite:IceCubeFlux}  &     280.2 &     70   \\
+			\hline
+		\end{tabular}
+		\caption{\label{tab:nRadio_Full} N\'umero de eventos esperados $N_{esp}$ seg\'un la ecuaci\'on \ref{eq:nesp_radio} para varios modelos de producci\'on de neutrinos y utilizando la exposici\'on de un detecter $100\%$ eficiente cuya dimensi\'on caracter\'istica es \cant{L\sim250}{km} y \cant{L=500}{km}.}
+	\end{center}
+	\end{table}
+	
+	Si se compara estos n\'umeros con los obtenidos en las tablas \ref{tab:nRadio250} y \ref{tab:nRadio500} se observa que para los modelos cosmog\'enicos, que tienen su m\'aximo cerca de \cant{10^{18}}{eV}, se esperan del \'orden del $30\%$ de los eventos que en el caso ideal.
+	Adem\'as en ambas extrapolaciones de los flujos medidos por IceCube, cuya componente de baja energ\'ia es pesada, el cociente es de alrededor del $15\%$.
+	Esto quiere decir que no se detectan cerca del $60\%$ y del $85\%$ de los neutrinos que interact\'uan con la tierra respectivamente.
+	Estas p\'erdidas, incluso para los flujos que pican en \cant{10^{18}}{eV} pueden deberse a:
+	\begin{itemize}
+	 \item Neutrinos que generan \tauon{}'s de baja energ\'ia, indetectables;
+	 \item \tauon{}'s que generan lluvias cuya \ev{} es baja, nuevamente indetectables;
+	 \item Lluvias que se inician lejos del detector;
+	\end{itemize}
+	
+	En los tres casos las lluvias perdidas podr\'ian ser detectadas si el nivel de disparo local de las antenas fuese menor (por ejemplo ver figura \ref{fig:compRadioAuger_th}). 
+	Esto quiere decir que en caso de querer mejorar el desempe\~no hasta aqu\'i mostrado, el esfuerzo deber\'ia ponerse en mejorar esa variable.  
+	
+	
+% 	\begin{table}[ht!]
+% 	\begin{center}
+% 	\renewcommand{\arraystretch}{1.3}
+% 	\small
+% 		\begin{tabular}{lccc}
+% 			\hline
+% 			\multirow{2}{*}{Modelo} & \multicolumn{3}{c}{Topograf\'ia} \\
+% 			&   Regular &   Panal de abeja &   Bordes densos \\
+% 			\hline
+% 		Cosmogénico - proton, FRII \cite{Kampert_GZK}        &     248.0   &            323.7 &           282.6 \\
+% 		Cosmogénico - proton, Fermi-LAT \cite{Ahlers_GZK}     &     188.4 &            248.7 &           217.5 \\
+% 		Cosmogénico - proton, SFR \cite{Kampert_GZK}        &      56.4 &             73.8 &            64.5 \\
+% 		Cosmogénico - Hibrido \cite{Kotera_GZK} &      31.9 - 82.1 &             41.9 - 107.5 &            36.6 - 96.1 \\
+% 		Cosmogénico - iron, FRII \cite{Kampert_GZK}       &      17.2 &             22.2 &            19.4 \\
+% 		IceCube extrapolado $E^{-2}$ \cite{IceCubeMonterelli} &      70.7 &             89.8 &            78.7 \\
+% 		IceCube extrapolado \emph{Best fit} \cite{cite:IceCubeFlux}  &      67.3 &             80.4 &            71   \\
+% 			\hline
+% 		\end{tabular}
+% 		\caption{\label{tab:nRadio} N\'umero de eventos esperados $N_{esp}$ seg\'un la ecuaci\'on \ref{eq:XXX} para varios modelos de producci\'on de neutrinos y utilizando la exposici\'on elegida en cada tipo de topolog\'ia.}
+% 	\end{center}
+% 	\end{table}
 
 	
 

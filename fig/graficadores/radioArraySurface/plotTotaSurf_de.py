@@ -34,14 +34,14 @@ def main(argv):
         edge = [np.sqrt(a) for a in area]
         plt.plot(ds,edge,color=s_m.to_rgba(D),lw=2)
     
-    plt.axhline(250,color='k',lw=1,ls='--',label='GRAND')
     plt.axhline(500,color='k',lw=3,ls='--',label='Max')
+    plt.axhline(250,color='k',lw=1,ls='--',label='GRAND')
     
     cb = plt.colorbar(s_m)
     cb.set_label(r'$D\,{\rm [m]}$',fontsize=18)
     plt.xlabel(r'$d\,{\rm [m]}$',fontsize=18)
     plt.ylabel(r'$L\,{\rm [km]}$',fontsize=18)
-    plt.title('Lado equivalente de un SD cuadrado',fontsize=20)
+    plt.title('Arreglo de bordes densos',fontsize=20)
     plt.legend(loc=2,fontsize=18)
 #    plt.yscale('log')
     plt.savefig('Area_de.pdf',format='pdf')

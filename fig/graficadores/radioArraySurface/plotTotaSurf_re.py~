@@ -31,18 +31,18 @@ def main(argv):
     plt.figure(figsize=figsize)
     
     for i,A in enumerate(As):
-        area = [nAnt * (A**2 * np.sin(al)) / 1e6 for al in als]
+        area = [nAnt * (A**2 * np.sin(al * kDeg2Rad)) / 1e6 for al in als]
         edge = [np.sqrt(a) for a in area]
         plt.plot(als,edge,color=s_m.to_rgba(A),lw=2)
     
-    plt.axhline(250,color='k',lw=1,ls='--',label='GRAND')
     plt.axhline(500,color='k',lw=3,ls='--',label='Max')
+    plt.axhline(250,color='k',lw=1,ls='--',label='GRAND')
     
     cb = plt.colorbar(s_m)
     cb.set_label(r'$a_1,a_2\,{\rm [m]}$',fontsize=18)
     plt.xlabel(r'$\alpha\,{\rm [deg]}$',fontsize=18)
     plt.ylabel(r'$L\,{\rm [km]}$',fontsize=18)
-    plt.title('Lado equivalente de un SD cuadrado - Arreglo regular',fontsize=20)
+    plt.title('LArreglo regular',fontsize=20)
     plt.legend(loc=2,fontsize=18)
 #    plt.yscale('log')
     plt.savefig('Area_re.pdf',format='pdf')
