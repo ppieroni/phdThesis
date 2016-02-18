@@ -20,7 +20,7 @@ Por este motivo, y debido a la complejidad inherente del problema se lo aborda m
 Como contraparte, las ventajas de los modelos efectivos residen en la simplificaci\'on del problema, lo que disminuye la necesidad tiempo de CPU y al mismo tiempo facilita la interpretaci\'on intuitiva de los resultados. 
 Sin embargo dicha reducci\'on deviene en un nuevo conjunto de par\'ametros, necesarios para lograr una representacion adecuada de las distribuciones de carga de la lluvia, y que necesitan de una calibraci\'on previa para entregar resultados confiables.
 
-Si bien en esta tesis se utiliza un modelo microsc\'opico para calcular la se\~nal sobre el detector, en las siguientes secciones se abordar\'an ambos enfoques, lo que facilitar\'a la interpretaci\'on de los resultados del cap\'itulo \ref{ch:simulacionRadio}.
+Si bien en esta Tesis se utiliza un modelo microsc\'opico para calcular la se\~nal sobre el detector, en las siguientes secciones se abordar\'an ambos enfoques, lo que facilitar\'a la interpretaci\'on de los resultados del cap\'itulo \ref{ch:simulacionRadio}.
 
 \section{Modelado microsc\'opico}
 
@@ -393,7 +393,7 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	La segunda consecuencia importante de que la emisi\'on de las lluvias atmosf\'ericas presenten efecto \cher{} se manifiesta en la frecuencia hasta la que se mantiene la coherencia de la se\~nal en diferentes regiones del suelo, alcanzando su m\'aximo sobre el anillo \cher{}.
 	
 	Este fen\'omeno es tambi\'en conocido como compresi\'on temporal y puede comprenderse si se analiza la siguiente situaci\'on simplificada.
-	Se considera una antena ubicada a un \'angulo $\theta$ del eje de la lluvia, y un dado momento de su evoluci\'on, determinado por la posici\'on de su frente $l$ y por la densidad de part\'iculas $\rho(l)=dN(l)/dl$ (ver figura \ref{fig:coherencia_1}).
+	Se considera una antena ubicada a un \'angulo $\theta$ del eje de la lluvia, unidimensional y en un dado momento de su evoluci\'on, determinado por la posici\'on de su frente $l$ y por la densidad de part\'iculas $\rho(l)=dN(l)/dl$ (ver figura \ref{fig:coherencia_1}).
 	En ese dado instante, si se supone que hay un exceso de nuevas part\'iculas generadas entre $l$ y $l+dl$, s\'olo para fijar ideas puede considerarse que se emitir\'an $dN_e$ pulsos  (una fracci\'on de las $dN$) que alcanzar\'an la antena entre los tiempos $0$ y $dt'=(1-n\cos\theta)\,dt$~\footnote{Esta expresi\'on se obtiene a partir de considerar los tiempos de llegada a la antena de dos pulsos emitidos desde $l$ y $l+dl$ a tiempos $0$ y $dt$ respectivamente, de tener en cuenta su propagaci\'on en el medio de indice de refracci\'on $n$ y haciendo la suposici\'on de que la distancia a la antena es mucho mayor que $dl$.}, donde $dt=dl/c$ y $c$ es la velocidad de propagaci\'on del frente de la lluvia.
 	Esta situaci\'on se esquematiza en la figura \ref{fig:coherencia_1}.
 	%
@@ -425,7 +425,7 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 % 	 \item La amplitud acumulada en $dt'$ se vuelve m\'axima si 
 % 	\end{enumerate}
 
-	A $\theta$ fijo y despreciando toda se\~nal que no provenga de $dl$, si se supone que para que la se\~nal pueda ser medida es necesario recibir al menos $dN_e^{min}$ pulsos dentro de cada intervalo $dt'$~\footnote{Esto puede lograrse agrandando $dl$ lo suficiente, hasta $dl_{min}$.}, queda definido un intervalo de tiempo m\'inimo $dt'_{min}$ sobre el que habr\'ia que integrar las se\~nales individuales para poder obtener alg\'un registro. A partir de \ref{eq:dt1} se tiene entonces:
+	A $\theta$ fijo y considerando s\'olo los pulsos que provienen de $dl$, si se supone que para que la se\~nal pueda ser medida es necesario recibir al menos $dN_e^{min}$ pulsos dentro de cada intervalo $dt'$~\footnote{Esto puede lograrse agrandando $dl$ lo suficiente, hasta $dl_{min}$.}, queda definido un intervalo de tiempo m\'inimo $dt'_{min}$ sobre el que habr\'ia que integrar las se\~nales individuales para poder obtener alg\'un registro. A partir de \ref{eq:dt1} se tiene entonces:
 	%
 	\begin{equation}
 	 dt'_{min} \propto \frac{dN_e^{min}}{\rho(l) c}(1-n\cos\theta)
@@ -438,9 +438,14 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	\end{equation}
 	%
 	donde el resultado importante es que $f_{max}\sim\rho(l)$. 
-	Esto implica que las antenas que observan\footnote{En el sentido definido en la secci\'on \ref{sbsc:chsbsc:cher_emision2}.} el m\'aximo de part\'iculas de la lluvia, no s\'olo registrar\'an una se\~nal de mayor amplitud, sino que adem\'as \'esta mostrar\'a coherencia hasta frecuencias m\'as altas.
+	Esto implica que las antenas que observan\footnote{En el sentido definido en la secci\'on \ref{sbsc:cher_emision2}.} el m\'aximo de part\'iculas de la lluvia, no s\'olo registrar\'an una se\~nal de mayor amplitud, sino que adem\'as \'esta mostrar\'a coherencia hasta frecuencias m\'as altas.
 	
-	Si bien el ejemplo tenido en cuenta desprecia el efecto que podr\'ia generar la cancelaci\'on con los pulsos generados por las part\'iculas absorbidas por \'atomos de la atm\'osfera o el caracter estoc\'astico subyacente, este efecto se observa en simulaciones detalladas.
+% 	En una situacion m\'as realista los c\'alculos se vuelven m\'as complicados debido a que las distintas regiones de la lluvia se ven con distintos valores de $\theta$ y a distintas distancias, la lluvia no es unidimensional o 
+% 	Sin embargo
+% que ve el maximo de la lluvia en el angulo Cherenkov detecta la señal de mayor 
+% amplitud y de coherencia hasta frecuencias mas altas tal y como se ve en las 
+% simulaciones y en la figura de  las "catedrales" que ya muestras al final de 2.3.3
+	En una situacion m\'as realista los c\'alculos se vuelven complicados\footnote{Por ejemplo debido a que se ha despreciado el impacto que podr\'ia generar la cancelaci\'on con los pulsos generados por las part\'iculas absorbidas por \'atomos de la atm\'osfera, el caracter estoc\'astico subyacente, que la lluvia no es unidimensional, o que distintas regiones de la lluvia se ven con distintos valores de $\theta$ y a distintas distancias.}, sin embargo, este efecto se observa en simulaciones detalladas.
 	Por ejemplo, la figura \ref{fig:chConeSig} muestra la amplitud de la señal en el suelo a diferentes frecuencias como función de la coordenada Este-Oeste de una lluvia, obtenida a partir de simulaciones.
 	\begin{figure}[ht!]
 	\centering
@@ -449,6 +454,7 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	\end{figure}
 	En l\'ineas verdes, y en coincidencia con los máximos para todas las frecuencias se resalta el anillo \cher{} en esa coordenada.
 	Se observa como a medida que la frecuencia filtrada aumenta la coherencia de la se\~nal se mantiene sólo en las cercan\'ias de dicho anillo.
+	Este comportamiento en la se\~nal se conoce dentro del ambiente como las \emph{catedrales} del evento\footnote{Este nombre procede de que la forma de la se\~nal rememora las torres de una catedral.}.
 	
 \subsection{Otros efectos}
 \label{sbsc:other_emision}

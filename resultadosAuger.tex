@@ -1,9 +1,13 @@
-\chapter{C\'alculo de la exposici\'on}
+\chapter{Exposici\'on del detector}
 \label{ch:expAuger}
 
-Una vez definidos los criterios de selección se calcularon las eficiencias de identificación para cada uno de los tres análisis y se llevó a cabo la búsqueda de candidatos, sin que ningún evento supere los cortes de selección.
-En este escenario se utilizaron las eficiencias para calcular la exposición de la medición y se desarroll\'o un m\'etodo para incluir el envejecimiento del detector.
-Finalmente, combinando la exposici\'on de los tres an\'alisis y sus errores sistem\'aticos se obtuvo la cota superior a la magnitud del flujo de neutrinos ultra energéticos m\'as estricta presentada por Auger hasta la fecha.
+Para obtener la exposici\'on a neutrinos del detector es necesario integrar las eficiencias de identificaci\'on en convoluci\'on con la probabilidad de ocurencia de cada uno de los eventos considerados.
+Para obtener las eficiencias se utilizaron los criterios de seleci\'on delineados en el cap\'itulo pasado, donde se los aplic\'o en conjunto a todas las simulaciones para obtener, luego de integrar, la exposici\'on combinada de los tres an\'alisis.
+Por otro lado las probabilidades surgieron de un an\'alisis del mecanismo de detecci\'on y, en ES, del uso de simulaciones de Monte Carlo.
+Para llevar a cabo la integraci\'on temporal y en \'area se utiliz\'o una t\'ecnica que permite tener en cuenta las fluctuaciones del arreglo a trav\'es del tiempo, donde en particular, se desarroll\'o un m\'etodo para incluir el cambio en las eficiencias que causa el envejecimiento del detector.
+Finalmente se obtuvieron las incertezas sistem\'aticas cometidas en las componentes m\'as relevantes del c\'alculo y se presenta su combinaci\'on hasta el resultado final.
+
+% Finalmente, combinando la exposici\'on de los tres an\'alisis y sus errores sistem\'aticos se obtuvo la cota superior a la magnitud del flujo de neutrinos ultra energéticos m\'as estricta presentada por Auger hasta la fecha.
 
 \section{C\'alculo de la exposici\'on}
 \label{sc:expoNu}
@@ -496,8 +500,8 @@ Finalmente, combinando la exposici\'on de los tres an\'alisis y sus errores sist
 	A partir de esta información se generan archivos que registran las configuraciones (conjunto de estaciones activas) del SD con una resolución de un segundo.
 	
 	Entonces, de manera ideal, habría que evaluar la exposición de todas las configuraciones por las que pasa el detector y realizar la integración mediante una suma pesada por la cantidad de tiempo que se mantiene en cada una.
-	Como no es posible procesar tal cantidad de información, se dividió el periodo de búsqueda de en intervalos de 3 días y se tomó, para cada uno de ellos, una configuración de representativa. 
-	Luego, a cada una de estas configuraciones se le asignó un peso determinado por la fracción del tiempo en que el detector se encuetra en dicha configuración representativa, o en una de mayor eficiencia dentro de dicho intervalo.
+	Como no es posible procesar tal cantidad de información, se dividió el periodo de búsqueda en intervalos de 3 días y se tomó, para cada uno de ellos, una configuración representativa. 
+	Luego, a cada una de estas configuraciones se le asignó un peso determinado por la fracción del tiempo en que el detector se encuentra en dicha configuración representativa, o en una de mayor eficiencia dentro de dicho intervalo.
 	
 	Para cada periodo de tiempo, no es evidente cual de las configuraciones por las que pasa el SD es conveniente elegir.
 	Para abordar este problema se trabajó bajo la aproximación de que, dentro de los 3 días de duración del periodo, la exposición es una función de la cantidad de estaciones activas y no de su distribución espacial particular.
@@ -526,12 +530,12 @@ Finalmente, combinando la exposici\'on de los tres an\'alisis y sus errores sist
 	
 	\subsubsection{Envejecimiento de los tanques del SD}
 	
-	Además de la cantidad de estaciones activas, otro factor a tener en cuenta al realizar la integración temporal es el envejecimiento de los tanque del SD.
+	Además de la cantidad de estaciones activas, otro factor a tener en cuenta al realizar la integración temporal es el envejecimiento de los tanques del SD.
 % 	Para ello, se debe estudiar cómo se modifica con el paso del tiempo el comportamiento de sus distintos componentes y c\'omo éstos afectan la señal registrada.
 % 	
 	Ante el pasaje de partículas por la estación, la señal en el PMT presenta un flanco de subida abrupto y un decaimiento exponencial.
-	Mientras que el rápido crecimiento inicial se encuentra dominado por una única reflexión de la luz Cherenkov en el Tyvec de la estación, el decaimiento posterior se produce debido a varias de estas reflexiones \cite{icrc}.
-	Es por esto que tanto la reflectividad del Tyvec como la longitud de absorción de la luz en el agua son parámetros de la estación cuya variaci\'on afecta significativamente las características de la traza.
+	Mientras que el rápido crecimiento inicial se encuentra dominado por una única reflexión de la luz Cherenkov en el Tyvek de la estación, el decaimiento posterior se produce debido a varias de estas reflexiones \cite{icrc}.
+	Es por esto que tanto la reflectividad del Tyvec como la longitud de absorción de la luz en el agua son parámetros de la estación cuya variaci\'on afecta significativamente a las características de la traza.
 	En particular, debido a cambios de temperatura diarios, estacionales y hasta episodios de congelamiento del agua de las estaciones, ambos parámetros se ven afectados por el paso del tiempo y deben ser modelados e incluidos en la integraci\'on temporal de la exposici\'on.
 	
 	Si bien hasta la fecha no existe en las estaciones ningún mecanismo implementado que permita monitorear ni la reflectividad del Tyvec (TyRef) ni la absorción del agua (wAbs), el tiempo de decaimiento de la señal (LDT por sus siglas en inglés, \emph{light decay time}) depende de ellos y sirve como una medida indirecta de los mismos.
@@ -558,12 +562,12 @@ Finalmente, combinando la exposici\'on de los tres an\'alisis y sus errores sist
 	%
 	Cada una de las estaciones que se grafica participó en el mes en al menos un evento clasificado como T3.
 	Para obtener el valor del LDT de cada una se utilizó lo que se denomina el \emph{shape histogram}, que se registra en la estaci\'on con cada T3.
-	Este histograma es el promedio de todas las señales aleatoreas cercanas a \cant{1}{VEM} registradas durante algunos minutos previos al disparo, es decir, es una suerte de señal elemental promedio de la estaci\'on.
+	Este histograma es el promedio de todas las señales aleatorias cercanas a \cant{1}{VEM} registradas durante algunos minutos previos al disparo, es decir, es una suerte de señal elemental promedio de la estaci\'on.
 	Sobre la misma se ajustó un decaimiento exponencial a los cuatro bines posteriores al de máxima intensidad (un rango temporal de \cant{100}{ns}) y obtuvo una estimación del LDT.
 	Si alguna estación aparece en más de un evento T3 durante el mes, simplemente se promedia los LDT obtenido en cada aparición.
 	
 	Puede observarse en la figura \ref{fig:ldtArray} que el LDT parece tomar valores similares en las regiones del detector que fueron puestas en operación en momentos cercanos.
-	La parte sur del detector, primera en ser desplegada, muestra un color en promedio diferente al de la parte norte, instalada algunos años despues.
+	La parte sur del detector, primera en ser desplegada, muestra un color en promedio diferente (menor valor de LDT) al de la parte norte, instalada algunos años despu\'es.
 	También puede notarse que el valor de LDT mínimo del detector (fácilmente apreciable en la escala de color de los gráficos), decreció de manera apreciable con los años, de \cant{\sim54}{ns} en 2005 hasta \cant{\sim44}{ns} en 2013.
 	
 	La \'unica manera de incluir el efecto de la evolución del LDT en el c\'alculo de la exposici\'on es resimular la señal que generan las lluvias y obtener unas nuevas eficiencias de detecci\'on a trav\'es del tiempo.
@@ -585,9 +589,9 @@ Finalmente, combinando la exposici\'on de los tres an\'alisis y sus errores sist
 	\end{figure}
 	%
 	Se observa en línea negra gruesa que el valor promedio del LDT tiende a decrecer con el tiempo.
-	Para contemplar este descenso se eligieron tres valores por debajo del mismo, que fueron luego utilizados para simular las eficiencias.
+	Para contemplar este descenso se eligieron tres valores por debajo de este promedio, que fueron luego utilizados para simular las se\~nales nuevamente y obtener las eficiencias.
 	Estos valores, \cant{63}{ns} entre 2004 y 2009, \cant{60}{ns} entre 2010 y 2011 y \cant{57}{ns} desde 2012 en adelante, se señalan en línea punteada en el panel superior de la figura \ref{fig:timeEvolution}.
-	Se consideró que estos tres períodos como un buen balance en el compromiso entre representar de manera fiel el detector y no exceder la capacidad de cómputo a la que se tuvo acceso.
+	Se consideró estos tres períodos como un buen balance en el compromiso entre representar de manera fiel el detector y no exceder la capacidad de cómputo a la que se tuvo acceso.
 	Como se observa en el panel inferior de la figura \ref{fig:timeEvolution} la fracción de estaciones por encima del valor elegido supera el 50$\%$ la mayor parte del tiempo.
 	
 	Una vez definidos los valores de LDT que se quieren representar, fue necesario determinar qué conjunto de valores de tyRef y wAbs utilizar en \Offline{}.
@@ -630,7 +634,7 @@ Finalmente, combinando la exposici\'on de los tres an\'alisis y sus errores sist
 	\subsection{Exposici\'on combinada}
 	
 	Con todo lo expuesto hasta el momento es posible realizar la integración completa de las ecuaciones \ref{eq:exp4DG} y \ref{eq:exp4ES}, y obtener así las exposiciónes a los distintos canales de detección de neutrinos en Auger, ES, DGH y DGL.
-	Sin embargo, dado que hasta la fecha ningún experimento ha detectado neutrinos de energías cercanas al EeV~\footnote{Los neutrinos detectados por IceCube tienen una energía reconstruida 100 veces menor.}, es también interesante calcular la exposición total a neutrinos, es decir, sin importar su dirección de arribo.
+	Sin embargo, dado que hasta la fecha ningún experimento ha detectado neutrinos de energías cercanas al EeV~\footnote{Los neutrinos detectados por IceCube tienen una energía reconstruida 1000 veces menor.}, es también interesante calcular la exposición total a neutrinos, es decir, sin importar su dirección de arribo.
 	
 	\subsubsection{Exposición total a neutrinos - Combinaci\'on de los análisis}
 	
@@ -645,13 +649,13 @@ Finalmente, combinando la exposici\'on de los tres an\'alisis y sus errores sist
 	\begin{figure}[ht!]
 		\begin{center}
 			\includegraphics[width=0.65\textwidth]{fig/resultadosAuger/sketch_combined_5}
-			\caption{Para calcular la exposición a cada canal es necesario aplicar los tres criterios de selección a todas las lluvias simuladas. En caso de ser seleccionada por al menos uno de los tres criterios, dicha lluvia contribuye a la exposición de su canal. Luego La exposición total es la suma de las individuales, como se muestra en la ecuación \ref{eq:expTot}.}
+			\caption{Para calcular la exposición a cada canal es necesario aplicar los tres criterios de selección a todas las lluvias simuladas. En caso de ser seleccionada por al menos uno de los tres criterios, dicha lluvia contribuye a la exposición de su canal. Luego la exposición total es la suma de las individuales, como se muestra en la ecuación \ref{eq:expTot}.}
 			\label{fig:sketch_combined}
 		\end{center}
 	\end{figure}
 	%
-	Al igual que con los datos, cada lluvia simulada, sea ES, DGH o DGL, debe ser evaluada por los tres análisis (criterios de ES, DGH y DGL) y en caso de ser seleccionada por cualquiera de los tres criterios debe constribuir a su correspondiente exposición.
-	Asi entonces, por ejemplo, una lluvia ES contribuye a la exposici\'on ES, independientemente del criterio por el que haya sido detectada.
+	Al igual que con los datos, cada lluvia simulada, sea ES, DGH o DGL, debe ser evaluada por los tres análisis (criterios de ES, DGH y DGL) y en caso de ser seleccionada por cualquiera de los tres criterios debe contribuir a su correspondiente exposición.
+	As\'i entonces, por ejemplo, una lluvia ES contribuye a la exposici\'on ES, independientemente del criterio por el que haya sido detectada.
 	Luego, una vez obtenidas correctamente las exposiciónes a cada canal, se debe calcular la exposición total a neutrinos con la ecuación \ref{eq:expTot}.
 	%
 	\begin{equation}\renewcommand{\arraystretch}{2}
@@ -669,16 +673,16 @@ Finalmente, combinando la exposici\'on de los tres an\'alisis y sus errores sist
 	\begin{figure}[ht!]
 		\begin{center}
 			\includegraphics[width=0.9\textwidth]{fig/resultadosAuger/exposure_combined_ageing}
-			\caption{Exposición combinada del Observatorio Pierre Auger para el período de medición (1 Enero 2004 - 20 Junio 2013), como función de la energía del neutrino. También se detallan las exposiciones obtenidas para cada canal.}
-			\label{fig:expTot}
+			\caption{\label{fig:expTot}Exposición combinada del Observatorio Pierre Auger para el período de medición (1 Enero 2004 - 20 Junio 2013), como función de la energía del neutrino. También se detallan las exposiciones obtenidas para cada canal.}
+			
 		\end{center}
 	\end{figure}
 	%
 	A baja energía la exposición es básicamente la del canal ES y los canales DG toman importancia por encima de \cant{E_\nu=10^{18.5}}{eV}.
 	
 	Es interesante entonces estudiar cuál es la ganancia de aplicar los tres criterios de selección a cada canal de detección.
-	En la tabla \ref{tab:expDist} se muestra la distribución de eventos esperados según canal y criterio de selección, en un escenario de $\Phi(E_\nu)\propto E_\nu^{-2}$.
-	La última columna de esta tabla muestra la suma de cada fila, es decir, qué cantidad de eventos de cada canal se espera haber detectado.
+	En la tabla \ref{tab:expDist} se muestra la fracción de eventos esperados según canal y criterio de selección, en un escenario de $\Phi(E_\nu)\propto E_\nu^{-2}$.
+	La última columna de esta tabla muestra la suma de cada fila, es decir, la contribuci\'on fraccional de cada canal.
 	%
 	\begin{table}[ht!]
 		\begin{center}\renewcommand{\arraystretch}{1.4}
@@ -697,8 +701,8 @@ Finalmente, combinando la exposici\'on de los tres an\'alisis y sus errores sist
 	\end{table}
 	%
 	Los elementos diagonales de esta matriz representan la fracción de los eventos que se obtiene de aplicar sólo el criterio de selección optimizado para cada canal, mientras que los no diagonales la ganancia que implican los otros criterios.
-	Si consideramos neutrinos de cualquier flavor incidiendo con distribuci\'on isotropa entre 65 y 95 grados y espectro $E^{-2}$, $84\%$ de los detectados corresponden al rango 90-95. 
-	Esto pese a que solo se detectan en este canal 1/3 de los neutrinos del flujo y adem\'as cubre $\sim 1/5$ del angulo solido observado.
+	Si consideramos neutrinos de cualquier flavor incidiendo con distribuci\'on is\'otropa entre 65 y 95 grados y espectro $E^{-2}$, $84\%$ de los detectados corresponden al rango $90^\circ\text{ - }95^\circ$. 
+	Esto pese a que s\'olo se detectan en este canal 1/3 de los neutrinos del flujo y adem\'as cubre $\sim 1/5$ del \'angulo s\'olido observado.
 	La Tierra como blanco es el factor decisivo.
 	Adem\'as, se desprende que el 93$\%$ de los eventos se detectan por los criterios optimizados específicamente\footnote{La suma de los elementos diagonales es $0.80+0.11+0.02=0.93$.} y que la combinación de los análisis implica una ganancia de 7$\%$~\footnote{La suma de los elementos no diagonales es $0.03+0.04=0.07$.}.
 	También se muestra que el criterio de DGL no implica ninguna ganancia apreciable a los canales ES y DGH debido a que, por un lado los neutrinos ES tienen chances casi nulas de ser clasificados como eventos DGL y por otro, si bien algunas lluvias DGH pueden ser clasificadas como DGL debido a fluctuaciones en la resconstrucción angular, el peso estadístico de estos eventos es despreciable.
@@ -721,12 +725,12 @@ Finalmente, combinando la exposici\'on de los tres an\'alisis y sus errores sist
 			\hline
 			\end{tabular}
 		\end{center}
-		\label{tab:missclass}
-		\caption{Matriz de clasificación erronea (\emph{missclassification matrix} en inglés). La última fila representa la probabilidad de aparición de cada tipo de clasificación.}
+		
+		\caption{\label{tab:missclass}Matriz de clasificación erronea (\emph{missclassification matrix} en inglés). La última fila representa la probabilidad de aparición de cada tipo de clasificación.}
 % 		De los eventos identificados como neutrinos, se espera en el 69$\%$ de los casos una clasificación ES y DGH simultánea, mientras que en el 20$\%$ sólo ES, en el 9$\%$ clasificación DGH y en el 2$\%$ DGL. En caso de que un evento sea ES $\wedge$ DGH se espera que el 90$\%$ realmente sea ES y el 10$\%$ restante DGH. Las clasificaciones ES serán 86$\%$ lluvias ES y el 14$\%$ DGH. Un evento etiquetado como DGH será en el 52$\%$ realmente DGH y el 48$\%$ restante ES. Por último el 97$\%$ de los eventos DGL seran realmente DGL mientras que el 3$\%$ restante serán DGH mal clasificados.}
 	\end{table}
 	%
-	En esta se muestra como se espera que el 69$\%$ de los eventos sean clasificados como eventos ES y DGH simultaneamente, el 20$\%$ ES, el 9$\%$ DGH y el 2$\%$ DGL.
+	En \'esta se muestra como se espera que el 69$\%$ de los eventos sean clasificados como eventos ES y DGH simult\'aneamente, el 20$\%$ ES, el 9$\%$ DGH y el 2$\%$ DGL.
 	En caso de clasificación simultánea de los canales ES y DGH, el 90$\%$ de los casos corresponderá a eventos iniciados por neutrinos ES mientras que el 10$\%$ restante a lluvias DGH. 
 	Si se tuviera un evento sólo clasificado como ES, el 86$\%$ de los mismos correspondería a lluvias ES y el 14$\%$ restante a lluvias DGH.
 	En cambio si se registrara un evento clasificado como DGH, el 52$\%$ de las veces provendrá de una lluvia DGH, mientras que el 48$\%$ restante corresponderá a lluvias ES. 
@@ -888,7 +892,7 @@ Entonces es importante estimar c\'omo se trasladan la tales elecciones al result
 	
 	Luego de recalcular la exposición se obtuvo una banda de error de\linebreak \eband{40}{33}, siendo claramente el error sistematico dominante en la medici\'on presentada en este trabajo.
 	
-	\subsection{Error asociado a la topografía }
+	\subsection{Error asociado a la topografía}
 	
 	El observatorio Pierre Auger se encuentra cerca de la cordillera de Los Andes, lo que aumenta el tamaño del blanco con el que pueden interactuar los \nutau{}'s.
 	Dado que en la exposición reportada en la sección \ref{sc:expoNu} no incluye su contribución, será tenida en cuenta como un sistemático en los canales ES y DGH.
@@ -1020,8 +1024,14 @@ Una vez aplicados se utiliza la exposici\'on y sus incertezas para informar el v
 	 \item C\'alculo de las variables discriminantes y evaluaci\'on del criterio de identificaci\'on de lluvias j\'ovenes, como en la secci\'on \ref{sc:selNu}.
 	\end{enumerate}
 	%
-	Adem\'as, las fechas sobre las que se aplic\'o el procedimiento en esta tesis fueron, del 1 de enero al 20 de junio de 2013 en ES y del 1 de junio de 2010 al 20 de junio de 2013 en DGH y del 1 de enero de 2012 al 20 de junio de 2013 en DGL.
-	En las figuras \ref{fig:unblindingES} a \ref{fig:unblindingDGL} se muestran las distribuciones de variables discriminantes para los tres an\'alisis, para la muestra de b\'usqueda actual y para la \'ultima muestra escrutada previo a este trabajo.
+	Adem\'as, las fechas sobre las que se aplic\'o el procedimiento en esta Tesis fueron:
+	\begin{itemize}
+	 \item \textbf{ES}: el 1 de enero al 20 de junio de 2013;
+	 \item \textbf{DGH}: del 1 de junio de 2010 al 20 de junio de 2013;
+	 \item \textbf{DGL}: 1 de enero de 2012 al 20 de junio de 2013.
+	\end{itemize}
+
+	En las figuras \ref{fig:unblindingES} a \ref{fig:unblindingDGL} se muestran las distribuciones de variables discriminantes para los tres an\'alisis, para la muestra de b\'usqueda actual y para la \'ultima muestra escrutada previo a este trabajo, junto a los cortes de selecci\'on.
 	
 	Luego de aplicar este procedimiento se obtuvieron en los tres an\'alisis \textbf{cero candidatos} a neutrinos.
 	En estas circunstancias se estableci\'o una cota superior al valor de $k$ (ver ecuaci\'on \ref{sc:expoNu}).
@@ -1104,7 +1114,7 @@ Una vez aplicados se utiliza la exposici\'on y sus incertezas para informar el v
 	Para obtener este n\'umero se utiliz\'o la modificaci\'on al m\'etodo del cinturon de confianza para procesos Poissoneanos con \emph{background}, desarrollado por Feldman y Cousins~\cite{cite:Feldman-Cousins}, y su extensi\'on semibayesiana que permite incluir los errores sistem\'aticos, de Conrad~\cite{cite:Conrad_limit}.
 	En este m\'etodo, $N_{up}$ depende del n\'umero de eventos observado, del fondo esperado y del nivel de confianza elegido para la cota.
 	Considerando que se observaron 0 eventos, asumido de manera conservadora 0 eventos de fondo esperado y requiriendo un nivel de confianza de \cant{90\%}{C.L.}, se obtuvo $N_{up}=2.39$.
-	Con este valor, y a partir de la ecuaci\'on \ref{eq:kup}, se calcul\'o una cota superior al flujo de neutrinos, que aplica en el rango energ\'etico de \cant{\sim1.0\times10^{17}}{eV}-\cant{\sim2.5\times10^{19}}{eV}:
+	Con este valor, y a partir de la ecuaci\'on \ref{eq:kup}, se calcul\'o una cota superior al flujo de neutrinos, que aplica en el rango energ\'etico de\linebreak \cant{1.0\times10^{17}}{eV} - \cant{2.5\times10^{19}}{eV}:
 	%
 	\begin{equation}
 	k < 6.4 \times 10^{-9}~{\rm GeV~cm^{-2}~s^{-1}~sr^{-1}}
@@ -1122,7 +1132,7 @@ Una vez aplicados se utiliza la exposici\'on y sus incertezas para informar el v
 			\includegraphics[width=0.9\textwidth]{fig/resultadosAuger/integral_limits_and_models_paper_combined_heavy}
 			\caption{\label{fig:intLimits}
 			L\'imite superior integral (a $90\%$C.L.) para el Observatorio Pierre Auger y para un flujo difuso de neutrinos calculado con un valor de $N_{up}=2.39$ (ver texto).
-			Tambien se muestra el l\'imite alcanzado por ANITA\cite{XXX} y IceCube\cite{XXX2} junto con los flujos esperados para varios modelos cosmog\'enicos\cite{XXX} y el l\'imite de Waxman-Bahcall\cite{XXX2}.}
+			Tambien se muestra el l\'imite alcanzado por ANITA\cite{cite:Anita2} y IceCube\cite{cite:IceCubePev} junto con los flujos esperados para varios modelos cosmog\'enicos\cite{Kampert_GZK,Ahlers_GZK,Kotera_GZK,Becker_AGN} y el l\'imite de Waxman-Bahcall\cite{cite:nuGRB}.}
 		\end{center}
 	\end{figure}
 	
@@ -1144,7 +1154,7 @@ Una vez aplicados se utiliza la exposici\'on y sus incertezas para informar el v
 	%
 	
  	Finalmente, en la tabla \ref{tab:rates} se muestra el n\'umero total de eventos esperados para diferentes modelos de producci\'on de flujo de neutrinos.
- 	Para obtener cada uno de estos n\'umeros se integr\'o la ecuaci\'on \ref{eq:expTot} utilizando el flujo correspondiente y la exposici\'on de la figura \ref{tab:expTot}.
+ 	Para obtener cada uno de estos n\'umeros se integr\'o la ecuaci\'on \ref{eq:expTot} utilizando el flujo correspondiente y la exposici\'on de la figura \ref{fig:expTot}.
  	%----------------------------------------------------------------------------------------
 	\begin{table*}[!t]
 	\begin{center}
@@ -1178,7 +1188,7 @@ Una vez aplicados se utiliza la exposici\'on y sus incertezas para informar el v
 	\end{center}
 	\vskip -3mm
 	\caption{\label{tab:rates}
-	Número esperado de eventos $N_{\rm esp}$ según la ecuación \ref{eq:expTot} para varios modelos teóricos de producción de neutrinos y para la exposición presentada en la figura \ref{tab:expTot}.
+	Número esperado de eventos $N_{\rm esp}$ según la ecuación \ref{eq:expTot} para varios modelos teóricos de producción de neutrinos y para la exposición presentada en la figura \ref{fig:expTot}.
 % 	Number of expected events $N_{\rm evt}$ in Eq.~(\ref{eq:Nevt}) for several theoretical models of UHE neutrino 
 % 	production, given the combined exposure of the surface detector array
 % 	of the Pierre Auger Observatory plotted in Fig.~\ref{fig:exposure}.
@@ -1217,7 +1227,7 @@ Una vez aplicados se utiliza la exposici\'on y sus incertezas para informar el v
 	La observaci\'on del corte GZK respalda la existencia de un flujo cosmog\'enicos pero resultados recientes de Auger indican una migraci\'on hacia una componente m\'as pesada en los eventos de alta energ\'ia, lo que implicar\'ia flujos de neutrinos m\'as peque\~nos.
 	Por este motivo la llegada de ARA, ARIANNA y GRAND generan mucha espectativa dentro de la comunidad.
 	
-	Siguiendo esta l\'inea, en la segunda parte de este trabajo se estudiar\'a el deseme\~no de un detector de superficie conformado por antenas de radio al detectar neutrinos c\'osmicos ultra energ\'eticos.
+	Siguiendo esta l\'inea, en la segunda parte de este trabajo se estudiar\'a el desempe\~no de un detector de superficie conformado por antenas de radio al detectar neutrinos c\'osmicos ultra energ\'eticos.
 	
 %----------------------------------------------------------------------------------------
 	

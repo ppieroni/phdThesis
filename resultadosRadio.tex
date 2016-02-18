@@ -1,7 +1,7 @@
 \chapter{Resultados y discusi\'on}
 \label{ch:resultadosRadio}
 
-El objetivo de este cap\'itulo (y de la segunda parte de esta tesis) es estimar el desempe\~no  de un detector de antenas de radio a la hora de detectar neutrinos ES.
+El objetivo de este cap\'itulo (y de la segunda parte de esta Tesis) es estimar el desempe\~no  de un detector de antenas de radio a la hora de detectar neutrinos ES.
 Para ello al igual que en Auger se calcular\'a la exposici\'on del detector, pero esta vez en una situaci\'on gen\'erica.
 Se utilizar\'a lo estudiado en el cap\'itulo \ref{ch:caracterizacionRadio} para definir el criterio de disparo global del detector hipot\'etico y se estimar\'an sus eficiencias de detecci\'on.
 Todo lo anterior se realizar\'a utilizando distintas disposiciones espaciales de las antenas (topograf\'ias del detector), para encontrar una disposici\'on \'optima.
@@ -175,7 +175,7 @@ Finalmente, teniendo en cuenta todo lo anterior se comparar\'a su desempe\~no en
 	\end{figure}
 	 
 	\subsection{Integraci\'on temporal y espacial}
-	Finalmente, dado que esta parte de la tesis se enfoca en un detector gen\'erico, no ser\'a necesario realizar la integral por unidad de tiempo y \'area y simplemente se multiplicar\'a por un factor \cant{T\times A}{}donde $A$ es el \'area del detector y $T$ el tiempo total de funionamientod el mismo.
+	Finalmente, dado que esta parte de la Tesis se enfoca en un detector gen\'erico, no ser\'a necesario realizar la integral por unidad de tiempo y \'area y simplemente se multiplicar\'a por un factor \cant{T\times A}{}donde $A$ es el \'area del detector y $T$ el tiempo total de funionamientod el mismo.
 	
 	Teniendo en cuenta todo lo anterior, la ecuaci\'on para calcular la exposici\'on resulta:
 	%
@@ -468,7 +468,7 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	\label{sc:identificacionRadio}
 	
 	Adem\'as de las eficiencias de disparo, es necesario realizar una estimaci\'on de las eficiencias de identificaci\'on para cada detector.
-	Como se expuso en la primer parte de esta tesis, el mayor desaf\'io a la hora de detectar neutrinos ES mediante detectores de superficie resulta ser su discriminaci\'on en el fondo dominante de eventos hadr\'onicos.
+	Como se expuso en la primer parte de esta Tesis, el mayor desaf\'io a la hora de detectar neutrinos ES mediante detectores de superficie resulta ser su discriminaci\'on en el fondo dominante de eventos hadr\'onicos.
 	En Auger esto se logra debido a que los tanques \cher{} permiten detectar las lluvias j\'ovenes entre los eventos inclinados, a trav\'es de variables sensibles a la presencia de componente electromagn\'etica.
 	En un detector de antenas de radio esta separaci\'on no resulta posible debido a que b\'asicamente toda la emisi\'on generada proviene de los electrones de media y baja energ\'ia presentes en el m\'aximo de la lluvia.
 	Sin embargo la geometr\'ia del cono \cher{} permite salvar este escollo, ya que guarda informaci\'on sobre la ubicaci\'on en la que se produjo dicho m\'aximo, o dicho de otra forma, la t\'ecnica es sensible a la profundidad a la que se inici\'o el evento.
@@ -492,7 +492,7 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	La primer diferencia proviene de que los eventos hadr\'onicos inclinados se inician cerca del tope de la atm\'osfera, por lo que la emisi\'on debe recorrer una distancia mucho mayor que en eventos ES antes de alcanzar el detector.
 	De esta manera, el cono \cher{} es cortado por el detector mucho m\'as lejos de su v\'ertice (que resulta ser aproximadamente el m\'aximo de la lluvia), permitiendo una apertura en la huella mucho mayor.
 	La segunda diferencia deviene de la forma en la que el detector corta el cono, siendo una elipse en eventos DG y una hip\'erbola en ES.
-	Si bien ambas caracter\'isticas tienen potencial de identificaci\'on, la segunda se vuelve m\'as dif\'icil de detectar debido a que en todas las topograf\'ias consideradas la separaci\'on entre antenas es bastante grande y el detalle de la huella suele perderse.
+	Si bien ambas caracter\'isticas tienen potencial de identificaci\'on, la segunda se vuelve m\'as dif\'icil de explotar debido a que en todas las topograf\'ias consideradas la separaci\'on entre antenas suele ser tal que el detalle de la huella se pierde.
 	Por este motivo el resto de esta secci\'on busca determinar la factibilidad de la identificaci\'on basado en la medici\'on de la apertura de la huella.
 	
 	Hasta el momento lo expuesto es una conjetura basada en los resultados del cap\'itulo \ref{ch:caracterizacionRadio}.
@@ -522,19 +522,19 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 % 	Esto se debe a que el m\'aximo ocurre en todos los casos aproximadamente a la misma profundidad \cant{\sim 1000}{g/cm^2}, que se aleja del detector a medida que \td{} crece.
 	
 	Para estudiar con detalle la eficiencia de identificaci\'on se deber\'ian realizar por lo menos algunos cientos de simulaciones de eventos DG. 
-	Al iniciarse cerca del tope de la atm\'osfera el volumen de simulaci\'on de \aires{} resulta inmenso, lo que implica el seguimiento de las part\'iculas durante mucho m\'as tiempo de simulaci\'on, calculando en cada avance la se\~nal en todas las antenas.
+	Sin embargo, al iniciarse cerca del tope de la atm\'osfera el volumen de simulaci\'on de \aires{} resulta inmenso, lo que implica el seguimiento de las part\'iculas durante mucho m\'as tiempo de simulaci\'on, calculando en cada avance la se\~nal en todas las antenas.
 	Esto implica que este tipo de eventos requieran mucho m\'as tiempo de CPU que los eventos ES.
-	En particular, para obtener las lluvias que se muestran en la figura \ref{fig:dg_thetas} se utiliz\'o del orden de 300 dias de CPU para cada una, lo que vuelve el estudio detallado impracticable con los recursos disponibles.
+	En particular para obtener las lluvias que se muestran en la figura \ref{fig:dg_thetas} se utiliz\'o del orden de 300 dias de CPU para cada una, lo que vuelve el estudio detallado impracticable con los recursos disponibles.
 	Como alternativa, en la figura \ref{fig:dg_vs_es_Idradio} se muestra el ancho promedio de la huella calculado sobre el detector denso para toda la muestra de eventos ES y DG.
 	En acuerdo con lo expuesto hasta el momento se observa que los eventos DG muestran un ancho mayor que los eventos ES.
 	En base a esta caracter\'istica es posible presumir que la identificaci\'on de eventos ES no s\'olo es factible sino que ser\'a adem\'as eficiente.
-	Para calcular la exposici\'on entonces se supondr\'a una eficiencia de identificaci\'on entre 0.8 y 1\footnote{Estos n\'umeros son razonables si se tiene en cuenta que la eficiencia de identificaci\'on de neutrinos ES en Auger supera el 90$\%$.}.
+	Para calcular la exposici\'on entonces se supondr\'a una eficiencia de identificaci\'on de 0.9, algo menor que el desempe\~no observado en Auger.
 	%
 	\begin{figure}[ht!]
 		\centering
-		\includegraphics[width=\textwidth]{./fig/resultadosRadio/showerWidth_Comp_DG_ES_Wt}
+		\includegraphics[width=\textwidth]{./fig/resultadosRadio/showerWidth_Comp_DG_ES_Wt.pdf}
 		\caption{\label{fig:dg_vs_es_Idradio}
-		Separaci\'on en el ancho de la lluvia de eventos DG y ES. 
+		Separaci\'on en el ancho de la lluvia de eventos DG (azul) y ES (naranja). El histograma naranja corresponde a una submuestra de la simulada.
 		}
 	\end{figure}
 	
@@ -571,7 +571,7 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	
 \section{Desempe\~no de un detector de 90000 antenas}
 	
-	El objetivo de la segunda parte de esta tesis es estimar el desempe\~no de un detector de superficie de 90000 antenas de radio, y es a lo que se dedica esta secci\'on.
+	El objetivo de la segunda parte de esta Tesis es estimar el desempe\~no de un detector de superficie de 90000 antenas de radio, y es a lo que se dedica esta secci\'on.
 	En esta l\'inea una vez definidos los criterios y m\'etodos que permiten calcular las eficiencias de detecci\'on es posible en primer lugar estudiar qu\'e aspectos del dise\~no son relevantes, determinando cu\'anto impacta cada uno sobre la medici\'on.
 	Al mismo tiempo se utiliz\'o toda la informaci\'on recolectada hasta el momento, junto con la ecuaci\'on \ref{eq:exp2ESRadio}, para obtener l\'imites diferenciales al 90$\%$ de nivel de confianza que podr\'ia imponer el detector y compar\'andolos con la proxima generaci\'on de detectores de neutrinos.
 	Por \'ultimo se analiza en el marco de los modelos vigentes en la actualidad, cu\'antos eventos se esperan medir con este tipo de detectores en un per\'iodo de 3 a\~nos.
@@ -744,7 +744,7 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	\begin{figure}[h!]
 		\begin{center}
 			\includegraphics[width=\textwidth]{fig/resultadosRadio/perf/area/{Area_re}.pdf}
-			\caption{\label{fig:compRadioAuger_area0} Lado equivalente de un SD cuadrado de topograf\'ia regular como funci\'on de los par\'ametros $a_1=a_2$ y $\alpha$. En l\'ineas negras se marca el valor de $L$ correspondiente a GRAND, \cant{250}{km}, y el considerado como m\'aximo razonable en esta tesis, \cant{500}{km}.}
+			\caption{\label{fig:compRadioAuger_area0} Lado equivalente de un SD cuadrado de topograf\'ia regular como funci\'on de los par\'ametros $a_1=a_2$ y $\alpha$. En l\'ineas negras se marca el valor de $L$ correspondiente a GRAND, \cant{250}{km}, y el considerado como m\'aximo razonable en esta Tesis, \cant{500}{km}.}
 		\end{center}
 	\end{figure}
 	%
@@ -779,7 +779,7 @@ El primer paso entonces fue estudiar la probabilidad relativa de ocurrencia de l
 	Se observa que el m\'aximo desempe\~no alcanzado por el detector cuando \cant{L<250}{km} se encuentra cercano a 40 en las tres topograf\'ias, mientras que el logrado cuando \cant{L<500}{km} ronda los 150.
 	Si bien en el arreglo RE estos valores m\'aximos parecen ser levemente menores que en los casos HC y DE, a primer orden y para estos niveles de disparo la topograf\'ia no es un factor determinante del desempe\~no del detector.
 	Todo lo expuesto hasta el momento indica que la cantidad esperada de eventos crece significativamente con la superficie cubierta por el detector.
-	Por otra parte es muy probable que la calidad de los eventos detectados por arreglos RE, HC y DE s\'i presenten diferencias significativas, pero este tema no fue abordado en esta tesis~\footnote{En particular la topograf\'ia DE fue ideada con el fin de mejorar la calidad de los eventos detectados, bajo la premisa de aprovechar las dos dimensiones que muestran este tipo de lluvias. Ante un evento sobre cada borde de las celdas se disparar\'ian peque\~nos clusters de antenas, lo que permitir\'ia en principio mejorar significativamente la reconstrucci\'on de las variables geom\'etricas.}.
+	Por otra parte es muy probable que la calidad de los eventos detectados por arreglos RE, HC y DE s\'i presenten diferencias significativas, pero este tema no fue abordado en esta Tesis~\footnote{En particular la topograf\'ia DE fue ideada con el fin de mejorar la calidad de los eventos detectados, bajo la premisa de aprovechar las dos dimensiones que muestran este tipo de lluvias. Ante un evento sobre cada borde de las celdas se disparar\'ian peque\~nos clusters de antenas, lo que permitir\'ia en principio mejorar significativamente la reconstrucci\'on de las variables geom\'etricas.}.
 	
 	Entonces para analizar el desempe\~no del detector, que es a lo que se dedica la siguiente secci\'on, se utiliz\'o en el c\'alculo de la exposici\'on de cada topograf\'ia la combinaci\'on de par\'ametros simulada que arroj\'o la mayor cantidad de eventos esperados luego de aplicar las condiciones \cant{L<500}{km} y \cant{L<250}{km}, lo que se detalla en la tabla \ref{tab:bestConf}.
 	

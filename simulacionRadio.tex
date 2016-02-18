@@ -3,7 +3,7 @@
 
 Tal como se discuti\'o en el cap\'itulo \ref{ch:easRadio}, la emisi\'on de radio de las lluvias atmosf\'ericas extendidas es un fen\'omeno s\'umamente complicado.
 Por este motivo su c\'alculo se aborda usualmente mediante modelos macrosc\'opicos, o a trav\'es de una representaci\'on microsc\'opica detallada, ligada al uso de t\'ecnicas de Monte Carlo.
-En esta tesis se opt\'o por el segundo tratamiento por dos razones: la primera es que hasta el momento no existen modelos efectivos desarrollados para lluvias ES, y la segunda, como se ver\'a mas adelante, es que este enfoque permiti\'o utilizar la experiencia adquirida en el c\'alculo de la exposici\'on de Auger en esta nueva tarea.
+En esta Tesis se opt\'o por el segundo tratamiento por dos razones: la primera es que hasta el momento no existen modelos efectivos desarrollados para lluvias ES, y la segunda, como se ver\'a mas adelante, es que este enfoque permiti\'o utilizar la experiencia adquirida en el c\'alculo de la exposici\'on de Auger en esta nueva tarea.
 Luego, para completar el proceso de detecci\'on es necesario modelar el comportamiento de las antenas destinadas a observar las lluvias.
 Dado que esta parte del trabajo no se encuentra ligada a ning\'un experimento en particular, se simular\'a cada detector realizando suposiciones sobre sus par\'ametros en acuerdo con los experimentos de radio vigentes.
 
@@ -21,7 +21,7 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 % 	%
 % 	\begin{description}
 % 		\item[Interacción primaria:]
-% 		\item Al igual que en la primer parte de esta tesis, la interacci\'on neutrino nucleon se proces\'o utilizando \tauola{}, que fue descripto en la secci\'on \ref{sbsc:tauola}.
+% 		\item Al igual que en la primer parte de esta Tesis, la interacci\'on neutrino nucleon se proces\'o utilizando \tauola{}, que fue descripto en la secci\'on \ref{sbsc:tauola}.
 % 		\item[Desarrollo de la EAS:] como se discuti\'o en la secci\'on \ref{sc:gen_emision} a nivel microsc\'opico la emisi\'on de radio de una EAS puede conseguirse como superponiendo las de cada part\'icula de la lluvia. bajo este principio, el programa \zhs{}, una modificaci\'on de \aires{}, implementa la aproximaci\'on ZHS (ver secci\'on \ref{sbsc:zhs_approx}) sobre cada una de las part\'iculas simuladas. La descripci\'on de \zhs{} se realiza en la secci\'on \ref{sbsc:zhaires}.
 % 		\item[Señal en el detector:] La salida de \zhs{} consiste en el campo el\'ectrico en funci\'on del tiempo sobre una lista de observadores (antenas) ubicados en posici\'ones puntuales del espacio. Para transformar esta se\~nal \emph{cruda} en la obtenida por una antena real es necesario aplicar una serie de algoritmos, que se describen en la secci\'on \ref{sbsc:sig_treat}.
 % 	\end{description}
@@ -100,7 +100,7 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 		A mayor altitud la lluvia, que reci\'en ha comenzado a desarrollarse, no contribuye significativamente a la se\~nal.
 % % 		la aproximaci\'on exponencial para ${\mathcal R}$ sobreestima el \'indice de refracci\'on, pero m\'as all\'a de los \cant{20}{km} 
 % 		la lluvia recien ha comenzado a desarrollarse  la cantidad de part\'iculas presentes en esa etapa de la lluvia es relativamente peque\~na y por ende su contribuci\'on a la se\~nal total.
-		En esta tesis se utiliz\'o el modelo exponencial para el \'indice de refracci\'on con ${\mathcal R}_o=325$ y $K_r=0.1218{\rm\, km^{-1}}$ en todas las simulaciones.
+		En esta Tesis se utiliz\'o el modelo exponencial para el \'indice de refracci\'on con ${\mathcal R}_o=325$ y $K_r=0.1218{\rm\, km^{-1}}$ en todas las simulaciones.
 		
 		Otro factor a tener en cuenta aparece cuando la lluvia a simular es muy inclinada, t\'ipicamente cuando el \'angulo cenital es $\theta>80^\circ$ lo que incluye las lluvias ES.
 		Dado que la cascada puede iniciarse a cientos de kilometros del detector, la aproximaci\'on de tierra plana no es v\'alida.
@@ -141,7 +141,7 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 		
 		\subsection{Desempe\~no de \zhs{}}
 		
-		Finalmente, es necesario hacer menci\'on del desempe\~no alcanzado por \zhs{} para describir la se\~nal generada por lluvias atmosf\'ericas ya que los resultados de esta parte de la tesis depender\'an fuertemente del mismo.
+		Finalmente, es necesario hacer menci\'on del desempe\~no alcanzado por \zhs{} para describir la se\~nal generada por lluvias atmosf\'ericas ya que los resultados de esta parte de la Tesis depender\'an fuertemente del mismo.
 		En la figura \ref{fig:zhsvsdata}, tomada de \cite{cite:icrc13Auger}, se compara la distribuci\'on lateral\footnote{La distribuci\'on lateral en este caso se refiere a la dependencia de la amplitud m\'axima observada en la antena con la distancia radial respecto del centro de la lluvia.} de un evento de AERA, la extensi\'on de radio del proyecto Pierre Auger, con la obtenida mediante \zhs{}.
 		%
 		\begin{figure}[ht!]
@@ -162,7 +162,7 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 	
 	Una vez obtenido el campo el\'ectrico como funci\'on del tiempo, calculado por \zhs{}, es necesario aplicar un tratamiento a dicha se\~nal que aproxime el comportamiento que tendr\'ia un detector real.
 	
-	Dado que en el c\'alculo realizado en esta parte de la tesis no est\'a ligado a ning\'un experimento en particular\footnote{Se utiliza a GRAND como referencia del tama\~no del detector con el fin de fundamentar la factibilidad del detector aqu\'i propuesto.}, se utilizar\'an algunas t\'ecnicas comunes en los experimentos actuales de radio, aunque guardando libertad para optimizar la detecci\'on de neutrinos ES.
+	Dado que en el c\'alculo realizado en esta parte de la Tesis no est\'a ligado a ning\'un experimento en particular\footnote{Se utiliza a GRAND como referencia del tama\~no del detector con el fin de fundamentar la factibilidad del detector aqu\'i propuesto.}, se utilizar\'an algunas t\'ecnicas comunes en los experimentos actuales de radio, aunque guardando libertad para optimizar la detecci\'on de neutrinos ES.
 	
 % 	El primer paso en esta direcci\'on ser\'a entonces estudiar las componentes de un arreglo de antenas gen\'erico y c\'omo afect\'ia \'este la se\~nal recibida.
 	
@@ -219,8 +219,7 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 	\label{sbsc:localTriggerRadio}
 	En un detector de radio real, la se\~nal que supera la etapa de digitalizaci\'on y alcanza la de evaluaci\'on del disparo local, se compone del pulso que se busca detectar y alg\'un nivel ruido.
 	La elecci\'on de tal nivel de disparo se basa en un compromiso entre una relaci\'on se\~nal ruido alta y una eficiencia de disparo alta.
-	Por este motivo, antes de elegir el nivel de trigger de las RDS es necesario estudiar las fuentes de ruido que pueden afectar la medici\'on en este tipo de detectores.
-	
+	Como la simulaci\'on realizada con \zhs{} no incluye ning\'una representaci\'on del ruido, antes de elegir el nivel de trigger de las RDS es necesario estudiar las fuentes de se\~nal esp\'urea que pueden afectar la medici\'on en este tipo de detectores.
 	La figura \ref{fig:allanNoise}, tomada de \cite{allan1971}, muestra los valores m\'inimos t\'ipicos que debe alcanzar el campo el\'ectrico en la antena para generar una se\~nal detectable, frente a diferentes fuentes de ruido y para un ancho de banda de \cant{1}{MHz}.
 	%
 	\begin{figure}[ht!]
@@ -322,7 +321,7 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 % 	Estos par\'ametros, que no tendr\'an nada que ver con la disposici\'on de las antenas del detector real, representan una buena relaci\'on de compromiso entre la granularidad con la que se mide la se\~nal y el tiempo de c\'omputo.
 % 	
 % 	Por \'ultimo es necesario elegir una ubicaci\'on para el detector. 
-% 	Como se ha mencionado, el c\'alculo descripto en esta parte de la tesis no esta ligado a ning\'un experimento en particular, sin embargo, para elegir el sitio en el que se simular\'a el detector, se decidi\'o considerar s\'olo como ubicaciones en las que ya se encuentre funcionando algun detector de rayos c\'osmicos que utilize la t\'ecnica de radio.
+% 	Como se ha mencionado, el c\'alculo descripto en esta parte de la Tesis no esta ligado a ning\'un experimento en particular, sin embargo, para elegir el sitio en el que se simular\'a el detector, se decidi\'o considerar s\'olo como ubicaciones en las que ya se encuentre funcionando algun detector de rayos c\'osmicos que utilize la t\'ecnica de radio.
 % 	Entonces, las locaciones tenidas en cuenta se detallan en la tabla \ref{tab:possibleLoc} junto con las caracter\'isticas del campo geomagn\'etico promedio en sus inmediaciones (tomado de \cite{noaa}).
 % 	%
 % 	\begin{table}[ht!]
@@ -752,7 +751,7 @@ M\'as adelante, en la secci\'on \ref{sbsc:sig_treat} se detalla el tratamiento q
 % 	\label{sbsc:decayChRadio}
 % 	
 % 	Finalmente es necesario estudiar como afecta el canal de decaimiento del \tauon{} a la huella de radio sobre el detector.
-% 	Dado que el par\'ametro de control de energ\'ia elegido en esta parte de la tesis es la energ\'ia visible, es decir, la que portan las part\'iculas poco penetrantes al inicio de la lluvia, el canal de decaimiento queda determinado por las part\'iculas la inician y por como se distribuye la energ\'ia entre ellas\footnote{Como contraparte, en el an\'alisis para Auger lo que determinaba el decaimiento del \tauon{}, ademas de las part\'iculas y la distribuci\'on de energ\'ia, es qu\'e fracci\'on de la energ\'ia del tau\'on se transmitia a las part\'iculas interactuantes.}.
+% 	Dado que el par\'ametro de control de energ\'ia elegido en esta parte de la Tesis es la energ\'ia visible, es decir, la que portan las part\'iculas poco penetrantes al inicio de la lluvia, el canal de decaimiento queda determinado por las part\'iculas la inician y por como se distribuye la energ\'ia entre ellas\footnote{Como contraparte, en el an\'alisis para Auger lo que determinaba el decaimiento del \tauon{}, ademas de las part\'iculas y la distribuci\'on de energ\'ia, es qu\'e fracci\'on de la energ\'ia del tau\'on se transmitia a las part\'iculas interactuantes.}.
 % 	Por otro lado, ya se ha expuesto que la emisi\'on de radio en lluvias atmosf\'ericas extendidas depende fuertemente de el n\'umero de part\'iculas de la lluvia, lo que, dada la universalidad de las EAS, se encuentra estrechamente relacionado con la energ\'ia del primario.
 % 	Entonces, a la luz de estos dos hechos se espera que a misma energ\'ia visible y par\'ametros geom\'etricos, el canal de decaimiento del \tauon{} no afecte las caracter\'isticas fundamentales de la huella de radio sobre el detector.
 % 	Para poner a prueba esta hip\'otesis, en la figura \ref{fig:tdec_dependence} se muestra la se\~nal a nivel del suelo para cuatro de los canales de decaimiento m\'as representativos. Se observa que las caracter\'isticas generales de la huella se conserva en todos los casos, aunque var\'ia levemente en forma e intensidad.

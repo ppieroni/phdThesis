@@ -127,48 +127,49 @@
 % \newpage
 % \thispagestyle{empty}
 % \mbox{}
-
+% \clearfancydoublepage
+\input{agradecimientos}
 %\maketitle
 \tableofcontents
 
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %     Introduccion
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \include{introduccion}
-% 
-% \mainmatter
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %   Deteccion con Auger
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \include{NeutrinosUHE}
-% \part{Detecci\'on de neutrinos ultra energ\'eticos con el observatorio Pierre Auger}
-% \include{detectorAuger}
-% \include{EASAuger}
-% \include{simulacionAuger}
-% \include{seleccionAuger}
-% \include{resultadosAuger}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Introduccion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{introduccion}
+
+\mainmatter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Deteccion con Auger
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{NeutrinosUHE}
+\part{Detecci\'on de neutrinos ultra energ\'eticos con el observatorio Pierre Auger}
+\include{detectorAuger}
+\include{EASAuger}
+\include{simulacionAuger}
+\include{seleccionAuger}
+\include{resultadosAuger}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Deteccion con radio
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \part{Detecci\'on de neutrinos ultra energ\'eticos con un arreglo de antenas de radio}
-% \include{motivacionRadio}
-% \include{EASRadio}
-% \include{simulacionRadio}
-% \include{caracterizacionRadio}
+\part{Detecci\'on de neutrinos ultra energ\'eticos con un arreglo de antenas de radio}
+\include{motivacionRadio}
+\include{EASRadio}
+\include{simulacionRadio}
+\include{caracterizacionRadio}
 \include{resultadosRadio}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %   Conclusiones, apendices y bbl
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Conclusiones, apendices y bbl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{conclusiones}
-% \begin{appendices}
-% 
-% \include{appendixAires}
-% \include{appendixDoublePeak}
-% \include{appendixTierraCurva}
-% \include{appendixConeInt}
-% \include{appendixTopDown}
-% \end{appendices}
-% \include{bbl}
+\begin{appendices}
+
+\include{appendixAires}
+\include{appendixDoublePeak}
+\include{appendixTierraCurva}
+\include{appendixConeInt}
+\include{appendixTopDown}
+\end{appendices}
+\include{bbl}
 
 \end{document}
