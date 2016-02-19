@@ -800,7 +800,7 @@ Entonces es importante estimar c\'omo se trasladan la tales elecciones al result
 		\subsubsection{Generador de la interacción primaria}
 		
 		Este sistemático aplica solo a los canales DG.
-		Tanto en DGL como en DGH se utilizó como referencia \herwig{} 6.5.10 \cite{herwigRef} y se comparó con \pythia{} 6.4.10\cite{pythia} y {\sc herwig++}~\cite{herwig++}.
+		Tanto en DGL como en DGH se utilizó como referencia \herwig{} 6.5.10 \cite{cite:herwig} y se comparó con \pythia{} 6.4.10\cite{pythia} y {\sc herwig++}~\cite{herwig++}.
 		La incerteza sistemática asociada a esta fuente es de \eband{2.6}{3.7} para DGL y de \eband{0}{7} en DGH.
 		
 		\subsubsection{Función de distribución de partones}
@@ -1010,31 +1010,32 @@ Entonces es importante estimar c\'omo se trasladan la tales elecciones al result
 
 \chapter{Resultado final}
 \label{ch:resAuger}
-Con el criterio de identificaci\'on listo, adem\'as de calcular la exposici\'on del detector y sus incertezas sistem\'aticas, es posible analizar la muestra de b\'usqueda y determinar la existencia o no de eventos candidatos.
-Este procedimiento se denomina \emph{unblinding}, y consiste en aplicar a los datos las tres reconstrucci\'ones de variables (DGL, DGH y ES) para poder evaluar los cortes de calidad, de selecci\'on de eventos inclinados y de lluvias j\'ovenes.
-Una vez aplicados se utiliza la exposici\'on y sus incertezas para informar el valor m\'as probable de $k$ con su intervalo de confianza.
+Una vez establecidos los criterios de identificaci\'on, adem\'as de calcular la exposici\'on del detector y sus incertezas sistem\'aticas es posible analizar la muestra de b\'usqueda y determinar la existencia o no de eventos candidatos. 
+Este procedimiento se denomina \emph{unblinding}, y consiste en aplicar a los datos las tres reconstrucciones (DGL, DGH y ES), obtener las variables para poder evaluar los cortes de calidad, de selecci\'on de eventos inclinados y de lluvias j\'ovenes, y buscar si hay eventos que satisfagan dichos criterios.
+%Una vez aplicados se utiliza la exposici\'on y sus incertezas para informar el valor m\'as probable de $k$ con su intervalo de confianza.
 	
 	\section{Unblinding de los datos}
 	
 	El proceso de unblinding consta de los siguientes pasos, que se aplicaron sobre las muestras de b\'usqueda:
 	%
 	\begin{enumerate}
-	 \item Limpieza de los datos, aplicando los cortes de calidad descriptos en la secci\'on \ref{sc:calidadAuger}.
-	 \item Obtenci\'on de las variables de velocidad y topogr\'aficas para la aplicaci\'on de los cortes de selecci\'on de eventos inclinados, seg\'un lo expuesto en la secci\'on \ref{sc:inclinadosAuger}.
-	 \item C\'alculo de las variables discriminantes y evaluaci\'on del criterio de identificaci\'on de lluvias j\'ovenes, como en la secci\'on \ref{sc:selNu}.
+	 \item Limpieza de los datos aplicando los cortes de calidad, secci\'on \ref{sc:calidadAuger}.
+	 \item Obtenci\'on de las variables de velocidad y topogr\'aficas para la aplicaci\'on de los cortes de selecci\'on de eventos inclinados, secci\'on \ref{sc:inclinadosAuger}.
+	 \item C\'alculo de las variables discriminantes y evaluaci\'on del criterio de identificaci\'on de lluvias j\'ovenes, secci\'on \ref{sc:selNu}.
 	\end{enumerate}
 	%
-	Adem\'as, las fechas sobre las que se aplic\'o el procedimiento en esta Tesis fueron:
+% Adem\'as, las fechas sobre las que se aplic\'o el procedimiento en esta Tesis fueron:
+Las muestras de b\'usqueda utilizadas corresponden a los siguientes per\'iodos:
 	\begin{itemize}
-	 \item \textbf{ES}: el 1 de enero al 20 de junio de 2013;
-	 \item \textbf{DGH}: del 1 de junio de 2010 al 20 de junio de 2013;
-	 \item \textbf{DGL}: 1 de enero de 2012 al 20 de junio de 2013.
+	 \item \textbf{ES}: del 1 de enero al 20 de junio de 2013.
+	 \item \textbf{DGH}: del 1 de junio de 2010 al 20 de junio de 2013.
+	 \item \textbf{DGL}: del 1 de enero de 2012 al 20 de junio de 2013.
 	\end{itemize}
 
-	En las figuras \ref{fig:unblindingES} a \ref{fig:unblindingDGL} se muestran las distribuciones de variables discriminantes para los tres an\'alisis, para la muestra de b\'usqueda actual y para la \'ultima muestra escrutada previo a este trabajo, junto a los cortes de selecci\'on.
+	En las figuras \ref{fig:unblindingES} a \ref{fig:unblindingDGL} se muestran las distribuciones de las variables discriminantes para los tres an\'alisis, tanto para los nuevos datos aqu\'i analizados como para las \'ultimas muestras escrutadas previo a este trabajo, indic\'andose adem\'as los respectivos cortes de selecci\'on.
 	
 	Luego de aplicar este procedimiento se obtuvieron en los tres an\'alisis \textbf{cero candidatos} a neutrinos.
-	En estas circunstancias se estableci\'o una cota superior al valor de $k$ (ver ecuaci\'on \ref{sc:expoNu}).
+	En estas circunstancias se procedi\'o a establecer una cota superior al valor de $k$,  ecuaci\'on \ref{sc:expoNu}.
 	%
 	\begin{figure}[ht!]
 		\begin{center}
@@ -1080,8 +1081,9 @@ Una vez aplicados se utiliza la exposici\'on y sus incertezas para informar el v
 		\begin{center}
 			\includegraphics[width=0.85\textwidth]{fig/resultadosAuger/DGL_Unblinding_Thesis}\\
 			\caption{\label{fig:unblindingDGL}
-			Distribuci\'on de la variable de Fisher $\cal F$ para las muestras de b\'usqueda actual (verde) y pasada (azul) en eventos de multiplicidad alta. En rojo se muestra la distribuci\'on para la se\~nal simulada de neutrinos DGH.
-			En l\'inea de trazos se muestra el corte de selecci\'on de candidatos.
+			Distribuci\'on de la variable de Fisher $\cal F$ para las muestras de b\'usqueda actual (verde) y pasada (azul) en funci\'on del \'angulo reconstruido. 
+			%En rojo se muestra la distribuci\'on para la se\~nal simulada de neutrinos DGL.
+			En l\'inea continua negra se muestra el corte de selecci\'on de candidatos.
 			}
 		\end{center}
 	\end{figure}
@@ -1110,21 +1112,21 @@ Una vez aplicados se utiliza la exposici\'on y sus incertezas para informar el v
 	 \label{eq:kup}
 	\end{equation}
 	%
-	Donde $N_{up}$ representa una cota superior a la cantidad de eventos esperados durante la medici\'on.
-	Para obtener este n\'umero se utiliz\'o la modificaci\'on al m\'etodo del cinturon de confianza para procesos Poissoneanos con \emph{background}, desarrollado por Feldman y Cousins~\cite{cite:Feldman-Cousins}, y su extensi\'on semibayesiana que permite incluir los errores sistem\'aticos, de Conrad~\cite{cite:Conrad_limit}.
+	donde $N_{up}$ representa una cota superior a la cantidad de eventos esperados durante la medici\'on.
+	Para obtener este valor se utiliz\'o la modificaci\'on al m\'etodo del cintur\'on de confianza para procesos poissonianos, desarrollado por Feldman y Cousins~\cite{cite:Feldman-Cousins}, y la extensi\'on semibayesiana de Conrad et al.~\cite{cite:Conrad_limit} que permite incorporar errores sistem\'aticos.
 	En este m\'etodo, $N_{up}$ depende del n\'umero de eventos observado, del fondo esperado y del nivel de confianza elegido para la cota.
-	Considerando que se observaron 0 eventos, asumido de manera conservadora 0 eventos de fondo esperado y requiriendo un nivel de confianza de \cant{90\%}{C.L.}, se obtuvo $N_{up}=2.39$.
-	Con este valor, y a partir de la ecuaci\'on \ref{eq:kup}, se calcul\'o una cota superior al flujo de neutrinos, que aplica en el rango energ\'etico de\linebreak \cant{1.0\times10^{17}}{eV} - \cant{2.5\times10^{19}}{eV}:
+	Considerando que se observaron cero eventos, asumiendo de manera conservadora un fondo esperado despreciable, y requiriendo un nivel de confianza de \cant{90\%}{C.L.}, se obtiene $N_{up}=2.39$.
+	Con este valor, y a partir de la ecuaci\'on \ref{eq:kup}, se calcul\'o una cota superior al flujo de neutrinos de
 	%
 	\begin{equation}
-	k < 6.4 \times 10^{-9}~{\rm GeV~cm^{-2}~s^{-1}~sr^{-1}}
+	k < 6.4 \times 10^{-9}~{\rm GeV~cm^{-2}~s^{-1}~sr^{-1}}.
 	\label{eq:limitePosta}
 	\end{equation}
 	%
-	Este rango es en el que se espera haber detectado el \cant{90}{\%} de los eventos.
-	Cabe destacar que este es el resultado m\'as estricto obtenido por el Observatorio Pierre Auger hasta la fecha y el primero reportado como un \'unico l\'imite, combinando la exposici\'on de los tres canales de detecci\'on.
-	En la figura \ref{fig:intLimits} se muestra el límite obtenido junto al impuesto por IceCube y Anita-II en el mismo rango de energía.
-	Tambi\'en se grafican los flujos predichos por distintos modelos de producci\'on (referencias en la leyenda).
+	Este l\'imite aplica en el rango \cant{1.0\times10^{17}}{eV} -- \cant{2.5\times10^{19}}{eV}, que es en el que se esperar\'ia detectar el \cant{90}{\%} de los eventos.
+	Cabe destacar que este es el resultado m\'as estricto obtenido por el Observatorio Pierre Auger hasta la fecha, y el primero reportado como un \'unico l\'imite combinando la exposici\'on de los tres canales de detecci\'on.
+	En la figura \ref{fig:intLimits} se muestra el límite obtenido junto al impuesto por IceCube y Anita-II, cada uno en su respectivo rango de energía.
+	Tambi\'en se grafican los flujos predichos por distintos modelos de producci\'on cosmog\'enica.
 	%
 	\begin{figure}[ht!]
 		\begin{center}
@@ -1136,9 +1138,9 @@ Una vez aplicados se utiliza la exposici\'on y sus incertezas para informar el v
 		\end{center}
 	\end{figure}
 	
-	Por otro lado, es posible integrar el denominador de la ecuaci\'on \ref{eq:kup} en distintos intervalos de energ\'ia, obteniendo as\'i un l\'imite superior $k_{up}$ en dicho intervalo, lo que se denomina un l\'imite diferencial.
-	Esto se muestra en la figura \ref{fig:difLimits} para intervalos de energ\'ia de ancho 0.5 en escala $\log_{10}E_\nu$ junto al mismo l\'imite impuesto por IceCube y por ANITA-II.
-	En el mismo gr\'afico se muestran distintos fujos cosmog\'enicos y la cota de Waxman-Bachall.
+	Por otro lado, es posible integrar el denominador de la ecuaci\'on \ref{eq:kup} en intervalos de energ\'ia m\'as cortos, obteni\'endose as\'i un l\'imite superior $k_{up}$ en cada una, lo que se denomina un l\'imite diferencial. 
+	El resultado se muestra en la figura \ref{fig:difLimits} para intervalos de energ\'ia de ancho 0.5 en escala $\log_{10}E_\nu$, junto al mismo l\'imite impuesto por IceCube y por ANITA-II.
+	En el mismo gr\'afico se muestran distintos flujos cosmog\'enicos y la cota de Waxman-Bahcall.
 	Este tipo de gr\'aficos permite comparar la sensitividad de distintos experimentos en cada rango de energ\'ia.
 	Se observa que cerca de \cant{10^{18}}{eV}, la energ\'ia a la que los modelos predicen mayor afluencia de neutrinos, Auger es el experimento con mayor sensitividad.
 	%
@@ -1154,7 +1156,7 @@ Una vez aplicados se utiliza la exposici\'on y sus incertezas para informar el v
 	%
 	
  	Finalmente, en la tabla \ref{tab:rates} se muestra el n\'umero total de eventos esperados para diferentes modelos de producci\'on de flujo de neutrinos.
- 	Para obtener cada uno de estos n\'umeros se integr\'o la ecuaci\'on \ref{eq:expTot} utilizando el flujo correspondiente y la exposici\'on de la figura \ref{fig:expTot}.
+ 	Para obtener cada uno de estos valores se integr\'o la ecuaci\'on \ref{eq:expTot} utilizando el flujo correspondiente y la exposici\'on de la figura \ref{fig:expTot}.
  	%----------------------------------------------------------------------------------------
 	\begin{table*}[!t]
 	\begin{center}
@@ -1200,9 +1202,9 @@ Una vez aplicados se utiliza la exposici\'on y sus incertezas para informar el v
 	
 	A continuaci\'on se enumeran varias comentarios y conclusiones importantes:
 	\begin{enumerate}
-	 \item La sensitividad m\'axima del detector del SD de Auger se alcanza a energ\'ia alrededor del EeV, lo que coincide con el m\'aximo flujo esperado proveniente de modelos cosmog\'enicos.
-	 \item El l\'imite actual de Auger es un factor $\sim4$ m\'as chico que la cota superior de Waxman-Bachall para la producci\'on de neutrinos en fuentes \'opticas, siendo el primer detector de rayos c\'osmicos en sobrepasar dicha cota.
-	 \item Algunos modelos de producci\'on en fuentes astrof\'isicas, como AGN son excluidas con m\'as del \cant{90\%}{C.L.}.
+	 \item La sensitividad m\'axima del detector del SD de Auger se alcanza a energ\'ias alrededor del EeV, lo que coincide con el m\'aximo flujo esperado proveniente de modelos cosmog\'enicos.
+	 \item El l\'imite actual de Auger es un factor cuatrro veces m\'as chico que la cota superior de Waxman-Bahcall para la producci\'on de neutrinos en fuentes \'opticas, siendo el primer detector de rayos c\'osmicos en sobrepasar dicha cota.
+	 \item Algunos modelos de producci\'on en fuentes astrof\'isicas, como AGN son excluidas con m\'as del \cant{90\%}{C.L.}
 	 \item Los modelos cosmog\'enicos que asumen protones inyectados en la fuente como primarios y modelos de evoluci\'on fuertes (tipo FRII) se encuentran fuertemente desfavorecidos en las observaciones de Auger, aunque no pueden ser descartados hasta el momento.
 	 \item Los modelos que proponen hierro como primarios o los menos optimistas entre los que suponen protones se encuentran por debajo del alcance del experimento, que necesitar\'ia ganar un factor 10 en exposici\'on para obtener resultados concluyentes.
 % 	 \item Un gran n\'umero de modelos ex\'oticos son exluidos con \cant{99}{C.L.}.
@@ -1211,12 +1213,12 @@ Una vez aplicados se utiliza la exposici\'on y sus incertezas para informar el v
 	
 	\subsection{Comentarios finales de la primera parte}
 	En los \'ultimos a\~nos se han detectado por primera vez neutrinos c\'osmicos de alta energ\'ia, sin embargo, hasta el momento su origen sigue siendo un misterio.
-	La figura \ref{fig:multimess} muestra el estado actual de la detecci\'on, combinando el flujo medido en el PeV por IceCube, los l\'imites diferenciales m\'as estrictos impuestos hasta el momento por Auger, IceCube, RICE y ANITA-II, y algunos flujos cosmog\'enicos.
+	La figura \ref{fig:multimess} muestra el estado actual de la detecci\'on, combinando el flujo medido en el ranglo del PeV por IceCube, los l\'imites diferenciales m\'as estrictos impuestos hasta el momento por Auger, IceCube, RICE y ANITA-II, y algunos flujos cosmog\'enicos.
 	%
 	\begin{figure}[ht]
 		\begin{center}
 		\includegraphics[width=0.75\textwidth]{fig/introduccion/1510-02050_multimessenger}
-		\caption{\label{fig:multimess} Tomado de \cite{cite:multimess}. Flujo difuso de neutrinos medido por IceCube junto a los l\'imites impuestos por Auger, IceCube, Anita-II y Rice. Tambi\'en se muestran los flujos esperados para varios modelos cosmog\'enicos as\'i como la cota de Waxman-Bachall.}
+		\caption{\label{fig:multimess} Tomado de \cite{cite:multimess}. Flujo difuso de neutrinos medido por IceCube junto a los l\'imites impuestos por Auger, IceCube, Anita-II y Rice. Tambi\'en se muestran los flujos esperados para varios modelos cosmog\'enicos as\'i como la cota de Waxman-Bahcall.}
 		\end{center}
 	\end{figure}
 	
@@ -1225,7 +1227,7 @@ Una vez aplicados se utiliza la exposici\'on y sus incertezas para informar el v
 	
 	Queda claro entonces que la nueva generaci\'on de detectores de neutrinos tiene mucho por descubrir.
 	La observaci\'on del corte GZK respalda la existencia de un flujo cosmog\'enicos pero resultados recientes de Auger indican una migraci\'on hacia una componente m\'as pesada en los eventos de alta energ\'ia, lo que implicar\'ia flujos de neutrinos m\'as peque\~nos.
-	Por este motivo la llegada de ARA, ARIANNA y GRAND generan mucha espectativa dentro de la comunidad.
+	Por este motivo la llegada de ARA, ARIANNA y GRAND generan mucha expectativa dentro de la comunidad.
 	
 	Siguiendo esta l\'inea, en la segunda parte de este trabajo se estudiar\'a el desempe\~no de un detector de superficie conformado por antenas de radio al detectar neutrinos c\'osmicos ultra energ\'eticos.
 	
