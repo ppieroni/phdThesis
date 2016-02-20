@@ -24,6 +24,8 @@
 \usepackage[font=small]{caption}  % mas chico aun -> [font=footnotesize]
 \usepackage[toc]{appendix}
 \usepackage{cleveref}
+\usepackage[nointegrals]{wasysym}
+% \usepackage{marvosym}
 
 \let\verbatiminput=\verbatimtabinput
 
@@ -128,7 +130,7 @@
 % \thispagestyle{empty}
 % \mbox{}
 % \clearfancydoublepage
-% \input{agradecimientos}
+\input{agradecimientos}
 %\maketitle
 \tableofcontents
 
@@ -163,13 +165,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{conclusiones}
 \begin{appendices}
-
-\include{appendixAires}
-\include{appendixDoublePeak}
-\include{appendixTierraCurva}
-\include{appendixConeInt}
 \include{appendixTopDown}
+\include{appendixDoublePeak}
+\include{appendixConeInt}
+\include{appendixTierraCurva}
 \end{appendices}
-\include{bbl}
+\include{bbl_v1}
 
 \end{document}

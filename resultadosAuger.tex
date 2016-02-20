@@ -1,11 +1,10 @@
 \chapter{Exposici\'on del detector}
 \label{ch:expAuger}
 
-Para obtener la exposici\'on a neutrinos del detector es necesario integrar las eficiencias de identificaci\'on en convoluci\'on con la probabilidad de ocurencia de cada uno de los eventos considerados.
-Para obtener las eficiencias se utilizaron los criterios de seleci\'on delineados en el cap\'itulo pasado, donde se los aplic\'o en conjunto a todas las simulaciones para obtener, luego de integrar, la exposici\'on combinada de los tres an\'alisis.
-Por otro lado las probabilidades surgieron de un an\'alisis del mecanismo de detecci\'on y, en ES, del uso de simulaciones de Monte Carlo.
-Para llevar a cabo la integraci\'on temporal y en \'area se utiliz\'o una t\'ecnica que permite tener en cuenta las fluctuaciones del arreglo a trav\'es del tiempo, donde en particular, se desarroll\'o un m\'etodo para incluir el cambio en las eficiencias que causa el envejecimiento del detector.
-Finalmente se obtuvieron las incertezas sistem\'aticas cometidas en las componentes m\'as relevantes del c\'alculo y se presenta su combinaci\'on hasta el resultado final.
+Para obtener la exposici\'on a neutrinos del detector es necesario integrar las eficiencias de identificaci\'on convolucionadas con la probabilidad de ocurrencia de los eventos considerados. Las eficiencias se derivan de los criterios de selecci\'on delineados en el cap\'itulo antecedente, donde se aplican en paralelo  a todos los procesos simulacidos para obtener, v\'ia integraci\'on, la exposici\'on combinada de los tres an\'alisis de neutrinos de Auger.
+Por otro lado, las probabilidades de ocurrencia surgen de un an\'alisis del mecanismo de detecci\'on y, para el caso ES, del uso de simulaciones de Monte Carlo.
+Para llevar a cabo la integraci\'on temporal y en \'area se utiliza una t\'ecnica que permite tener en cuenta las fluctuaciones del arreglo a trav\'es del tiempo donde, en particular, se desarroll\'o un m\'etodo para incluir el cambio en las eficiencias causado por el envejecimiento del detector.
+Finalmente, se estudian en detalle las distintas fuentes de incertezas sistem\'aticas y se eval\'ua su contribuci\'on al resultado final.
 
 % Finalmente, combinando la exposici\'on de los tres an\'alisis y sus errores sistem\'aticos se obtuvo la cota superior a la magnitud del flujo de neutrinos ultra energéticos m\'as estricta presentada por Auger hasta la fecha.
 
@@ -413,7 +412,7 @@ Finalmente se obtuvieron las incertezas sistem\'aticas cometidas en las componen
 	Es muy interesante introducir la variable $h_10\equiv x_d + 10{\rm km} \times\cos(\pi-\theta)$, que corresponde a la altitud del eje de la lluvia a \cant{10}{km} del decaimiento del tauón.
 	En el panel derecho de la figura \ref{fig:effES_th} se uestra la eficiencia como función de $h_{10}$ para los 3 ángulos cenitales.
 	Puede observarse como a primer orden, la eficiencia de identificación no depende de $\theta$ y ${\rm x_d}$ por separado sino de $h_{10}$.
-	Esto se debe a que al tratarse de eventos muy horizontales, la probabilidad de detección depende básicamente de la altura a la que se alcanza el máximo desarrollo de la lluvia \cite{verTesisYann125}.
+	Esto se debe a que al tratarse de eventos muy horizontales, la probabilidad de detección depende básicamente de la altura a la que se alcanza el máximo desarrollo de la lluvia \cite{cite:tesisYann}.
 	Para las energías consideradas en este análisis, este máximo se produce aproximadamente a \cant{10}{km} del decaimiento del tauón.
 	En particular, la figura \ref{fig:effES_th} muestra que es altamente improbable detectar un evento iniciado por un tauón de \cant{E_\tau=10^{18}}{eV} cuyo máximo se produce a más de \cant{1000}{m} sobre detector.
 	 
@@ -534,7 +533,7 @@ Finalmente se obtuvieron las incertezas sistem\'aticas cometidas en las componen
 % 	Para ello, se debe estudiar cómo se modifica con el paso del tiempo el comportamiento de sus distintos componentes y c\'omo éstos afectan la señal registrada.
 % 	
 	Ante el pasaje de partículas por la estación, la señal en el PMT presenta un flanco de subida abrupto y un decaimiento exponencial.
-	Mientras que el rápido crecimiento inicial se encuentra dominado por una única reflexión de la luz Cherenkov en el Tyvek de la estación, el decaimiento posterior se produce debido a varias de estas reflexiones \cite{icrc}.
+	Mientras que el rápido crecimiento inicial se encuentra dominado por una única reflexión de la luz Cherenkov en el Tyvek de la estación, el decaimiento posterior se produce debido a varias de estas reflexiones \cite{icrc11Sato}.
 	Es por esto que tanto la reflectividad del Tyvec como la longitud de absorción de la luz en el agua son parámetros de la estación cuya variaci\'on afecta significativamente a las características de la traza.
 	En particular, debido a cambios de temperatura diarios, estacionales y hasta episodios de congelamiento del agua de las estaciones, ambos parámetros se ven afectados por el paso del tiempo y deben ser modelados e incluidos en la integraci\'on temporal de la exposici\'on.
 	
@@ -779,9 +778,9 @@ Entonces es importante estimar c\'omo se trasladan la tales elecciones al result
 	Por otra parte, una comparación exhaustiva que incluya la reevaluación de la exposición en todo el espacio de parámetros requeriría generar ${\cal O}(10^7)$ eventos~\footnote{Las librerías de eventos generadas para las búsquedas de neutrinos en Auger tienen ${\cal O}(10^6)$ eventos en total.}. 
 	Dado que tal procedimiento result\'o impracticable se restringi\'o la comparación a una pequeña región representativa del espacio de parámetros. 
 	La filosofía para determinar dicha región representativa fue la misma en los trés análisis: elegir entre los bines que representen la mayor parte de la sensitividad en la búsqueda, es decir, los que más posibilidades tengan de ser afectados por las fuentes de los sistemáticos.
-	En particular, para el análisis de DGL se utilizó tres energías (\cant{0.3}{EeV},\cant{1}{EeV},\cant{3}{EeV}), de las que se resimuló los ángulos más cercanos a DGH todo el rango de profundidades \cite{tesisNavarro}.
-	Por otro lado, en DGH se consideró suficiente utilizar \cant{E_\nu=1}{EeV} y $\theta=85^\circ$ \cite{tesisJavier}.
-	Finalmente en el análisis de ES se resimuló los bines que se detallan en la figura \ref{fig:importantBins_oldWeights}~\cite{tesisYann}.
+	En particular, para el análisis de DGL se utilizó tres energías (\cant{0.3}{EeV},\cant{1}{EeV},\cant{3}{EeV}), de las que se resimuló los ángulos más cercanos a DGH todo el rango de profundidades \cite{cite:tesisNavarro}.
+	Por otro lado, en DGH se consideró suficiente utilizar \cant{E_\nu=1}{EeV} y $\theta=85^\circ$ \cite{cite:tesisJavier}.
+	Finalmente en el análisis de ES se resimuló los bines que se detallan en la figura \ref{fig:importantBins_oldWeights}~\cite{cite:tesisYann}.
 	%
 	\begin{figure}[ht!]
 		\begin{center}
@@ -800,17 +799,17 @@ Entonces es importante estimar c\'omo se trasladan la tales elecciones al result
 		\subsubsection{Generador de la interacción primaria}
 		
 		Este sistemático aplica solo a los canales DG.
-		Tanto en DGL como en DGH se utilizó como referencia \herwig{} 6.5.10 \cite{cite:herwig} y se comparó con \pythia{} 6.4.10\cite{pythia} y {\sc herwig++}~\cite{herwig++}.
+		Tanto en DGL como en DGH se utilizó como referencia \herwig{} 6.5.10 \cite{cite:herwig} y se comparó con \pythia{} 6.4.10\cite{cite:PYTHIA} y {\sc herwig++}~\cite{cite:Herwig++}.
 		La incerteza sistemática asociada a esta fuente es de \eband{2.6}{3.7} para DGL y de \eband{0}{7} en DGH.
 		
 		\subsubsection{Función de distribución de partones}
 		
-		Tanto \herwig{} como \pythia{} ofrecen la posibilidad de elegir entre distintas opciones de PDFs o incluso utilizar versiones externas. Para evaluar esta fuente de sistematico en DGH (DGL) se utilizo la parametrizacion CTEQ06m ~\cite{CTEQ06m} (MRST98 ~\cite{MRST98}).
+		Tanto \herwig{} como \pythia{} ofrecen la posibilidad de elegir entre distintas opciones de PDFs o incluso utilizar versiones externas. Para evaluar esta fuente de sistematico en DGH (DGL) se utilizo la parametrizacion CTEQ06m~\cite{CTEQ06m} (MRST98~\cite{MRST98}).
 		Luego de una comparación exhaustiva contra las posibilidades ofrecidas, la incerteza obtenida para las distribuciones partónicas fue de \eband{2}{7} en DGH y \eband{4}{5} en DGL.
 		
 		\subsubsection{Simulador de EAS y algoritmo de thinning}
 		
-		Además de \aires{}, se recalculó el resultado en las lluvias DG utilizando {\sc corsika}~\cite{corsika}.
+		Además de \aires{}, se recalculó el resultado en las lluvias DG utilizando {\sc corsika}~\cite{cite:corsika}.
 		De esta reevaluación se obtuvo una pérdida de exposición del 17$\%$ para {\sc corsika} respecto de \aires{}.
 		Por lo que se cita un error de \eband{0}{17} para DGH y \eband{17}{0} para DGL, en el que la exposición de referencia se calculó utilizando {\sc corsika}.
 		
@@ -825,12 +824,12 @@ Entonces es importante estimar c\'omo se trasladan la tales elecciones al result
 		
 		Otra fuente de incerteza en el proceso de simulaciónde la lluvia atmosférica reside en la elección del modelo utilizado para calcular las interacciones hadrónicas.
 		Estos modelos ajustan sus parámetros para reproducir los datos obtenidos en aceleradores a bajas energías, por lo que la simulacion de lluvias atmosféricas de altas energías requieren su extrapolación.
-		Para obtener el error sistemático asociado a esta fuente se utilizó como referencia el modelo QGSJETII \cite{qgsjetii} y se comparó el resultado con QGSJET \cite{qgsjet} y SYBIL \cite{sybil}.
+		Para obtener el error sistemático asociado a esta fuente se utilizó como referencia el modelo QGSJETII \cite{cite:QGSJETII} y se comparó el resultado con QGSJET \cite{cite:QGSJET} y SYBIL \cite{cite:SIBYLL}.
 		El resultado obtenido fue \eband{4.7}{1} en ES, \eband{5}{2} en DGH y \eband{0}{6} en DGL.
 		
 	\subsection{Error asociado a la sección eficaz neutrino nucleón y a las pérdidas de energía del tauón}
 	
-	Para los canales DG se utilizó la sección eficaz junto con su incerteza asociada calculada por Sarkar et. al. \cite{cooper_sarkar}.
+	Para los canales DG se utilizó la sección eficaz junto con su incerteza asociada calculada por Sarkar et. al. \cite{cite:cooper_sarkar}.
 	Al propagar el cálculo hacia la exposición se obtuvo una \eband{9}{9} en DGH y \eband{7}{7} en DGL.
 % 	Es importante resaltar que este resultado es compatible con nuevas extrapolaciones de las funciones de distribución de partones publicadas recientemente \cite{newPDFs}.
 	
@@ -898,8 +897,8 @@ Entonces es importante estimar c\'omo se trasladan la tales elecciones al result
 	Dado que en la exposición reportada en la sección \ref{sc:expoNu} no incluye su contribución, será tenida en cuenta como un sistemático en los canales ES y DGH.
 	En el caso de DGL, las trayectorias seguidas por los neutrinos no atraviezan las montañas, por lo que este fuente de error no tiene efecto sobre este canal.
 	
-	En \cite{prd2009} se realizó una estimación de la contribución de las montañas al canal ES, que se reporta como \eband{18}{0}.
-	Por otro lado, en \cite{dghPaper} se calculo la exposición debida a los \tauon{}'s que atraviezan las montañas para el canal DGH, reportando un aporte del 20$\%$ sobre la exposición total. 
+	En \cite{cite:AugerNu2} se realizó una estimación de la contribución de las montañas al canal ES, que se reporta como \eband{18}{0}.
+	Por otro lado, en \cite{cite:AugerNu3} se calculo la exposición debida a los \tauon{}'s que atraviezan las montañas para el canal DGH, reportando un aporte del 20$\%$ sobre la exposición total. 
 	Cuando se incluye la ganancia que da la selección de eventos de tres estaciones de ES sobre este valor, se obtiene una banda de error de \eband{24}{0} en la exposición DGH.
 	
 	
@@ -1149,7 +1148,7 @@ Las muestras de b\'usqueda utilizadas corresponden a los siguientes per\'iodos:
 			\includegraphics[width=0.9\textwidth]{fig/resultadosAuger/diff_limits_and_models_paper_combined_all}
 			\caption{\label{fig:difLimits}
 			L\'imite superior diferencial (a $90\%$C.L. y bines de ancho 0.5 en $\log_{10}E_\nu$) para el Observatorio Pierre Auger y para un flujo difuso de neutrinos.
-			Tambien se muestra el l\'imite alcanzado por ANITA\cite{XXX} y IceCube\cite{XXX2} junto con los flujos esperados para varios modelos cosmog\'enicos\cite{XXX} y el l\'imite de Waxman-Bahcall\cite{XXX2}.
+			Tambien se muestra el l\'imite alcanzado por ANITA\cite{cite:Anita2} y IceCube\cite{cite:IceCubePev} junto con los flujos esperados para varios modelos cosmog\'enicos\cite{Kotera_GZK,Kampert_GZK,Ahlers_GZK,Becker_AGN} y el l\'imite de Waxman-Bahcall\cite{cite:WaxmanBahcall1}.
 			}
 		\end{center}
 	\end{figure}

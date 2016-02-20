@@ -223,7 +223,7 @@ Las ecuaciones \ref{eq:Ero2} y \ref{eq:Ez2} proveen la soluci\'on exacta para el
 Usualmente, las ecuaciones \ref{eq:Ero2} y \ref{eq:Ez2} no tienen soluci\'on anal\'itica, por lo que se las debe integrar num\'ericamente.
 Dado que en una lluvia atmosf\'erica de \cant{1}{EeV} pueden generarse del orden de $10^{10}$ part\'iculas, su resoluci\'on a nivel microsc\'opico se torna impracticable.
 % Por este motivo los programas de simulaci\'on suelen utilizar aproximaciones mediante las cuales el c\'omputo del campo se obtiene a trav\'es de ecuaciones aritm\'eticas.
-Para salvar este problema, Zas, Halzen y Stanev~\cite{1_halzen_zas_stanev_1991,2_zas_halzen_stanev_1992} propusieron un conjunto de aproximaciones, conocidas como \emph{aproximaciones ZHS}, que permiten salvar el problema, convirtiendo \ref{eq:Ero2} y \ref{eq:Ez2} en ecuaciones aritm\'eticas relativamente sencillas y adecuadas para su implementaci\'on en una simulaci\'on Monte Carlo. Las condiciones que se deben satisfacer son:
+Para salvar este problema, Zas, Halzen y Stanev~\cite{1_zas_halzen_stanev_1991,2_zas_halzen_stanev_1992} propusieron un conjunto de aproximaciones, conocidas como \emph{aproximaciones ZHS}, que permiten salvar el problema, convirtiendo \ref{eq:Ero2} y \ref{eq:Ez2} en ecuaciones aritm\'eticas relativamente sencillas y adecuadas para su implementaci\'on en una simulaci\'on Monte Carlo. Las condiciones que se deben satisfacer son:
 	%
 	\begin{enumerate}
 		\item La inversa de la distancia entre cualquier punto del track y el observador debe poder ser considerada una constante
@@ -280,7 +280,7 @@ Para salvar este problema, Zas, Halzen y Stanev~\cite{1_halzen_zas_stanev_1991,2
 
 Para explotar todo el potencial de un detector de antenas de radio es fundamental ganar intuici\'on sobre las caracter\'isticas de la se\~nal que se espera medir.
 Para ello, resulta \'util abordar la emisi\'on de las lluvias atmosf\'ericas macrosc\'opicamente, reemplazando la din\'amica de la densidad de part\'iculas cargadas de la lluvia por cargas y corrientes efectivas cuyo campo el\'ectrico pueda ser calculado de manera sencilla mediante las ecuaciones de Maxwell.
-En esta direcci\'on, se ha determinado experimentalmente~\cite{ardouin2005radio,huege2012lopes,horandel2009lofar,schroder2013tunka,kelley2011aera,} que existen dos efectos que dominan la emisi\'on de radiaci\'on en EAS: la deflexi\'on de las part\'iculas cargadas debido al campo geomagn\'etico y el desarrollo de un exceso de carga generado, por ejemplo, a medida que el frente de la lluvia incorpora electrones de los \'atomos atmosf\'ericos~\cite{scholten:2008}.
+En esta direcci\'on, se ha determinado experimentalmente~\cite{ardouin2009radio,huege2012lopes,horandel2009lofar,schroder2013tunka,kelley2011aera} que existen dos efectos que dominan la emisi\'on de radiaci\'on en EAS: la deflexi\'on de las part\'iculas cargadas debido al campo geomagn\'etico y el desarrollo de un exceso de carga generado, por ejemplo, a medida que el frente de la lluvia incorpora electrones de los \'atomos atmosf\'ericos~\cite{scholten:2008}.
 Estos, se denominan efecto geomagn\'etico y efecto Askaryan, respectivamente y se desarrollan en las secciones \ref{sbsc:geom_emision} y \ref{sbsc:ask_emision}.
 
 Por otro lado, dado que las part\'iculas cargadas que se incorporan a la EAS se desplazan a una velocidad mayor a la de la luz en la atm\'osfera\footnote{El \'indice de refracci\'on de la atm\'osfera a nivel del suelo es $n\sim1.0003>1$} se produce efecto \cher{}.
@@ -297,7 +297,7 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	Si bien la intensidad de esta corriente depende del tiempo de una manera complicada\footnote{La intensidad de la corriente depende, entre otros factores, de la distribuci\'on longitudinal de part\'iculas de la lluvia.}, su direcci\'on viene dada b\'asicamente por $\vec\beta\times \vec B$, donde $\vec \beta$ es paralelo al eje de la lluvia y $\vec B$ es el campo magn\'etico. 
 	De esto resulta que es pr\'acticamente perpendicular tanto al eje de la lluvia como al campo magn\'etico terrestre \cite{kahn:1966}.
 	En consecuencia el campo el\'ectrico generado posee una polarizaci\'on casi uniforme sobre la superficie de la tierra, lo que se observa en el panel derecho de la figura \ref{fig:geom_sketch}.
-	Por otra parte, debido a que la magnitud de la corriente efectiva depende fuertemente de la velocidad de drift de los \el{+} y \el{-}, que a su vez depende directamente de la densidad de la atm\'osfera, este es el mecanismo de generaci\'on predominante cuando la lluvia se inicia a profundidades peque\~nas~\cite{requiered} (siempre y cuando $\vec\beta$ no sea paralelo a $\vec B$).
+	Por otra parte, debido a que la magnitud de la corriente efectiva depende fuertemente de la velocidad de drift de los \el{+} y \el{-}, que a su vez depende directamente de la densidad de la atm\'osfera, este es el mecanismo de generaci\'on predominante cuando la lluvia se inicia a profundidades peque\~nas (siempre y cuando $\vec\beta$ no sea paralelo a $\vec B$).
 	%
 	\begin{figure}[ht!]
 		\centering
@@ -454,7 +454,7 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	\end{figure}
 	En l\'ineas verdes, y en coincidencia con los máximos para todas las frecuencias se resalta el anillo \cher{} en esa coordenada.
 	Se observa como a medida que la frecuencia filtrada aumenta la coherencia de la se\~nal se mantiene sólo en las cercan\'ias de dicho anillo.
-	Este comportamiento en la se\~nal se conoce dentro del ambiente como las \emph{catedrales} del evento\footnote{Este nombre procede de que la forma de la se\~nal rememora las torres de una catedral.}.
+	Este comportamiento en la se\~nal se conoce dentro de la comunidad como las \emph{catedrales} del evento\footnote{Este nombre procede de que la forma de la se\~nal rememora las torres de una catedral.}.
 	
 \subsection{Otros efectos}
 \label{sbsc:other_emision}
@@ -475,7 +475,7 @@ Finalmente, en la secci\'on \ref{sbsc:other_emision} se hace un recuento de otro
 	\subsubsection{Bremsstrahlung molecular}
 	
 	La emisi\'on de radio debido a efecto de bremsstrahlung molecular generado por cascadas de part\'iculas fue medido recientemente en experimentos de aceleradores~\cite{bremsstrahlungMolec} y su coherencia fue medida a frecuencias del orden de los $\rm GHz$.
-	Sin embargo, otros experimentos en aceleradores no han confirmado estas mediciones~\cite{AMY}.
+	Sin embargo, otros experimentos en aceleradores no han confirmado estas mediciones~\cite{cite:AMY}.
 	De todas formas varios experimentos comenzaron el desarrollo de t\'ecnicas especializadas para medir lluvias atmosf\'ericas extendidas en estas frecuencias, pero todav\'ia sin \'exito~\cite{cite:midas}\footnote{Salvo en los casos como en \cite{cite:CHROME} en los que se recibe una se\~nal proveniente de una lluvia con direcci\'on hacia el observador, lo que indica que en realidad y muy probablemente han medido la contribuci\'on geomagn\'etica de alta frecuencia (\cant{\sim}{GHz}) de la misma.}.
 	Actualmente no es claro si el bremsstrahlung molecular constribuye de manera significativa a la emisi\'on en el \'orden de los $\rm MHz$.
 	
